@@ -1,752 +1,8 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>दल्लूसर गाँव</title>
-
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-}
-
-body{
-  background:#f3f7f5;
-  color:#173b31;
-  padding-bottom:75px;
-}
-
-/* HEADER */
-.header{
-  background:linear-gradient(135deg,#075e54,#0b8f72,#19b394);
-  color:white;
-  padding:28px 20px 75px;
-  border-radius:0 0 32px 32px;
-  box-shadow:0 8px 25px rgba(0,0,0,.15);
-}
-
-.header-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo{
-  font-size:27px;
-  font-weight:800;
-}
-
-.header small{
-  display:block;
-  margin-top:7px;
-  opacity:.9;
-  font-size:14px;
-}
-
-.header-icon{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  background:rgba(255,255,255,.18);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:23px;
-}
-
-/* SEARCH */
-.search{
-  margin:-32px 18px 20px;
-  position:relative;
-}
-
-.search input{
-  width:100%;
-  padding:17px 20px 17px 48px;
-  border:0;
-  outline:none;
-  border-radius:18px;
-  background:white;
-  box-shadow:0 8px 25px rgba(0,0,0,.12);
-  font-size:15px;
-}
-
-.search span{
-  position:absolute;
-  left:18px;
-  top:14px;
-  font-size:22px;
-}
-
-/* FOUNDER */
-.founder{
-  position:relative;
-  margin:70px 18px 25px;
-  padding:72px 20px 25px;
-  text-align:center;
-  background:white;
-  border-radius:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,.10);
-  border:1px solid #e5efeb;
-}
-
-.profile{
-  position:absolute;
-  top:-58px;
-  left:50%;
-  transform:translateX(-50%);
-  width:116px;
-  height:116px;
-  border-radius:50%;
-  object-fit:cover;
-  background:white;
-  padding:4px;
-  border:4px solid white;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
-}
-
-.founder h2{
-  font-size:24px;
-  margin-bottom:8px;
-}
-
-.role{
-  color:#087b63;
-  font-weight:bold;
-  font-size:15px;
-}
-
-.tagline{
-  margin:10px 0 18px;
-  color:#65756f;
-  font-size:14px;
-}
-
-.profile-btn{
-  border:0;
-  background:#087b63;
-  color:white;
-  padding:11px 22px;
-  border-radius:30px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* ANNOUNCEMENT */
-.notice{
-  margin:18px;
-  padding:17px;
-  background:linear-gradient(135deg,#fff8df,#fff);
-  border-left:5px solid #f1b800;
-  border-radius:16px;
-  box-shadow:0 5px 18px rgba(0,0,0,.07);
-}
-
-.notice-title{
-  font-weight:bold;
-  margin-bottom:6px;
-}
-
-.notice p{
-  color:#65756f;
-  font-size:14px;
-}
-
-/* SECTION */
-.section{
-  margin:25px 18px;
-}
-
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
-
-.section-title h2{
-  font-size:20px;
-}
-
-.section-title span{
-  font-size:13px;
-  color:#078266;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:13px;
-}
-
-.card{
-  background:white;
-  padding:20px 12px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 6px 20px rgba(0,0,0,.07);
-  border:1px solid #e8efec;
-  transition:.2s;
-  cursor:pointer;
-}
-
-.card:active{
-  transform:scale(.96);
-}
-
-.card .icon{
-  width:53px;
-  height:53px;
-  margin:auto;
-  border-radius:17px;
-  background:#e8f7f2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:27px;
-  margin-bottom:10px;
-}
-
-.card h3{
-  font-size:15px;
-  margin-bottom:5px;
-}
-
-.card p{
-  font-size:11px;
-  color:#7a8883;
-}
-
-/* DATA CARDS */
-.data-card{
-  background:white;
-  padding:18px;
-  border-radius:19px;
-  margin-bottom:12px;
-  box-shadow:0 5px 18px rgba(0,0,0,.07);
-}
-
-.data-card h3{
-  font-size:17px;
-  margin-bottom:7px;
-}
-
-.data-card p{
-  color:#687873;
-  font-size:14px;
-  line-height:1.5;
-}
-
-.badge{
-  display:inline-block;
-  margin-top:10px;
-  padding:5px 10px;
-  border-radius:20px;
-  background:#e7f7f1;
-  color:#087b63;
-  font-size:12px;
-  font-weight:bold;
-}
-
-/* QUICK CONTACT */
-.contact{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-}
-
-.contact-card{
-  min-width:145px;
-  background:white;
-  padding:18px;
-  border-radius:18px;
-  box-shadow:0 5px 15px rgba(0,0,0,.07);
-}
-
-.contact-card b{
-  display:block;
-  margin-bottom:6px;
-}
-
-.contact-card small{
-  color:#74817d;
-}
-
-/* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  z-index:100;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.55);
-  padding:20px;
-}
-
-.modal-box{
-  background:white;
-  max-width:450px;
-  margin:70px auto;
-  border-radius:25px;
-  padding:25px;
-  position:relative;
-  max-height:85vh;
-  overflow:auto;
-}
-
-.close{
-  position:absolute;
-  right:18px;
-  top:14px;
-  font-size:27px;
-  cursor:pointer;
-}
-
-.modal-profile{
-  width:100px;
-  height:100px;
-  border-radius:50%;
-  object-fit:cover;
-  display:block;
-  margin:5px auto 15px;
-}
-
-.modal-box h2{
-  text-align:center;
-  margin-bottom:15px;
-}
-
-.modal-box p{
-  line-height:1.7;
-  color:#63726d;
-  font-size:14px;
-}
-
-/* FORM */
-.form-group{
-  margin-bottom:14px;
-}
-
-.form-group label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:6px;
-  font-size:14px;
-}
-
-.form-group input,
-.form-group textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #dce8e3;
-  border-radius:13px;
-  outline:none;
-  font-size:14px;
-}
-
-.form-group textarea{
-  min-height:110px;
-  resize:vertical;
-}
-
-.submit{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:14px;
-  background:#087b63;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-}
-
-/* BOTTOM NAV */
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  height:68px;
-  background:white;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  box-shadow:0 -5px 20px rgba(0,0,0,.10);
-  z-index:50;
-}
-
-.nav-item{
-  text-align:center;
-  color:#74817d;
-  font-size:11px;
-  cursor:pointer;
-}
-
-.nav-item div{
-  font-size:21px;
-  margin-bottom:3px;
-}
-
-.nav-item.active{
-  color:#078266;
-  font-weight:bold;
-}
-
-/* FOOTER */
-.footer{
-  text-align:center;
-  padding:30px 15px;
-  color:#83908c;
-  font-size:12px;
-}
-
-@media(max-width:360px){
-  .logo{font-size:23px}
-  .card{padding:17px 8px}
-}
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="header-top">
-    <div>
-      <div class="logo">🏡 दल्लूसर गाँव</div>
-      <small>हमारा गाँव • हमारी पहचान • हमारा विकास</small>
-    </div>
-    <div class="header-icon">🌿</div>
-  </div>
-</header>
-
-<!-- SEARCH -->
-<div class="search">
-  <span>🔍</span>
-  <input id="searchInput" type="text" placeholder="गाँव में खोजें..." oninput="searchCards()">
-</div>
-
-<!-- FOUNDER -->
-<section class="founder">
-  <img src="manoj.jpg" class="profile" alt="मनोज पारीक">
-
-  <h2>मनोज पारीक</h2>
-
-  <div class="role">
-    👑 संस्थापक — मनोज पारीक 😊
-  </div>
-
-  <div class="tagline">
-    अपने गाँव को डिजिटल रूप से जोड़ने का एक प्रयास
-  </div>
-
-  <button class="profile-btn" onclick="openProfile()">
-    👤 मेरा प्रोफाइल
-  </button>
-</section>
-
-<!-- NOTICE -->
-<section class="notice">
-  <div class="notice-title">📢 महत्वपूर्ण सूचना</div>
-  <p id="noticeText">
-    दल्लूसर गाँव से जुड़ी महत्वपूर्ण खबरें और सूचनाएँ यहाँ दिखाई जाएँगी।
-  </p>
-</section>
-
-<!-- MAIN OPTIONS -->
-<section class="section">
-  <div class="section-title">
-    <h2>गाँव की सेवाएँ</h2>
-    <span>सभी देखें</span>
-  </div>
-
-  <div class="grid" id="cardGrid">
-
-    <div class="card" onclick="showSection('news')">
-      <div class="icon">📰</div>
-      <h3>गाँव की खबरें</h3>
-      <p>नई खबरें और सूचनाएँ</p>
-    </div>
-
-    <div class="card" onclick="showSection('development')">
-      <div class="icon">🚧</div>
-      <h3>विकास कार्य</h3>
-      <p>गाँव में चल रहे कार्य</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('ग्राम पंचायत की जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">🏛️</div>
-      <h3>ग्राम पंचायत</h3>
-      <p>पंचायत संबंधी जानकारी</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('विद्यालय की जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">🏫</div>
-      <h3>विद्यालय</h3>
-      <p>स्कूल और शिक्षा</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('खेल मैदान की जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">🏏</div>
-      <h3>खेल मैदान</h3>
-      <p>खेल एवं युवा गतिविधियाँ</p>
-    </div>
-
-    <div class="card" onclick="showSection('gallery')">
-      <div class="icon">🖼️</div>
-      <h3>फोटो गैलरी</h3>
-      <p>गाँव की यादें</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('गाँव का इतिहास जल्द जोड़ा जाएगा।')">
-      <div class="icon">📜</div>
-      <h3>गाँव का इतिहास</h3>
-      <p>हमारी विरासत</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('सरकारी योजनाओं की जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">📋</div>
-      <h3>सरकारी योजनाएँ</h3>
-      <p>जनकल्याण योजनाएँ</p>
-    </div>
-
-    <div class="card" onclick="openComplaint()">
-      <div class="icon">💬</div>
-      <h3>शिकायत / सुझाव</h3>
-      <p>अपनी बात रखें</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('महत्वपूर्ण संपर्क जल्द जोड़े जाएँगे।')">
-      <div class="icon">☎️</div>
-      <h3>महत्वपूर्ण संपर्क</h3>
-      <p>जरूरी नंबर</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('गाँव का नक्शा जल्द जोड़ा जाएगा।')">
-      <div class="icon">📍</div>
-      <h3>गाँव का नक्शा</h3>
-      <p>स्थान और रास्ते</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('आपातकालीन संपर्क जल्द जोड़े जाएँगे।')">
-      <div class="icon">🚨</div>
-      <h3>आपातकालीन सहायता</h3>
-      <p>जरूरी सहायता</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('पानी और सड़क से जुड़े कार्य यहाँ दिखेंगे।')">
-      <div class="icon">💧</div>
-      <h3>पानी एवं सड़क</h3>
-      <p>स्थानीय समस्याएँ</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('पर्यावरण अभियान की जानकारी यहाँ होगी।')">
-      <div class="icon">🌱</div>
-      <h3>पर्यावरण अभियान</h3>
-      <p>हरियाली और स्वच्छता</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('वीडियो जल्द जोड़े जाएँगे।')">
-      <div class="icon">🎥</div>
-      <h3>वीडियो</h3>
-      <p>गाँव के वीडियो</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('गाँव की सामान्य जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">ℹ️</div>
-      <h3>गाँव की जानकारी</h3>
-      <p>हमारे गाँव के बारे में</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- NEWS -->
-<section class="section" id="newsSection">
-  <div class="section-title">
-    <h2>📰 नवीनतम खबरें</h2>
-    <span>LIVE</span>
-  </div>
-
-  <div id="newsList">
-    <div class="data-card">
-      <h3>दल्लूसर गाँव ऐप</h3>
-      <p>गाँव की खबरें यहाँ दिखाई देंगी।</p>
-    </div>
-  </div>
-</section>
-
-<!-- DEVELOPMENT -->
-<section class="section" id="developmentSection">
-  <div class="section-title">
-    <h2>🚧 विकास कार्य</h2>
-  </div>
-
-  <div id="developmentList">
-    <div class="data-card">
-      <h3>गाँव के विकास कार्य</h3>
-      <p>चल रहे और पूर्ण हुए विकास कार्य यहाँ दिखाई देंगे।</p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="section" id="gallerySection">
-  <div class="section-title">
-    <h2>🖼️ फोटो गैलरी</h2>
-  </div>
-
-  <div class="grid" id="galleryList">
-    <div class="data-card">
-      <h3>दल्लूसर गाँव</h3>
-      <p>गाँव की तस्वीरें यहाँ दिखाई देंगी।</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section">
-  <div class="section-title">
-    <h2>☎️ महत्वपूर्ण संपर्क</h2>
-  </div>
-
-  <div class="contact">
-
-    <div class="contact-card">
-      <b>🏛️ ग्राम पंचायत</b>
-      <small>संपर्क जल्द जोड़ा जाएगा</small>
-    </div>
-
-    <div class="contact-card">
-      <b>🏫 विद्यालय</b>
-      <small>संपर्क जल्द जोड़ा जाएगा</small>
-    </div>
-
-    <div class="contact-card">
-      <b>🚨 आपातकाल</b>
-      <small>112</small>
-    </div>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<div class="footer">
-  © 2026 दल्लूसर गाँव ऐप
-  <br><br>
-  <b>अपने गाँव के लिए • अपने गाँव के साथ</b>
-</div>
-
-<!-- PROFILE MODAL -->
-<div class="modal" id="profileModal">
-
-  <div class="modal-box">
-
-    <div class="close" onclick="closeProfile()">×</div>
-
-    <img src="manoj.jpg" class="modal-profile" alt="मनोज पारीक">
-
-    <h2>मनोज पारीक</h2>
-
-    <p style="text-align:center;">
-      👑 संस्थापक — मनोज पारीक 😊
-    </p>
-
-    <br>
-
-    <p>
-      दल्लूसर गाँव को डिजिटल रूप से जोड़ने,
-      गाँव की खबरों, विकास कार्यों और स्थानीय
-      गतिविधियों को एक मंच पर लाने का प्रयास।
-    </p>
-
-  </div>
-
-</div>
-
-<!-- COMPLAINT MODAL -->
-<div class="modal" id="complaintModal">
-
-  <div class="modal-box">
-
-    <div class="close" onclick="closeComplaint()">×</div>
-
-    <h2>💬 शिकायत / सुझाव</h2>
-
-    <form id="complaintForm">
-
-      <div class="form-group">
-        <label>आपका नाम</label>
-        <input id="cName" type="text" required>
-      </div>
-
-      <div class="form-group">
-        <label>मोबाइल नंबर</label>
-        <input id="cMobile" type="tel" required>
-      </div>
-
-      <div class="form-group">
-        <label>विषय</label>
-        <input id="cSubject" type="text" required>
-      </div>
-
-      <div class="form-group">
-        <label>शिकायत / सुझाव</label>
-        <textarea id="cComplaint" required></textarea>
-      </div>
-
-      <button class="submit" type="submit">
-        शिकायत भेजें
-      </button>
-
-    </form>
-
-  </div>
-
-</div>
-
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
-
-  <div class="nav-item active" onclick="scrollTopPage()">
-    <div>🏠</div>
-    होम
-  </div>
-
-  <div class="nav-item" onclick="showSection('news')">
-    <div>📰</div>
-    समाचार
-  </div>
-
-  <div class="nav-item" onclick="showSection('development')">
-    <div>🚧</div>
-    विकास
-  </div>
-
-  <div class="nav-item" onclick="showSection('gallery')">
-    <div>🖼️</div>
-    गैलरी
-  </div>
-
-  <div class="nav-item" onclick="openComplaint()">
-    <div>💬</div>
-    शिकायत
-  </div>
-
-</nav>
-
-
-<!-- =========================================
-     FIREBASE
-========================================= -->
-
 <script type="module">
+
+/* =========================================
+   🔥 FIREBASE APP
+========================================= */
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
@@ -762,6 +18,24 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+/* =========================================
+   🔐 ADMIN GMAIL
+========================================= */
+
+const ADMIN_EMAIL = "manojpareek7900@gmail.com";
+
+const provider = new GoogleAuthProvider();
+
 
 /* =========================================
    FIREBASE CONFIG
@@ -771,63 +45,571 @@ const firebaseConfig = {
 
   apiKey: "AIzaSyAF4uC6jgeN7LXCm5w1l4G-P7-XWRT3P0A",
 
-  authDomain: "dallusar-village-diary-a2c35.firebaseapp.com",
+  authDomain:
+    "dallusar-village-diary-a2c35.firebaseapp.com",
 
-  projectId: "dallusar-village-diary-a2c35",
+  projectId:
+    "dallusar-village-diary-a2c35",
 
-  storageBucket: "dallusar-village-diary-a2c35.firebasestorage.app",
+  storageBucket:
+    "dallusar-village-diary-a2c35.firebasestorage.app",
 
-  messagingSenderId: "771762232267",
+  messagingSenderId:
+    "771762232267",
 
-  appId: "1:771762232267:web:aca8cb27ee6efb1fcab44e",
+  appId:
+    "1:771762232267:web:aca8cb27ee6efb1fcab44e",
 
-  measurementId: "G-0TKLN9WQ22"
+  measurementId:
+    "G-0TKLN9WQ22"
 
 };
 
 
 /* =========================================
-   FIREBASE START
+   🔥 FIREBASE START
 ========================================= */
 
 let db = null;
+let auth = null;
 
-try{
+try {
 
   const app = initializeApp(firebaseConfig);
 
   db = getFirestore(app);
 
-  /* 🔥 सभी Firebase DATA LOAD */
+  auth = getAuth(app);
 
   loadNotices();
   loadNews();
   loadDevelopment();
   loadGallery();
 
-}catch(error){
+  createAdminPanel();
 
-  console.error("Firebase Error:",error);
+  watchAdminLogin();
+
+} catch(error) {
+
+  console.error("Firebase Error:", error);
 
 }
 
 
 /* =========================================
+   👑 ADMIN PANEL
+   स्क्रीन पर अपने आप बनेगा
+========================================= */
+
+function createAdminPanel(){
+
+  if(document.getElementById("adminPanel"))
+    return;
+
+  const panel = document.createElement("div");
+
+  panel.id = "adminPanel";
+
+  panel.style.cssText = `
+    margin:20px 18px;
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 6px 22px rgba(0,0,0,.10);
+    border:1px solid #e5efeb;
+  `;
+
+  panel.innerHTML = `
+
+    <h2 style="
+      font-size:19px;
+      margin-bottom:8px;
+      color:#173b31;
+    ">
+      👑 Admin Panel
+    </h2>
+
+    <p id="loginStatus" style="
+      color:#65756f;
+      font-size:13px;
+      margin-bottom:15px;
+    ">
+      🔐 सूचना प्रकाशित करने के लिए Google से Login करें।
+    </p>
+
+    <button
+      id="googleLoginBtn"
+      onclick="googleLogin()"
+      style="
+        width:100%;
+        padding:13px;
+        border:0;
+        border-radius:13px;
+        background:#087b63;
+        color:white;
+        font-size:15px;
+        font-weight:bold;
+        cursor:pointer;
+      "
+    >
+      🔐 Google से Admin Login
+    </button>
+
+
+    <div id="publishBox"
+      style="display:none;margin-top:18px;"
+    >
+
+      <div style="margin-bottom:12px;">
+
+        <label style="
+          display:block;
+          font-weight:bold;
+          margin-bottom:6px;
+        ">
+          सूचना का शीर्षक
+        </label>
+
+        <input
+          id="noticeTitle"
+          type="text"
+          placeholder="जैसे — ग्राम सभा की सूचना"
+          style="
+            width:100%;
+            padding:13px;
+            border:1px solid #dce8e3;
+            border-radius:12px;
+            outline:none;
+          "
+        >
+
+      </div>
+
+
+      <div style="margin-bottom:12px;">
+
+        <label style="
+          display:block;
+          font-weight:bold;
+          margin-bottom:6px;
+        ">
+          सूचना
+        </label>
+
+        <textarea
+          id="noticeDescription"
+          placeholder="यहाँ पूरी सूचना लिखें..."
+          style="
+            width:100%;
+            min-height:110px;
+            padding:13px;
+            border:1px solid #dce8e3;
+            border-radius:12px;
+            outline:none;
+            resize:vertical;
+          "
+        ></textarea>
+
+      </div>
+
+
+      <div style="margin-bottom:12px;">
+
+        <label style="
+          display:block;
+          font-weight:bold;
+          margin-bottom:6px;
+        ">
+          तारीख
+        </label>
+
+        <input
+          id="noticeDate"
+          type="date"
+          style="
+            width:100%;
+            padding:13px;
+            border:1px solid #dce8e3;
+            border-radius:12px;
+          "
+        >
+
+      </div>
+
+
+      <label style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+        margin-bottom:15px;
+        font-size:14px;
+      ">
+
+        <input
+          id="noticeImportant"
+          type="checkbox"
+        >
+
+        🔴 महत्वपूर्ण सूचना
+
+      </label>
+
+
+      <button
+        onclick="publishNotice()"
+        style="
+          width:100%;
+          padding:14px;
+          border:0;
+          border-radius:13px;
+          background:#0b8f72;
+          color:white;
+          font-size:16px;
+          font-weight:bold;
+        "
+      >
+        📢 सूचना प्रकाशित करें
+      </button>
+
+
+      <button
+        onclick="logoutAdmin()"
+        style="
+          width:100%;
+          margin-top:10px;
+          padding:12px;
+          border:1px solid #ddd;
+          border-radius:13px;
+          background:#fff;
+          color:#555;
+          font-weight:bold;
+        "
+      >
+        🚪 Logout
+      </button>
+
+    </div>
+
+  `;
+
+  /*
+   * Admin Panel को Footer से पहले लगाएँ
+   */
+
+  const footer =
+    document.querySelector(".footer");
+
+  if(footer){
+
+    footer.parentNode.insertBefore(panel,footer);
+
+  }else{
+
+    document.body.appendChild(panel);
+
+  }
+
+}
+
+
+/* =========================================
+   🔐 GOOGLE LOGIN
+========================================= */
+
+window.googleLogin = async function(){
+
+  try{
+
+    const result =
+      await signInWithPopup(auth,provider);
+
+    const user = result.user;
+
+
+    /*
+     * केवल Admin Gmail
+     */
+
+    if(
+      !user.email ||
+      user.email.toLowerCase() !==
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      await signOut(auth);
+
+      alert(
+        "❌ इस Gmail को Admin की अनुमति नहीं है।"
+      );
+
+      return;
+
+    }
+
+
+    alert(
+      "✅ Admin Login सफल!\n\n" +
+      user.email
+    );
+
+  }catch(error){
+
+    console.error(
+      "Google Login Error:",
+      error
+    );
+
+    alert(
+      "❌ Google Login में समस्या हुई।\n\n" +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================================
+   🚪 LOGOUT
+========================================= */
+
+window.logoutAdmin = async function(){
+
+  try{
+
+    await signOut(auth);
+
+  }catch(error){
+
+    console.error(
+      "Logout Error:",
+      error
+    );
+
+  }
+
+};
+
+
+/* =========================================
+   🔐 LOGIN STATUS
+========================================= */
+
+function watchAdminLogin(){
+
+  onAuthStateChanged(
+    auth,
+    (user)=>{
+
+      const status =
+        document.getElementById("loginStatus");
+
+      const loginButton =
+        document.getElementById("googleLoginBtn");
+
+      const publishBox =
+        document.getElementById("publishBox");
+
+
+      if(
+        user &&
+        user.email &&
+        user.email.toLowerCase() ===
+        ADMIN_EMAIL.toLowerCase()
+      ){
+
+        status.textContent =
+          "✅ Admin Login: " + user.email;
+
+        loginButton.style.display =
+          "none";
+
+        publishBox.style.display =
+          "block";
+
+      }else{
+
+        status.textContent =
+          "🔐 सूचना प्रकाशित करने के लिए Google से Login करें।";
+
+        loginButton.style.display =
+          "block";
+
+        publishBox.style.display =
+          "none";
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   📢 PUBLISH NOTICE
+========================================= */
+
+window.publishNotice = async function(){
+
+  const user =
+    auth.currentUser;
+
+
+  /*
+   * Admin verification
+   */
+
+  if(
+    !user ||
+    !user.email ||
+    user.email.toLowerCase() !==
+    ADMIN_EMAIL.toLowerCase()
+  ){
+
+    alert(
+      "❌ पहले Admin Gmail से Login करें।"
+    );
+
+    return;
+
+  }
+
+
+  const title =
+    document
+      .getElementById("noticeTitle")
+      .value
+      .trim();
+
+
+  const description =
+    document
+      .getElementById("noticeDescription")
+      .value
+      .trim();
+
+
+  const date =
+    document
+      .getElementById("noticeDate")
+      .value;
+
+
+  const important =
+    document
+      .getElementById("noticeImportant")
+      .checked;
+
+
+  if(!title){
+
+    alert(
+      "⚠️ कृपया सूचना का शीर्षक लिखें।"
+    );
+
+    return;
+
+  }
+
+
+  if(!description){
+
+    alert(
+      "⚠️ कृपया सूचना लिखें।"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await addDoc(
+      collection(db,"notices"),
+      {
+
+        title: title,
+
+        description: description,
+
+        date:
+          date ||
+          new Date()
+            .toLocaleDateString("hi-IN"),
+
+        important: important,
+
+        createdAt: Date.now(),
+
+        publishedBy: user.email
+
+      }
+    );
+
+
+    alert(
+      "✅ सूचना सफलतापूर्वक प्रकाशित हो गई!"
+    );
+
+
+    document
+      .getElementById("noticeTitle")
+      .value = "";
+
+
+    document
+      .getElementById("noticeDescription")
+      .value = "";
+
+
+    document
+      .getElementById("noticeDate")
+      .value = "";
+
+
+    document
+      .getElementById("noticeImportant")
+      .checked = false;
+
+
+  }catch(error){
+
+    console.error(
+      "Publish Notice Error:",
+      error
+    );
+
+    alert(
+      "❌ सूचना प्रकाशित नहीं हुई।\n\n" +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================================
    📢 NOTICES
-   ADMIN PANEL की सूचना यहाँ आएगी
 ========================================= */
 
 function loadNotices(){
 
   if(!db) return;
 
-  const q = query(
-    collection(db,"notices"),
-    orderBy("createdAt","desc")
-  );
+
+  /*
+   * orderBy हटाया गया है।
+   * इससे पुराने documents जिनमें createdAt नहीं है,
+   * वे भी समस्या नहीं करेंगे।
+   */
 
   onSnapshot(
-    q,
+
+    collection(db,"notices"),
 
     (snapshot)=>{
 
@@ -837,8 +619,6 @@ function loadNotices(){
       const newsList =
         document.getElementById("newsList");
 
-
-      /* अगर कोई सूचना नहीं है */
 
       if(snapshot.empty){
 
@@ -850,45 +630,64 @@ function loadNotices(){
       }
 
 
-      let firstNotice = true;
+      let notices = [];
 
-      /* पुरानी static news हटाएँ */
+
+      snapshot.forEach(doc=>{
+
+        notices.push({
+          id:doc.id,
+          ...doc.data()
+        });
+
+      });
+
+
+      /*
+       * Latest first
+       */
+
+      notices.sort(
+        (a,b)=>
+          (Number(b.createdAt)||0) -
+          (Number(a.createdAt)||0)
+      );
+
+
+      /*
+       * सबसे नई सूचना
+       */
+
+      const first =
+        notices[0];
+
+
+      noticeText.textContent =
+        (first.title || "नई सूचना") +
+        " — " +
+        (first.description || "");
+
+
+      /*
+       * News list
+       */
 
       newsList.innerHTML = "";
 
 
-      snapshot.forEach((doc)=>{
-
-        const data = doc.data();
-
-
-        /* सबसे पहली/नई सूचना */
-        /* ऊपर IMPORTANT NOTICE में */
-
-        if(firstNotice){
-
-          noticeText.textContent =
-            (data.title || "नई सूचना") +
-            " — " +
-            (data.description || "");
-
-          firstNotice = false;
-
-        }
-
-
-        /* NEWS CARD */
+      notices.forEach(data=>{
 
         const div =
           document.createElement("div");
 
-        div.className = "data-card";
+        div.className =
+          "data-card";
 
 
         const badge =
           data.important
           ? '<span class="badge">🔴 महत्वपूर्ण सूचना</span>'
-          : '';
+          : "";
 
 
         div.innerHTML = `
@@ -938,10 +737,12 @@ function loadNews(){
 
   if(!db) return;
 
+
   const q = query(
     collection(db,"news"),
     orderBy("createdAt","desc")
   );
+
 
   onSnapshot(
 
@@ -952,24 +753,24 @@ function loadNews(){
       const list =
         document.getElementById("newsList");
 
-      /*
-       * अगर notices मौजूद हैं तो
-       * notices function newsList संभालेगा।
-       *
-       * इसलिए यहाँ केवल तभी default news
-       * दिखाएँ जब notices empty हों।
-       */
 
-      if(snapshot.empty) return;
+      if(snapshot.empty)
+        return;
+
 
       snapshot.forEach(doc=>{
 
-        const data = doc.data();
+        const data =
+          doc.data();
+
 
         const div =
           document.createElement("div");
 
-        div.className = "data-card";
+
+        div.className =
+          "data-card";
+
 
         div.innerHTML = `
 
@@ -982,6 +783,7 @@ function loadNews(){
           </p>
 
         `;
+
 
         list.appendChild(div);
 
@@ -1011,10 +813,12 @@ function loadDevelopment(){
 
   if(!db) return;
 
+
   const q = query(
     collection(db,"development"),
     orderBy("createdAt","desc")
   );
+
 
   onSnapshot(
 
@@ -1023,7 +827,10 @@ function loadDevelopment(){
     (snapshot)=>{
 
       const list =
-        document.getElementById("developmentList");
+        document.getElementById(
+          "developmentList"
+        );
+
 
       list.innerHTML = "";
 
@@ -1053,7 +860,9 @@ function loadDevelopment(){
 
       snapshot.forEach(doc=>{
 
-        const data = doc.data();
+        const data =
+          doc.data();
+
 
         list.innerHTML += `
 
@@ -1101,10 +910,12 @@ function loadGallery(){
 
   if(!db) return;
 
+
   const q = query(
     collection(db,"gallery"),
     orderBy("createdAt","desc")
   );
+
 
   onSnapshot(
 
@@ -1113,7 +924,10 @@ function loadGallery(){
     (snapshot)=>{
 
       const list =
-        document.getElementById("galleryList");
+        document.getElementById(
+          "galleryList"
+        );
+
 
       list.innerHTML = "";
 
@@ -1143,7 +957,9 @@ function loadGallery(){
 
       snapshot.forEach(doc=>{
 
-        const data = doc.data();
+        const data =
+          doc.data();
+
 
         list.innerHTML += `
 
@@ -1160,4 +976,45 @@ function loadGallery(){
               alt="दल्लूसर गाँव"
             >
 
-            <h3 style="
+            <h3>
+              ${safe(data.title || "दल्लूसर गाँव")}
+            </h3>
+
+          </div>
+
+        `;
+
+      });
+
+    },
+
+    (error)=>{
+
+      console.error(
+        "Gallery load error:",
+        error
+      );
+
+    }
+
+  );
+
+}
+
+
+/* =========================================
+   🛡️ SAFE TEXT
+========================================= */
+
+function safe(value){
+
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+  </script>
