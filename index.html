@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -5,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0f4c81">
 
-<title>दल्लूसर गाँव की डायरी</title>
+<title>दल्लूसर गाँव की डायरी | Manoj Pareek</title>
 
 <style>
 *{
@@ -22,7 +23,7 @@ body{
   font-family:Arial,"Noto Sans Devanagari",sans-serif;
   background:#f4f7fb;
   color:#18212b;
-  line-height:1.6;
+  line-height:1.7;
 }
 
 a{
@@ -33,7 +34,7 @@ a{
 .header{
   background:linear-gradient(135deg,#0f4c81,#1769aa);
   color:white;
-  padding:30px 16px 35px;
+  padding:30px 16px 36px;
   text-align:center;
 }
 
@@ -54,6 +55,7 @@ a{
 
 .header p{
   font-size:15px;
+  opacity:.95;
 }
 
 .nav{
@@ -109,13 +111,20 @@ a{
 }
 
 .btn{
-  padding:11px;
+  display:inline-block;
+  padding:11px 15px;
   text-align:center;
   border-radius:12px;
   background:#0f4c81;
   color:white;
   font-weight:bold;
   font-size:14px;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  opacity:.9;
 }
 
 .btn.alt{
@@ -146,10 +155,11 @@ a{
 .card h3{
   font-size:17px;
   margin-bottom:5px;
+  color:#173d5c;
 }
 
 .card p{
-  font-size:13px;
+  font-size:14px;
   color:#687583;
 }
 
@@ -158,92 +168,109 @@ a{
   margin-bottom:8px;
 }
 
-/* प्रोफाइल सेक्शन */
+/* Profile Section */
 .profile-card{
-  background:white;
-  border-radius:20px;
-  padding:24px 18px;
   text-align:center;
-  box-shadow:0 8px 25px #17324d12;
+  padding:28px 20px;
+  background:linear-gradient(180deg,#ffffff,#f5faff);
 }
 
-.profile-card img{
-  width:145px;
-  height:145px;
+.profile-image{
+  width:150px;
+  height:150px;
   object-fit:cover;
   border-radius:50%;
-  border:5px solid #0f4c81;
-  padding:4px;
-  background:white;
+  border:6px solid #e1edf7;
+  box-shadow:0 5px 20px #17324d20;
   margin-bottom:12px;
 }
 
-.profile-card h3{
+.profile-card h2{
   color:#0f4c81;
-  font-size:23px;
+  font-size:25px;
   margin-bottom:4px;
 }
 
+.profile-card .profile-role{
+  color:#b8338a;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
 .profile-card p{
-  color:#687583;
+  max-width:750px;
+  margin:8px auto;
+  color:#596674;
   font-size:14px;
 }
 
 .profile-info{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
   margin-top:18px;
+  text-align:left;
 }
 
-.profile-info div{
-  background:#eef4fa;
+.info-box{
+  background:#eef6fc;
+  padding:14px;
   border-radius:12px;
-  padding:12px 5px;
+  border-left:4px solid #0f4c81;
 }
 
-.profile-info strong{
+.info-box strong{
   display:block;
   color:#0f4c81;
-  font-size:15px;
+  margin-bottom:3px;
 }
 
-.profile-info span{
-  font-size:12px;
-  color:#687583;
+.info-box span{
+  font-size:14px;
+  color:#526575;
 }
 
-/* नोटिस सेक्शन */
+.social-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:20px;
+}
+
+.social-btn{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:10px;
+  color:white;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.instagram{
+  background:#b8338a;
+}
+
+.youtube{
+  background:#d90000;
+}
+
+.facebook{
+  background:#1877f2;
+}
+
+.whatsapp{
+  background:#159447;
+}
+
 .notice{
   background:#fff8e6;
   border-left:5px solid #e3a72f;
   border-radius:12px;
-  padding:16px;
-  margin-bottom:12px;
+  padding:15px;
+  margin-top:12px;
 }
 
-.notice h3{
-  color:#875d00;
-  margin-bottom:5px;
-  font-size:17px;
-}
-
-.notice p{
-  color:#6c5b35;
-  font-size:14px;
-}
-
-.notice-date{
-  display:inline-block;
-  margin-top:8px;
-  background:#f1d58b;
-  color:#684b00;
-  border-radius:20px;
-  padding:3px 10px;
-  font-size:12px;
-}
-
-/* इंस्टाग्राम */
 .insta{
   display:flex;
   align-items:center;
@@ -281,13 +308,18 @@ a{
   background:#102f46;
   color:#dce8f0;
   text-align:center;
-  padding:25px 14px;
+  padding:28px 14px;
 }
 
 .footer strong{
   color:white;
 }
 
+.footer p{
+  font-size:13px;
+}
+
+/* Mobile Design */
 @media(max-width:700px){
   .header h1{
     font-size:25px;
@@ -298,7 +330,7 @@ a{
   }
 
   .profile-info{
-    grid-template-columns:1fr 1fr 1fr;
+    grid-template-columns:1fr;
   }
 }
 
@@ -323,6 +355,15 @@ a{
     font-size:19px;
   }
 
+  .profile-image{
+    width:125px;
+    height:125px;
+  }
+
+  .profile-card h2{
+    font-size:22px;
+  }
+
   .insta{
     align-items:flex-start;
     flex-direction:column;
@@ -333,8 +374,13 @@ a{
     text-align:center;
   }
 
-  .profile-info{
-    grid-template-columns:1fr;
+  .social-links{
+    flex-direction:column;
+  }
+
+  .social-btn{
+    width:100%;
+    text-align:center;
   }
 }
 </style>
@@ -344,7 +390,9 @@ a{
 
 <header class="header">
   <div class="badge">🇮🇳 हमारा गाँव • हमारी पहचान • हमारा विकास</div>
+
   <h1>दल्लूसर गाँव की डायरी</h1>
+
   <p>दल्लूसर, तहसील सरदारशहर, जिला चूरू, राजस्थान</p>
 </header>
 
@@ -355,81 +403,32 @@ a{
   <a href="#development">विकास</a>
   <a href="#youth">युवा & खेल</a>
   <a href="#gallery">गैलरी</a>
-  <a href="#notice">नोटिस</a>
+  <a href="#notice">सूचना</a>
   <a href="#contact">संपर्क</a>
 </nav>
 
 <main class="container" id="home">
 
-  <!-- होम सेक्शन -->
+  <!-- Home Section -->
   <section class="hero">
     <h2>🌾 दल्लूसर में आपका स्वागत है</h2>
 
     <p>
-      यह वेबसाइट हमारे गाँव की खबरों, विकास कार्यों, युवाओं,
-      खेल, महत्वपूर्ण सूचनाओं और यादगार तस्वीरों को एक जगह
-      जोड़ने के लिए बनाई गई है।
+      यह वेबसाइट हमारे गाँव की खबरों, विकास कार्यों, युवाओं, खेल,
+      महत्वपूर्ण सूचनाओं, गाँव की यादों और मेरी व्यक्तिगत प्रोफाइल
+      को एक जगह प्रस्तुत करने के लिए बनाई गई है।
     </p>
 
     <div class="buttons">
-      <a class="btn" href="#news">📰 ताज़ा खबरें</a>
-      <a class="btn alt" href="#notice">📢 महत्वपूर्ण नोटिस</a>
+      <a class="btn" href="#profile">👤 मेरी प्रोफाइल</a>
+      <a class="btn alt" href="#news">📰 ताज़ा खबरें</a>
     </div>
   </section>
 
-  <!-- प्रोफाइल सेक्शन -->
-  <h2 class="section-title" id="profile">👤 मेरी प्रोफाइल</h2>
-
-  <section class="profile-card">
-
-    <!-- अपनी फोटो का नाम profile.jpg रखें -->
-    <img src="profile.jpg" alt="मनोज पारीक की प्रोफाइल फोटो">
-
-    <h3>मनोज पारीक</h3>
-
-    <p>
-      दल्लूसर गाँव की डायरी के संस्थापक एवं व्यवस्थापक
-    </p>
-
-    <div class="profile-info">
-      <div>
-        <strong>📍 गाँव</strong>
-        <span>दल्लूसर</span>
-      </div>
-
-      <div>
-        <strong>🏛️ जिला</strong>
-        <span>चूरू</span>
-      </div>
-
-      <div>
-        <strong>🌐 कार्य</strong>
-        <span>गाँव की जानकारी</span>
-      </div>
-    </div>
-
-    <div class="insta">
-      <div class="insta-text">
-        <strong>📷 Instagram</strong>
-        <span>@manoj_pareek_1</span>
-      </div>
-
-      <a
-        class="insta-btn"
-        href="https://www.instagram.com/manoj_pareek_1/"
-        target="_blank"
-        rel="noopener">
-        Instagram देखें ↗
-      </a>
-    </div>
-
-  </section>
-
-  <!-- गाँव की झलक -->
+  <!-- Village Highlights -->
   <h2 class="section-title">✨ गाँव की झलक</h2>
 
   <section class="grid">
-
     <a class="card" href="#news">
       <div class="icon">📰</div>
       <h3>गाँव की खबरें</h3>
@@ -438,8 +437,8 @@ a{
 
     <a class="card" href="#development">
       <div class="icon">🏗️</div>
-      <h3>विकास</h3>
-      <p>सड़क, पानी, शिक्षा और अन्य कार्य।</p>
+      <h3>गाँव का विकास</h3>
+      <p>सड़क, पानी, शिक्षा और अन्य विकास कार्य।</p>
     </a>
 
     <a class="card" href="#youth">
@@ -462,24 +461,135 @@ a{
 
     <a class="card" href="#contact">
       <div class="icon">💬</div>
-      <h3>सुझाव दें</h3>
+      <h3>संपर्क एवं सुझाव</h3>
       <p>गाँव के लिए अपने सुझाव साझा करें।</p>
     </a>
+  </section>
+
+  <!-- Full Profile Section -->
+  <h2 class="section-title" id="profile">👤 मेरी पूरी प्रोफाइल</h2>
+
+  <section class="card profile-card">
+
+    <!-- अपनी फोटो का नाम profile.jpg रखें -->
+    <img
+      src="profile.jpg"
+      alt="Manoj Pareek की प्रोफाइल फोटो"
+      class="profile-image"
+    >
+
+    <h2>Manoj Pareek</h2>
+
+    <div class="profile-role">
+      🌾 दल्लूसर गाँव की डायरी के संस्थापक
+    </div>
+
+    <p>
+      नमस्कार! मेरा नाम <strong>मनोज पारीक</strong> है।
+      मैंने “दल्लूसर गाँव की डायरी” वेबसाइट हमारे गाँव की खबरों,
+      महत्वपूर्ण सूचनाओं, विकास कार्यों, युवाओं, खेल गतिविधियों
+      और गाँव की यादों को एक डिजिटल मंच देने के उद्देश्य से बनाई है।
+    </p>
+
+    <p>
+      मेरा प्रयास है कि दल्लूसर गाँव से जुड़ी उपयोगी जानकारी,
+      सामाजिक गतिविधियाँ, शिक्षा, विकास और गाँव की उपलब्धियाँ
+      अधिक से अधिक लोगों तक पहुँच सकें।
+    </p>
+
+    <div class="profile-info">
+
+      <div class="info-box">
+        <strong>👤 नाम</strong>
+        <span>Manoj Pareek</span>
+      </div>
+
+      <div class="info-box">
+        <strong>📍 गाँव</strong>
+        <span>दल्लूसर, राजस्थान</span>
+      </div>
+
+      <div class="info-box">
+        <strong>🎓 पढ़ाई</strong>
+        <span>स्नातक विद्यार्थी एवं UPSC अभ्यर्थी</span>
+      </div>
+
+      <div class="info-box">
+        <strong>📚 रुचि</strong>
+        <span>शिक्षा, क्रिकेट,डिजिटल कार्य</span>
+      </div>
+
+      <div class="info-box">
+        <strong>🌾 उद्देश्य</strong>
+        <span>गाँव की जानकारी और उपलब्धियों को डिजिटल रूप देना</span>
+      </div>
+
+      <div class="info-box">
+        <strong>💻 कार्य</strong>
+        <span>दल्लूसर गाँव की डायरी वेबसाइट का निर्माण और संचालन</span>
+      </div>
+
+    </div>
+
+    <https://www.instagram.com/manoj_pareek_1?stkn=MXBjN2Zjd2Q4MjJydA==
+    <div class="social-links">
+
+      <a
+        class="social-btn instagram"
+        href="https://www.instagram.com/manoj_pareek_1/"
+        target="_blank"
+        rel="noopener"
+      >
+        📷 Instagram
+      </a>
+
+      <!-- नीचे अपने YouTube चैनल का लिंक डालें -->
+      <a
+        class="social-btn youtube"
+        href="https://www.youtube.com/"
+        target="_blank"
+        rel="noopener"
+      >
+        ▶️ YouTube
+      </a>
+
+      <!-- नीचे अपना Facebook लिंक डालें -->
+      <a
+        class="social-btn facebook"
+        href="https://www.facebook.com/"
+        target="_blank"
+        rel="noopener"
+      >
+        👍 Facebook
+      </a>
+
+      <!-- नीचे अपना WhatsApp नंबर डालें -->
+      <a
+        class="social-btn whatsapp"
+        href="https://wa.me/91XXXXXXXXXX"
+        target="_blank"
+        rel="noopener"
+      >
+        💬 WhatsApp
+      </a>
+
+    </div>
 
   </section>
 
-  <!-- समाचार -->
+  <!-- News Section -->
   <h2 class="section-title" id="news">📰 ताज़ा समाचार</h2>
 
   <section class="card">
     <h3>दल्लूसर की नई खबरें जल्द यहाँ दिखाई जाएँगी</h3>
+
     <p>
-      गाँव की महत्वपूर्ण खबरें, कार्यक्रम और स्थानीय अपडेट
-      यहाँ प्रकाशित किए जा सकते हैं।
+      गाँव की महत्वपूर्ण खबरें, कार्यक्रम, सामाजिक गतिविधियाँ
+      और स्थानीय अपडेट यहाँ जोड़े जा सकते हैं।
     </p>
   </section>
 
-  <!-- विकास -->
+  <!-- Development Section -->
   <h2 class="section-title" id="development">🏗️ गाँव का विकास</h2>
 
   <section class="grid">
@@ -487,101 +597,109 @@ a{
     <div class="card">
       <div class="icon">🛣️</div>
       <h3>सड़क एवं सुविधाएँ</h3>
-      <p>विकास कार्यों की जानकारी यहाँ अपडेट करें।</p>
+      <p>गाँव की सड़कों और मूलभूत सुविधाओं से जुड़ी जानकारी।</p>
     </div>
 
     <div class="card">
       <div class="icon">🏫</div>
       <h3>शिक्षा</h3>
-      <p>विद्यालय और शिक्षा से जुड़ी जानकारी।</p>
+      <p>विद्यालय, विद्यार्थियों और शिक्षा से जुड़ी जानकारी।</p>
     </div>
 
     <div class="card">
       <div class="icon">🌱</div>
       <h3>पर्यावरण</h3>
-      <p>स्वच्छता, पौधारोपण और पर्यावरण गतिविधियाँ।</p>
+      <p>स्वच्छता, पौधारोपण और पर्यावरण संबंधी गतिविधियाँ।</p>
     </div>
 
   </section>
 
-  <!-- युवा एवं खेल -->
+  <!-- Youth and Sports -->
   <h2 class="section-title" id="youth">🏏 युवा एवं खेल</h2>
 
   <section class="card">
     <h3>एकता • खेल • प्रतिभा</h3>
+
     <p>
-      क्रिकेट और अन्य खेल गतिविधियों की खबरें, परिणाम
-      और तस्वीरें यहाँ प्रकाशित की जा सकती हैं।
+      क्रिकेट और अन्य खेल गतिविधियों की खबरें, परिणाम,
+      प्रतियोगिताएँ और गाँव के युवा खिलाड़ियों की उपलब्धियाँ
+      यहाँ प्रकाशित की जा सकती हैं।
     </p>
   </section>
 
-  <!-- गैलरी -->
+  <!-- Gallery -->
   <h2 class="section-title" id="gallery">📸 फोटो गैलरी</h2>
 
   <section class="card">
     <h3>गाँव की यादें</h3>
+
     <p>
-      यहाँ दल्लूसर के कार्यक्रमों, गाँव के लोगों और विकास
-      कार्यों की तस्वीरें जोड़ी जा सकती हैं।
+      यहाँ दल्लूसर के कार्यक्रमों, धार्मिक आयोजनों,
+      विकास कार्यों और गाँव की सुंदर तस्वीरें जोड़ी जा सकती हैं।
     </p>
   </section>
 
-  <!-- नोटिस सेक्शन -->
-  <h2 class="section-title" id="notice">📢 महत्वपूर्ण नोटिस</h2>
+  <!-- Notice -->
+  <h2 class="section-title" id="notice">📢 महत्वपूर्ण सूचना</h2>
 
-  <section class="notice">
-    <h3>गाँव से जुड़ी जरूरी सूचना</h3>
-    <p>
-      नई सूचना, घोषणा या गाँव से संबंधित महत्वपूर्ण जानकारी
-      यहाँ प्रकाशित की जाएगी।
-    </p>
-    <span class="notice-date">📅 नई सूचना</span>
-  </section>
+  <div class="notice">
+    <strong>गाँव से जुड़ी जरूरी घोषणाएँ</strong>
+    <br>
+    नई सूचना आने पर इसे यहाँ प्रकाशित करें।
+  </div>
 
-  <section class="notice">
-    <h3>गाँव की बैठक एवं कार्यक्रम</h3>
-    <p>
-      गाँव में होने वाली बैठक, सामाजिक कार्यक्रम और अन्य
-      गतिविधियों की जानकारी यहाँ जोड़ी जा सकती है।
-    </p>
-    <span class="notice-date">📅 कार्यक्रम सूचना</span>
-  </section>
-
-  <section class="notice">
-    <h3>शिक्षा एवं रोजगार सूचना</h3>
-    <p>
-      विद्यार्थियों, युवाओं और रोजगार से जुड़ी महत्वपूर्ण
-      जानकारी यहाँ प्रकाशित की जा सकती है।
-    </p>
-    <span class="notice-date">📚 उपयोगी सूचना</span>
-  </section>
-
-  <!-- संपर्क -->
+  <!-- Contact -->
   <h2 class="section-title" id="contact">📞 संपर्क एवं सुझाव</h2>
 
   <section class="card">
+
     <h3>दल्लूसर गाँव</h3>
 
     <p>
       तहसील: सरदारशहर • जिला: चूरू • राजस्थान
     </p>
 
-    <p style="margin-top:10px;font-size:13px;color:#687583;">
-      💡 गाँव से जुड़ी खबर या सुझाव साझा करने के लिए संपर्क करें।
+    <div class="insta">
+
+      <div class="insta-text">
+        <strong>📷 Instagram</strong>
+        <span>@manoj_pareek_1</span>
+      </div>
+
+      <a
+        class="insta-btn"
+        href="https://www.instagram.com/manoj_pareek_1/"
+        target="_blank"
+        rel="noopener"
+      >
+        Instagram देखें ↗
+      </a>
+
+    </div>
+
+    <p style="margin-top:10px;font-size:13px;color:#687583">
+      💡 गाँव से जुड़ी खबर, सुझाव या जानकारी साझा करने के लिए संपर्क करें।
     </p>
+
   </section>
 
 </main>
 
 <footer class="footer">
+
   <strong>🇮🇳 दल्लूसर गाँव की डायरी</strong>
 
   <p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
 
-  <p style="margin-top:8px;font-size:12px;">
+  <p style="margin-top:8px;font-size:12px">
+    वेबसाइट निर्माता: Manoj Pareek
+  </p>
+
+  <p style="margin-top:5px;font-size:12px">
     यह वेबसाइट गाँव की जानकारी और सामुदायिक अपडेट के लिए है।
   </p>
+
 </footer>
 
 </body>
-  </html>
+</html>
