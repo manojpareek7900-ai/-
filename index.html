@@ -494,7 +494,117 @@ body{
       <p>स्कूल और शिक्षा</p>
     </div>
 
-    <div class="card" onclick="simpleAlert('खेल मैदान की जानकारी जल्द जोड़ी जाएगी।')">
+    <div class="card" onclick="simpleAlert('<!-- 🏏 खेल मैदान पेज -->
+<div id="groundPage" style="
+  display:none;
+  padding:20px;
+  max-width:700px;
+  margin:auto;
+">
+
+  <button onclick="closeGroundPage()" style="
+    border:none;
+    background:#eee;
+    padding:10px 18px;
+    border-radius:10px;
+    font-size:15px;
+    cursor:pointer;
+    margin-bottom:15px;
+  ">← वापस</button>
+
+  <div style="
+    background:linear-gradient(135deg,#f8fff8,#eefaf0);
+    padding:22px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+  ">
+
+    <div style="text-align:center;font-size:55px;">🏏</div>
+
+    <h2 style="text-align:center;margin:5px 0 20px;">
+      खेल मैदान — दल्लूसर
+    </h2>
+
+    <h3>📌 वर्तमान स्थिति</h3>
+
+    <p style="line-height:1.8;">
+      हमारे गांव दल्लूसर में वर्तमान में कोई विकसित एवं व्यवस्थित
+      खेल मैदान उपलब्ध नहीं है। गांव के युवाओं और बच्चों के लिए
+      खेलकूद की उचित सुविधा उपलब्ध कराने की आवश्यकता लंबे समय से
+      महसूस की जा रही है।
+    </p>
+
+    <h3>⚠️ भूमि की स्थिति</h3>
+
+    <p style="line-height:1.8;">
+      उपलब्ध खेल मैदान हेतु निर्धारित/उपयोग में आने वाली भूमि पर
+      कुछ स्थानीय लोगों द्वारा अतिक्रमण किए जाने की शिकायत सामने
+      आई है, जिसके कारण गांव के युवाओं को खेल गतिविधियों के लिए
+      पर्याप्त स्थान नहीं मिल पा रहा है।
+    </p>
+
+    <h3>🎯 हमारी मांग</h3>
+
+    <p style="line-height:1.8;">
+      हमारा उद्देश्य किसी व्यक्ति विशेष के विरुद्ध आरोप लगाना नहीं,
+      बल्कि खेल मैदान की भूमि को सुरक्षित कराकर गांव के युवाओं और
+      बच्चों के लिए एक व्यवस्थित खेल मैदान विकसित करवाना है।
+    </p>
+
+    <div style="
+      margin-top:20px;
+      padding:18px;
+      background:#fff;
+      border-radius:15px;
+      text-align:center;
+      font-weight:bold;
+      line-height:1.7;
+    ">
+      🏏 “हमारा मैदान — हमारे गांव के युवाओं का अधिकार।”
+    </div>
+
+    <div style="
+      margin-top:20px;
+      padding:15px;
+      border:2px dashed #ccc;
+      border-radius:15px;
+      text-align:center;
+      color:#666;
+    ">
+      📸 मैदान की फोटो एवं विकास की जानकारी<br>
+      <small>जल्द जोड़ी जाएगी</small>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function showGroundPage() {
+  document.getElementById("groundPage").style.display = "block";
+
+  // मुख्य पेज के बाकी हिस्से छिपाने के लिए
+  document.querySelectorAll("body > *").forEach(el => {
+    if (el.id !== "groundPage" && el.tagName !== "SCRIPT") {
+      el.dataset.oldDisplay = el.style.display;
+      el.style.display = "none";
+    }
+  });
+
+  window.scrollTo(0, 0);
+}
+
+function closeGroundPage() {
+  document.getElementById("groundPage").style.display = "none";
+
+  document.querySelectorAll("body > *").forEach(el => {
+    if (el.id !== "groundPage" && el.tagName !== "SCRIPT") {
+      el.style.display = el.dataset.oldDisplay || "";
+    }
+  });
+
+  window.scrollTo(0, 0);
+}
+</script>)">
       <div class="icon">🏏</div>
       <h3>खेल मैदान</h3>
       <p>खेल एवं युवा गतिविधियाँ</p>
