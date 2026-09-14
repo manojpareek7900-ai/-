@@ -135,7 +135,7 @@ body{
   cursor:pointer;
 }
 
-/* ANNOUNCEMENT */
+/* NOTICE */
 .notice{
   margin:18px;
   padding:17px;
@@ -252,7 +252,7 @@ body{
   font-weight:bold;
 }
 
-/* QUICK CONTACT */
+/* CONTACT */
 .contact{
   display:flex;
   gap:10px;
@@ -420,6 +420,7 @@ body{
 .ground-header p{
   font-size:13px;
   opacity:.9;
+  line-height:1.5;
 }
 
 .ground-info{
@@ -528,7 +529,6 @@ body{
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="header-top">
     <div>
@@ -539,13 +539,13 @@ body{
   </div>
 </header>
 
-<!-- SEARCH -->
 <div class="search">
   <span>🔍</span>
-  <input id="searchInput" type="text" placeholder="गाँव में खोजें..." oninput="searchCards()">
+  <input id="searchInput" type="text"
+  placeholder="गाँव में खोजें..."
+  oninput="searchCards()">
 </div>
 
-<!-- FOUNDER -->
 <section class="founder">
   <img src="manoj.jpg" class="profile" alt="मनोज पारीक">
 
@@ -564,7 +564,6 @@ body{
   </button>
 </section>
 
-<!-- NOTICE -->
 <section class="notice">
   <div class="notice-title">📢 महत्वपूर्ण सूचना</div>
   <p id="noticeText">
@@ -572,8 +571,8 @@ body{
   </p>
 </section>
 
-<!-- MAIN OPTIONS -->
 <section class="section">
+
   <div class="section-title">
     <h2>गाँव की सेवाएँ</h2>
     <span>सभी देखें</span>
@@ -681,7 +680,9 @@ body{
   </div>
 </section>
 
-<!-- 🏏 GROUND PAGE -->
+
+<!-- 🏏 खेल मैदान का पूरा पेज -->
+
 <div id="groundPage">
 
   <div class="ground-container">
@@ -691,13 +692,16 @@ body{
     </button>
 
     <div class="ground-header">
+
       <div class="ground-icon">🏏</div>
 
       <h1>खेल मैदान — दल्लूसर</h1>
 
       <p>
-        हमारे गाँव के युवाओं एवं बच्चों के लिए एक बेहतर खेल मैदान की पहल
+        हमारे गाँव के युवाओं एवं बच्चों के लिए
+        एक बेहतर खेल मैदान की पहल
       </p>
+
     </div>
 
     <div class="ground-info">
@@ -705,95 +709,134 @@ body{
       <h3>📌 वर्तमान स्थिति</h3>
 
       <p>
-        हमारे गांव दल्लूसर में वर्तमान में कोई विकसित एवं व्यवस्थित
-        खेल मैदान उपलब्ध नहीं है। गांव के युवाओं और बच्चों के लिए
-        खेलकूद की उचित सुविधा उपलब्ध कराने की आवश्यकता लंबे समय से
-        महसूस की जा रही है।
+        हमारे गांव दल्लूसर में वर्तमान में कोई विकसित एवं
+        व्यवस्थित खेल मैदान उपलब्ध नहीं है। गांव के युवाओं
+        और बच्चों के लिए खेलकूद की उचित सुविधा उपलब्ध कराने
+        की आवश्यकता लंबे समय से महसूस की जा रही है।
       </p>
+
 
       <h3>⚠️ भूमि की स्थिति</h3>
 
       <div class="ground-highlight">
-        उपलब्ध खेल मैदान हेतु निर्धारित/उपयोग में आने वाली भूमि पर
-        कुछ स्थानीय लोगों द्वारा अतिक्रमण किए जाने की शिकायत सामने
-        आई है, जिसके कारण गांव के युवाओं को खेल गतिविधियों के लिए
-        पर्याप्त स्थान नहीं मिल पा रहा है।
+
+        उपलब्ध खेल मैदान हेतु निर्धारित/उपयोग में आने वाली
+        भूमि पर कुछ स्थानीय लोगों द्वारा अतिक्रमण किए जाने
+        की शिकायत सामने आई है, जिसके कारण गांव के युवाओं
+        को खेल गतिविधियों के लिए पर्याप्त स्थान नहीं मिल पा रहा है।
+
       </div>
+
 
       <h3>🎯 हमारी मांग</h3>
 
       <p>
-        हमारा उद्देश्य किसी व्यक्ति विशेष के विरुद्ध आरोप लगाना नहीं,
-        बल्कि खेल मैदान की भूमि को सुरक्षित कराकर गांव के युवाओं और
-        बच्चों के लिए एक व्यवस्थित खेल मैदान विकसित करवाना है।
+        हमारा उद्देश्य किसी व्यक्ति विशेष के विरुद्ध आरोप
+        लगाना नहीं, बल्कि खेल मैदान की भूमि को सुरक्षित
+        कराकर गांव के युवाओं और बच्चों के लिए एक व्यवस्थित
+        खेल मैदान विकसित करवाना है।
       </p>
 
+
       <div class="ground-demand">
-        🏏 “हमारा मैदान — हमारे गांव के युवाओं का अधिकार।”
+
+        🏏 “हमारा मैदान —
+        हमारे गांव के युवाओं का अधिकार।”
+
       </div>
 
     </div>
 
+
     <div class="ground-photo-box">
+
       <div class="big">📸</div>
 
       <b>मैदान की फोटो</b>
 
       <p style="margin-top:7px;font-size:13px;">
-        मैदान की वर्तमान स्थिति एवं भविष्य के विकास की तस्वीरें
-        यहाँ जोड़ी जा सकती हैं।
+
+        मैदान की वर्तमान स्थिति एवं भविष्य के विकास
+        की तस्वीरें यहाँ जोड़ी जा सकती हैं।
+
       </p>
+
     </div>
 
   </div>
 
 </div>
 
+
 <!-- NEWS -->
+
 <section class="section" id="newsSection">
+
   <div class="section-title">
     <h2>📰 नवीनतम खबरें</h2>
     <span>LIVE</span>
   </div>
 
   <div id="newsList">
+
     <div class="data-card">
       <h3>दल्लूसर गाँव ऐप</h3>
       <p>गाँव की खबरें यहाँ दिखाई देंगी।</p>
     </div>
+
   </div>
+
 </section>
 
+
 <!-- DEVELOPMENT -->
+
 <section class="section" id="developmentSection">
+
   <div class="section-title">
     <h2>🚧 विकास कार्य</h2>
   </div>
 
   <div id="developmentList">
+
     <div class="data-card">
       <h3>गाँव के विकास कार्य</h3>
-      <p>चल रहे और पूर्ण हुए विकास कार्य यहाँ दिखाई देंगे।</p>
+      <p>
+        चल रहे और पूर्ण हुए विकास कार्य यहाँ दिखाई देंगे।
+      </p>
     </div>
+
   </div>
+
 </section>
 
+
 <!-- GALLERY -->
+
 <section class="section" id="gallerySection">
+
   <div class="section-title">
     <h2>🖼️ फोटो गैलरी</h2>
   </div>
 
   <div class="grid" id="galleryList">
+
     <div class="data-card">
       <h3>दल्लूसर गाँव</h3>
-      <p>गाँव की तस्वीरें यहाँ दिखाई देंगी।</p>
+      <p>
+        गाँव की तस्वीरें यहाँ दिखाई देंगी।
+      </p>
     </div>
+
   </div>
+
 </section>
 
+
 <!-- CONTACT -->
+
 <section class="section">
+
   <div class="section-title">
     <h2>☎️ महत्वपूर्ण संपर्क</h2>
   </div>
@@ -816,22 +859,34 @@ body{
     </div>
 
   </div>
+
 </section>
 
+
 <div class="footer">
+
   © 2026 दल्लूसर गाँव ऐप
+
   <br><br>
+
   <b>अपने गाँव के लिए • अपने गाँव के साथ</b>
+
 </div>
 
+
 <!-- PROFILE MODAL -->
+
 <div class="modal" id="profileModal">
 
   <div class="modal-box">
 
     <div class="close" onclick="closeProfile()">×</div>
 
-    <img src="manoj.jpg" class="modal-profile" alt="मनोज पारीक">
+    <img
+      src="manoj.jpg"
+      class="modal-profile"
+      alt="मनोज पारीक"
+    >
 
     <h2>मनोज पारीक</h2>
 
@@ -851,7 +906,9 @@ body{
 
 </div>
 
+
 <!-- COMPLAINT MODAL -->
+
 <div class="modal" id="complaintModal">
 
   <div class="modal-box">
@@ -892,7 +949,9 @@ body{
 
 </div>
 
+
 <!-- BOTTOM NAV -->
+
 <nav class="bottom-nav">
 
   <div class="nav-item active" onclick="scrollTopPage()">
@@ -924,6 +983,7 @@ body{
 
 
 <!-- FIREBASE -->
+
 <script type="module">
 
 import { initializeApp }
@@ -980,7 +1040,10 @@ try{
 
 }catch(error){
 
-  console.log("Firebase अभी configure नहीं है:",error);
+  console.log(
+    "Firebase अभी configure नहीं है:",
+    error
+  );
 
 }
 
@@ -998,20 +1061,29 @@ function loadNews(){
 
   onSnapshot(q,(snapshot)=>{
 
-    const list = document.getElementById("newsList");
+    const list =
+      document.getElementById("newsList");
 
     list.innerHTML="";
 
     if(snapshot.empty){
 
       list.innerHTML=`
+
         <div class="data-card">
+
           <h3>अभी कोई नई खबर नहीं</h3>
-          <p>नई खबर आने पर यहाँ दिखाई देगी।</p>
+
+          <p>
+            नई खबर आने पर यहाँ दिखाई देगी।
+          </p>
+
         </div>
+
       `;
 
       return;
+
     }
 
     snapshot.forEach(doc=>{
@@ -1019,10 +1091,19 @@ function loadNews(){
       const data=doc.data();
 
       list.innerHTML += `
+
         <div class="data-card">
-          <h3>${safe(data.title || "नई खबर")}</h3>
-          <p>${safe(data.description || "")}</p>
+
+          <h3>
+            ${safe(data.title || "नई खबर")}
+          </h3>
+
+          <p>
+            ${safe(data.description || "")}
+          </p>
+
         </div>
+
       `;
 
     });
@@ -1045,20 +1126,30 @@ function loadDevelopment(){
 
   onSnapshot(q,(snapshot)=>{
 
-    const list=document.getElementById("developmentList");
+    const list =
+      document.getElementById("developmentList");
 
     list.innerHTML="";
 
     if(snapshot.empty){
 
       list.innerHTML=`
+
         <div class="data-card">
+
           <h3>विकास कार्य</h3>
-          <p>विकास कार्यों की जानकारी जल्द उपलब्ध होगी।</p>
+
+          <p>
+            विकास कार्यों की जानकारी
+            जल्द उपलब्ध होगी।
+          </p>
+
         </div>
+
       `;
 
       return;
+
     }
 
     snapshot.forEach(doc=>{
@@ -1066,15 +1157,23 @@ function loadDevelopment(){
       const data=doc.data();
 
       list.innerHTML += `
+
         <div class="data-card">
-          <h3>${safe(data.title || "विकास कार्य")}</h3>
-          <p>${safe(data.description || "")}</p>
+
+          <h3>
+            ${safe(data.title || "विकास कार्य")}
+          </h3>
+
+          <p>
+            ${safe(data.description || "")}
+          </p>
 
           <span class="badge">
             ${safe(data.status || "जानकारी")}
           </span>
 
         </div>
+
       `;
 
     });
@@ -1097,20 +1196,30 @@ function loadGallery(){
 
   onSnapshot(q,(snapshot)=>{
 
-    const list=document.getElementById("galleryList");
+    const list =
+      document.getElementById("galleryList");
 
     list.innerHTML="";
 
     if(snapshot.empty){
 
       list.innerHTML=`
+
         <div class="data-card">
+
           <h3>फोटो गैलरी</h3>
-          <p>गाँव की तस्वीरें जल्द यहाँ दिखाई देंगी।</p>
+
+          <p>
+            गाँव की तस्वीरें जल्द यहाँ
+            दिखाई देंगी।
+          </p>
+
         </div>
+
       `;
 
       return;
+
     }
 
     snapshot.forEach(doc=>{
@@ -1118,6 +1227,304 @@ function loadGallery(){
       const data=doc.data();
 
       list.innerHTML += `
+
         <div class="card">
 
-  
+          <img
+            src="${safe(data.image || "")}"
+            style="
+              width:100%;
+              height:150px;
+              object-fit:cover;
+              border-radius:14px;
+            "
+          >
+
+          <h3 style="margin-top:9px;">
+
+            ${safe(
+              data.title || "दल्लूसर गाँव"
+            )}
+
+          </h3>
+
+        </div>
+
+      `;
+
+    });
+
+  });
+
+}
+
+
+/* COMPLAINT */
+
+document
+.getElementById("complaintForm")
+.addEventListener(
+  "submit",
+  async(e)=>{
+
+    e.preventDefault();
+
+    if(!db){
+
+      alert(
+        "Firebase अभी सेट नहीं है।"
+      );
+
+      return;
+    }
+
+    const name =
+      document.getElementById("cName")
+      .value.trim();
+
+    const mobile =
+      document.getElementById("cMobile")
+      .value.trim();
+
+    const subject =
+      document.getElementById("cSubject")
+      .value.trim();
+
+    const complaint =
+      document.getElementById("cComplaint")
+      .value.trim();
+
+    try{
+
+      await addDoc(
+        collection(db,"complaints"),
+        {
+          name:name,
+          mobile:mobile,
+          subject:subject,
+          complaint:complaint,
+          status:"नई",
+          createdAt:serverTimestamp()
+        }
+      );
+
+      alert(
+        "आपकी शिकायत / सुझाव सफलतापूर्वक भेज दिया गया।"
+      );
+
+      document
+        .getElementById("complaintForm")
+        .reset();
+
+      closeComplaint();
+
+    }catch(error){
+
+      console.error(error);
+
+      alert(
+        "शिकायत भेजने में समस्या हुई।"
+      );
+
+    }
+
+  }
+);
+
+
+/* SECURITY HELPER */
+
+function safe(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+</script>
+
+
+<script>
+
+/* PROFILE */
+
+function openProfile(){
+
+  document
+    .getElementById("profileModal")
+    .style.display="block";
+
+}
+
+function closeProfile(){
+
+  document
+    .getElementById("profileModal")
+    .style.display="none";
+
+}
+
+
+/* COMPLAINT */
+
+function openComplaint(){
+
+  document
+    .getElementById("complaintModal")
+    .style.display="block";
+
+}
+
+function closeComplaint(){
+
+  document
+    .getElementById("complaintModal")
+    .style.display="none";
+
+}
+
+
+/* 🏏 GROUND PAGE */
+
+function showGroundPage(){
+
+  const page =
+    document.getElementById("groundPage");
+
+  page.style.display="block";
+
+  document.body.style.overflow="hidden";
+
+  window.scrollTo(0,0);
+
+}
+
+function closeGroundPage(){
+
+  const page =
+    document.getElementById("groundPage");
+
+  page.style.display="none";
+
+  document.body.style.overflow="";
+
+}
+
+
+/* SECTIONS */
+
+function showSection(type){
+
+  let id="";
+
+  if(type==="news")
+    id="newsSection";
+
+  if(type==="development")
+    id="developmentSection";
+
+  if(type==="gallery")
+    id="gallerySection";
+
+  if(id){
+
+    document
+      .getElementById(id)
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+  }
+
+}
+
+
+/* HOME */
+
+function scrollTopPage(){
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ALERT */
+
+function simpleAlert(message){
+
+  alert(message);
+
+}
+
+
+/* SEARCH */
+
+function searchCards(){
+
+  const value =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
+
+  const cards =
+    document.querySelectorAll(
+      "#cardGrid .card"
+    );
+
+  cards.forEach(card=>{
+
+    const text =
+      card.innerText.toLowerCase();
+
+    if(text.includes(value)){
+
+      card.style.display="block";
+
+    }else{
+
+      card.style.display="none";
+
+    }
+
+  });
+
+}
+
+
+/* MODAL OUTSIDE CLICK */
+
+window.onclick=function(event){
+
+  const profile =
+    document.getElementById("profileModal");
+
+  const complaint =
+    document.getElementById("complaintModal");
+
+  if(event.target===profile){
+
+    closeProfile();
+
+  }
+
+  if(event.target===complaint){
+
+    closeComplaint();
+
+  }
+
+};
+
+</script>
+
+</body>
+</html>
