@@ -1370,24 +1370,275 @@ window.onclick=function(event){
 <div id="testAIButton" onclick="openAIChat()">
   🤖
 </div>
+  <!-- 🤖 DALLUSAR AI -->
+<div id="aiChatBox" style="
+display:none;
+position:fixed;
+right:12px;
+bottom:80px;
+width:calc(100% - 24px);
+max-width:380px;
+height:520px;
+background:#fff;
+border-radius:20px;
+box-shadow:0 8px 30px rgba(0,0,0,.3);
+z-index:999999;
+overflow:hidden;
+font-family:Arial,sans-serif;
+">
 
-<style>
-#testAIButton{
-  position:fixed;
-  right:18px;
-  bottom:85px;
-  width:60px;
-  height:60px;
-  background:#087f5b;
+  <!-- Header -->
+  <div style="
+  background:linear-gradient(135deg,#087f5b,#12a36b);
   color:white;
-  border-radius:50%;
+  padding:15px;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  justify-content:center;
-  font-size:28px;
-  z-index:99999;
-  box-shadow:0 4px 15px rgba(0,0,0,.3);
+  ">
+
+    <div>
+      <b>🤖 दल्लूसर AI</b>
+      <div style="font-size:11px;margin-top:3px">
+        गाँव का डिजिटल सहायक
+      </div>
+    </div>
+
+    <button onclick="closeAIChat()" style="
+    background:none;
+    border:0;
+    color:white;
+    font-size:25px;
+    ">×</button>
+
+  </div>
+
+
+  <!-- Messages -->
+  <div id="aiMessages" style="
+  height:400px;
+  overflow-y:auto;
+  padding:12px;
+  background:#f1f5f3;
+  ">
+
+    <div style="
+    background:white;
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:10px;
+    ">
+      👋 नमस्ते! मैं <b>दल्लूसर AI</b> हूँ।<br><br>
+      आप मुझसे दल्लूसर गाँव, विकास कार्य, खेल मैदान और सामान्य जानकारी के बारे में पूछ सकते हैं।
+    </div>
+
+  </div>
+
+
+  <!-- Input -->
+  <div style="
+  display:flex;
+  padding:10px;
+  gap:7px;
+  background:white;
+  border-top:1px solid #ddd;
+  ">
+
+    <input id="aiInput"
+    placeholder="सवाल लिखें..."
+    onkeydown="if(event.key==='Enter') sendAIMessage()"
+    style="
+    flex:1;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:22px;
+    outline:none;
+    ">
+
+    <button onclick="sendAIMessage()" style="
+    width:45px;
+    border:0;
+    border-radius:50%;
+    background:#087f5b;
+    color:white;
+    font-size:18px;
+    ">
+    ➤
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function openAIChat(){
+
+  document.getElementById("aiChatBox").style.display="block";
+
+  setTimeout(()=>{
+    document.getElementById("aiInput").focus();
+  },100);
+
 }
-</style>
+
+
+function closeAIChat(){
+
+  document.getElementById("aiChatBox").style.display="none";
+
+}
+
+
+function addAIMessage(text,user=false){
+
+  const box=document.getElementById("aiMessages");
+
+  const div=document.createElement("div");
+
+  div.style.padding="11px";
+  div.style.borderRadius="12px";
+  div.style.marginBottom="9px";
+  div.style.maxWidth="88%";
+  div.style.lineHeight="1.5";
+  div.style.whiteSpace="pre-line";
+
+  if(user){
+
+    div.style.background="#087f5b";
+    div.style.color="white";
+    div.style.marginLeft="auto";
+
+  }else{
+
+    div.style.background="white";
+    div.style.color="#222";
+
+  }
+
+  div.textContent=text;
+
+  box.appendChild(div);
+
+  box.scrollTop=box.scrollHeight;
+
+}
+
+
+/* 🤖 DEMO AI */
+
+function getDemoAnswer(question){
+
+  const q=question.toLowerCase();
+
+
+  if(
+    q.includes("खेल मैदान") ||
+    q.includes("मैदान")
+  ){
+
+    return `🏏 दल्लूसर खेल मैदान
+
+दल्लूसर में खेल मैदान को विकसित और व्यवस्थित करने की आवश्यकता है।
+
+गाँव के युवाओं के लिए सुरक्षित और अच्छा खेल मैदान होना महत्वपूर्ण है।
+
+मौजूदा ऐप में खेल मैदान से जुड़ी जानकारी भी उपलब्ध कराई जा सकती है।`;
+
+  }
+
+
+  if(
+    q.includes("दल्लूसर") ||
+    q.includes("गांव") ||
+    q.includes("गाँव")
+  ){
+
+    return `🏡 दल्लूसर गाँव
+
+यह ऐप दल्लूसर गाँव की जानकारी, समाचार, विकास कार्य और सामुदायिक गतिविधियों को लोगों तक पहुँचाने के उद्देश्य से बनाया गया है।
+
+आप मुझसे खेल मैदान, विकास कार्य या गाँव की उपलब्ध जानकारी के बारे में पूछ सकते हैं।`;
+
+  }
+
+
+  if(
+    q.includes("विकास") ||
+    q.includes("सड़क") ||
+    q.includes("रोड")
+  ){
+
+    return `🏗️ विकास कार्य
+
+गाँव में होने वाले विकास कार्यों की जानकारी इस ऐप के Development सेक्शन में दर्ज की जा सकती है।
+
+किसी कार्य की वास्तविक स्थिति जानने के लिए ऐप में उपलब्ध नवीनतम जानकारी देखना बेहतर रहेगा।`;
+
+  }
+
+
+  if(
+    q.includes("नमस्ते") ||
+    q.includes("hello") ||
+    q.includes("hi")
+  ){
+
+    return `🙏 नमस्ते King!
+
+मैं दल्लूसर AI सहायक हूँ।
+
+आप क्या जानना चाहते हैं?`;
+
+  }
+
+
+  if(
+    q.includes("तुम कौन") ||
+    q.includes("आप कौन")
+  ){
+
+    return `🤖 मैं दल्लूसर AI सहायक हूँ।
+
+मेरा उद्देश्य दल्लूसर गाँव की उपलब्ध जानकारी को लोगों तक सरल भाषा में पहुँचाने में मदद करना है।`;
+
+  }
+
+
+  return `🤖 आपका सवाल समझ गया।
+
+अभी मैं Demo Mode में हूँ, इसलिए मेरे पास केवल कुछ सीमित दल्लूसर जानकारी है।
+
+जब असली AI backend जोड़ा जाएगा, तब मैं बहुत अधिक सवालों के जवाब दे पाऊँगा।`;
+
+}
+
+
+function sendAIMessage(){
+
+  const input=document.getElementById("aiInput");
+
+  const question=input.value.trim();
+
+  if(!question) return;
+
+
+  addAIMessage(question,true);
+
+  input.value="";
+
+
+  setTimeout(()=>{
+
+    const answer=getDemoAnswer(question);
+
+    addAIMessage(answer,false);
+
+  },600);
+
+}
+
+</script>
 </body>
 </html>
