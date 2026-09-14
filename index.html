@@ -110,5 +110,28 @@ a{text-decoration:none;color:inherit}
 <p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
 <p style="margin-top:8px;font-size:12px">यह वेबसाइट गाँव की जानकारी और सामुदायिक अपडेट के लिए है।</p>
 </footer>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyA3Os09vMv2eRhYf_BEb0GR4KRaWtz-GDs",
+    authDomain: "dallusar-village-diary-e7cad.firebaseapp.com",
+    projectId: "dallusar-village-diary-e7cad",
+    storageBucket: "dallusar-village-diary-e7cad.firebasestorage.app",
+    messagingSenderId: "521765701069",
+    appId: "1:521765701069:web:66efef827e06effaa4f084",
+    measurementId: "G-4G9E7K9RXZ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 </html>
