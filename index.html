@@ -1,443 +1,587 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0f4c81">
+
 <title>दल्लूसर गाँव की डायरी</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f4f7fb;color:#18212b;line-height:1.6}
-a{text-decoration:none;color:inherit}
-.header{background:linear-gradient(135deg,#0f4c81,#1769aa);color:white;padding:28px 16px 34px;text-align:center}
-.badge{display:inline-block;background:#ffffff22;border:1px solid #ffffff55;padding:5px 12px;border-radius:20px;font-size:13px;margin-bottom:10px}
-.header h1{font-size:30px;margin-bottom:5px}
-.header p{font-size:15px;opacity:.95}
-.nav{position:sticky;top:0;z-index:10;background:white;box-shadow:0 2px 10px #00000012;display:flex;gap:8px;overflow:auto;padding:10px 12px}
-.nav a{white-space:nowrap;padding:7px 12px;border-radius:20px;background:#eef4fa;font-size:13px;color:#174a73}
-.container{max-width:1050px;margin:auto;padding:18px 14px}
-.hero{background:white;border-radius:20px;padding:24px 18px;margin-bottom:18px;box-shadow:0 8px 25px #17324d12}
-.hero h2{font-size:23px;color:#0f4c81;margin-bottom:7px}
-.hero p{color:#596674}
-.buttons{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
-.btn{border:0;cursor:pointer;padding:11px;text-align:center;border-radius:12px;background:#0f4c81;color:white;font-weight:bold;font-size:14px}
-.btn.alt{background:#edf4fa;color:#0f4c81}
-.section-title{font-size:20px;margin:24px 2px 12px;color:#173d5c}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
-.card{background:white;border-radius:16px;padding:18px;box-shadow:0 5px 18px #17324d10;border:1px solid #e7edf3}
-.icon{font-size:28px;margin-bottom:8px}
-.card h3{font-size:17px;margin-bottom:4px}
-.card p{font-size:13px;color:#687583}
-.notice{background:#fff8e6;border-left:5px solid #e3a72f;border-radius:12px;padding:15px;margin-top:12px}
-.insta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:14px 16px;border-radius:14px;background:#f7edf5;border:1px solid #ead8e7}
-.insta-text strong{display:block;font-size:16px}
-.insta-text span{font-size:13px;color:#687583}
-.insta-btn{background:#b8338a;color:white;padding:9px 13px;border-radius:10px;font-weight:bold;white-space:nowrap;font-size:13px}
-.form-input{width:100%;padding:12px;margin:8px 0;border:1px solid #d5dfe8;border-radius:10px;font-size:14px}
-.message{margin-top:10px;font-size:14px;font-weight:bold}
-.admin-box{background:#eef6ff;border:1px solid #cfe3f7}
-.footer{margin-top:30px;background:#102f46;color:#dce8f0;text-align:center;padding:25px 14px}
-.footer strong{color:white}
-@media(max-width:700px){.header h1{font-size:25px}.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:430px){.grid{grid-template-columns:1fr}.hero{padding:20px 15px}.buttons{grid-template-columns:1fr 1fr}.card{padding:16px}.section-title{font-size:19px}.insta{align-items:flex-start;flex-direction:column}.insta-btn{width:100%;text-align:center}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#f4f7fb;
+  color:#18212b;
+  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.header{
+  background:linear-gradient(135deg,#0f4c81,#1769aa);
+  color:white;
+  padding:30px 16px 35px;
+  text-align:center;
+}
+
+.badge{
+  display:inline-block;
+  background:#ffffff22;
+  border:1px solid #ffffff55;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.header h1{
+  font-size:30px;
+  margin-bottom:5px;
+}
+
+.header p{
+  font-size:15px;
+}
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:white;
+  box-shadow:0 2px 10px #00000012;
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding:10px 12px;
+}
+
+.nav a{
+  white-space:nowrap;
+  padding:7px 12px;
+  border-radius:20px;
+  background:#eef4fa;
+  font-size:13px;
+  color:#174a73;
+}
+
+.container{
+  max-width:1050px;
+  margin:auto;
+  padding:18px 14px;
+}
+
+.hero{
+  background:white;
+  border-radius:20px;
+  padding:25px 18px;
+  margin-bottom:18px;
+  box-shadow:0 8px 25px #17324d12;
+}
+
+.hero h2{
+  font-size:23px;
+  color:#0f4c81;
+  margin-bottom:7px;
+}
+
+.hero p{
+  color:#596674;
+}
+
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:16px;
+}
+
+.btn{
+  padding:11px;
+  text-align:center;
+  border-radius:12px;
+  background:#0f4c81;
+  color:white;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.btn.alt{
+  background:#edf4fa;
+  color:#0f4c81;
+}
+
+.section-title{
+  font-size:21px;
+  margin:26px 2px 12px;
+  color:#173d5c;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 5px 18px #17324d10;
+  border:1px solid #e7edf3;
+}
+
+.card h3{
+  font-size:17px;
+  margin-bottom:5px;
+}
+
+.card p{
+  font-size:13px;
+  color:#687583;
+}
+
+.icon{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+/* प्रोफाइल सेक्शन */
+.profile-card{
+  background:white;
+  border-radius:20px;
+  padding:24px 18px;
+  text-align:center;
+  box-shadow:0 8px 25px #17324d12;
+}
+
+.profile-card img{
+  width:145px;
+  height:145px;
+  object-fit:cover;
+  border-radius:50%;
+  border:5px solid #0f4c81;
+  padding:4px;
+  background:white;
+  margin-bottom:12px;
+}
+
+.profile-card h3{
+  color:#0f4c81;
+  font-size:23px;
+  margin-bottom:4px;
+}
+
+.profile-card p{
+  color:#687583;
+  font-size:14px;
+}
+
+.profile-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:18px;
+}
+
+.profile-info div{
+  background:#eef4fa;
+  border-radius:12px;
+  padding:12px 5px;
+}
+
+.profile-info strong{
+  display:block;
+  color:#0f4c81;
+  font-size:15px;
+}
+
+.profile-info span{
+  font-size:12px;
+  color:#687583;
+}
+
+/* नोटिस सेक्शन */
+.notice{
+  background:#fff8e6;
+  border-left:5px solid #e3a72f;
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:12px;
+}
+
+.notice h3{
+  color:#875d00;
+  margin-bottom:5px;
+  font-size:17px;
+}
+
+.notice p{
+  color:#6c5b35;
+  font-size:14px;
+}
+
+.notice-date{
+  display:inline-block;
+  margin-top:8px;
+  background:#f1d58b;
+  color:#684b00;
+  border-radius:20px;
+  padding:3px 10px;
+  font-size:12px;
+}
+
+/* इंस्टाग्राम */
+.insta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:14px;
+  background:#f7edf5;
+  border:1px solid #ead8e7;
+}
+
+.insta-text strong{
+  display:block;
+  font-size:16px;
+}
+
+.insta-text span{
+  font-size:13px;
+  color:#687583;
+}
+
+.insta-btn{
+  background:#b8338a;
+  color:white;
+  padding:9px 13px;
+  border-radius:10px;
+  font-weight:bold;
+  white-space:nowrap;
+  font-size:13px;
+}
+
+.footer{
+  margin-top:30px;
+  background:#102f46;
+  color:#dce8f0;
+  text-align:center;
+  padding:25px 14px;
+}
+
+.footer strong{
+  color:white;
+}
+
+@media(max-width:700px){
+  .header h1{
+    font-size:25px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .profile-info{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+}
+
+@media(max-width:430px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:20px 15px;
+  }
+
+  .buttons{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .card{
+    padding:16px;
+  }
+
+  .section-title{
+    font-size:19px;
+  }
+
+  .insta{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .insta-btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .profile-info{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header class="header">
-<div class="badge">🇮🇳 हमारा गाँव • हमारी पहचान • हमारा विकास</div>
-<h1>दल्लूसर गाँव की डायरी</h1>
-<p>दल्लूसर, तहसील सरदारशहर, जिला चूरू, राजस्थान</p>
+  <div class="badge">🇮🇳 हमारा गाँव • हमारी पहचान • हमारा विकास</div>
+  <h1>दल्लूसर गाँव की डायरी</h1>
+  <p>दल्लूसर, तहसील सरदारशहर, जिला चूरू, राजस्थान</p>
 </header>
 
 <nav class="nav">
-<a href="#home">होम</a>
-<a href="#news">समाचार</a>
-<a href="#development">विकास</a>
-<a href="#youth">युवा & खेल</a>
-<a href="#gallery">गैलरी</a>
-<a href="#notice">सूचना</a>
-<a href="#contact">संपर्क</a>
-<a href="#admin">🔐 Admin</a>
+  <a href="#home">होम</a>
+  <a href="#profile">मेरी प्रोफाइल</a>
+  <a href="#news">समाचार</a>
+  <a href="#development">विकास</a>
+  <a href="#youth">युवा & खेल</a>
+  <a href="#gallery">गैलरी</a>
+  <a href="#notice">नोटिस</a>
+  <a href="#contact">संपर्क</a>
 </nav>
 
 <main class="container" id="home">
 
-<section class="hero">
-<h2>🌾 दल्लूसर में आपका स्वागत है</h2>
-<p>
-यह वेबसाइट हमारे गाँव की खबरों, विकास कार्यों, युवाओं, खेल,
-महत्वपूर्ण सूचनाओं और यादगार तस्वीरों को एक जगह जोड़ने के लिए बनाई गई है।
-</p>
+  <!-- होम सेक्शन -->
+  <section class="hero">
+    <h2>🌾 दल्लूसर में आपका स्वागत है</h2>
 
-<div class="buttons">
-<a class="btn" href="#news">📰 ताज़ा खबरें</a>
-<a class="btn alt" href="#development">🏗️ विकास कार्य</a>
-</div>
-</section>
+    <p>
+      यह वेबसाइट हमारे गाँव की खबरों, विकास कार्यों, युवाओं,
+      खेल, महत्वपूर्ण सूचनाओं और यादगार तस्वीरों को एक जगह
+      जोड़ने के लिए बनाई गई है।
+    </p>
 
-<h2 class="section-title">✨ गाँव की झलक</h2>
+    <div class="buttons">
+      <a class="btn" href="#news">📰 ताज़ा खबरें</a>
+      <a class="btn alt" href="#notice">📢 महत्वपूर्ण नोटिस</a>
+    </div>
+  </section>
 
-<section class="grid">
-<a class="card" href="#news">
-<div class="icon">📰</div>
-<h3>गाँव की खबरें</h3>
-<p>स्थानीय समाचार और महत्वपूर्ण अपडेट।</p>
-</a>
+  <!-- प्रोफाइल सेक्शन -->
+  <h2 class="section-title" id="profile">👤 मेरी प्रोफाइल</h2>
 
-<a class="card" href="#development">
-<div class="icon">🏗️</div>
-<h3>विकास</h3>
-<p>सड़क, पानी, शिक्षा और अन्य कार्य।</p>
-</a>
+  <section class="profile-card">
 
-<a class="card" href="#youth">
-<div class="icon">🏏</div>
-<h3>युवा & खेल</h3>
-<p>खेल गतिविधियाँ और युवा प्रतिभाएँ।</p>
-</a>
+    <!-- अपनी फोटो का नाम profile.jpg रखें -->
+    <img src="profile.jpg" alt="मनोज पारीक की प्रोफाइल फोटो">
 
-<a class="card" href="#gallery">
-<div class="icon">📸</div>
-<h3>फोटो गैलरी</h3>
-<p>गाँव की यादगार तस्वीरें और कार्यक्रम।</p>
-</a>
+    <h3>मनोज पारीक</h3>
 
-<a class="card" href="#notice">
-<div class="icon">📢</div>
-<h3>जरूरी सूचना</h3>
-<p>गाँव से जुड़ी महत्वपूर्ण घोषणाएँ।</p>
-</a>
+    <p>
+      दल्लूसर गाँव की डायरी के संस्थापक एवं व्यवस्थापक
+    </p>
 
-<a class="card" href="#contact">
-<div class="icon">💬</div>
-<h3>सुझाव दें</h3>
-<p>गाँव के लिए अपने सुझाव साझा करें।</p>
-</a>
-</section>
+    <div class="profile-info">
+      <div>
+        <strong>📍 गाँव</strong>
+        <span>दल्लूसर</span>
+      </div>
 
-<h2 class="section-title" id="news">📰 ताज़ा समाचार</h2>
+      <div>
+        <strong>🏛️ जिला</strong>
+        <span>चूरू</span>
+      </div>
 
-<section class="card" id="newsList">
-<h3>दल्लूसर की नई खबरें जल्द यहाँ दिखाई जाएँगी</h3>
-<p>Admin Panel से खबर जोड़ने के बाद वह यहाँ दिखाई देगी।</p>
-</section>
+      <div>
+        <strong>🌐 कार्य</strong>
+        <span>गाँव की जानकारी</span>
+      </div>
+    </div>
 
-<h2 class="section-title" id="development">🏗️ गाँव का विकास</h2>
+    <div class="insta">
+      <div class="insta-text">
+        <strong>📷 Instagram</strong>
+        <span>@manoj_pareek_1</span>
+      </div>
 
-<section class="grid">
-<div class="card">
-<div class="icon">🛣️</div>
-<h3>सड़क एवं सुविधाएँ</h3>
-<p>विकास कार्यों की जानकारी यहाँ अपडेट करें।</p>
-</div>
+      <a
+        class="insta-btn"
+        href="https://www.instagram.com/manoj_pareek_1/"
+        target="_blank"
+        rel="noopener">
+        Instagram देखें ↗
+      </a>
+    </div>
 
-<div class="card">
-<div class="icon">🏫</div>
-<h3>शिक्षा</h3>
-<p>विद्यालय और शिक्षा से जुड़ी जानकारी।</p>
-</div>
+  </section>
 
-<div class="card">
-<div class="icon">🌱</div>
-<h3>पर्यावरण</h3>
-<p>स्वच्छता, पौधारोपण और पर्यावरण गतिविधियाँ।</p>
-</div>
-</section>
+  <!-- गाँव की झलक -->
+  <h2 class="section-title">✨ गाँव की झलक</h2>
 
-<h2 class="section-title" id="youth">🏏 युवा एवं खेल</h2>
+  <section class="grid">
 
-<section class="card">
-<h3>एकता • खेल • प्रतिभा</h3>
-<p>
-क्रिकेट और अन्य खेल गतिविधियों की खबरें, परिणाम और तस्वीरें यहाँ प्रकाशित की जा सकती हैं।
-</p>
-</section>
+    <a class="card" href="#news">
+      <div class="icon">📰</div>
+      <h3>गाँव की खबरें</h3>
+      <p>स्थानीय समाचार और महत्वपूर्ण अपडेट।</p>
+    </a>
 
-<h2 class="section-title" id="gallery">📸 फोटो गैलरी</h2>
+    <a class="card" href="#development">
+      <div class="icon">🏗️</div>
+      <h3>विकास</h3>
+      <p>सड़क, पानी, शिक्षा और अन्य कार्य।</p>
+    </a>
 
-<section class="card">
-<h3>गाँव की यादें</h3>
-<p>यहाँ दल्लूसर के कार्यक्रमों और विकास कार्यों की तस्वीरें जोड़ी जा सकती हैं।</p>
-</section>
+    <a class="card" href="#youth">
+      <div class="icon">🏏</div>
+      <h3>युवा एवं खेल</h3>
+      <p>खेल गतिविधियाँ और युवा प्रतिभाएँ।</p>
+    </a>
 
-<h2 class="section-title" id="notice">📢 महत्वपूर्ण सूचना</h2>
+    <a class="card" href="#gallery">
+      <div class="icon">📸</div>
+      <h3>फोटो गैलरी</h3>
+      <p>गाँव की यादगार तस्वीरें और कार्यक्रम।</p>
+    </a>
 
-<div class="notice">
-<strong>गाँव से जुड़ी जरूरी घोषणाएँ</strong><br>
-नई सूचना आने पर इसे यहाँ प्रकाशित करें।
-</div>
+    <a class="card" href="#notice">
+      <div class="icon">📢</div>
+      <h3>जरूरी सूचना</h3>
+      <p>गाँव से जुड़ी महत्वपूर्ण घोषणाएँ।</p>
+    </a>
 
-<h2 class="section-title" id="contact">📞 संपर्क एवं सुझाव</h2>
+    <a class="card" href="#contact">
+      <div class="icon">💬</div>
+      <h3>सुझाव दें</h3>
+      <p>गाँव के लिए अपने सुझाव साझा करें।</p>
+    </a>
 
-<section class="card">
-<h3>दल्लूसर गाँव</h3>
-<p>तहसील: सरदारशहर • जिला: चूरू • राजस्थान</p>
+  </section>
 
-<div class="insta">
-<div class="insta-text">
-<strong>📷 Instagram</strong>
-<span>@manoj_pareek_1</span>
-</div>
+  <!-- समाचार -->
+  <h2 class="section-title" id="news">📰 ताज़ा समाचार</h2>
 
-<a class="insta-btn"
-href="https://www.instagram.com/manoj_pareek_1/"
-target="_blank"
-rel="noopener">
-Instagram देखें ↗
-</a>
-</div>
+  <section class="card">
+    <h3>दल्लूसर की नई खबरें जल्द यहाँ दिखाई जाएँगी</h3>
+    <p>
+      गाँव की महत्वपूर्ण खबरें, कार्यक्रम और स्थानीय अपडेट
+      यहाँ प्रकाशित किए जा सकते हैं।
+    </p>
+  </section>
 
-<p style="margin-top:10px;font-size:13px;color:#687583">
-💡 गाँव से जुड़ी खबर या सुझाव साझा करने के लिए संपर्क करें।
-</p>
-</section>
+  <!-- विकास -->
+  <h2 class="section-title" id="development">🏗️ गाँव का विकास</h2>
 
-<!-- ADMIN PANEL -->
-<h2 class="section-title" id="admin">🔐 Admin Panel</h2>
+  <section class="grid">
 
-<section class="card admin-box">
+    <div class="card">
+      <div class="icon">🛣️</div>
+      <h3>सड़क एवं सुविधाएँ</h3>
+      <p>विकास कार्यों की जानकारी यहाँ अपडेट करें।</p>
+    </div>
 
-<h3>Admin Login</h3>
+    <div class="card">
+      <div class="icon">🏫</div>
+      <h3>शिक्षा</h3>
+      <p>विद्यालय और शिक्षा से जुड़ी जानकारी।</p>
+    </div>
 
-<input
-class="form-input"
-id="adminEmail"
-type="email"
-placeholder="Admin Email"
-autocomplete="email">
+    <div class="card">
+      <div class="icon">🌱</div>
+      <h3>पर्यावरण</h3>
+      <p>स्वच्छता, पौधारोपण और पर्यावरण गतिविधियाँ।</p>
+    </div>
 
-<input
-class="form-input"
-id="adminPassword"
-type="password"
-placeholder="Password"
-autocomplete="current-password">
+  </section>
 
-<button class="btn" id="loginBtn">Login करें</button>
+  <!-- युवा एवं खेल -->
+  <h2 class="section-title" id="youth">🏏 युवा एवं खेल</h2>
 
-<p class="message" id="loginMessage"></p>
+  <section class="card">
+    <h3>एकता • खेल • प्रतिभा</h3>
+    <p>
+      क्रिकेट और अन्य खेल गतिविधियों की खबरें, परिणाम
+      और तस्वीरें यहाँ प्रकाशित की जा सकती हैं।
+    </p>
+  </section>
 
-<div id="adminPanel" style="display:none;margin-top:20px">
+  <!-- गैलरी -->
+  <h2 class="section-title" id="gallery">📸 फोटो गैलरी</h2>
 
-<h3>📰 नई खबर जोड़ें</h3>
+  <section class="card">
+    <h3>गाँव की यादें</h3>
+    <p>
+      यहाँ दल्लूसर के कार्यक्रमों, गाँव के लोगों और विकास
+      कार्यों की तस्वीरें जोड़ी जा सकती हैं।
+    </p>
+  </section>
 
-<input
-class="form-input"
-id="newsTitle"
-type="text"
-placeholder="खबर का शीर्षक">
+  <!-- नोटिस सेक्शन -->
+  <h2 class="section-title" id="notice">📢 महत्वपूर्ण नोटिस</h2>
 
-<textarea
-class="form-input"
-id="newsText"
-rows="5"
-placeholder="खबर की पूरी जानकारी"></textarea>
+  <section class="notice">
+    <h3>गाँव से जुड़ी जरूरी सूचना</h3>
+    <p>
+      नई सूचना, घोषणा या गाँव से संबंधित महत्वपूर्ण जानकारी
+      यहाँ प्रकाशित की जाएगी।
+    </p>
+    <span class="notice-date">📅 नई सूचना</span>
+  </section>
 
-<button class="btn" id="addNewsBtn">खबर प्रकाशित करें</button>
+  <section class="notice">
+    <h3>गाँव की बैठक एवं कार्यक्रम</h3>
+    <p>
+      गाँव में होने वाली बैठक, सामाजिक कार्यक्रम और अन्य
+      गतिविधियों की जानकारी यहाँ जोड़ी जा सकती है।
+    </p>
+    <span class="notice-date">📅 कार्यक्रम सूचना</span>
+  </section>
 
-<button class="btn alt" id="logoutBtn" style="margin-top:8px">
-Logout
-</button>
+  <section class="notice">
+    <h3>शिक्षा एवं रोजगार सूचना</h3>
+    <p>
+      विद्यार्थियों, युवाओं और रोजगार से जुड़ी महत्वपूर्ण
+      जानकारी यहाँ प्रकाशित की जा सकती है।
+    </p>
+    <span class="notice-date">📚 उपयोगी सूचना</span>
+  </section>
 
-<p class="message" id="newsMessage"></p>
+  <!-- संपर्क -->
+  <h2 class="section-title" id="contact">📞 संपर्क एवं सुझाव</h2>
 
-</div>
-</section>
+  <section class="card">
+    <h3>दल्लूसर गाँव</h3>
+
+    <p>
+      तहसील: सरदारशहर • जिला: चूरू • राजस्थान
+    </p>
+
+    <p style="margin-top:10px;font-size:13px;color:#687583;">
+      💡 गाँव से जुड़ी खबर या सुझाव साझा करने के लिए संपर्क करें।
+    </p>
+  </section>
 
 </main>
 
 <footer class="footer">
-<strong>🇮🇳 दल्लूसर गाँव की डायरी</strong>
-<p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
-<p style="margin-top:8px;font-size:12px">
-यह वेबसाइट गाँव की जानकारी और सामुदायिक अपडेट के लिए है।
-</p>
+  <strong>🇮🇳 दल्लूसर गाँव की डायरी</strong>
+
+  <p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
+
+  <p style="margin-top:8px;font-size:12px;">
+    यह वेबसाइट गाँव की जानकारी और सामुदायिक अपडेट के लिए है।
+  </p>
 </footer>
 
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
-import {
-getAuth,
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-
-import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-query,
-orderBy,
-serverTimestamp
-}
-from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
-
-const firebaseConfig = {
-apiKey: "AIzaSyA3Os09vMv2eRhYf_BEb0GR4KRaWtz-GDs",
-authDomain: "dallusar-village-diary-e7cad.firebaseapp.com",
-projectId: "dallusar-village-diary-e7cad",
-storageBucket: "dallusar-village-diary-e7cad.firebasestorage.app",
-messagingSenderId: "521765701069",
-appId: "1:521765701069:web:66efef827e06effaa4f084",
-measurementId: "G-4G9E7K9RXZ"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-const loginBtn = document.getElementById("loginBtn");
-const logoutBtn = document.getElementById("logoutBtn");
-const addNewsBtn = document.getElementById("addNewsBtn");
-
-const adminPanel = document.getElementById("adminPanel");
-const loginMessage = document.getElementById("loginMessage");
-const newsMessage = document.getElementById("newsMessage");
-const newsList = document.getElementById("newsList");
-
-async function loadNews() {
-try {
-const newsQuery = query(
-collection(db, "news"),
-orderBy("createdAt", "desc")
-);
-
-const snapshot = await getDocs(newsQuery);
-
-if (snapshot.empty) {
-newsList.innerHTML = `
-<h3>अभी कोई नई खबर उपलब्ध नहीं है</h3>
-<p>Admin Panel से पहली खबर प्रकाशित करें।</p>
-`;
-return;
-}
-
-newsList.innerHTML = "";
-
-snapshot.forEach((doc) => {
-const news = doc.data();
-
-const article = document.createElement("article");
-article.className = "card";
-article.style.marginBottom = "12px";
-
-article.innerHTML = `
-<h3>${escapeHTML(news.title || "बिना शीर्षक खबर")}</h3>
-<p>${escapeHTML(news.text || "")}</p>
-`;
-
-newsList.appendChild(article);
-});
-
-} catch (error) {
-console.log("News loading error:", error);
-}
-}
-
-function escapeHTML(text) {
-return String(text)
-.replaceAll("&", "&amp;")
-.replaceAll("<", "&lt;")
-.replaceAll(">", "&gt;")
-.replaceAll('"', "&quot;")
-.replaceAll("'", "&#039;");
-}
-
-loginBtn.addEventListener("click", async () => {
-
-const email = document.getElementById("adminEmail").value.trim();
-const password = document.getElementById("adminPassword").value;
-
-if (!email || !password) {
-loginMessage.textContent = "ईमेल और पासवर्ड भरें।";
-return;
-}
-
-try {
-
-await signInWithEmailAndPassword(auth, email, password);
-
-loginMessage.textContent = "✅ Login सफल हुआ।";
-adminPanel.style.display = "block";
-
-} catch (error) {
-
-loginMessage.textContent = "❌ Email या Password गलत है।";
-console.log(error);
-
-}
-
-});
-
-addNewsBtn.addEventListener("click", async () => {
-
-const title = document.getElementById("newsTitle").value.trim();
-const text = document.getElementById("newsText").value.trim();
-
-if (!title || !text) {
-newsMessage.textContent = "पहले शीर्षक और खबर की जानकारी भरें।";
-return;
-}
-
-try {
-
-await addDoc(collection(db, "news"), {
-title: title,
-text: text,
-createdAt: serverTimestamp()
-});
-
-newsMessage.textContent = "✅ खबर प्रकाशित हो गई।";
-
-document.getElementById("newsTitle").value = "";
-document.getElementById("newsText").value = "";
-
-await loadNews();
-
-} catch (error) {
-
-newsMessage.textContent =
-"❌ खबर सेव नहीं हुई। Firestore Rules जाँचें।";
-
-console.log(error);
-
-}
-
-});
-
-logoutBtn.addEventListener("click", async () => {
-
-await signOut(auth);
-
-adminPanel.style.display = "none";
-loginMessage.textContent = "आप Logout हो गए हैं।";
-
-});
-
-onAuthStateChanged(auth, (user) => {
-
-if (user) {
-adminPanel.style.display = "block";
-loginMessage.textContent = "✅ आप Login हैं।";
-} else {
-adminPanel.style.display = "none";
-}
-
-});
-
-loadNews();
-
-</script>
-
 </body>
-</html>
+  </html>
