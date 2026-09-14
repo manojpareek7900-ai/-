@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>दल्लूसर गाँव</title>
+<meta name="theme-color" content="#0f766e">
+
+<title>दल्लूसर गाँव की डायरी</title>
 
 <style>
 *{
@@ -14,727 +16,837 @@
 }
 
 body{
-  background:#f3f7f5;
-  color:#173b31;
-  padding-bottom:75px;
+  background:#f5f7f7;
+  color:#222;
 }
 
-/* HEADER */
-.header{
-  background:linear-gradient(135deg,#075e54,#0b8f72,#19b394);
-  color:white;
-  padding:28px 20px 75px;
-  border-radius:0 0 32px 32px;
-  box-shadow:0 8px 25px rgba(0,0,0,.15);
-}
+/* ================= LOGIN ================= */
 
-.header-top{
+#loginScreen{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#0f766e,#115e59);
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo{
-  font-size:27px;
-  font-weight:800;
-}
-
-.header small{
-  display:block;
-  margin-top:7px;
-  opacity:.9;
-  font-size:14px;
-}
-
-.header-icon{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  background:rgba(255,255,255,.18);
-  display:flex;
-  align-items:center;
   justify-content:center;
-  font-size:23px;
+  align-items:center;
+  padding:20px;
+  z-index:99999;
 }
 
-/* SEARCH */
-.search{
-  margin:-32px 18px 20px;
-  position:relative;
-}
-
-.search input{
+.loginBox{
   width:100%;
-  padding:17px 20px 17px 48px;
-  border:0;
-  outline:none;
-  border-radius:18px;
+  max-width:400px;
   background:white;
-  box-shadow:0 8px 25px rgba(0,0,0,.12);
-  font-size:15px;
-}
-
-.search span{
-  position:absolute;
-  left:18px;
-  top:14px;
-  font-size:22px;
-}
-
-/* FOUNDER */
-.founder{
-  position:relative;
-  margin:70px 18px 25px;
-  padding:72px 20px 25px;
+  border-radius:22px;
+  padding:30px 22px;
   text-align:center;
-  background:white;
-  border-radius:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,.10);
-  border:1px solid #e5efeb;
+  box-shadow:0 15px 50px rgba(0,0,0,.25);
 }
 
-.profile{
-  position:absolute;
-  top:-58px;
-  left:50%;
-  transform:translateX(-50%);
-  width:116px;
-  height:116px;
-  border-radius:50%;
-  object-fit:cover;
-  background:white;
-  padding:4px;
-  border:4px solid white;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
-}
-
-.founder h2{
-  font-size:24px;
+.loginLogo{
+  font-size:55px;
   margin-bottom:8px;
 }
 
-.role{
-  color:#087b63;
+.loginBox h1{
+  color:#0f766e;
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.loginBox p{
+  color:#666;
+  margin-bottom:25px;
+}
+
+.inputBox{
+  display:flex;
+  align-items:center;
+  border:1px solid #ddd;
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:15px;
+}
+
+.countryCode{
+  padding:14px 10px;
+  background:#f1f5f5;
   font-weight:bold;
-  font-size:15px;
 }
 
-.tagline{
-  margin:10px 0 18px;
-  color:#65756f;
-  font-size:14px;
-}
-
-.profile-btn{
+.inputBox input{
+  flex:1;
   border:0;
-  background:#087b63;
+  outline:0;
+  padding:14px 10px;
+  font-size:16px;
+}
+
+.btn{
+  width:100%;
+  border:0;
+  padding:14px;
+  border-radius:12px;
+  background:#0f766e;
   color:white;
-  padding:11px 22px;
-  border-radius:30px;
+  font-size:16px;
   font-weight:bold;
   cursor:pointer;
 }
 
-/* ANNOUNCEMENT */
-.notice{
-  margin:18px;
-  padding:17px;
-  background:linear-gradient(135deg,#fff8df,#fff);
-  border-left:5px solid #f1b800;
-  border-radius:16px;
-  box-shadow:0 5px 18px rgba(0,0,0,.07);
+.btn:disabled{
+  opacity:.6;
 }
 
-.notice-title{
-  font-weight:bold;
-  margin-bottom:6px;
+#otpBox{
+  display:none;
+  margin-top:15px;
 }
 
-.notice p{
-  color:#65756f;
+#recaptcha-container{
+  margin:12px 0;
+}
+
+.loginMsg{
+  margin-top:12px;
   font-size:14px;
+  color:#555;
 }
 
-/* SECTION */
-.section{
-  margin:25px 18px;
+/* ================= MAIN ================= */
+
+#mainApp{
+  display:none;
 }
 
-.section-title{
+header{
+  background:#0f766e;
+  color:white;
+  padding:16px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.headerInner{
+  max-width:1100px;
+  margin:auto;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:15px;
+  gap:10px;
 }
 
-.section-title h2{
-  font-size:20px;
+.logo{
+  font-size:21px;
+  font-weight:bold;
 }
 
-.section-title span{
+.logoutBtn{
+  border:1px solid rgba(255,255,255,.6);
+  background:transparent;
+  color:white;
+  padding:8px 12px;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+.container{
+  width:94%;
+  max-width:1100px;
+  margin:20px auto 90px;
+}
+
+.hero{
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 3px 15px rgba(0,0,0,.08);
+  margin-bottom:20px;
+}
+
+.hero h2{
+  color:#0f766e;
+  margin-bottom:8px;
+}
+
+.hero p{
+  line-height:1.7;
+  color:#555;
+}
+
+.founder{
+  margin-top:18px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  background:#f0fdfa;
+  padding:14px;
+  border-radius:14px;
+}
+
+.founder img{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.founder h3{
+  color:#115e59;
+}
+
+.role{
   font-size:13px;
-  color:#078266;
+  color:#666;
+  margin-top:4px;
 }
 
-/* GRID */
-.grid{
+/* NOTICE */
+
+.notice{
+  background:#fff7ed;
+  border-left:5px solid #f97316;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+
+/* SEARCH */
+
+.searchBox{
+  margin-bottom:20px;
+}
+
+.searchBox input{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  outline:none;
+  font-size:16px;
+}
+
+/* CARDS */
+
+.sectionTitle{
+  margin:25px 0 12px;
+  color:#115e59;
+}
+
+.cards{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:13px;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
 }
 
 .card{
   background:white;
-  padding:20px 12px;
-  border-radius:20px;
+  border-radius:15px;
+  padding:18px 12px;
   text-align:center;
-  box-shadow:0 6px 20px rgba(0,0,0,.07);
-  border:1px solid #e8efec;
-  transition:.2s;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
   cursor:pointer;
+  transition:.2s;
 }
 
-.card:active{
-  transform:scale(.96);
+.card:hover{
+  transform:translateY(-2px);
 }
 
 .card .icon{
-  width:53px;
-  height:53px;
-  margin:auto;
-  border-radius:17px;
-  background:#e8f7f2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:27px;
-  margin-bottom:10px;
+  font-size:30px;
+  margin-bottom:8px;
 }
 
 .card h3{
   font-size:15px;
-  margin-bottom:5px;
+  color:#333;
 }
 
-.card p{
-  font-size:11px;
-  color:#7a8883;
-}
+/* DATA SECTIONS */
 
-/* DATA CARDS */
-.data-card{
+.dataSection{
   background:white;
+  border-radius:16px;
   padding:18px;
-  border-radius:19px;
-  margin-bottom:12px;
-  box-shadow:0 5px 18px rgba(0,0,0,.07);
+  margin-top:20px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
 }
 
-.data-card h3{
-  font-size:17px;
-  margin-bottom:7px;
+.dataItem{
+  border-bottom:1px solid #eee;
+  padding:14px 0;
 }
 
-.data-card p{
-  color:#687873;
-  font-size:14px;
-  line-height:1.5;
+.dataItem:last-child{
+  border-bottom:0;
 }
 
-.badge{
-  display:inline-block;
-  margin-top:10px;
-  padding:5px 10px;
-  border-radius:20px;
-  background:#e7f7f1;
-  color:#087b63;
-  font-size:12px;
-  font-weight:bold;
-}
-
-/* QUICK CONTACT */
-.contact{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-}
-
-.contact-card{
-  min-width:145px;
-  background:white;
-  padding:18px;
-  border-radius:18px;
-  box-shadow:0 5px 15px rgba(0,0,0,.07);
-}
-
-.contact-card b{
-  display:block;
+.dataItem h3{
+  color:#0f766e;
   margin-bottom:6px;
 }
 
-.contact-card small{
-  color:#74817d;
+.dataItem p{
+  color:#555;
+  line-height:1.6;
 }
 
-/* MODAL */
+.status{
+  display:inline-block;
+  margin-top:8px;
+  background:#ecfdf5;
+  color:#047857;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.galleryItem{
+  background:#eee;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.galleryItem img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  display:block;
+}
+
+.galleryItem p{
+  padding:8px;
+  background:white;
+}
+
+/* COMPLAINT */
+
 .modal{
   display:none;
   position:fixed;
-  z-index:100;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:rgba(0,0,0,.55);
+  z-index:5000;
   padding:20px;
-}
-
-.modal-box{
-  background:white;
-  max-width:450px;
-  margin:70px auto;
-  border-radius:25px;
-  padding:25px;
-  position:relative;
-  max-height:85vh;
   overflow:auto;
 }
 
-.close{
-  position:absolute;
-  right:18px;
-  top:14px;
-  font-size:27px;
-  cursor:pointer;
+.modalBox{
+  max-width:500px;
+  margin:40px auto;
+  background:white;
+  border-radius:18px;
+  padding:22px;
 }
 
-.modal-profile{
-  width:100px;
-  height:100px;
-  border-radius:50%;
-  object-fit:cover;
-  display:block;
-  margin:5px auto 15px;
-}
-
-.modal-box h2{
-  text-align:center;
+.modalBox h2{
+  color:#0f766e;
   margin-bottom:15px;
 }
 
-.modal-box p{
-  line-height:1.7;
-  color:#63726d;
-  font-size:14px;
+.formGroup{
+  margin-bottom:13px;
 }
 
-/* FORM */
-.form-group{
-  margin-bottom:14px;
-}
-
-.form-group label{
+.formGroup label{
   display:block;
+  margin-bottom:5px;
   font-weight:bold;
-  margin-bottom:6px;
   font-size:14px;
 }
 
-.form-group input,
-.form-group textarea{
+.formGroup input,
+.formGroup textarea{
   width:100%;
-  padding:13px;
-  border:1px solid #dce8e3;
-  border-radius:13px;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:10px;
   outline:none;
-  font-size:14px;
 }
 
-.form-group textarea{
+.formGroup textarea{
   min-height:110px;
   resize:vertical;
 }
 
-.submit{
-  width:100%;
-  padding:14px;
+.closeBtn{
+  float:right;
   border:0;
-  border-radius:14px;
-  background:#087b63;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-}
-
-/* BOTTOM NAV */
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  height:68px;
-  background:white;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  box-shadow:0 -5px 20px rgba(0,0,0,.10);
-  z-index:50;
-}
-
-.nav-item{
-  text-align:center;
-  color:#74817d;
-  font-size:11px;
+  background:#eee;
+  border-radius:50%;
+  width:32px;
+  height:32px;
   cursor:pointer;
 }
 
-.nav-item div{
-  font-size:21px;
-  margin-bottom:3px;
-}
-
-.nav-item.active{
-  color:#078266;
-  font-weight:bold;
-}
-
 /* FOOTER */
-.footer{
+
+footer{
+  background:#115e59;
+  color:white;
   text-align:center;
-  padding:30px 15px;
-  color:#83908c;
-  font-size:12px;
+  padding:25px 15px;
+  margin-top:30px;
 }
 
-@media(max-width:360px){
-  .logo{font-size:23px}
-  .card{padding:17px 8px}
+/* BOTTOM NAV */
+
+.bottomNav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:65px;
+  background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:2000;
+}
+
+.bottomNav button{
+  border:0;
+  background:transparent;
+  font-size:12px;
+  color:#444;
+}
+
+.bottomNav span{
+  display:block;
+  font-size:22px;
+  margin-bottom:2px;
+}
+
+.empty{
+  color:#777;
+  text-align:center;
+  padding:15px;
+}
+
+@media(min-width:700px){
+  .bottomNav{
+    display:none;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(4,1fr);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-top">
-    <div>
-      <div class="logo">🏡 दल्लूसर गाँव</div>
-      <small>हमारा गाँव • हमारी पहचान • हमारा विकास</small>
-    </div>
-    <div class="header-icon">🌿</div>
-  </div>
-</header>
+<!-- ================= LOGIN SCREEN ================= -->
 
-<!-- SEARCH -->
-<div class="search">
-  <span>🔍</span>
-  <input id="searchInput" type="text" placeholder="गाँव में खोजें..." oninput="searchCards()">
+<div id="loginScreen">
+
+  <div class="loginBox">
+
+    <div class="loginLogo">🏡</div>
+
+    <h1>दल्लूसर गाँव की डायरी</h1>
+
+    <p>आगे बढ़ने के लिए मोबाइल नंबर से लॉगिन करें</p>
+
+    <div class="inputBox">
+      <div class="countryCode">+91</div>
+      <input
+        id="phoneNumber"
+        type="tel"
+        maxlength="10"
+        placeholder="मोबाइल नंबर"
+        inputmode="numeric"
+      >
+    </div>
+
+    <div id="recaptcha-container"></div>
+
+    <button class="btn" id="sendOtpBtn">
+      OTP भेजें
+    </button>
+
+    <div id="otpBox">
+
+      <input
+        id="otpInput"
+        type="text"
+        maxlength="6"
+        placeholder="6 अंकों का OTP"
+        inputmode="numeric"
+        style="
+          width:100%;
+          padding:14px;
+          border:1px solid #ddd;
+          border-radius:12px;
+          margin-bottom:12px;
+          font-size:18px;
+          text-align:center;
+        "
+      >
+
+      <button class="btn" id="verifyOtpBtn">
+        OTP Verify करें
+      </button>
+
+    </div>
+
+    <div class="loginMsg" id="loginMsg"></div>
+
+  </div>
+
 </div>
 
-<!-- FOUNDER -->
-<section class="founder">
-  <img src="manoj.jpg" class="profile" alt="मनोज पारीक">
 
-  <h2>मनोज पारीक</h2>
+<!-- ================= MAIN APP ================= -->
 
-  <div class="role">
-    👑 संस्थापक —मनोज पारीक 😊
-  </div<
+<div id="mainApp">
 
-  <div class="tagline">
-    अपने गाँव को डिजिटल रूप से जोड़ने का एक प्रयास
+<header>
+
+  <div class="headerInner">
+
+    <div class="logo">
+      🏡 दल्लूसर गाँव
+    </div>
+
+    <button class="logoutBtn" onclick="logoutUser()">
+      Logout
+    </button>
+
   </div>
 
-  <button class="profile-btn" onclick="openProfile()">
-    👤 मेरा प्रोफाइल
-  </button>
-</section>
+</header>
 
-<!-- NOTICE -->
-<section class="notice">
-  <div class="notice-title">📢 महत्वपूर्ण सूचना</div>
-  <p id="noticeText">
-    दल्लूसर गाँव से जुड़ी महत्वपूर्ण खबरें और सूचनाएँ यहाँ दिखाई जाएँगी।
-  </p>
-</section>
 
-<!-- MAIN OPTIONS -->
-<section class="section">
-  <div class="section-title">
-    <h2>गाँव की सेवाएँ</h2>
-    <span>सभी देखें</span>
+<div class="container">
+
+  <!-- HERO -->
+
+  <div class="hero">
+
+    <h2>हमारा गाँव • हमारी पहचान • हमारा विकास</h2>
+
+    <p>
+      दल्लूसर गाँव की जानकारी, विकास कार्य,
+      समाचार और सामुदायिक गतिविधियों को एक जगह
+      उपलब्ध कराने का प्रयास।
+    </p>
+
+    <div class="founder">
+
+      <img src="manoj.jpg" alt="मनोज पारीक">
+
+      <div>
+        <h3>मनोज पारीक</h3>
+        <div class="role">
+          दल्लूसर गाँव की डायरी
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="grid" id="cardGrid">
 
-    <div class="card" onclick="showSection('news')">
+  <!-- NOTICE -->
+
+  <div class="notice">
+    📢 <b>गाँव की सूचना:</b>
+    गाँव से जुड़ी महत्वपूर्ण जानकारी और अपडेट यहाँ प्रकाशित किए जाएंगे।
+  </div>
+
+
+  <!-- SEARCH -->
+
+  <div class="searchBox">
+
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="🔍 गाँव की जानकारी खोजें..."
+    >
+
+  </div>
+
+
+  <!-- SERVICES -->
+
+  <h2 class="sectionTitle">गाँव की सेवाएँ</h2>
+
+  <div class="cards">
+
+    <div class="card" onclick="scrollToSection('newsSection')">
       <div class="icon">📰</div>
-      <h3>गाँव की खबरें</h3>
-      <p>नई खबरें और सूचनाएँ</p>
+      <h3>समाचार</h3>
     </div>
 
-    <div class="card" onclick="showSection('development')">
-      <div class="icon">🚧</div>
+    <div class="card" onclick="scrollToSection('developmentSection')">
+      <div class="icon">🏗️</div>
       <h3>विकास कार्य</h3>
-      <p>गाँव में चल रहे कार्य</p>
     </div>
 
-    <div class="card" onclick="simpleAlert('ग्राम पंचायत की जानकारी जल्द जोड़ी जाएगी।')">
+    <div class="card">
       <div class="icon">🏛️</div>
-      <h3>ग्राम पंचायत</h3>
-      <p>पंचायत संबंधी जानकारी</p>
+      <h3>पंचायत</h3>
     </div>
 
-    <div class="card" onclick="simpleAlert('विद्यालय की जानकारी जल्द जोड़ी जाएगी।')">
+    <div class="card">
       <div class="icon">🏫</div>
       <h3>विद्यालय</h3>
-      <p>स्कूल और शिक्षा</p>
     </div>
 
-    <div class="card" onclick="simpleAlert('खेल मैदान की जानकारी जल्द जोड़ी जाएगी।')">
+    <div class="card">
       <div class="icon">🏏</div>
-      <h3>खेल मैदान</h3>
-      <p>खेल एवं युवा गतिविधियाँ</p>
+      <h3>खेल</h3>
     </div>
 
-    <div class="card" onclick="showSection('gallery')">
+    <div class="card" onclick="scrollToSection('gallerySection')">
       <div class="icon">🖼️</div>
-      <h3>फोटो गैलरी</h3>
-      <p>गाँव की यादें</p>
+      <h3>गैलरी</h3>
     </div>
 
-    <div class="card" onclick="simpleAlert('गाँव का इतिहास जल्द जोड़ा जाएगा।')">
+    <div class="card">
       <div class="icon">📜</div>
       <h3>गाँव का इतिहास</h3>
-      <p>हमारी विरासत</p>
     </div>
 
-    <div class="card" onclick="simpleAlert('सरकारी योजनाओं की जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">📋</div>
+    <div class="card">
+      <div class="icon">💰</div>
       <h3>सरकारी योजनाएँ</h3>
-      <p>जनकल्याण योजनाएँ</p>
     </div>
 
     <div class="card" onclick="openComplaint()">
-      <div class="icon">💬</div>
+      <div class="icon">📝</div>
       <h3>शिकायत / सुझाव</h3>
-      <p>अपनी बात रखें</p>
     </div>
 
-    <div class="card" onclick="simpleAlert('महत्वपूर्ण संपर्क जल्द जोड़े जाएँगे।')">
-      <div class="icon">☎️</div>
-      <h3>महत्वपूर्ण संपर्क</h3>
-      <p>जरूरी नंबर</p>
+    <div class="card">
+      <div class="icon">📞</div>
+      <h3>संपर्क</h3>
     </div>
 
-    <div class="card" onclick="simpleAlert('गाँव का नक्शा जल्द जोड़ा जाएगा।')">
+    <div class="card">
       <div class="icon">📍</div>
       <h3>गाँव का नक्शा</h3>
-      <p>स्थान और रास्ते</p>
     </div>
 
-    <div class="card" onclick="simpleAlert('आपातकालीन संपर्क जल्द जोड़े जाएँगे।')">
+    <div class="card">
       <div class="icon">🚨</div>
-      <h3>आपातकालीन सहायता</h3>
-      <p>जरूरी सहायता</p>
+      <h3>आपातकालीन नंबर</h3>
     </div>
 
-    <div class="card" onclick="simpleAlert('पानी और सड़क से जुड़े कार्य यहाँ दिखेंगे।')">
+    <div class="card">
       <div class="icon">💧</div>
-      <h3>पानी एवं सड़क</h3>
-      <p>स्थानीय समस्याएँ</p>
+      <h3>पानी / सड़क</h3>
     </div>
 
-    <div class="card" onclick="simpleAlert('पर्यावरण अभियान की जानकारी यहाँ होगी।')">
+    <div class="card">
       <div class="icon">🌱</div>
-      <h3>पर्यावरण अभियान</h3>
-      <p>हरियाली और स्वच्छता</p>
+      <h3>पर्यावरण</h3>
     </div>
 
-    <div class="card" onclick="simpleAlert('वीडियो जल्द जोड़े जाएँगे।')">
+    <div class="card">
       <div class="icon">🎥</div>
       <h3>वीडियो</h3>
-      <p>गाँव के वीडियो</p>
     </div>
 
-    <div class="card" onclick="simpleAlert('गाँव की सामान्य जानकारी जल्द जोड़ी जाएगी।')">
+    <div class="card">
       <div class="icon">ℹ️</div>
       <h3>गाँव की जानकारी</h3>
-      <p>हमारे गाँव के बारे में</p>
     </div>
 
   </div>
-</section>
 
-<!-- NEWS -->
-<section class="section" id="newsSection">
-  <div class="section-title">
-    <h2>📰 नवीनतम खबरें</h2>
-    <span>LIVE</span>
-  </div>
-  <div id="newsList">
-    <div class="data-card">
-      <h3>दल्लूसर गाँव ऐप</h3>
-      <p>गाँव की खबरें यहाँ दिखाई देंगी।</p>
-    </div>
-  </div>
-</section>
 
-<!-- DEVELOPMENT -->
-<section class="section" id="developmentSection">
-  <div class="section-title">
-    <h2>🚧 विकास कार्य</h2>
-  </div>
+  <!-- NEWS -->
 
-  <div id="developmentList">
-    <div class="data-card">
-      <h3>गाँव के विकास कार्य</h3>
-      <p>चल रहे और पूर्ण हुए विकास कार्य यहाँ दिखाई देंगे।</p>
-    </div>
-  </div>
-</section>
+  <section id="newsSection" class="dataSection">
 
-<!-- GALLERY -->
-<section class="section" id="gallerySection">
-  <div class="section-title">
-    <h2>🖼️ फोटो गैलरी</h2>
-  </div>
+    <h2 class="sectionTitle">📰 गाँव के समाचार</h2>
 
-  <div class="grid" id="galleryList">
-    <div class="data-card">
-      <h3>दल्लूसर गाँव</h3>
-      <p>गाँव की तस्वीरें यहाँ दिखाई देंगी।</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section">
-  <div class="section-title">
-    <h2>☎️ महत्वपूर्ण संपर्क</h2>
-  </div>
-
-  <div class="contact">
-    <div class="contact-card">
-      <b>🏛️ ग्राम पंचायत</b>
-      <small>संपर्क जल्द जोड़ा जाएगा</small>
+    <div id="newsList">
+      <div class="empty">समाचार लोड हो रहे हैं...</div>
     </div>
 
-    <div class="contact-card">
-      <b>🏫 विद्यालय</b>
-      <small>संपर्क जल्द जोड़ा जाएगा</small>
+  </section>
+
+
+  <!-- DEVELOPMENT -->
+
+  <section id="developmentSection" class="dataSection">
+
+    <h2 class="sectionTitle">🏗️ गाँव के विकास कार्य</h2>
+
+    <div id="developmentList">
+      <div class="empty">विकास कार्य लोड हो रहे हैं...</div>
     </div>
 
-    <div class="contact-card">
-      <b>🚨 आपातकाल</b>
-      <small>112</small>
-    </div>
-  </div>
-</section>
+  </section>
 
-<div class="footer">
-  © 2026 दल्लूसर गाँव ऐप<br>
-  <br>
-  <b>अपने गाँव के लिए • अपने गाँव के साथ</b>
+
+  <!-- GALLERY -->
+
+  <section id="gallerySection" class="dataSection">
+
+    <h2 class="sectionTitle">🖼️ गाँव की गैलरी</h2>
+
+    <div id="galleryList" class="gallery">
+      <div class="empty">फोटो लोड हो रहे हैं...</div>
+    </div>
+
+  </section>
+
 </div>
 
-<!-- PROFILE MODAL -->
-<div class="modal" id="profileModal">
-  <div class="modal-box">
-    <div class="close" onclick="closeProfile()">×</div>
 
-    <img src="manoj.jpg" class="modal-profile" alt="मनोज पारीक">
+<footer>
 
-    <h2>मनोज पारीक</h2>
+  <h3>दल्लूसर गाँव की डायरी</h3>
 
-    <p style="text-align:center;">
-      👑 संस्थापक — मनोज पारीक 😊
-    </p>
+  <p style="margin-top:8px;">
+    हमारा गाँव • हमारी पहचान • हमारा विकास
+  </p>
 
-    <br>
+  <p style="margin-top:8px;font-size:12px;">
+    यह वेबसाइट गाँव की जानकारी और सामुदायिक अपडेट के लिए है।
+  </p>
 
-    <p>
-      दल्लूसर गाँव को डिजिटल रूप से जोड़ने,
-      गाँव की खबरों, विकास कार्यों और स्थानीय
-      गतिविधियों को एक मंच पर लाने का प्रयास।
-    </p>
-  </div>
+</footer>
+
+
+<!-- BOTTOM NAV -->
+
+<div class="bottomNav">
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <span>🏠</span>
+    होम
+  </button>
+
+  <button onclick="scrollToSection('newsSection')">
+    <span>📰</span>
+    समाचार
+  </button>
+
+  <button onclick="scrollToSection('developmentSection')">
+    <span>🏗️</span>
+    विकास
+  </button>
+
+  <button onclick="scrollToSection('gallerySection')">
+    <span>🖼️</span>
+    गैलरी
+  </button>
+
+  <button onclick="openComplaint()">
+    <span>📝</span>
+    शिकायत
+  </button>
+
 </div>
 
-<!-- COMPLAINT MODAL -->
-<div class="modal" id="complaintModal">
-  <div class="modal-box">
-    <div class="close" onclick="closeComplaint()">×</div>
+</div>
 
-    <h2>💬 शिकायत / सुझाव</h2>
+
+<!-- ================= COMPLAINT MODAL ================= -->
+
+<div id="complaintModal" class="modal">
+
+  <div class="modalBox">
+
+    <button class="closeBtn" onclick="closeComplaint()">
+      ✕
+    </button>
+
+    <h2>📝 शिकायत / सुझाव</h2>
 
     <form id="complaintForm">
 
-      <div class="form-group">
-        <label>आपका नाम</label>
-        <input id="cName" type="text" required>
+      <div class="formGroup">
+
+        <label>नाम</label>
+
+        <input
+          type="text"
+          id="complaintName"
+          required
+          placeholder="अपना नाम"
+        >
+
       </div>
 
-      <div class="form-group">
+
+      <div class="formGroup">
+
         <label>मोबाइल नंबर</label>
-        <input id="cMobile" type="tel" required>
+
+        <input
+          type="tel"
+          id="complaintMobile"
+          maxlength="10"
+          inputmode="numeric"
+          placeholder="मोबाइल नंबर"
+        >
+
       </div>
 
-      <div class="form-group">
+
+      <div class="formGroup">
+
         <label>विषय</label>
-        <input id="cSubject" type="text" required>
+
+        <input
+          type="text"
+          id="complaintSubject"
+          required
+          placeholder="शिकायत / सुझाव का विषय"
+        >
+
       </div>
 
-      <div class="form-group">
+
+      <div class="formGroup">
+
         <label>शिकायत / सुझाव</label>
-        <textarea id="cComplaint" required></textarea>
+
+        <textarea
+          id="complaintText"
+          required
+          placeholder="अपनी बात लिखें..."
+        ></textarea>
+
       </div>
 
-      <button class="submit" type="submit">
-        शिकायत भेजें
+
+      <button class="btn" type="submit">
+        भेजें
       </button>
 
     </form>
+
   </div>
+
 </div>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
 
-  <div class="nav-item active" onclick="scrollTopPage()">
-    <div>🏠</div>
-    होम
-  </div>
+<!-- ================= FIREBASE ================= -->
 
-  <div class="nav-item" onclick="showSection('news')">
-    <div>📰</div>
-    समाचार
-  </div>
-
-  <div class="nav-item" onclick="showSection('development')">
-    <div>🚧</div>
-    विकास
-  </div>
-
-  <div class="nav-item" onclick="showSection('gallery')">
-    <div>🖼️</div>
-    गैलरी
-  </div>
-
-  <div class="nav-item" onclick="openComplaint()">
-    <div>💬</div>
-    शिकायत
-  </div>
-
-</nav>
-
-
-<!-- FIREBASE -->
 <script type="module">
 
 import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 import {
   getFirestore,
@@ -745,409 +857,446 @@ import {
   orderBy,
   serverTimestamp
 }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 
-/* =========================================
-   🔥 अपनी FIREBASE WEB CONFIG यहाँ डालना है
-   ========================================= */
+/* ==========================================
+   YOUR FIREBASE CONFIG
+   ========================================== */
 
 const firebaseConfig = {
 
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyA3Os09vMv2eRhYf_BEb0GR4KRaWtz-GDs",
 
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  authDomain:
+  "dallusar-village-diary-e7cad.firebaseapp.com",
 
-  projectId: "YOUR_PROJECT_ID",
+  projectId:
+  "dallusar-village-diary-e7cad",
 
-  storageBucket: "YOUR_PROJECT.firebasestorage.app",
+  storageBucket:
+  "dallusar-village-diary-e7cad.firebasestorage.app",
 
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  messagingSenderId:
+  "521765701069",
 
-  appId: "YOUR_APP_ID"
+  appId:
+  "1:521765701069:web:66efef827e06effaa4f084",
+
+  measurementId:
+  "G-4G9E7K9RXZ"
 
 };
 
 
-/* FIREBASE START */
+/* INITIALIZE */
 
-let db = null;
+const app = initializeApp(firebaseConfig);
 
-try{
+const db = getFirestore(app);
 
-  const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-  db = getFirestore(app);
 
-  loadNews();
+/* ==========================================
+   HELPERS
+   ========================================== */
 
-  loadDevelopment();
+function safe(value){
 
-  loadGallery();
+  if(value === undefined || value === null){
+    return "";
+  }
 
-}catch(error){
-
-  console.log("Firebase अभी configure नहीं है:",error);
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
-/* NEWS */
+/* ==========================================
+   PHONE LOGIN
+   ========================================== */
 
-function loadNews(){
+let confirmationResult = null;
 
-  if(!db) return;
+let recaptchaVerifier = null;
 
-  const q = query(
-    collection(db,"news"),
-    orderBy("createdAt","desc")
+
+function setupRecaptcha(){
+
+  if(recaptchaVerifier){
+    return;
+  }
+
+  recaptchaVerifier = new RecaptchaVerifier(
+    auth,
+    "recaptcha-container",
+    {
+      size:"normal",
+
+      callback:function(){
+
+        document.getElementById("loginMsg").textContent =
+          "reCAPTCHA पूरा हो गया। अब OTP भेज सकते हैं।";
+
+      },
+
+      "expired-callback":function(){
+
+        document.getElementById("loginMsg").textContent =
+          "reCAPTCHA expire हो गया। दोबारा पूरा करें।";
+
+      }
+    }
   );
 
-  onSnapshot(q,(snapshot)=>{
-
-    const list = document.getElementById("newsList");
-
-    list.innerHTML="";
-
-    if(snapshot.empty){
-
-      list.innerHTML=`
-        <div class="data-card">
-          <h3>अभी कोई नई खबर नहीं</h3>
-          <p>नई खबर आने पर यहाँ दिखाई देगी।</p>
-        </div>
-      `;
-
-      return;
-    }
-
-    snapshot.forEach(doc=>{
-
-      const data=doc.data();
-
-      list.innerHTML += `
-        <div class="data-card">
-          <h3>${safe(data.title || "नई खबर")}</h3>
-          <p>${safe(data.description || "")}</p>
-        </div>
-      `;
-
-    });
-
-  });
+  recaptchaVerifier.render();
 
 }
 
 
-/* DEVELOPMENT */
+document.getElementById("sendOtpBtn")
+.addEventListener("click",async function(){
 
-function loadDevelopment(){
+  const phone =
+    document.getElementById("phoneNumber")
+    .value
+    .replace(/\D/g,"");
 
-  if(!db) return;
+  const msg =
+    document.getElementById("loginMsg");
 
-  const q=query(
-    collection(db,"development"),
-    orderBy("createdAt","desc")
-  );
+  if(phone.length !== 10){
 
-  onSnapshot(q,(snapshot)=>{
-
-    const list=document.getElementById("developmentList");
-
-    list.innerHTML="";
-
-    if(snapshot.empty){
-
-      list.innerHTML=`
-        <div class="data-card">
-          <h3>विकास कार्य</h3>
-          <p>विकास कार्यों की जानकारी जल्द उपलब्ध होगी।</p>
-        </div>
-      `;
-
-      return;
-    }
-
-    snapshot.forEach(doc=>{
-
-      const data=doc.data();
-
-      list.innerHTML += `
-        <div class="data-card">
-          <h3>${safe(data.title || "विकास कार्य")}</h3>
-          <p>${safe(data.description || "")}</p>
-          <span class="badge">
-            ${safe(data.status || "जानकारी")}
-          </span>
-        </div>
-      `;
-
-    });
-
-  });
-
-}
-
-
-/* GALLERY */
-
-function loadGallery(){
-
-  if(!db) return;
-
-  const q=query(
-    collection(db,"gallery"),
-    orderBy("createdAt","desc")
-  );
-
-  onSnapshot(q,(snapshot)=>{
-
-    const list=document.getElementById("galleryList");
-
-    list.innerHTML="";
-
-    if(snapshot.empty){
-
-      list.innerHTML=`
-        <div class="data-card">
-          <h3>फोटो गैलरी</h3>
-          <p>गाँव की तस्वीरें जल्द यहाँ दिखाई देंगी।</p>
-        </div>
-      `;
-
-      return;
-    }
-
-    snapshot.forEach(doc=>{
-
-      const data=doc.data();
-
-      list.innerHTML += `
-        <div class="card">
-          <img
-            src="${safe(data.image || "")}"
-            style="width:100%;height:150px;object-fit:cover;border-radius:14px;"
-          >
-          <h3 style="margin-top:9px;">
-            ${safe(data.title || "दल्लूसर गाँव")}
-          </h3>
-        </div>
-      `;
-
-    });
-
-  });
-
-}
-
-
-/* COMPLAINT */
-
-document
-.getElementById("complaintForm")
-.addEventListener("submit",async(e)=>{
-
-  e.preventDefault();
-
-  if(!db){
-
-    alert("Firebase अभी सेट नहीं है।");
+    msg.textContent =
+      "कृपया सही 10 अंकों का मोबाइल नंबर डालें।";
 
     return;
   }
 
-  const name=document.getElementById("cName").value.trim();
-
-  const mobile=document.getElementById("cMobile").value.trim();
-
-  const subject=document.getElementById("cSubject").value.trim();
-
-  const complaint=document.getElementById("cComplaint").value.trim();
-
   try{
 
-    await addDoc(
-      collection(db,"complaints"),
-      {
-        name:name,
-        mobile:mobile,
-        subject:subject,
-        complaint:complaint,
-        status:"नई",
-        createdAt:serverTimestamp()
-      }
-    );
+    setupRecaptcha();
 
-    alert("आपकी शिकायत / सुझाव सफलतापूर्वक भेज दिया गया।");
+    this.disabled = true;
 
-    document.getElementById("complaintForm").reset();
+    msg.textContent =
+      "OTP भेजा जा रहा है...";
 
-    closeComplaint();
+    confirmationResult =
+      await signInWithPhoneNumber(
+        auth,
+        "+91" + phone,
+        recaptchaVerifier
+      );
 
-  }catch(error){
+    document.getElementById("otpBox")
+      .style.display = "block";
+
+    msg.textContent =
+      "OTP आपके मोबाइल नंबर पर भेज दिया गया है।";
+
+  }
+
+  catch(error){
 
     console.error(error);
 
-    alert("शिकायत भेजने में समस्या हुई।");
+    msg.textContent =
+      "OTP भेजने में समस्या हुई: " +
+      error.message;
+
+    this.disabled = false;
 
   }
 
 });
 
 
-/* SECURITY HELPER */
+document.getElementById("verifyOtpBtn")
+.addEventListener("click",async function(){
 
-function safe(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-</script>
-
-
-<script>
-
-/* PROFILE */
-
-function openProfile(){
-
-  document.getElementById("profileModal").style.display="block";
-
-}
-
-function closeProfile(){
-
-  document.getElementById("profileModal").style.display="none";
-
-}
-
-
-/* COMPLAINT */
-
-function openComplaint(){
-
-  document.getElementById("complaintModal").style.display="block";
-
-}
-
-function closeComplaint(){
-
-  document.getElementById("complaintModal").style.display="none";
-
-}
-
-
-/* SECTIONS */
-
-function showSection(type){
-
-  let id="";
-
-  if(type==="news") id="newsSection";
-
-  if(type==="development") id="developmentSection";
-
-  if(type==="gallery") id="gallerySection";
-
-  if(id){
-
-    document
-      .getElementById(id)
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-  }
-
-}
-
-
-/* HOME */
-
-function scrollTopPage(){
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ALERT */
-
-function simpleAlert(message){
-
-  alert(message);
-
-}
-
-
-/* SEARCH */
-
-function searchCards(){
-
-  const value=
-    document
-    .getElementById("searchInput")
+  const otp =
+    document.getElementById("otpInput")
     .value
-    .toLowerCase()
     .trim();
 
-  const cards=
-    document.querySelectorAll("#cardGrid .card");
+  const msg =
+    document.getElementById("loginMsg");
 
-  cards.forEach(card=>{
+  if(otp.length !== 6){
 
-    const text=
-      card.innerText.toLowerCase();
+    msg.textContent =
+      "कृपया 6 अंकों का OTP डालें।";
 
-    if(text.includes(value)){
+    return;
+  }
 
-      card.style.display="block";
+  if(!confirmationResult){
 
-    }else{
+    msg.textContent =
+      "पहले OTP भेजें।";
 
-      card.style.display="none";
+    return;
+  }
 
-    }
+  try{
 
-  });
+    this.disabled = true;
 
-}
+    msg.textContent =
+      "OTP verify हो रहा है...";
 
+    await confirmationResult.confirm(otp);
 
-/* MODAL OUTSIDE CLICK */
-
-window.onclick=function(event){
-
-  const profile=
-    document.getElementById("profileModal");
-
-  const complaint=
-    document.getElementById("complaintModal");
-
-  if(event.target===profile){
-
-    closeProfile();
+    msg.textContent =
+      "Login सफल।";
 
   }
 
-  if(event.target===complaint){
+  catch(error){
 
-    closeComplaint();
+    console.error(error);
+
+    msg.textContent =
+      "OTP गलत है या verify नहीं हो पाया।";
+
+    this.disabled = false;
+
+  }
+
+});
+
+
+/* ==========================================
+   AUTH STATE
+   ========================================== */
+
+onAuthStateChanged(auth,(user)=>{
+
+  const loginScreen =
+    document.getElementById("loginScreen");
+
+  const mainApp =
+    document.getElementById("mainApp");
+
+  if(user){
+
+    loginScreen.style.display = "none";
+
+    mainApp.style.display = "block";
+
+  }
+
+  else{
+
+    loginScreen.style.display = "flex";
+
+    mainApp.style.display = "none";
+
+  }
+
+});
+
+
+/* LOGOUT */
+
+window.logoutUser = async function(){
+
+  try{
+
+    await signOut(auth);
+
+  }
+
+  catch(error){
+
+    console.error(error);
 
   }
 
 };
 
-</script>
 
-</body>
-        </html>
+/* ==========================================
+   NEWS
+   ========================================== */
+
+function loadNews(){
+
+  const list =
+    document.getElementById("newsList");
+
+  try{
+
+    const q = query(
+      collection(db,"news"),
+      orderBy("createdAt","desc")
+    );
+
+    onSnapshot(q,(snapshot)=>{
+
+      if(snapshot.empty){
+
+        list.innerHTML =
+          '<div class="empty">अभी कोई समाचार उपलब्ध नहीं है।</div>';
+
+        return;
+      }
+
+      list.innerHTML = "";
+
+      snapshot.forEach((doc)=>{
+
+        const data = doc.data();
+
+        const item =
+          document.createElement("div");
+
+        item.className = "dataItem";
+
+        item.innerHTML = `
+          <h3>📰 ${safe(data.title)}</h3>
+          <p>${safe(data.description)}</p>
+        `;
+
+        list.appendChild(item);
+
+      });
+
+    },(error)=>{
+
+      console.error(error);
+
+      list.innerHTML =
+        '<div class="empty">समाचार लोड नहीं हो पाए।</div>';
+
+    });
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* ==========================================
+   DEVELOPMENT
+   ========================================== */
+
+function loadDevelopment(){
+
+  const list =
+    document.getElementById("developmentList");
+
+  try{
+
+    const q = query(
+      collection(db,"development"),
+      orderBy("createdAt","desc")
+    );
+
+    onSnapshot(q,(snapshot)=>{
+
+      if(snapshot.empty){
+
+        list.innerHTML =
+          '<div class="empty">अभी कोई विकास कार्य उपलब्ध नहीं है।</div>';
+
+        return;
+      }
+
+      list.innerHTML = "";
+
+      snapshot.forEach((doc)=>{
+
+        const data = doc.data();
+
+        const item =
+          document.createElement("div");
+
+        item.className = "dataItem";
+
+        item.innerHTML = `
+          <h3>🏗️ ${safe(data.title)}</h3>
+          <p>${safe(data.description)}</p>
+          ${
+            data.status
+            ?
+            `<span class="status">${safe(data.status)}</span>`
+            :
+            ""
+          }
+        `;
+
+        list.appendChild(item);
+
+      });
+
+    },(error)=>{
+
+      console.error(error);
+
+      list.innerHTML =
+        '<div class="empty">विकास कार्य लोड नहीं हो पाए।</div>';
+
+    });
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* ==========================================
+   GALLERY
+   ========================================== */
+
+function loadGallery(){
+
+  const list =
+    document.getElementById("galleryList");
+
+  try{
+
+    const q = query(
+      collection(db,"gallery"),
+      orderBy("createdAt","desc")
+    );
+
+    onSnapshot(q,(snapshot)=>{
+
+      if(snapshot.empty){
+
+        list.innerHTML =
+          '<div class="empty">अभी कोई फोटो उपलब्ध नहीं है।</div>';
+
+        return;
+      }
+
+      list.innerHTML = "";
+
+      snapshot.
