@@ -1,86 +1,423 @@
+Index html 1
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>दल्लूसर गाँव</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f3f7f5;color:#222;padding-bottom:70px}
-.header{background:linear-gradient(135deg,#087f5b,#16a085);color:white;padding:20px 16px;border-radius:0 0 25px 25px}
-.header-top{display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:22px;font-weight:bold}.header small{display:block;margin-top:5px;opacity:.9}.header-icon{font-size:35px}
-.search-box{padding:15px}.search-box input{width:100%;padding:13px 16px;border:1px solid #ddd;border-radius:25px;font-size:15px}
-.founder,.notice,.data-card,.contact{margin:15px;background:white;border-radius:17px;padding:15px;box-shadow:0 3px 12px #00000012}
-.founder{display:flex;align-items:center;gap:12px}.founder img{width:65px;height:65px;border-radius:50%;object-fit:cover}
-.profile-btn,.submit-btn,.admin-btn{border:0;background:#087f5b;color:white;padding:10px 14px;border-radius:12px}
-.profile-btn{margin-top:8px}.notice{background:#fff8dc;border-left:5px solid #f0ad00}
-.section{padding:15px}.section h2{margin-bottom:12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:white;padding:18px 10px;border-radius:17px;text-align:center;box-shadow:0 3px 10px #00000012;cursor:pointer}
-.card-icon{font-size:30px;margin-bottom:7px}.data-card img{width:100%;max-height:250px;object-fit:cover;border-radius:12px;margin-bottom:8px}
-footer{text-align:center;padding:25px 15px;color:#666;font-size:13px}
-.modal{display:none;position:fixed;z-index:500;inset:0;background:#0009;padding:20px}
-.modal-box{max-width:500px;margin:50px auto;background:white;border-radius:20px;padding:20px;max-height:90vh;overflow-y:auto}
-.close{float:right;border:0;background:#eee;border-radius:50%;width:32px;height:32px}
-.form-group{margin:12px 0}.form-group label{display:block;margin-bottom:5px;font-weight:bold}
-.form-group input,.form-group textarea{width:100%;padding:11px;border:1px solid #ccc;border-radius:10px}
-.form-group textarea{min-height:100px}.submit-btn{width:100%;font-size:16px}
-#groundPage{display:none;position:fixed;z-index:300;inset:0;overflow-y:auto;background:#f3f7f5;padding:20px 18px 90px}
-.ground-container{max-width:700px;margin:auto}.ground-back{border:0;background:white;padding:10px 15px;border-radius:20px;margin-bottom:20px}
-.ground-header{text-align:center;margin-bottom:20px}.ground-icon{font-size:55px}.ground-header h1{margin:8px 0}
-.ground-info,.ground-demand,.ground-highlight{background:white;padding:18px;border-radius:18px;margin-bottom:12px}
-.ground-info p,.ground-demand p{line-height:1.6}.ground-highlight{background:#e4f6ee;text-align:center;font-weight:bold}
-.ground-demand{background:#fff8dc}
-#aiButton{position:fixed;right:18px;bottom:78px;width:58px;height:58px;border-radius:50%;background:#087f5b;color:white;display:flex;align-items:center;justify-content:center;font-size:27px;box-shadow:0 5px 18px #0004;z-index:180}
-.ai-chat{display:none;position:fixed;z-index:400;right:15px;bottom:75px;width:calc(100% - 30px);max-width:420px;height:570px;background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 35px #0005}
-.ai-header{background:linear-gradient(135deg,#087f5b,#16a085);color:white;padding:16px;display:flex;justify-content:space-between}
-.ai-header button{border:0;background:#ffffff33;color:white;width:35px;height:35px;border-radius:50%}
-.ai-messages{height:calc(100% - 130px);padding:15px;overflow-y:auto;background:#f3f7f5}
-.ai-msg{max-width:85%;padding:11px 13px;border-radius:14px;margin-bottom:10px;line-height:1.5;white-space:pre-wrap}
-.ai-msg.bot{background:white}.ai-msg.user{background:#087f5b;color:white;margin-left:auto}
-.ai-input-box{height:65px;display:flex;gap:8px;padding:10px;border-top:1px solid #ddd}
-.ai-input-box input{flex:1;border:1px solid #ccc;border-radius:25px;padding:0 15px}
-.ai-input-box button{width:45px;border:0;border-radius:50%;background:#087f5b;color:white;font-size:20px}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:62px;background:white;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -3px 15px #0002;z-index:170}
-.bottom-nav button{border:0;background:none;font-size:12px;color:#555}.bottom-nav span{display:block;font-size:22px}
-#loginScreen{position:fixed;inset:0;z-index:1000;background:linear-gradient(135deg,#087f5b,#16a085);display:flex;align-items:center;justify-content:center;padding:20px}
-.login-box{background:white;width:100%;max-width:400px;border-radius:25px;padding:25px;box-shadow:0 10px 40px #0005}
-.login-box h1{text-align:center;margin-bottom:8px}.login-box p{text-align:center;color:#666;margin-bottom:20px}
-.login-btn{width:100%;padding:13px;border:0;border-radius:12px;background:#087f5b;color:white;font-size:16px;font-weight:bold}
-#loginMsg{text-align:center;color:#c00;margin-top:12px;font-size:14px}
-#app{display:none}
-.admin-panel{background:#eef8f3;padding:15px;border-radius:15px;margin-top:15px}
-.admin-row{display:flex;gap:8px;margin-top:8px}.admin-row button{flex:1}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+}
+
+body{
+  background:#f3f7f5;
+  color:#173b31;
+  padding-bottom:75px;
+}
+
+/* HEADER */
+.header{
+  background:linear-gradient(135deg,#075e54,#0b8f72,#19b394);
+  color:white;
+  padding:28px 20px 75px;
+  border-radius:0 0 32px 32px;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:800;
+}
+
+.header small{
+  display:block;
+  margin-top:7px;
+  opacity:.9;
+  font-size:14px;
+}
+
+.header-icon{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+}
+
+/* SEARCH */
+.search{
+  margin:-32px 18px 20px;
+  position:relative;
+}
+
+.search input{
+  width:100%;
+  padding:17px 20px 17px 48px;
+  border:0;
+  outline:none;
+  border-radius:18px;
+  background:white;
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+  font-size:15px;
+}
+
+.search span{
+  position:absolute;
+  left:18px;
+  top:14px;
+  font-size:22px;
+}
+
+/* FOUNDER */
+.founder{
+  position:relative;
+  margin:70px 18px 25px;
+  padding:72px 20px 25px;
+  text-align:center;
+  background:white;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.10);
+  border:1px solid #e5efeb;
+}
+
+.profile{
+  position:absolute;
+  top:-58px;
+  left:50%;
+  transform:translateX(-50%);
+  width:116px;
+  height:116px;
+  border-radius:50%;
+  object-fit:cover;
+  background:white;
+  padding:4px;
+  border:4px solid white;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+.founder h2{
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.role{
+  color:#087b63;
+  font-weight:bold;
+  font-size:15px;
+}
+
+.tagline{
+  margin:10px 0 18px;
+  color:#65756f;
+  font-size:14px;
+}
+
+.profile-btn{
+  border:0;
+  background:#087b63;
+  color:white;
+  padding:11px 22px;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* ANNOUNCEMENT */
+.notice{
+  margin:18px;
+  padding:17px;
+  background:linear-gradient(135deg,#fff8df,#fff);
+  border-left:5px solid #f1b800;
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(0,0,0,.07);
+}
+
+.notice-title{
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.notice p{
+  color:#65756f;
+  font-size:14px;
+}
+
+/* SECTION */
+.section{
+  margin:25px 18px;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.section-title h2{
+  font-size:20px;
+}
+
+.section-title span{
+  font-size:13px;
+  color:#078266;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+}
+
+.card{
+  background:white;
+  padding:20px 12px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.07);
+  border:1px solid #e8efec;
+  transition:.2s;
+  cursor:pointer;
+}
+
+.card:active{
+  transform:scale(.96);
+}
+
+.card .icon{
+  width:53px;
+  height:53px;
+  margin:auto;
+  border-radius:17px;
+  background:#e8f7f2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:27px;
+  margin-bottom:10px;
+}
+
+.card h3{
+  font-size:15px;
+  margin-bottom:5px;
+}
+
+.card p{
+  font-size:11px;
+  color:#7a8883;
+}
+
+/* DATA CARDS */
+.data-card{
+  background:white;
+  padding:18px;
+  border-radius:19px;
+  margin-bottom:12px;
+  box-shadow:0 5px 18px rgba(0,0,0,.07);
+}
+
+.data-card h3{
+  font-size:17px;
+  margin-bottom:7px;
+}
+
+.data-card p{
+  color:#687873;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:5px 10px;
+  border-radius:20px;
+  background:#e7f7f1;
+  color:#087b63;
+  font-size:12px;
+  font-weight:bold;
+}
+
+/* QUICK CONTACT */
+.contact{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+}
+
+.contact-card{
+  min-width:145px;
+  background:white;
+  padding:18px;
+  border-radius:18px;
+  box-shadow:0 5px 15px rgba(0,0,0,.07);
+}
+
+.contact-card b{
+  display:block;
+  margin-bottom:6px;
+}
+
+.contact-card small{
+  color:#74817d;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:100;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.55);
+  padding:20px;
+}
+
+.modal-box{
+  background:white;
+  max-width:450px;
+  margin:70px auto;
+  border-radius:25px;
+  padding:25px;
+  position:relative;
+  max-height:85vh;
+  overflow:auto;
+}
+
+.close{
+  position:absolute;
+  right:18px;
+  top:14px;
+  font-size:27px;
+  cursor:pointer;
+}
+
+.modal-profile{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  margin:5px auto 15px;
+}
+
+.modal-box h2{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.modal-box p{
+  line-height:1.7;
+  color:#63726d;
+  font-size:14px;
+}
+
+/* FORM */
+.form-group{
+  margin-bottom:14px;
+}
+
+.form-group label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:6px;
+  font-size:14px;
+}
+
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #dce8e3;
+  border-radius:13px;
+  outline:none;
+  font-size:14px;
+}
+
+.form-group textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.submit{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:14px;
+  background:#087b63;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:68px;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  box-shadow:0 -5px 20px rgba(0,0,0,.10);
+  z-index:50;
+}
+
+.nav-item{
+  text-align:center;
+  color:#74817d;
+  font-size:11px;
+  cursor:pointer;
+}
+
+.nav-item div{
+  font-size:21px;
+  margin-bottom:3px;
+}
+
+.nav-item.active{
+  color:#078266;
+  font-weight:bold;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:30px 15px;
+  color:#83908c;
+  font-size:12px;
+}
+
+@media(max-width:360px){
+  .logo{font-size:23px}
+  .card{padding:17px 8px}
+}
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
-<div id="loginScreen">
-  <div class="login-box">
-    <h1>🔐 Admin Login</h1>
-    <p>दल्लूसर गाँव Admin Panel</p>
-
-    <div class="form-group">
-      <label>Email</label>
-      <input id="loginEmail" type="email" placeholder="Admin Email">
-    </div>
-
-    <div class="form-group">
-      <label>Password</label>
-      <input id="loginPassword" type="password" placeholder="Password">
-    </div>
-
-    <button class="login-btn" onclick="adminLogin()">Login</button>
-    <div id="loginMsg"></div>
-  </div>
-</div>
-
-<!-- ================= MAIN APP ================= -->
-<div id="app">
-
+<!-- HEADER -->
 <header class="header">
   <div class="header-top">
     <div>
@@ -91,662 +428,728 @@ footer{text-align:center;padding:25px 15px;color:#666;font-size:13px}
   </div>
 </header>
 
-<div class="search-box">
-<input id="searchInput" placeholder="🔎 गाँव में खोजें..." oninput="searchCards()">
+<!-- SEARCH -->
+<div class="search">
+  <span>🔍</span>
+  <input id="searchInput" type="text" placeholder="गाँव में खोजें..." oninput="searchCards()">
 </div>
 
-<div class="founder">
-<img src="manoj.jpg" alt="संस्थापक">
-<div>
-<h3>मनोज पारीक</h3>
-<div>👑 संस्थापक — मनोज पारीक</div>
-<small>दल्लूसर गाँव की डिजिटल पहल</small><br>
-<button class="profile-btn" onclick="openProfile()">प्रोफाइल देखें</button>
-</div>
-</div>
+<!-- FOUNDER -->
+<section class="founder">
+  <img src="manoj.jpg" class="profile" alt="मनोज पारीक">
 
-<div class="notice">
-📢 <b>गाँव सूचना</b><br>
-दल्लूसर गाँव से जुड़ी महत्वपूर्ण जानकारी, समाचार और विकास अपडेट यहाँ देखें।
-</div>
+  <h2>मनोज पारीक</h2>
 
+  <div class="role">
+    👑 संस्थापक —मनोज पारीक 😊
+  </div<
+
+  <div class="tagline">
+    अपने गाँव को डिजिटल रूप से जोड़ने का एक प्रयास
+  </div>
+
+  <button class="profile-btn" onclick="openProfile()">
+    👤 मेरा प्रोफाइल
+  </button>
+</section>
+
+<!-- NOTICE -->
+<section class="notice">
+  <div class="notice-title">📢 महत्वपूर्ण सूचना</div>
+  <p id="noticeText">
+    दल्लूसर गाँव से जुड़ी महत्वपूर्ण खबरें और सूचनाएँ यहाँ दिखाई जाएँगी।
+  </p>
+</section>
+
+<!-- MAIN OPTIONS -->
 <section class="section">
-<h2>📌 मुख्य सेवाएँ</h2>
+  <div class="section-title">
+    <h2>गाँव की सेवाएँ</h2>
+    <span>सभी देखें</span>
+  </div>
 
-<div class="grid" id="cardGrid">
+  <div class="grid" id="cardGrid">
 
-<div class="card" onclick="showSection('news')">
-<div class="card-icon">📰</div><b>गाँव की खबरें</b>
-</div>
+    <div class="card" onclick="showSection('news')">
+      <div class="icon">📰</div>
+      <h3>गाँव की खबरें</h3>
+      <p>नई खबरें और सूचनाएँ</p>
+    </div>
 
-<div class="card" onclick="showSection('development')">
-<div class="card-icon">🏗️</div><b>गाँव का विकास</b>
-</div>
+    <div class="card" onclick="showSection('development')">
+      <div class="icon">🚧</div>
+      <h3>विकास कार्य</h3>
+      <p>गाँव में चल रहे कार्य</p>
+    </div>
 
-<div class="card" onclick="alert('ग्राम पंचायत की जानकारी जल्द जोड़ी जाएगी।')">
-<div class="card-icon">🏛️</div><b>ग्राम पंचायत</b>
-</div>
+    <div class="card" onclick="simpleAlert('ग्राम पंचायत की जानकारी जल्द जोड़ी जाएगी।')">
+      <div class="icon">🏛️</div>
+      <h3>ग्राम पंचायत</h3>
+      <p>पंचायत संबंधी जानकारी</p>
+    </div>
 
-<div class="card" onclick="alert('विद्यालय की जानकारी जल्द जोड़ी जाएगी।')">
-<div class="card-icon">🏫</div><b>विद्यालय</b>
-</div>
+    <div class="card" onclick="simpleAlert('विद्यालय की जानकारी जल्द जोड़ी जाएगी।')">
+      <div class="icon">🏫</div>
+      <h3>विद्यालय</h3>
+      <p>स्कूल और शिक्षा</p>
+    </div>
 
-<div class="card" onclick="showGroundPage()">
-<div class="card-icon">🏏</div><b>खेल मैदान</b>
-</div>
+    <div class="card" onclick="simpleAlert('खेल मैदान की जानकारी जल्द जोड़ी जाएगी।')">
+      <div class="icon">🏏</div>
+      <h3>खेल मैदान</h3>
+      <p>खेल एवं युवा गतिविधियाँ</p>
+    </div>
 
-<div class="card" onclick="showSection('gallery')">
-<div class="card-icon">📸</div><b>फोटो गैलरी</b>
-</div>
+    <div class="card" onclick="showSection('gallery')">
+      <div class="icon">🖼️</div>
+      <h3>फोटो गैलरी</h3>
+      <p>गाँव की यादें</p>
+    </div>
 
-<div class="card" onclick="alert('गाँव का इतिहास जल्द जोड़ा जाएगा।')">
-<div class="card-icon">📜</div><b>गाँव का इतिहास</b>
-</div>
+    <div class="card" onclick="simpleAlert('गाँव का इतिहास जल्द जोड़ा जाएगा।')">
+      <div class="icon">📜</div>
+      <h3>गाँव का इतिहास</h3>
+      <p>हमारी विरासत</p>
+    </div>
 
-<div class="card" onclick="alert('सरकारी योजनाओं की जानकारी जल्द जोड़ी जाएगी।')">
-<div class="card-icon">📋</div><b>सरकारी योजनाएँ</b>
-</div>
+    <div class="card" onclick="simpleAlert('सरकारी योजनाओं की जानकारी जल्द जोड़ी जाएगी।')">
+      <div class="icon">📋</div>
+      <h3>सरकारी योजनाएँ</h3>
+      <p>जनकल्याण योजनाएँ</p>
+    </div>
 
-<div class="card" onclick="openComplaint()">
-<div class="card-icon">📝</div><b>शिकायत करें</b>
-</div>
+    <div class="card" onclick="openComplaint()">
+      <div class="icon">💬</div>
+      <h3>शिकायत / सुझाव</h3>
+      <p>अपनी बात रखें</p>
+    </div>
 
-<div class="card" onclick="alert('महत्वपूर्ण संपर्क जल्द जोड़े जाएंगे।')">
-<div class="card-icon">📞</div><b>महत्वपूर्ण संपर्क</b>
-</div>
+    <div class="card" onclick="simpleAlert('महत्वपूर्ण संपर्क जल्द जोड़े जाएँगे।')">
+      <div class="icon">☎️</div>
+      <h3>महत्वपूर्ण संपर्क</h3>
+      <p>जरूरी नंबर</p>
+    </div>
 
-<div class="card" onclick="alert('गाँव का नक्शा जल्द जोड़ा जाएगा।')">
-<div class="card-icon">📍</div><b>गाँव का नक्शा</b>
-</div>
+    <div class="card" onclick="simpleAlert('गाँव का नक्शा जल्द जोड़ा जाएगा।')">
+      <div class="icon">📍</div>
+      <h3>गाँव का नक्शा</h3>
+      <p>स्थान और रास्ते</p>
+    </div>
 
-<div class="card" onclick="alert('आपातकालीन नंबर जल्द जोड़े जाएंगे।')">
-<div class="card-icon">🚨</div><b>आपातकाल</b>
-</div>
+    <div class="card" onclick="simpleAlert('आपातकालीन संपर्क जल्द जोड़े जाएँगे।')">
+      <div class="icon">🚨</div>
+      <h3>आपातकालीन सहायता</h3>
+      <p>जरूरी सहायता</p>
+    </div>
 
-<div class="card" onclick="alert('पानी और सड़क की जानकारी जल्द जोड़ी जाएगी।')">
-<div class="card-icon">🚰</div><b>पानी / सड़क</b>
-</div>
+    <div class="card" onclick="simpleAlert('पानी और सड़क से जुड़े कार्य यहाँ दिखेंगे।')">
+      <div class="icon">💧</div>
+      <h3>पानी एवं सड़क</h3>
+      <p>स्थानीय समस्याएँ</p>
+    </div>
 
-<div class="card" onclick="alert('पर्यावरण अभियान की जानकारी जल्द जोड़ी जाएगी।')">
-<div class="card-icon">🌳</div><b>पर्यावरण</b>
-</div>
+    <div class="card" onclick="simpleAlert('पर्यावरण अभियान की जानकारी यहाँ होगी।')">
+      <div class="icon">🌱</div>
+      <h3>पर्यावरण अभियान</h3>
+      <p>हरियाली और स्वच्छता</p>
+    </div>
 
-<div class="card" onclick="alert('गाँव के वीडियो जल्द जोड़े जाएंगे।')">
-<div class="card-icon">🎥</div><b>वीडियो</b>
-</div>
+    <div class="card" onclick="simpleAlert('वीडियो जल्द जोड़े जाएँगे।')">
+      <div class="icon">🎥</div>
+      <h3>वीडियो</h3>
+      <p>गाँव के वीडियो</p>
+    </div>
 
-<div class="card" onclick="alert('गाँव की विस्तृत जानकारी जल्द जोड़ी जाएगी।')">
-<div class="card-icon">ℹ️</div><b>गाँव की जानकारी</b>
-</div>
+    <div class="card" onclick="simpleAlert('गाँव की सामान्य जानकारी जल्द जोड़ी जाएगी।')">
+      <div class="icon">ℹ️</div>
+      <h3>गाँव की जानकारी</h3>
+      <p>हमारे गाँव के बारे में</p>
+    </div>
 
-</div>
+  </div>
 </section>
 
 <!-- NEWS -->
-<section class="section" id="newsSection" style="display:none">
-<h2>📰 गाँव की खबरें</h2>
-<div id="newsList">लोड हो रहा है...</div>
+<section class="section" id="newsSection">
+  <div class="section-title">
+    <h2>📰 नवीनतम खबरें</h2>
+    <span>LIVE</span>
+  </div>
+  <div id="newsList">
+    <div class="data-card">
+      <h3>दल्लूसर गाँव ऐप</h3>
+      <p>गाँव की खबरें यहाँ दिखाई देंगी।</p>
+    </div>
+  </div>
 </section>
 
 <!-- DEVELOPMENT -->
-<section class="section" id="developmentSection" style="display:none">
-<h2>🏗️ गाँव का विकास</h2>
-<div id="developmentList">लोड हो रहा है...</div>
+<section class="section" id="developmentSection">
+  <div class="section-title">
+    <h2>🚧 विकास कार्य</h2>
+  </div>
+
+  <div id="developmentList">
+    <div class="data-card">
+      <h3>गाँव के विकास कार्य</h3>
+      <p>चल रहे और पूर्ण हुए विकास कार्य यहाँ दिखाई देंगे।</p>
+    </div>
+  </div>
 </section>
 
 <!-- GALLERY -->
-<section class="section" id="gallerySection" style="display:none">
-<h2>📸 फोटो गैलरी</h2>
-<div id="galleryList">लोड हो रहा है...</div>
+<section class="section" id="gallerySection">
+  <div class="section-title">
+    <h2>🖼️ फोटो गैलरी</h2>
+  </div>
+
+  <div class="grid" id="galleryList">
+    <div class="data-card">
+      <h3>दल्लूसर गाँव</h3>
+      <p>गाँव की तस्वीरें यहाँ दिखाई देंगी।</p>
+    </div>
+  </div>
 </section>
 
-<!-- GROUND -->
-<div id="groundPage">
-<div class="ground-container">
-<button class="ground-back" onclick="closeGroundPage()">← वापस</button>
-<div class="ground-header">
-<div class="ground-icon">🏏</div>
-<h1>खेल मैदान — दल्लूसर</h1>
-<p>गाँव के युवाओं और खेल प्रेमियों के लिए</p>
-</div>
-
-<div class="ground-info">
-<h3>📍 वर्तमान स्थिति</h3>
-<p>हमारे गाँव दल्लूसर में वर्तमान में कोई विकसित एवं व्यवस्थित खेल मैदान उपलब्ध नहीं है।</p>
-</div>
-
-<div class="ground-info">
-<h3>⚠️ भूमि की स्थिति</h3>
-<p>खेल मैदान हेतु उपयोग में आने वाली भूमि पर कुछ स्थानीय लोगों द्वारा अतिक्रमण किए जाने की शिकायत सामने आई है।</p>
-</div>
-
-<div class="ground-highlight">🏏 हमारा मैदान — हमारे गाँव के युवाओं का अधिकार।</div>
-
-<div class="ground-demand">
-<h3>📢 हमारी मांग</h3>
-<p>खेल मैदान की भूमि को सुरक्षित कराया जाए और गाँव के बच्चों एवं युवाओं के लिए व्यवस्थित खेल मैदान विकसित किया जाए।</p>
-</div>
-
-<div class="ground-info">
-<h3>🤝 हमारा उद्देश्य</h3>
-<p>हमारा उद्देश्य किसी व्यक्ति विशेष के विरुद्ध आरोप लगाना नहीं, बल्कि गाँव के युवाओं के लिए बेहतर खेल सुविधा उपलब्ध कराना है।</p>
-</div>
-
-</div>
-</div>
-
+<!-- CONTACT -->
 <section class="section">
-<h2>📞 संपर्क</h2>
-<div class="contact">
-<b>🏡 दल्लूसर गाँव</b>
-<p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
-</div>
+  <div class="section-title">
+    <h2>☎️ महत्वपूर्ण संपर्क</h2>
+  </div>
+
+  <div class="contact">
+    <div class="contact-card">
+      <b>🏛️ ग्राम पंचायत</b>
+      <small>संपर्क जल्द जोड़ा जाएगा</small>
+    </div>
+
+    <div class="contact-card">
+      <b>🏫 विद्यालय</b>
+      <small>संपर्क जल्द जोड़ा जाएगा</small>
+    </div>
+
+    <div class="contact-card">
+      <b>🚨 आपातकाल</b>
+      <small>112</small>
+    </div>
+  </div>
 </section>
 
-<footer>
-<p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
-<p style="margin-top:8px">यह वेबसाइट गाँव की जानकारी और सामुदायिक अपडेट के लिए है।</p>
-
-<button class="admin-btn" onclick="openAdminPanel()">
-⚙️ Admin Panel
-</button>
-
-<button class="admin-btn" style="margin-left:5px;background:#b00020" onclick="adminLogout()">
-🚪 Logout
-</button>
-</footer>
-
+<div class="footer">
+  © 2026 दल्लूसर गाँव ऐप<br>
+  <br>
+  <b>अपने गाँव के लिए • अपने गाँव के साथ</b>
 </div>
 
-<!-- PROFILE -->
+<!-- PROFILE MODAL -->
 <div class="modal" id="profileModal">
-<div class="modal-box">
-<button class="close" onclick="closeProfile()">✕</button>
-<h2>👑 संस्थापक</h2><br>
-<h3>मनोज पारीक</h3>
-<p style="margin-top:10px">दल्लूसर गाँव की डिजिटल पहल के संस्थापक।</p>
-</div>
+  <div class="modal-box">
+    <div class="close" onclick="closeProfile()">×</div>
+
+    <img src="manoj.jpg" class="modal-profile" alt="मनोज पारीक">
+
+    <h2>मनोज पारीक</h2>
+
+    <p style="text-align:center;">
+      👑 संस्थापक — मनोज पारीक 😊
+    </p>
+
+    <br>
+
+    <p>
+      दल्लूसर गाँव को डिजिटल रूप से जोड़ने,
+      गाँव की खबरों, विकास कार्यों और स्थानीय
+      गतिविधियों को एक मंच पर लाने का प्रयास।
+    </p>
+  </div>
 </div>
 
-<!-- COMPLAINT -->
+<!-- COMPLAINT MODAL -->
 <div class="modal" id="complaintModal">
-<div class="modal-box">
-<button class="close" onclick="closeComplaint()">✕</button>
-<h2>📝 शिकायत दर्ज करें</h2>
+  <div class="modal-box">
+    <div class="close" onclick="closeComplaint()">×</div>
 
-<form id="complaintForm">
+    <h2>💬 शिकायत / सुझाव</h2>
 
-<div class="form-group">
-<label>नाम</label>
-<input id="complaintName" required>
+    <form id="complaintForm">
+
+      <div class="form-group">
+        <label>आपका नाम</label>
+        <input id="cName" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>मोबाइल नंबर</label>
+        <input id="cMobile" type="tel" required>
+      </div>
+
+      <div class="form-group">
+        <label>विषय</label>
+        <input id="cSubject" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>शिकायत / सुझाव</label>
+        <textarea id="cComplaint" required></textarea>
+      </div>
+
+      <button class="submit" type="submit">
+        शिकायत भेजें
+      </button>
+
+    </form>
+  </div>
 </div>
 
-<div class="form-group">
-<label>मोबाइल नंबर</label>
-<input id="complaintMobile" type="tel" required>
-</div>
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
 
-<div class="form-group">
-<label>विषय</label>
-<input id="complaintSubject" required>
-</div>
+  <div class="nav-item active" onclick="scrollTopPage()">
+    <div>🏠</div>
+    होम
+  </div>
 
-<div class="form-group">
-<label>शिकायत</label>
-<textarea id="complaintText" required></textarea>
-</div>
+  <div class="nav-item" onclick="showSection('news')">
+    <div>📰</div>
+    समाचार
+  </div>
 
-<button class="submit-btn">शिकायत भेजें</button>
-</form>
-</div>
-</div>
+  <div class="nav-item" onclick="showSection('development')">
+    <div>🚧</div>
+    विकास
+  </div>
 
-<!-- ADMIN PANEL -->
-<div class="modal" id="adminModal">
-<div class="modal-box">
+  <div class="nav-item" onclick="showSection('gallery')">
+    <div>🖼️</div>
+    गैलरी
+  </div>
 
-<button class="close" onclick="closeAdminPanel()">✕</button>
-<h2>⚙️ Admin Panel</h2>
+  <div class="nav-item" onclick="openComplaint()">
+    <div>💬</div>
+    शिकायत
+  </div>
 
-<div class="admin-panel">
+</nav>
 
-<h3>📰 नई खबर</h3>
 
-<div class="form-group">
-<input id="adminNewsTitle" placeholder="खबर का शीर्षक">
-</div>
-
-<div class="form-group">
-<textarea id="adminNewsDesc" placeholder="खबर की जानकारी"></textarea>
-</div>
-
-<button class="submit-btn" onclick="addNews()">📰 खबर प्रकाशित करें</button>
-
-<hr style="margin:20px 0">
-
-<h3>🏗️ नया विकास अपडेट</h3>
-
-<div class="form-group">
-<input id="adminDevTitle" placeholder="विकास कार्य का नाम">
-</div>
-
-<div class="form-group">
-<textarea id="adminDevDesc" placeholder="विकास कार्य की जानकारी"></textarea>
-</div>
-
-<button class="submit-btn" onclick="addDevelopment()">🏗️ विकास प्रकाशित करें</button>
-
-<hr style="margin:20px 0">
-
-<h3>📢 नई सूचना</h3>
-
-<div class="form-group">
-<input id="adminNoticeTitle" placeholder="सूचना का शीर्षक">
-</div>
-
-<div class="form-group">
-<textarea id="adminNoticeDesc" placeholder="सूचना"></textarea>
-</div>
-
-<button class="submit-btn" onclick="addNotice()">📢 सूचना प्रकाशित करें</button>
-
-<hr style="margin:20px 0">
-
-<h3>📋 शिकायतें</h3>
-<div id="complaintsList">लोड हो रहा है...</div>
-
-</div>
-</div>
-</div>
-
-<!-- AI -->
-<div id="aiButton" onclick="openAIChat()">🤖</div>
-
-<div id="aiChat" class="ai-chat">
-<div class="ai-header">
-<div>
-<b>🤖 दल्लूसर AI सहायक</b>
-<small>गाँव की जानकारी के लिए पूछें</small>
-</div>
-<button onclick="closeAIChat()">✕</button>
-</div>
-
-<div id="aiMessages" class="ai-messages">
-<div class="ai-msg bot">नमस्ते! 👋 मैं दल्लूसर AI सहायक हूँ।</div>
-</div>
-
-<div class="ai-input-box">
-<input id="aiInput" placeholder="अपना सवाल लिखें..."
-onkeydown="if(event.key==='Enter')sendAIMessage()">
-<button onclick="sendAIMessage()">➤</button>
-</div>
-</div>
-
-<!-- BOTTOM -->
-<div class="bottom-nav">
-<button onclick="scrollTopPage()"><span>🏠</span>होम</button>
-<button onclick="showSection('news')"><span>📰</span>खबरें</button>
-<button onclick="showSection('development')"><span>🏗️</span>विकास</button>
-<button onclick="showSection('gallery')"><span>📸</span>गैलरी</button>
-<button onclick="openAIChat()"><span>🤖</span>AI</button>
-</div>
-
-<!-- ================= FIREBASE ================= -->
-
+<!-- FIREBASE -->
 <script type="module">
 
-import {initializeApp}
+import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
-getFirestore,collection,addDoc,onSnapshot,
-query,orderBy,serverTimestamp,getDoc,doc
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy,
+  serverTimestamp
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-import {
-getAuth,signInWithEmailAndPassword,
-signOut,onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
+/* =========================================
+   🔥 अपनी FIREBASE WEB CONFIG यहाँ डालना है
+   ========================================= */
 
-/* 🔥// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAF4uC6jgeN7LXCm5w1l4G-P7-XWRT3P0A",
-  authDomain: "dallusar-village-diary-a2c35.firebaseapp.com",
-  projectId: "dallusar-village-diary-a2c35",
-  storageBucket: "dallusar-village-diary-a2c35.firebasestorage.app",
-  messagingSenderId: "771762232267",
-  appId: "1:771762232267:web:aca8cb27ee6efb1fcab44e",
-  measurementId: "G-0TKLN9WQ22"
+
+  apiKey: "YOUR_API_KEY",
+
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+
+  projectId: "YOUR_PROJECT_ID",
+
+  storageBucket: "YOUR_PROJECT.firebasestorage.app",
+
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+
+  appId: "YOUR_APP_ID"
+
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);  */
 
-const firebaseConfig={
-apiKey:"YOUR_API_KEY",
-authDomain:"dallusar-village-diary-a2c35.firebaseapp.com",
-projectId:"dallusar-village-diary-a2c35",
-storageBucket:"dallusar-village-diary-a2c35.firebasestorage.app",
-messagingSenderId:"771762232267",
-appId:"1:771762232267:web:aca8cb27ee6efb1fcab44e",
-measurementId:"G-0TKLN9WQ22"
-};
+/* FIREBASE START */
 
-const app=initializeApp(firebaseConfig);
-const db=getFirestore(app);
-const auth=getAuth(app);
-
-
-/* ================= ADMIN LOGIN ================= */
-
-window.adminLogin=async function(){
-
-const email=document.getElementById("loginEmail").value.trim();
-const password=document.getElementById("loginPassword").value;
-const msg=document.getElementById("loginMsg");
-
-if(!email||!password){
-msg.textContent="❌ Email और Password डालें।";
-return;
-}
-
-msg.textContent="⏳ Login हो रहा है...";
+let db = null;
 
 try{
 
-const result=await signInWithEmailAndPassword(
-auth,email,password
-);
+  const app = initializeApp(firebaseConfig);
 
-const user=result.user;
+  db = getFirestore(app);
 
-const adminRef=doc(db,"admins","admin");
-const adminSnap=await getDoc(adminRef);
+  loadNews();
 
-if(!adminSnap.exists()){
-await signOut(auth);
-msg.textContent="❌ Admin record नहीं मिला।";
-return;
-}
+  loadDevelopment();
 
-const adminData=adminSnap.data();
-
-if(
-!adminData.email ||
-adminData.email.toLowerCase()!==user.email.toLowerCase()
-){
-
-await signOut(auth);
-msg.textContent="❌ यह Email Admin नहीं है।";
-return;
-
-}
-
-document.getElementById("loginScreen").style.display="none";
-document.getElementById("app").style.display="block";
-
-msg.textContent="";
+  loadGallery();
 
 }catch(error){
 
-console.error(error);
-
-if(error.code==="auth/invalid-credential"){
-msg.textContent="❌ Email या Password गलत है।";
-}else if(error.code==="auth/invalid-email"){
-msg.textContent="❌ Email गलत है।";
-}else{
-msg.textContent="❌ Login नहीं हुआ: "+error.message;
-}
+  console.log("Firebase अभी configure नहीं है:",error);
 
 }
 
-};
 
-
-/* ================= AUTH STATE ================= */
-
-onAuthStateChanged(auth,async(user)=>{
-
-if(!user){
-
-document.getElementById("loginScreen").style.display="flex";
-document.getElementById("app").style.display="none";
-return;
-
-}
-
-try{
-
-const adminSnap=await getDoc(doc(db,"admins","admin"));
-
-if(
-adminSnap.exists() &&
-adminSnap.data().email &&
-adminSnap.data().email.toLowerCase()===user.email.toLowerCase()
-){
-
-document.getElementById("loginScreen").style.display="none";
-document.getElementById("app").style.display="block";
-
-}else{
-
-await signOut(auth);
-
-}
-
-}catch(error){
-
-console.error(error);
-await signOut(auth);
-
-}
-
-});
-
-
-window.adminLogout=async function(){
-
-await signOut(auth);
-
-document.getElementById("loginEmail").value="";
-document.getElementById("loginPassword").value="";
-document.getElementById("loginMsg").textContent="";
-
-};
-
-
-/* ================= NEWS ================= */
+/* NEWS */
 
 function loadNews(){
 
-const q=query(
-collection(db,"news"),
-orderBy("createdAt","desc")
-);
+  if(!db) return;
 
-onSnapshot(q,snapshot=>{
+  const q = query(
+    collection(db,"news"),
+    orderBy("createdAt","desc")
+  );
 
-const list=document.getElementById("newsList");
+  onSnapshot(q,(snapshot)=>{
 
-if(snapshot.empty){
-list.innerHTML="<p>अभी कोई खबर उपलब्ध नहीं है।</p>";
-return;
+    const list = document.getElementById("newsList");
+
+    list.innerHTML="";
+
+    if(snapshot.empty){
+
+      list.innerHTML=`
+        <div class="data-card">
+          <h3>अभी कोई नई खबर नहीं</h3>
+          <p>नई खबर आने पर यहाँ दिखाई देगी।</p>
+        </div>
+      `;
+
+      return;
+    }
+
+    snapshot.forEach(doc=>{
+
+      const data=doc.data();
+
+      list.innerHTML += `
+        <div class="data-card">
+          <h3>${safe(data.title || "नई खबर")}</h3>
+          <p>${safe(data.description || "")}</p>
+        </div>
+      `;
+
+    });
+
+  });
+
 }
 
-list.innerHTML="";
 
-snapshot.forEach(d=>{
-
-const x=d.data();
-
-list.innerHTML+=`
-<div class="data-card">
-<h3>${safe(x.title||"गाँव की खबर")}</h3>
-<p>${safe(x.description||"")}</p>
-</div>`;
-
-});
-
-});
-
-}
-
-
-/* ================= DEVELOPMENT ================= */
+/* DEVELOPMENT */
 
 function loadDevelopment(){
 
-const q=query(
-collection(db,"development"),
-orderBy("createdAt","desc")
-);
+  if(!db) return;
 
-onSnapshot(q,snapshot=>{
+  const q=query(
+    collection(db,"development"),
+    orderBy("createdAt","desc")
+  );
 
-const list=document.getElementById("developmentList");
+  onSnapshot(q,(snapshot)=>{
 
-if(snapshot.empty){
-list.innerHTML="<p>अभी कोई विकास अपडेट उपलब्ध नहीं है।</p>";
-return;
+    const list=document.getElementById("developmentList");
+
+    list.innerHTML="";
+
+    if(snapshot.empty){
+
+      list.innerHTML=`
+        <div class="data-card">
+          <h3>विकास कार्य</h3>
+          <p>विकास कार्यों की जानकारी जल्द उपलब्ध होगी।</p>
+        </div>
+      `;
+
+      return;
+    }
+
+    snapshot.forEach(doc=>{
+
+      const data=doc.data();
+
+      list.innerHTML += `
+        <div class="data-card">
+          <h3>${safe(data.title || "विकास कार्य")}</h3>
+          <p>${safe(data.description || "")}</p>
+          <span class="badge">
+            ${safe(data.status || "जानकारी")}
+          </span>
+        </div>
+      `;
+
+    });
+
+  });
+
 }
 
-list.innerHTML="";
 
-snapshot.forEach(d=>{
-
-const x=d.data();
-
-list.innerHTML+=`
-<div class="data-card">
-<h3>${safe(x.title||"विकास कार्य")}</h3>
-<p>${safe(x.description||"")}</p>
-</div>`;
-
-});
-
-});
-
-}
-
-
-/* ================= GALLERY ================= */
+/* GALLERY */
 
 function loadGallery(){
 
-const q=query(
-collection(db,"gallery"),
-orderBy("createdAt","desc")
-);
+  if(!db) return;
 
-onSnapshot(q,snapshot=>{
+  const q=query(
+    collection(db,"gallery"),
+    orderBy("createdAt","desc")
+  );
 
-const list=document.getElementById("galleryList");
+  onSnapshot(q,(snapshot)=>{
 
-if(snapshot.empty){
-list.innerHTML="<p>अभी कोई फोटो उपलब्ध नहीं है।</p>";
-return;
+    const list=document.getElementById("galleryList");
+
+    list.innerHTML="";
+
+    if(snapshot.empty){
+
+      list.innerHTML=`
+        <div class="data-card">
+          <h3>फोटो गैलरी</h3>
+          <p>गाँव की तस्वीरें जल्द यहाँ दिखाई देंगी।</p>
+        </div>
+      `;
+
+      return;
+    }
+
+    snapshot.forEach(doc=>{
+
+      const data=doc.data();
+
+      list.innerHTML += `
+        <div class="card">
+          <img
+            src="${safe(data.image || "")}"
+            style="width:100%;height:150px;object-fit:cover;border-radius:14px;"
+          >
+          <h3 style="margin-top:9px;">
+            ${safe(data.title || "दल्लूसर गाँव")}
+          </h3>
+        </div>
+      `;
+
+    });
+
+  });
+
 }
 
-list.innerHTML="";
 
-snapshot.forEach(d=>{
+/* COMPLAINT */
 
-const x=d.data();
+document
+.getElementById("complaintForm")
+.addEventListener("submit",async(e)=>{
 
-list.innerHTML+=`
-<div class="data-card">
-${x.imageUrl?`<img src="${safe(x.imageUrl)}">`:""}
-<h3>${safe(x.title||"गाँव की फोटो")}</h3>
-</div>`;
+  e.preventDefault();
+
+  if(!db){
+
+    alert("Firebase अभी सेट नहीं है।");
+
+    return;
+  }
+
+  const name=document.getElementById("cName").value.trim();
+
+  const mobile=document.getElementById("cMobile").value.trim();
+
+  const subject=document.getElementById("cSubject").value.trim();
+
+  const complaint=document.getElementById("cComplaint").value.trim();
+
+  try{
+
+    await addDoc(
+      collection(db,"complaints"),
+      {
+        name:name,
+        mobile:mobile,
+        subject:subject,
+        complaint:complaint,
+        status:"नई",
+        createdAt:serverTimestamp()
+      }
+    );
+
+    alert("आपकी शिकायत / सुझाव सफलतापूर्वक भेज दिया गया।");
+
+    document.getElementById("complaintForm").reset();
+
+    closeComplaint();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert("शिकायत भेजने में समस्या हुई।");
+
+  }
 
 });
 
-});
+
+/* SECURITY HELPER */
+
+function safe(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+</script>
+
+
+<script>
+
+/* PROFILE */
+
+function openProfile(){
+
+  document.getElementById("profileModal").style.display="block";
+
+}
+
+function closeProfile(){
+
+  document.getElementById("profileModal").style.display="none";
 
 }
 
 
-/* ================= ADMIN ADD ================= */
+/* COMPLAINT */
 
-window.addNews=async function(){
+function openComplaint(){
 
-const title=document.getElementById("adminNewsTitle").value.trim();
-const description=document.getElementById("adminNewsDesc").value.trim();
-
-if(!title||!description){
-alert("शीर्षक और जानकारी भरें।");
-return;
-}
-
-try{
-
-await addDoc(collection(db,"news"),{
-title:title,
-description:description,
-createdAt:serverTimestamp()
-});
-
-alert("✅ खबर प्रकाशित हो गई।");
-
-document.getElementById("adminNewsTitle").value="";
-document.getElementById("adminNewsDesc").value="";
-
-}catch(e){
-
-console.error(e);
-alert("❌ खबर प्रकाशित नहीं हुई।");
+  document.getElementById("complaintModal").style.display="block";
 
 }
+
+function closeComplaint(){
+
+  document.getElementById("complaintModal").style.display="none";
+
+}
+
+
+/* SECTIONS */
+
+function showSection(type){
+
+  let id="";
+
+  if(type==="news") id="newsSection";
+
+  if(type==="development") id="developmentSection";
+
+  if(type==="gallery") id="gallerySection";
+
+  if(id){
+
+    document
+      .getElementById(id)
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+  }
+
+}
+
+
+/* HOME */
+
+function scrollTopPage(){
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ALERT */
+
+function simpleAlert(message){
+
+  alert(message);
+
+}
+
+
+/* SEARCH */
+
+function searchCards(){
+
+  const value=
+    document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+  const cards=
+    document.querySelectorAll("#cardGrid .card");
+
+  cards.forEach(card=>{
+
+    const text=
+      card.innerText.toLowerCase();
+
+    if(text.includes(value)){
+
+      card.style.display="block";
+
+    }else{
+
+      card.style.display="none";
+
+    }
+
+  });
+
+}
+
+
+/* MODAL OUTSIDE CLICK */
+
+window.onclick=function(event){
+
+  const profile=
+    document.getElementById("profileModal");
+
+  const complaint=
+    document.getElementById("complaintModal");
+
+  if(event.target===profile){
+
+    closeProfile();
+
+  }
+
+  if(event.target===complaint){
+
+    closeComplaint();
+
+  }
 
 };
 
+</script>
 
-window.addDevelopment=async function(){
-
-const title=document.getElementById("adminDevTitle").value.trim();
-const description=document.getElementById("adminDevDesc").value.trim();
-
-if(!title||!description){
-alert("जानकारी भरें।");
-return;
-}
-
-try{
-
-await addDoc(collection(db,"development"),{
-title:title,
-description:description,
-createdAt:serverTimestamp()
-});
-
-alert("✅ विकास अपडेट प्रकाशित हो गया।");
-
-document.getElementById("adminDevTitle").value="";
-document.getElementById("adminDevDesc").value="";
-
-}catch(e){
-
-console.error(e);
-alert("❌ अपडेट प्रकाशित नहीं हुआ।");
-
-}
-
-};
-
-
-window.addNotice=async function(){
-
-const title=document.getElementById("adminNoticeTitle").value.trim();
-const description=document.get
+</body>
+        </html>
