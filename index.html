@@ -1,1155 +1,1058 @@
-Index html 1
 
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>दल्लूसर गाँव</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#006b58">
+  <title>दल्लूसर ग्राम-दर्पण”</title>
 
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body{
-  background:#f3f7f5;
-  color:#173b31;
-  padding-bottom:75px;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* HEADER */
-.header{
-  background:linear-gradient(135deg,#075e54,#0b8f72,#19b394);
-  color:white;
-  padding:28px 20px 75px;
-  border-radius:0 0 32px 32px;
-  box-shadow:0 8px 25px rgba(0,0,0,.15);
-}
+    body {
+      font-family: "Noto Sans Devanagari", Arial, sans-serif;
+      background: #eefaf8;
+      color: #123b35;
+      line-height: 1.6;
+    }
 
-.header-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
 
-.logo{
-  font-size:27px;
-  font-weight:800;
-}
+    button {
+      cursor: pointer;
+    }
 
-.header small{
-  display:block;
-  margin-top:7px;
-  opacity:.9;
-  font-size:14px;
-}
+    .top-header {
+      color: white;
+      padding: 20px 5%;
+      background:
+        linear-gradient(100deg, rgba(0, 91, 73, .98), rgba(0, 151, 133, .83)),
+        url("village-bg.jpg") center/cover;
+      position: relative;
+      overflow: hidden;
+    }
 
-.header-icon{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  background:rgba(255,255,255,.18);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:23px;
-}
+    .header-content {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-/* SEARCH */
-.search{
-  margin:-32px 18px 20px;
-  position:relative;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-.search input{
-  width:100%;
-  padding:17px 20px 17px 48px;
-  border:0;
-  outline:none;
-  border-radius:18px;
-  background:white;
-  box-shadow:0 8px 25px rgba(0,0,0,.12);
-  font-size:15px;
-}
+    .brand-logo {
+      width: 75px;
+      height: 75px;
+      display: grid;
+      place-items: center;
+      background: white;
+      color: #00856d;
+      border: 4px solid #d5f85c;
+      border-radius: 50%;
+      font-size: 40px;
+    }
 
-.search span{
-  position:absolute;
-  left:18px;
-  top:14px;
-  font-size:22px;
-}
+    .brand h1 {
+      font-size: clamp(25px, 4vw, 43px);
+      line-height: 1.2;
+    }
 
-/* FOUNDER */
-.founder{
-  position:relative;
-  margin:70px 18px 25px;
-  padding:72px 20px 25px;
-  text-align:center;
-  background:white;
-  border-radius:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,.10);
-  border:1px solid #e5efeb;
-}
+    .brand p {
+      color: #e5fff4;
+      font-size: 14px;
+      margin-top: 5px;
+    }
 
-.profile{
-  position:absolute;
-  top:-58px;
-  left:50%;
-  transform:translateX(-50%);
-  width:116px;
-  height:116px;
-  border-radius:50%;
-  object-fit:cover;
-  background:white;
-  padding:4px;
-  border:4px solid white;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
-}
+    .weather {
+      background: rgba(0, 50, 40, .35);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 25px;
+      padding: 10px 18px;
+      text-align: center;
+      white-space: nowrap;
+    }
 
-.founder h2{
-  font-size:24px;
-  margin-bottom:8px;
-}
+    .weather strong {
+      font-size: 22px;
+    }
 
-.role{
-  color:#087b63;
-  font-weight:bold;
-  font-size:15px;
-}
+    .search-wrap {
+      max-width: 1200px;
+      margin: 18px auto 0;
+      display: flex;
+      gap: 8px;
+      background: white;
+      padding: 7px;
+      border-radius: 35px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.15);
+    }
 
-.tagline{
-  margin:10px 0 18px;
-  color:#65756f;
-  font-size:14px;
-}
+    .search-wrap input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      color: #234c44;
+    }
 
-.profile-btn{
-  border:0;
-  background:#087b63;
-  color:white;
-  padding:11px 22px;
-  border-radius:30px;
-  font-weight:bold;
-  cursor:pointer;
-}
+    .search-wrap button {
+      border: none;
+      background: #00856d;
+      color: white;
+      padding: 0 24px;
+      border-radius: 28px;
+      font-weight: bold;
+    }
 
-/* ANNOUNCEMENT */
-.notice{
-  margin:18px;
-  padding:17px;
-  background:linear-gradient(135deg,#fff8df,#fff);
-  border-left:5px solid #f1b800;
-  border-radius:16px;
-  box-shadow:0 5px 18px rgba(0,0,0,.07);
-}
+    .container {
+      width: min(1200px, 92%);
+      margin: 25px auto 100px;
+    }
 
-.notice-title{
-  font-weight:bold;
-  margin-bottom:6px;
-}
+    .founder {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      padding: 25px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 8px 25px rgba(0, 100, 80, .10);
+      overflow: hidden;
+      position: relative;
+    }
 
-.notice p{
-  color:#65756f;
-  font-size:14px;
-}
+    .founder img {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #00a987;
+      flex-shrink: 0;
+    }
 
-/* SECTION */
-.section{
-  margin:25px 18px;
-}
+    .founder h2 {
+      font-size: 28px;
+      color: #005f4e;
+    }
 
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
+    .founder .role {
+      color: #00856d;
+      font-weight: bold;
+    }
 
-.section-title h2{
-  font-size:20px;
-}
+    .founder p {
+      color: #657d78;
+      margin: 5px 0 12px;
+    }
 
-.section-title span{
-  font-size:13px;
-  color:#078266;
-}
+    .btn {
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      background: #00856d;
+      color: white;
+      font-weight: bold;
+      transition: .2s;
+    }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:13px;
-}
+    .btn:hover {
+      background: #005f4e;
+      transform: translateY(-2px);
+    }
 
-.card{
-  background:white;
-  padding:20px 12px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 6px 20px rgba(0,0,0,.07);
-  border:1px solid #e8efec;
-  transition:.2s;
-  cursor:pointer;
-}
+    .notice {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 20px;
+      padding: 17px 22px;
+      background: #fff7cf;
+      border: 1px solid #f2cd48;
+      border-radius: 20px;
+    }
 
-.card:active{
-  transform:scale(.96);
-}
+    .notice-content {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-.card .icon{
-  width:53px;
-  height:53px;
-  margin:auto;
-  border-radius:17px;
-  background:#e8f7f2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:27px;
-  margin-bottom:10px;
-}
+    .notice-icon {
+      font-size: 34px;
+    }
 
-.card h3{
-  font-size:15px;
-  margin-bottom:5px;
-}
+    .notice h3 {
+      color: #785b00;
+    }
 
-.card p{
-  font-size:11px;
-  color:#7a8883;
-}
+    .notice p {
+      color: #806f32;
+      font-size: 14px;
+    }
 
-/* DATA CARDS */
-.data-card{
-  background:white;
-  padding:18px;
-  border-radius:19px;
-  margin-bottom:12px;
-  box-shadow:0 5px 18px rgba(0,0,0,.07);
-}
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 16px;
+    }
 
-.data-card h3{
-  font-size:17px;
-  margin-bottom:7px;
-}
+    .section-heading h2 {
+      font-size: 25px;
+      color: #005f4e;
+    }
 
-.data-card p{
-  color:#687873;
-  font-size:14px;
-  line-height:1.5;
-}
+    .section-heading span {
+      color: #00856d;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-.badge{
-  display:inline-block;
-  margin-top:10px;
-  padding:5px 10px;
-  border-radius:20px;
-  background:#e7f7f1;
-  color:#087b63;
-  font-size:12px;
-  font-weight:bold;
-}
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 15px;
+    }
 
-/* QUICK CONTACT */
-.contact{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-}
+    .service-card {
+      background: white;
+      border: 1px solid #dcefeb;
+      border-radius: 20px;
+      padding: 18px 10px;
+      text-align: center;
+      box-shadow: 0 5px 16px rgba(0, 100, 80, .08);
+      transition: .25s;
+    }
 
-.contact-card{
-  min-width:145px;
-  background:white;
-  padding:18px;
-  border-radius:18px;
-  box-shadow:0 5px 15px rgba(0,0,0,.07);
-}
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 100, 80, .16);
+    }
 
-.contact-card b{
-  display:block;
-  margin-bottom:6px;
-}
+    .service-icon {
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 10px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      color: white;
+      font-size: 32px;
+      box-shadow: inset 0 -5px 0 rgba(0,0,0,.08);
+    }
 
-.contact-card small{
-  color:#74817d;
-}
+    .red { background: linear-gradient(135deg, #ff6670, #e71949); }
+    .orange { background: linear-gradient(135deg, #ffc75c, #ee9200); }
+    .blue { background: linear-gradient(135deg, #65a9ff, #1857d9); }
+    .purple { background: linear-gradient(135deg, #bb72ff, #6e20ce); }
+    .green { background: linear-gradient(135deg, #61d67a, #078b3d); }
+    .pink { background: linear-gradient(135deg, #ff69bd, #d8007c); }
+    .teal { background: linear-gradient(135deg, #53d8d2, #008f9a); }
 
-/* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  z-index:100;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.55);
-  padding:20px;
-}
+    .service-card h3 {
+      color: #164d43;
+      font-size: 16px;
+    }
 
-.modal-box{
-  background:white;
-  max-width:450px;
-  margin:70px auto;
-  border-radius:25px;
-  padding:25px;
-  position:relative;
-  max-height:85vh;
-  overflow:auto;
-}
+    .service-card p {
+      color: #79918c;
+      font-size: 12px;
+      margin-top: 3px;
+    }
 
-.close{
-  position:absolute;
-  right:18px;
-  top:14px;
-  font-size:27px;
-  cursor:pointer;
-}
+    .service-card button {
+      border: none;
+      background: #e8f8f3;
+      color: #00856d;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-top: 10px;
+      font-weight: bold;
+    }
 
-.modal-profile{
-  width:100px;
-  height:100px;
-  border-radius:50%;
-  object-fit:cover;
-  display:block;
-  margin:5px auto 15px;
-}
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
 
-.modal-box h2{
-  text-align:center;
-  margin-bottom:15px;
-}
+    .panel {
+      background: white;
+      border: 1px solid #dcefeb;
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0, 100, 80, .07);
+    }
 
-.modal-box p{
-  line-height:1.7;
-  color:#63726d;
-  font-size:14px;
-}
+    .panel h3 {
+      color: #005f4e;
+      margin-bottom: 15px;
+    }
 
-/* FORM */
-.form-group{
-  margin-bottom:14px;
-}
+    .news-item,
+    .development-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #e5f0ed;
+    }
 
-.form-group label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:6px;
-  font-size:14px;
-}
+    .news-item:last-child,
+    .development-item:last-child {
+      border-bottom: none;
+    }
 
-.form-group input,
-.form-group textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #dce8e3;
-  border-radius:13px;
-  outline:none;
-  font-size:14px;
-}
+    .small-image {
+      width: 65px;
+      height: 55px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #dff2ed;
+      flex-shrink: 0;
+    }
 
-.form-group textarea{
-  min-height:110px;
-  resize:vertical;
-}
+    .news-item h4,
+    .development-item h4 {
+      font-size: 14px;
+      color: #24564c;
+    }
 
-.submit{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:14px;
-  background:#087b63;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-}
+    .news-item p,
+    .development-item p {
+      font-size: 12px;
+      color: #81958f;
+    }
 
-/* BOTTOM NAV */
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  height:68px;
-  background:white;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  box-shadow:0 -5px 20px rgba(0,0,0,.10);
-  z-index:50;
-}
+    .status {
+      margin-left: auto;
+      background: #dff8e7;
+      color: #078b3d;
+      border-radius: 15px;
+      padding: 3px 8px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
 
-.nav-item{
-  text-align:center;
-  color:#74817d;
-  font-size:11px;
-  cursor:pointer;
-}
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
 
-.nav-item div{
-  font-size:21px;
-  margin-bottom:3px;
-}
+    .gallery-grid img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 14px;
+      background: #dff2ed;
+    }
 
-.nav-item.active{
-  color:#078266;
-  font-weight:bold;
-}
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
 
-/* FOOTER */
-.footer{
-  text-align:center;
-  padding:30px 15px;
-  color:#83908c;
-  font-size:12px;
-}
+    .contact-card {
+      text-align: center;
+      padding: 18px;
+      background: white;
+      border-radius: 18px;
+      border: 1px solid #dcefeb;
+    }
 
-@media(max-width:360px){
-  .logo{font-size:23px}
-  .card{padding:17px 8px}
-}
-</style>
+    .contact-card .icon {
+      font-size: 32px;
+    }
+
+    .contact-card h3 {
+      color: #006b58;
+      font-size: 16px;
+    }
+
+    .contact-card p {
+      font-size: 13px;
+      color: #80968f;
+    }
+
+    .suggestion-banner {
+      margin-top: 20px;
+      background: linear-gradient(120deg, #006b58, #00a98b);
+      color: white;
+      padding: 25px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .suggestion-banner h2 {
+      margin-bottom: 5px;
+    }
+
+    .suggestion-banner p {
+      font-size: 14px;
+      opacity: .9;
+    }
+
+    .suggestion-banner .btn {
+      background: white;
+      color: #006b58;
+      white-space: nowrap;
+    }
+
+    footer {
+      text-align: center;
+      background: #004b3e;
+      color: white;
+      padding: 25px 15px 95px;
+    }
+
+    footer p {
+      font-size: 13px;
+      opacity: .85;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: space-around;
+      background: #005f4e;
+      padding: 9px 5px;
+      box-shadow: 0 -5px 20px rgba(0,0,0,.15);
+    }
+
+    .bottom-nav button {
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .bottom-nav span {
+      font-size: 22px;
+    }
+
+    .bottom-nav button:hover {
+      color: #d5f85c;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,.6);
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    .modal-box {
+      width: min(500px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 22px;
+      position: relative;
+    }
+
+    .modal-box h2 {
+      color: #006b58;
+      margin-bottom: 15px;
+    }
+
+    .close {
+      position: absolute;
+      top: 8px;
+      right: 15px;
+      border: none;
+      background: transparent;
+      font-size: 28px;
+      color: #78918a;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #34584f;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #cfe2dc;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #00856d;
+    }
+
+    @media (max-width: 750px) {
+      .header-content {
+        align-items: flex-start;
+      }
+
+      .weather {
+        display: none;
+      }
+
+      .founder {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .suggestion-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-logo {
+        width: 58px;
+        height: 58px;
+        font-size: 30px;
+      }
+
+      .brand h1 {
+        font-size: 24px;
+      }
+
+      .brand p {
+        font-size: 11px;
+      }
+
+      .search-wrap button {
+        padding: 0 15px;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .notice {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .notice .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-top">
-    <div>
-      <div class="logo">🏡 दल्लूसर गाँव</div>
-      <small>हमारा गाँव • हमारी पहचान • हमारा विकास</small>
-    </div>
-    <div class="header-icon">🌿</div>
-  </div>
-</header>
+  <header class="top-header" id="home">
+    <div class="header-content">
+      <div class="brand">
+        <div class="brand-logo">🌾</div>
 
-<!-- SEARCH -->
-<div class="search">
-  <span>🔍</span>
-  <input id="searchInput" type="text" placeholder="गाँव में खोजें..." oninput="searchCards()">
-</div>
-
-<!-- FOUNDER -->
-<section class="founder">
-  <img src="manoj.jpg" class="profile" alt="मनोज पारीक">
-
-  <h2>मनोज पारीक</h2>
-
-  <div class="role">
-    👑 संस्थापक —मनोज पारीक 😊
-  </div<
-
-  <div class="tagline">
-    अपने गाँव को डिजिटल रूप से जोड़ने का एक प्रयास
-  </div>
-
-  <button class="profile-btn" onclick="openProfile()">
-    👤 मेरा प्रोफाइल
-  </button>
-</section>
-
-<!-- NOTICE -->
-<section class="notice">
-  <div class="notice-title">📢 महत्वपूर्ण सूचना</div>
-  <p id="noticeText">
-    दल्लूसर गाँव से जुड़ी महत्वपूर्ण खबरें और सूचनाएँ यहाँ दिखाई जाएँगी।
-  </p>
-</section>
-
-<!-- MAIN OPTIONS -->
-<section class="section">
-  <div class="section-title">
-    <h2>गाँव की सेवाएँ</h2>
-    <span>सभी देखें</span>
-  </div>
-
-  <div class="grid" id="cardGrid">
-
-    <div class="card" onclick="showSection('news')">
-      <div class="icon">📰</div>
-      <h3>गाँव की खबरें</h3>
-      <p>नई खबरें और सूचनाएँ</p>
-    </div>
-
-    <div class="card" onclick="showSection('development')">
-      <div class="icon">🚧</div>
-      <h3>विकास कार्य</h3>
-      <p>गाँव में चल रहे कार्य</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('ग्राम पंचायत की जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">🏛️</div>
-      <h3>ग्राम पंचायत</h3>
-      <p>पंचायत संबंधी जानकारी</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('विद्यालय की जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">🏫</div>
-      <h3>विद्यालय</h3>
-      <p>स्कूल और शिक्षा</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('खेल मैदान की जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">🏏</div>
-      <h3>खेल मैदान</h3>
-      <p>खेल एवं युवा गतिविधियाँ</p>
-    </div>
-
-    <div class="card" onclick="showSection('gallery')">
-      <div class="icon">🖼️</div>
-      <h3>फोटो गैलरी</h3>
-      <p>गाँव की यादें</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('गाँव का इतिहास जल्द जोड़ा जाएगा।')">
-      <div class="icon">📜</div>
-      <h3>गाँव का इतिहास</h3>
-      <p>हमारी विरासत</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('सरकारी योजनाओं की जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">📋</div>
-      <h3>सरकारी योजनाएँ</h3>
-      <p>जनकल्याण योजनाएँ</p>
-    </div>
-
-    <div class="card" onclick="openComplaint()">
-      <div class="icon">💬</div>
-      <h3>शिकायत / सुझाव</h3>
-      <p>अपनी बात रखें</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('महत्वपूर्ण संपर्क जल्द जोड़े जाएँगे।')">
-      <div class="icon">☎️</div>
-      <h3>महत्वपूर्ण संपर्क</h3>
-      <p>जरूरी नंबर</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('गाँव का नक्शा जल्द जोड़ा जाएगा।')">
-      <div class="icon">📍</div>
-      <h3>गाँव का नक्शा</h3>
-      <p>स्थान और रास्ते</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('आपातकालीन संपर्क जल्द जोड़े जाएँगे।')">
-      <div class="icon">🚨</div>
-      <h3>आपातकालीन सहायता</h3>
-      <p>जरूरी सहायता</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('पानी और सड़क से जुड़े कार्य यहाँ दिखेंगे।')">
-      <div class="icon">💧</div>
-      <h3>पानी एवं सड़क</h3>
-      <p>स्थानीय समस्याएँ</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('पर्यावरण अभियान की जानकारी यहाँ होगी।')">
-      <div class="icon">🌱</div>
-      <h3>पर्यावरण अभियान</h3>
-      <p>हरियाली और स्वच्छता</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('वीडियो जल्द जोड़े जाएँगे।')">
-      <div class="icon">🎥</div>
-      <h3>वीडियो</h3>
-      <p>गाँव के वीडियो</p>
-    </div>
-
-    <div class="card" onclick="simpleAlert('गाँव की सामान्य जानकारी जल्द जोड़ी जाएगी।')">
-      <div class="icon">ℹ️</div>
-      <h3>गाँव की जानकारी</h3>
-      <p>हमारे गाँव के बारे में</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- NEWS -->
-<section class="section" id="newsSection">
-  <div class="section-title">
-    <h2>📰 नवीनतम खबरें</h2>
-    <span>LIVE</span>
-  </div>
-  <div id="newsList">
-    <div class="data-card">
-      <h3>दल्लूसर गाँव ऐप</h3>
-      <p>गाँव की खबरें यहाँ दिखाई देंगी।</p>
-    </div>
-  </div>
-</section>
-
-<!-- DEVELOPMENT -->
-<section class="section" id="developmentSection">
-  <div class="section-title">
-    <h2>🚧 विकास कार्य</h2>
-  </div>
-
-  <div id="developmentList">
-    <div class="data-card">
-      <h3>गाँव के विकास कार्य</h3>
-      <p>चल रहे और पूर्ण हुए विकास कार्य यहाँ दिखाई देंगे।</p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="section" id="gallerySection">
-  <div class="section-title">
-    <h2>🖼️ फोटो गैलरी</h2>
-  </div>
-
-  <div class="grid" id="galleryList">
-    <div class="data-card">
-      <h3>दल्लूसर गाँव</h3>
-      <p>गाँव की तस्वीरें यहाँ दिखाई देंगी।</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section">
-  <div class="section-title">
-    <h2>☎️ महत्वपूर्ण संपर्क</h2>
-  </div>
-
-  <div class="contact">
-    <div class="contact-card">
-      <b>🏛️ ग्राम पंचायत</b>
-      <small>संपर्क जल्द जोड़ा जाएगा</small>
-    </div>
-
-    <div class="contact-card">
-      <b>🏫 विद्यालय</b>
-      <small>संपर्क जल्द जोड़ा जाएगा</small>
-    </div>
-
-    <div class="contact-card">
-      <b>🚨 आपातकाल</b>
-      <small>112</small>
-    </div>
-  </div>
-</section>
-
-<div class="footer">
-  © 2026 दल्लूसर गाँव ऐप<br>
-  <br>
-  <b>अपने गाँव के लिए • अपने गाँव के साथ</b>
-</div>
-
-<!-- PROFILE MODAL -->
-<div class="modal" id="profileModal">
-  <div class="modal-box">
-    <div class="close" onclick="closeProfile()">×</div>
-
-    <img src="manoj.jpg" class="modal-profile" alt="मनोज पारीक">
-
-    <h2>मनोज पारीक</h2>
-
-    <p style="text-align:center;">
-      👑 संस्थापक — मनोज पारीक 😊
-    </p>
-
-    <br>
-
-    <p>
-      दल्लूसर गाँव को डिजिटल रूप से जोड़ने,
-      गाँव की खबरों, विकास कार्यों और स्थानीय
-      गतिविधियों को एक मंच पर लाने का प्रयास।
-    </p>
-  </div>
-</div>
-
-<!-- COMPLAINT MODAL -->
-<div class="modal" id="complaintModal">
-  <div class="modal-box">
-    <div class="close" onclick="closeComplaint()">×</div>
-
-    <h2>💬 शिकायत / सुझाव</h2>
-
-    <form id="complaintForm">
-
-      <div class="form-group">
-        <label>आपका नाम</label>
-        <input id="cName" type="text" required>
+        <div>
+          <h1>दल्लूसर गाँव की डायरी</h1>
+          <p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>मोबाइल नंबर</label>
-        <input id="cMobile" type="tel" required>
+      <div class="weather">
+        ☀️ <strong>28°C</strong><br>
+        <small>दल्लूसर, राजस्थान</small>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="गाँव में खोजें... खबरें, योजनाएँ, संपर्क आदि"
+        oninput="searchServices()"
+      >
+      <button onclick="searchServices()">खोजें 🔍</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="founder">
+      <img src="manoj.jpg" alt="Manoj Pareek">
+
+      <div>
+        <div class="role">👑 संस्थापक</div>
+        <h2>मनोज पारीक</h2>
+        <p>
+          “अपने गाँव को डिजिटल रूप से जोड़ने का एक प्रयास”
+        </p>
+        <button class="btn" onclick="openModal('profileModal')">
+          👤 मेरा प्रोफाइल →
+        </button>
+      </div>
+    </section>
+
+    <section class="notice">
+      <div class="notice-content">
+        <div class="notice-icon">📢</div>
+
+        <div>
+          <h3>महत्वपूर्ण सूचना</h3>
+          <p>
+            दल्लूसर गाँव से जुड़ी ताजा खबरें, विकास कार्य और सूचनाएँ यहाँ दिखाई जाएँगी।
+          </p>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>विषय</label>
-        <input id="cSubject" type="text" required>
-      </div>
-
-      <div class="form-group">
-        <label>शिकायत / सुझाव</label>
-        <textarea id="cComplaint" required></textarea>
-      </div>
-
-      <button class="submit" type="submit">
-        शिकायत भेजें
+      <button class="btn" onclick="scrollToSection('news')">
+        सभी सूचनाएँ देखें →
       </button>
+    </section>
 
-    </form>
-  </div>
-</div>
+    <section id="services">
+      <div class="section-heading">
+        <h2>▦ गाँव की सेवाएँ</h2>
+        <span>सभी सेवाएँ देखें →</span>
+      </div>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
+      <div class="service-grid" id="serviceGrid">
 
-  <div class="nav-item active" onclick="scrollTopPage()">
-    <div>🏠</div>
-    होम
-  </div>
-
-  <div class="nav-item" onclick="showSection('news')">
-    <div>📰</div>
-    समाचार
-  </div>
-
-  <div class="nav-item" onclick="showSection('development')">
-    <div>🚧</div>
-    विकास
-  </div>
-
-  <div class="nav-item" onclick="showSection('gallery')">
-    <div>🖼️</div>
-    गैलरी
-  </div>
-
-  <div class="nav-item" onclick="openComplaint()">
-    <div>💬</div>
-    शिकायत
-  </div>
-
-</nav>
-
-
-<!-- FIREBASE -->
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  orderBy,
-  serverTimestamp
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-/* =========================================
-   🔥 अपनी FIREBASE WEB CONFIG यहाँ डालना है
-   ========================================= */
-
-const firebaseConfig = {
-
-  apiKey: "YOUR_API_KEY",
-
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-
-  projectId: "YOUR_PROJECT_ID",
-
-  storageBucket: "YOUR_PROJECT.firebasestorage.app",
-
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-
-  appId: "YOUR_APP_ID"
-
-};
-
-
-/* FIREBASE START */
-
-let db = null;
-
-try{
-
-  const app = initializeApp(firebaseConfig);
-
-  db = getFirestore(app);
-
-  loadNews();
-
-  loadDevelopment();
-
-  loadGallery();
-
-}catch(error){
-
-  console.log("Firebase अभी configure नहीं है:",error);
-
-}
-
-
-/* NEWS */
-
-function loadNews(){
-
-  if(!db) return;
-
-  const q = query(
-    collection(db,"news"),
-    orderBy("createdAt","desc")
-  );
-
-  onSnapshot(q,(snapshot)=>{
-
-    const list = document.getElementById("newsList");
-
-    list.innerHTML="";
-
-    if(snapshot.empty){
-
-      list.innerHTML=`
-        <div class="data-card">
-          <h3>अभी कोई नई खबर नहीं</h3>
-          <p>नई खबर आने पर यहाँ दिखाई देगी।</p>
+        <div class="service-card searchable">
+          <div class="service-icon red">📰</div>
+          <h3>गाँव की खबरें</h3>
+          <p>ताजा खबरें और अपडेट</p>
+          <button onclick="scrollToSection('news')">→</button>
         </div>
-      `;
 
-      return;
-    }
-
-    snapshot.forEach(doc=>{
-
-      const data=doc.data();
-
-      list.innerHTML += `
-        <div class="data-card">
-          <h3>${safe(data.title || "नई खबर")}</h3>
-          <p>${safe(data.description || "")}</p>
-        </div>
-      `;
-
-    });
-
-  });
-
-}
-
-
-/* DEVELOPMENT */
-
-function loadDevelopment(){
-
-  if(!db) return;
-
-  const q=query(
-    collection(db,"development"),
-    orderBy("createdAt","desc")
-  );
-
-  onSnapshot(q,(snapshot)=>{
-
-    const list=document.getElementById("developmentList");
-
-    list.innerHTML="";
-
-    if(snapshot.empty){
-
-      list.innerHTML=`
-        <div class="data-card">
+        <div class="service-card searchable">
+          <div class="service-icon orange">🏗️</div>
           <h3>विकास कार्य</h3>
-          <p>विकास कार्यों की जानकारी जल्द उपलब्ध होगी।</p>
+          <p>चल रहे और पूर्ण कार्य</p>
+          <button onclick="scrollToSection('development')">→</button>
         </div>
-      `;
 
-      return;
-    }
-
-    snapshot.forEach(doc=>{
-
-      const data=doc.data();
-
-      list.innerHTML += `
-        <div class="data-card">
-          <h3>${safe(data.title || "विकास कार्य")}</h3>
-          <p>${safe(data.description || "")}</p>
-          <span class="badge">
-            ${safe(data.status || "जानकारी")}
-          </span>
+        <div class="service-card searchable">
+          <div class="service-icon blue">🏛️</div>
+          <h3>ग्राम पंचायत</h3>
+          <p>पंचायत संबंधी जानकारी</p>
+          <button onclick="showInfo('ग्राम पंचायत की जानकारी जल्द जोड़ी जाएगी।')">→</button>
         </div>
-      `;
 
-    });
+        <div class="service-card searchable">
+          <div class="service-icon purple">🎓</div>
+          <h3>विद्यालय</h3>
+          <p>स्कूल और शिक्षा</p>
+          <button onclick="showInfo('विद्यालय संबंधी जानकारी जल्द जोड़ी जाएगी।')">→</button>
+        </div>
 
-  });
-
-}
-
-
-/* GALLERY */
-
-function loadGallery(){
-
-  if(!db) return;
-
-  const q=query(
-    collection(db,"gallery"),
-    orderBy("createdAt","desc")
-  );
-
-  onSnapshot(q,(snapshot)=>{
-
-    const list=document.getElementById("galleryList");
-
-    list.innerHTML="";
-
-    if(snapshot.empty){
-
-      list.innerHTML=`
-        <div class="data-card">
+        <div class="service-card searchable">
+          <div class="service-icon green">📸</div>
           <h3>फोटो गैलरी</h3>
-          <p>गाँव की तस्वीरें जल्द यहाँ दिखाई देंगी।</p>
+          <p>गाँव की यादें</p>
+          <button onclick="scrollToSection('gallery')">→</button>
         </div>
-      `;
 
-      return;
+        <div class="service-card searchable">
+          <div class="service-icon pink">📜</div>
+          <h3>सरकारी योजनाएँ</h3>
+          <p>जनकल्याण योजनाएँ</p>
+          <button onclick="showInfo('सरकारी योजनाओं की जानकारी जल्द जोड़ी जाएगी।')">→</button>
+        </div>
+
+        <div class="service-card searchable">
+          <div class="service-icon teal">💬</div>
+          <h3>शिकायत / सुझाव</h3>
+          <p>अपनी बात रखें</p>
+          <button onclick="openModal('complaintModal')">→</button>
+        </div>
+
+        <div class="service-card searchable">
+          <div class="service-icon purple">📞</div>
+          <h3>महत्वपूर्ण संपर्क</h3>
+          <p>जरूरी नंबर</p>
+          <button onclick="scrollToSection('contact')">→</button>
+        </div>
+
+        <div class="service-card searchable">
+          <div class="service-icon orange">📍</div>
+          <h3>गाँव का नक्शा</h3>
+          <p>स्थान और रास्ते</p>
+          <button onclick="showInfo('गाँव का नक्शा जल्द जोड़ा जाएगा।')">→</button>
+        </div>
+
+        <div class="service-card searchable">
+          <div class="service-icon red">🚨</div>
+          <h3>आपातकालीन सहायता</h3>
+          <p>जरूरी सहायता</p>
+          <button onclick="showInfo('आपातकालीन नंबर: 112')">→</button>
+        </div>
+
+        <div class="service-card searchable">
+          <div class="service-icon blue">💧</div>
+          <h3>पानी एवं सड़क</h3>
+          <p>स्थानीय समस्याएँ</p>
+          <button onclick="showInfo('पानी और सड़क संबंधी जानकारी जल्द जोड़ी जाएगी।')">→</button>
+        </div>
+
+        <div class="service-card searchable">
+          <div class="service-icon green">🌱</div>
+          <h3>पर्यावरण अभियान</h3>
+          <p>हरियाली और स्वच्छता</p>
+          <button onclick="showInfo('पर्यावरण अभियान की जानकारी जल्द जोड़ी जाएगी।')">→</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="section-heading">
+        <h2>📰 नवीनतम खबरें</h2>
+        <span>सभी देखें →</span>
+      </div>
+
+      <div class="content-grid">
+        <div class="panel">
+          <h3>ताजा समाचार</h3>
+
+          <div class="news-item">
+            <img class="small-image" src="news-road.jpg" alt="सड़क निर्माण">
+            <div>
+              <h4>दल्लूसर गाँव में नई सड़क का निर्माण</h4>
+              <p>नई सूचना जल्द अपडेट होगी</p>
+            </div>
+            <span class="status">नई</span>
+          </div>
+
+          <div class="news-item">
+            <img class="small-image" src="news-clean.jpg" alt="स्वच्छता अभियान">
+            <div>
+              <h4>गाँव में स्वच्छता अभियान</h4>
+              <p>स्थानीय गतिविधि</p>
+            </div>
+            <span class="status">नई</span>
+          </div>
+
+          <div class="news-item">
+            <img class="small-image" src="news-meeting.jpg" alt="ग्राम सभा">
+            <div>
+              <h4>ग्राम सभा की बैठक</h4>
+              <p>महत्वपूर्ण सूचना</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="development">
+          <h3>🏗️ विकास कार्य</h3>
+
+          <div class="development-item">
+            <img class="small-image" src="road.jpg" alt="मुख्य सड़क">
+            <div>
+              <h4>मुख्य सड़क निर्माण</h4>
+              <p>दल्लूसर से आसपास के मार्ग</p>
+            </div>
+            <span class="status">चल रहा है</span>
+          </div>
+
+          <div class="development-item">
+            <img class="small-image" src="water.jpg" alt="पेयजल टंकी">
+            <div>
+              <h4>पेयजल टंकी निर्माण</h4>
+              <p>गाँव के लिए नई सुविधा</p>
+            </div>
+            <span class="status">चल रहा है</span>
+          </div>
+
+          <div class="development-item">
+            <img class="small-image" src="school.jpg" alt="विद्यालय">
+            <div>
+              <h4>विद्यालय भवन मरम्मत</h4>
+              <p>शिक्षा से जुड़ा कार्य</p>
+            </div>
+            <span class="status">पूर्ण</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-heading">
+        <h2>📸 फोटो गैलरी</h2>
+        <span>सभी देखें →</span>
+      </div>
+
+      <div class="panel">
+        <div class="gallery-grid">
+          <img src="gallery1.jpg" alt="दल्लूसर गाँव">
+          <img src="gallery2.jpg" alt="गाँव का दृश्य">
+          <img src="gallery3.jpg" alt="गाँव के खेत">
+          <img src="gallery4.jpg" alt="गाँव की सड़क">
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-heading">
+        <h2>📞 महत्वपूर्ण संपर्क</h2>
+        <span>जरूरी जानकारी</span>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="icon">🏛️</div>
+          <h3>ग्राम पंचायत</h3>
+          <p>संपर्क नंबर जल्द जोड़ा जाएगा</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="icon">🏫</div>
+          <h3>विद्यालय</h3>
+          <p>संपर्क नंबर जल्द जोड़ा जाएगा</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="icon">🚨</div>
+          <h3>आपातकाल</h3>
+          <p>112</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="suggestion-banner">
+      <div>
+        <h2>💡 आपका सुझाव हमारे लिए महत्वपूर्ण है</h2>
+        <p>गाँव को बेहतर बनाने के लिए अपना सुझाव या शिकायत भेजें।</p>
+      </div>
+
+      <button class="btn" onclick="openModal('complaintModal')">
+        सुझाव / शिकायत भेजें →
+      </button>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 दल्लूसर गाँव की डायरी</p>
+    <p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
+    <p>Designed and managed by Manoj Pareek</p>
+  </footer>
+
+  <nav class="bottom-nav">
+    <button onclick="scrollToSection('home')">
+      <span>🏠</span>
+      होम
+    </button>
+
+    <button onclick="scrollToSection('news')">
+      <span>📰</span>
+      खबरें
+    </button>
+
+    <button onclick="scrollToSection('development')">
+      <span>🏗️</span>
+      विकास
+    </button>
+
+    <button onclick="scrollToSection('gallery')">
+      <span>📸</span>
+      गैलरी
+    </button>
+
+    <button onclick="openModal('complaintModal')">
+      <span>💬</span>
+      सुझाव
+    </button>
+  </nav>
+
+  <!-- Profile Modal -->
+  <div class="modal" id="profileModal" onclick="closeOutside(event, 'profileModal')">
+    <div class="modal-box">
+      <button class="close" onclick="closeModal('profileModal')">×</button>
+
+      <h2>👤 मनोज पारीक की प्रोफाइल</h2>
+
+      <p>
+        मनोज पारीक दल्लूसर गाँव की खबरों, विकास कार्यों और स्थानीय
+        जानकारी को डिजिटल रूप से लोगों तक पहुँचाने के उद्देश्य से
+        इस वेबसाइट का संचालन करते हैं।
+      </p>
+
+      <br>
+
+      <p>
+        यह प्लेटफॉर्म गाँव की जानकारी को एक जगह उपलब्ध कराने का
+        प्रयास है।
+      </p>
+    </div>
+  </div>
+
+  <!-- Complaint Modal -->
+  <div class="modal" id="complaintModal" onclick="closeOutside(event, 'complaintModal')">
+    <div class="modal-box">
+      <button class="close" onclick="closeModal('complaintModal')">×</button>
+
+      <h2>💬 सुझाव एवं शिकायत</h2>
+
+      <form id="complaintForm">
+        <div class="form-group">
+          <label for="name">आपका नाम</label>
+          <input type="text" id="name" placeholder="अपना नाम लिखें" required>
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">मोबाइल नंबर</label>
+          <input type="tel" id="mobile" placeholder="मोबाइल नंबर">
+        </div>
+
+        <div class="form-group">
+          <label for="type">प्रकार</label>
+          <select id="type">
+            <option value="सुझाव">सुझाव</option>
+            <option value="शिकायत">शिकायत</option>
+            <option value="जानकारी">जानकारी</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">अपना संदेश</label>
+          <textarea id="message" rows="5" placeholder="अपना संदेश लिखें..." required></textarea>
+        </div>
+
+        <button class="btn" type="submit">भेजें 📤</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
     }
 
-    snapshot.forEach(doc=>{
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
 
-      const data=doc.data();
+    function closeOutside(event, id) {
+      if (event.target.id === id) {
+        closeModal(id);
+      }
+    }
 
-      list.innerHTML += `
-        <div class="card">
-          <img
-            src="${safe(data.image || "")}"
-            style="width:100%;height:150px;object-fit:cover;border-radius:14px;"
-          >
-          <h3 style="margin-top:9px;">
-            ${safe(data.title || "दल्लूसर गाँव")}
-          </h3>
-        </div>
-      `;
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
 
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    }
+
+    function showInfo(message) {
+      alert(message);
+    }
+
+    function searchServices() {
+      const value = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+      const cards = document.querySelectorAll(".searchable");
+
+      cards.forEach(function(card) {
+        const text = card.innerText.toLowerCase();
+
+        if (text.includes(value)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    document.getElementById("complaintForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const type = document.getElementById("type").value;
+
+      alert(
+        "धन्यवाद " + name + " जी!\n\n" +
+        "आपका " + type + " दर्ज कर लिया गया है।\n" +
+        "यह अभी डेमो फॉर्म है।"
+      );
+
+      this.reset();
+      closeModal("complaintModal");
     });
 
-  });
-
-}
-
-
-/* COMPLAINT */
-
-document
-.getElementById("complaintForm")
-.addEventListener("submit",async(e)=>{
-
-  e.preventDefault();
-
-  if(!db){
-
-    alert("Firebase अभी सेट नहीं है।");
-
-    return;
-  }
-
-  const name=document.getElementById("cName").value.trim();
-
-  const mobile=document.getElementById("cMobile").value.trim();
-
-  const subject=document.getElementById("cSubject").value.trim();
-
-  const complaint=document.getElementById("cComplaint").value.trim();
-
-  try{
-
-    await addDoc(
-      collection(db,"complaints"),
-      {
-        name:name,
-        mobile:mobile,
-        subject:subject,
-        complaint:complaint,
-        status:"नई",
-        createdAt:serverTimestamp()
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeModal("profileModal");
+        closeModal("complaintModal");
       }
-    );
-
-    alert("आपकी शिकायत / सुझाव सफलतापूर्वक भेज दिया गया।");
-
-    document.getElementById("complaintForm").reset();
-
-    closeComplaint();
-
-  }catch(error){
-
-    console.error(error);
-
-    alert("शिकायत भेजने में समस्या हुई।");
-
-  }
-
-});
-
-
-/* SECURITY HELPER */
-
-function safe(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-</script>
-
-
-<script>
-
-/* PROFILE */
-
-function openProfile(){
-
-  document.getElementById("profileModal").style.display="block";
-
-}
-
-function closeProfile(){
-
-  document.getElementById("profileModal").style.display="none";
-
-}
-
-
-/* COMPLAINT */
-
-function openComplaint(){
-
-  document.getElementById("complaintModal").style.display="block";
-
-}
-
-function closeComplaint(){
-
-  document.getElementById("complaintModal").style.display="none";
-
-}
-
-
-/* SECTIONS */
-
-function showSection(type){
-
-  let id="";
-
-  if(type==="news") id="newsSection";
-
-  if(type==="development") id="developmentSection";
-
-  if(type==="gallery") id="gallerySection";
-
-  if(id){
-
-    document
-      .getElementById(id)
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-  }
-
-}
-
-
-/* HOME */
-
-function scrollTopPage(){
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ALERT */
-
-function simpleAlert(message){
-
-  alert(message);
-
-}
-
-
-/* SEARCH */
-
-function searchCards(){
-
-  const value=
-    document
-    .getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .trim();
-
-  const cards=
-    document.querySelectorAll("#cardGrid .card");
-
-  cards.forEach(card=>{
-
-    const text=
-      card.innerText.toLowerCase();
-
-    if(text.includes(value)){
-
-      card.style.display="block";
-
-    }else{
-
-      card.style.display="none";
-
-    }
-
-  });
-
-}
-
-
-/* MODAL OUTSIDE CLICK */
-
-window.onclick=function(event){
-
-  const profile=
-    document.getElementById("profileModal");
-
-  const complaint=
-    document.getElementById("complaintModal");
-
-  if(event.target===profile){
-
-    closeProfile();
-
-  }
-
-  if(event.target===complaint){
-
-    closeComplaint();
-
-  }
-
-};
-
-</script>
+    });
+  </script>
 
 </body>
-        </html>
+</html>
