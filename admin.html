@@ -286,11 +286,13 @@ document.getElementById("newsDate").value =
   new Date().toISOString().split("T")[0];
 
 // LOGIN
+  // LOGIN
 loginForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   loginMessage.textContent = "Login हो रहा है...";
   loginMessage.style.color = "#006b58";
+  loginMessage.style.whiteSpace = "pre-wrap";
 
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
@@ -301,6 +303,19 @@ loginForm.addEventListener("submit", async function (event) {
     loginMessage.textContent = "Login सफल हुआ!";
     loginMessage.style.color = "green";
 
+  } catch (error) {
+    console.error("Firebase Login Error:", error);
+
+    loginMessage.textContent =
+      "Login Error:\n" +
+      (error.code || "Unknown Error") +
+      "\n" +
+      (error.message || "कोई जानकारी नहीं मिली");
+
+    loginMessage.style.color = "red";
+    loginMessage.style.whiteSpace = "pre-wrap";
+  }
+});
   } catch (error) {
     console.error("Firebase Login Error:", error);
 
