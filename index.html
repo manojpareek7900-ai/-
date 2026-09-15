@@ -392,6 +392,7 @@ footer{
   margin-bottom:10px;
   font-size:14px;
   line-height:1.5;
+  white-space:pre-wrap;
 }
 
 .ai-msg.bot{
@@ -589,6 +590,7 @@ footer{
 </div>
 </section>
 
+
 <!-- GROUND PAGE -->
 
 <div id="groundPage">
@@ -648,6 +650,7 @@ footer{
   </div>
 </div>
 
+
 <!-- NEWS -->
 
 <section class="section" id="newsSection" style="display:none">
@@ -656,6 +659,7 @@ footer{
     <p>खबरें लोड हो रही हैं...</p>
   </div>
 </section>
+
 
 <!-- DEVELOPMENT -->
 
@@ -666,6 +670,7 @@ footer{
   </div>
 </section>
 
+
 <!-- GALLERY -->
 
 <section class="section" id="gallerySection" style="display:none">
@@ -674,6 +679,9 @@ footer{
     <p>फोटो लोड हो रही हैं...</p>
   </div>
 </section>
+
+
+<!-- CONTACT -->
 
 <section class="section">
 <h2>📞 संपर्क</h2>
@@ -685,6 +693,7 @@ footer{
 
 </section>
 
+
 <footer>
   <p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
   <p style="margin-top:8px">
@@ -692,23 +701,32 @@ footer{
   </p>
 </footer>
 
+
 <!-- PROFILE MODAL -->
 
 <div class="modal" id="profileModal">
   <div class="modal-box">
+
     <button class="close" onclick="closeProfile()">✕</button>
+
     <h2>👑 संस्थापक</h2>
+
     <br>
+
     <h3>मनोज पारीक</h3>
+
     <p style="margin-top:10px">
       दल्लूसर गाँव की डिजिटल पहल के संस्थापक।
     </p>
+
   </div>
 </div>
+
 
 <!-- COMPLAINT MODAL -->
 
 <div class="modal" id="complaintModal">
+
   <div class="modal-box">
 
     <button class="close" onclick="closeComplaint()">✕</button>
@@ -746,33 +764,39 @@ footer{
   </div>
 </div>
 
+
 <!-- 🤖 AI BUTTON -->
 
 <div id="aiButton" onclick="openAIChat()">🤖</div>
+
 
 <!-- 🤖 AI CHAT -->
 
 <div id="aiChat" class="ai-chat">
 
   <div class="ai-header">
+
     <div>
       <b>🤖 दल्लूसर AI सहायक</b>
       <small>गाँव की जानकारी के लिए पूछें</small>
     </div>
 
     <button onclick="closeAIChat()">✕</button>
+
   </div>
+
 
   <div id="aiMessages" class="ai-messages">
 
     <div class="ai-msg bot">
-      नमस्ते! 👋<br>
-      मैं दल्लूसर AI सहायक हूँ।<br><br>
-      आप मुझसे गाँव, विकास, खेल मैदान और उपलब्ध
-      जानकारी के बारे में सवाल पूछ सकते हैं।
+      नमस्ते! 👋
+      मैं दल्लूसर AI सहायक हूँ।
+
+      आप मुझसे दल्लूसर गाँव, विकास, खेल मैदान और उपलब्ध जानकारी के बारे में सवाल पूछ सकते हैं।
     </div>
 
   </div>
+
 
   <div class="ai-input-box">
 
@@ -788,6 +812,7 @@ footer{
   </div>
 
 </div>
+
 
 <!-- BOTTOM NAV -->
 
@@ -840,7 +865,7 @@ import {
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* 🔥 अपना Firebase Config यहाँ डालना */
+/* 🔥 FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -875,12 +900,13 @@ function loadNews(){
 
   onSnapshot(q,(snapshot)=>{
 
-    const list = document.getElementById("newsList");
+    const list =
+      document.getElementById("newsList");
 
     if(snapshot.empty){
 
       list.innerHTML =
-      "<p>अभी कोई खबर उपलब्ध नहीं है।</p>";
+        "<p>अभी कोई खबर उपलब्ध नहीं है।</p>";
 
       return;
     }
@@ -893,8 +919,15 @@ function loadNews(){
 
       list.innerHTML += `
         <div class="data-card">
-          <h3>${safe(data.title || "गाँव की खबर")}</h3>
-          <p>${safe(data.description || "")}</p>
+
+          <h3>
+            ${safe(data.title || "गाँव की खबर")}
+          </h3>
+
+          <p>
+            ${safe(data.description || "")}
+          </p>
+
         </div>
       `;
 
@@ -922,7 +955,7 @@ function loadDevelopment(){
     if(snapshot.empty){
 
       list.innerHTML =
-      "<p>अभी कोई विकास अपडेट उपलब्ध नहीं है।</p>";
+        "<p>अभी कोई विकास अपडेट उपलब्ध नहीं है।</p>";
 
       return;
     }
@@ -935,8 +968,15 @@ function loadDevelopment(){
 
       list.innerHTML += `
         <div class="data-card">
-          <h3>${safe(data.title || "विकास कार्य")}</h3>
-          <p>${safe(data.description || "")}</p>
+
+          <h3>
+            ${safe(data.title || "विकास कार्य")}
+          </h3>
+
+          <p>
+            ${safe(data.description || "")}
+          </p>
+
         </div>
       `;
 
@@ -964,7 +1004,7 @@ function loadGallery(){
     if(snapshot.empty){
 
       list.innerHTML =
-      "<p>अभी कोई फोटो उपलब्ध नहीं है।</p>";
+        "<p>अभी कोई फोटो उपलब्ध नहीं है।</p>";
 
       return;
     }
@@ -981,13 +1021,17 @@ function loadGallery(){
           ${
             data.imageUrl
             ?
-            `<img src="${safe(data.imageUrl)}"
-              alt="${safe(data.title || "गाँव की फोटो")}">`
+            `<img
+              src="${safe(data.imageUrl)}"
+              alt="${safe(data.title || "गाँव की फोटो")}"
+            >`
             :
             ""
           }
 
-          <h3>${safe(data.title || "गाँव की फोटो")}</h3>
+          <h3>
+            ${safe(data.title || "गाँव की फोटो")}
+          </h3>
 
         </div>
       `;
@@ -1002,52 +1046,58 @@ function loadGallery(){
 /* COMPLAINT */
 
 document
-.getElementById("complaintForm")
-.addEventListener("submit",async(e)=>{
+  .getElementById("complaintForm")
+  .addEventListener("submit",async(e)=>{
 
-  e.preventDefault();
+    e.preventDefault();
 
-  try{
+    try{
 
-    await addDoc(
-      collection(db,"complaints"),
-      {
+      await addDoc(
+        collection(db,"complaints"),
+        {
 
-        name:
-          document.getElementById("complaintName").value,
+          name:
+            document.getElementById("complaintName").value,
 
-        mobile:
-          document.getElementById("complaintMobile").value,
+          mobile:
+            document.getElementById("complaintMobile").value,
 
-        subject:
-          document.getElementById("complaintSubject").value,
+          subject:
+            document.getElementById("complaintSubject").value,
 
-        complaint:
-          document.getElementById("complaintText").value,
+          complaint:
+            document.getElementById("complaintText").value,
 
-        status:"नई",
+          status:"नई",
 
-        createdAt:serverTimestamp()
+          createdAt:serverTimestamp()
 
-      }
-    );
+        }
+      );
 
-    alert("✅ आपकी शिकायत सफलतापूर्वक भेज दी गई।");
+      alert(
+        "✅ आपकी शिकायत सफलतापूर्वक भेज दी गई।"
+      );
 
-    e.target.reset();
+      e.target.reset();
 
-    closeComplaint();
+      closeComplaint();
 
-  }catch(error){
+    }catch(error){
 
-    alert("❌ शिकायत भेजने में समस्या हुई।");
+      alert(
+        "❌ शिकायत भेजने में समस्या हुई।"
+      );
 
-    console.error(error);
+      console.error(error);
 
-  }
+    }
 
-});
+  });
 
+
+/* SAFE */
 
 function safe(value){
 
@@ -1068,18 +1118,78 @@ loadDevelopment();
 loadGallery();
 
 
-/* AI FUNCTIONS */
+/* =====================================================
+   🤖 DALLUSAR AI BACKEND
+   Google Apps Script Web App
+===================================================== */
+
+const AI_WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbzBEye3iKY3QCOxJyo5tWkrKU5dCtD7NIfbDrTqhBGi2S8I8gzoRccBjblnwOkgvchz/exec";
+
 
 window.sendAIQuestion = async function(question){
 
-  /*
-    अगले चरण में यहाँ Firebase Cloud Function
-    का URL लगाया जाएगा।
+  try{
 
-    अभी यह केवल test response है।
-  */
+    const response = await fetch(
+      AI_WEB_APP_URL,
+      {
+        method:"POST",
 
-  return "अभी AI backend जोड़ा नहीं गया है।";
+        headers:{
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+        body:JSON.stringify({
+          question:question
+        })
+      }
+    );
+
+
+    const data =
+      await response.json();
+
+
+    if(data.error){
+
+      throw new Error(data.error);
+
+    }
+
+
+    const parts =
+      data.candidates?.[0]?.content?.parts || [];
+
+
+    const answer =
+      parts
+        .map(part => part.text || "")
+        .join("");
+
+
+    if(!answer){
+
+      return "माफ़ कीजिए, अभी जवाब नहीं मिल पाया।";
+
+    }
+
+
+    return answer;
+
+
+  }catch(error){
+
+    console.error(
+      "AI ERROR:",
+      error
+    );
+
+    return "❌ AI से कनेक्शन नहीं हो पाया। थोड़ी देर बाद फिर कोशिश करें।";
+
+  }
+
 };
 
 </script>
@@ -1087,7 +1197,9 @@ window.sendAIQuestion = async function(question){
 
 <script>
 
-/* PROFILE */
+/* =====================================================
+   PROFILE
+===================================================== */
 
 function openProfile(){
 
@@ -1096,6 +1208,7 @@ function openProfile(){
     .style.display="block";
 
 }
+
 
 function closeProfile(){
 
@@ -1106,7 +1219,9 @@ function closeProfile(){
 }
 
 
-/* COMPLAINT */
+/* =====================================================
+   COMPLAINT
+===================================================== */
 
 function openComplaint(){
 
@@ -1115,6 +1230,7 @@ function openComplaint(){
     .style.display="block";
 
 }
+
 
 function closeComplaint(){
 
@@ -1125,7 +1241,9 @@ function closeComplaint(){
 }
 
 
-/* GROUND */
+/* =====================================================
+   GROUND
+===================================================== */
 
 function showGroundPage(){
 
@@ -1134,6 +1252,7 @@ function showGroundPage(){
     .style.display="block";
 
 }
+
 
 function closeGroundPage(){
 
@@ -1144,46 +1263,68 @@ function closeGroundPage(){
 }
 
 
-/* SECTIONS */
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 function showSection(section){
 
   document
     .getElementById("newsSection")
     .style.display =
-      section === "news" ? "block" : "none";
+      section === "news"
+      ? "block"
+      : "none";
+
 
   document
     .getElementById("developmentSection")
     .style.display =
-      section === "development" ? "block" : "none";
+      section === "development"
+      ? "block"
+      : "none";
+
 
   document
     .getElementById("gallerySection")
     .style.display =
-      section === "gallery" ? "block" : "none";
+      section === "gallery"
+      ? "block"
+      : "none";
+
 
   window.scrollTo({
-    top:document.body.scrollHeight,
+
+    top:
+      document.body.scrollHeight,
+
     behavior:"smooth"
+
   });
 
 }
 
 
-/* HOME */
+/* =====================================================
+   HOME
+===================================================== */
 
 function scrollTopPage(){
 
   window.scrollTo({
+
     top:0,
+
     behavior:"smooth"
+
   });
 
 }
 
 
-/* ALERT */
+/* =====================================================
+   ALERT
+===================================================== */
 
 function simpleAlert(message){
 
@@ -1192,24 +1333,33 @@ function simpleAlert(message){
 }
 
 
-/* SEARCH */
+/* =====================================================
+   SEARCH
+===================================================== */
 
 function searchCards(){
 
+  const input =
+    document.getElementById("searchInput");
+
+
   const search =
-    document
-      .getElementById("searchInput")
-      .value
+    input.value
       .toLowerCase()
       .trim();
 
+
   const cards =
-    document.querySelectorAll(".card");
+    document.querySelectorAll(
+      "#cardGrid .card"
+    );
+
 
   cards.forEach(card=>{
 
     const text =
       card.innerText.toLowerCase();
+
 
     card.style.display =
       text.includes(search)
@@ -1221,17 +1371,18 @@ function searchCards(){
 }
 
 
-/* 🤖 AI CHAT */
+/* =====================================================
+   🤖 AI CHAT OPEN
+===================================================== */
 
 function openAIChat(){
 
-  document
-    .getElementById("aiChat")
-    .style.display="block";
+  const chat =
+    document.getElementById("aiChat");
 
-  document
-    .getElementById("aiButton")
-    .style.display="none";
+
+  chat.style.display="block";
+
 
   setTimeout(()=>{
 
@@ -1244,59 +1395,88 @@ function openAIChat(){
 }
 
 
+/* =====================================================
+   🤖 AI CHAT CLOSE
+===================================================== */
+
 function closeAIChat(){
 
   document
     .getElementById("aiChat")
     .style.display="none";
 
-  document
-    .getElementById("aiButton")
-    .style.display="flex";
-
 }
 
+
+/* =====================================================
+   🤖 SEND AI MESSAGE
+===================================================== */
 
 async function sendAIMessage(){
 
   const input =
     document.getElementById("aiInput");
 
-  const text =
-    input.value.trim();
-
-  if(!text) return;
 
   const messages =
     document.getElementById("aiMessages");
 
 
+  const question =
+    input.value.trim();
+
+
+  if(!question){
+
+    return;
+
+  }
+
+
   /* USER MESSAGE */
 
-  messages.innerHTML += `
-    <div class="ai-msg user">
-      ${escapeAIText(text)}
-    </div>
-  `;
+  const userMessage =
+    document.createElement("div");
+
+
+  userMessage.className =
+    "ai-msg user";
+
+
+  userMessage.textContent =
+    question;
+
+
+  messages.appendChild(
+    userMessage
+  );
+
 
   input.value="";
 
-  messages.scrollTop =
-    messages.scrollHeight;
 
+  /* LOADING */
 
-  /* THINKING */
-
-  const thinking =
+  const loading =
     document.createElement("div");
 
-  thinking.className="ai-msg bot";
 
-  thinking.id="aiThinking";
+  loading.className =
+    "ai-msg bot";
 
-  thinking.innerHTML="🤔 जवाब तैयार हो रहा है...";
 
-  messages.appendChild(thinking);
+  loading.id =
+    "aiLoading";
+
+
+  loading.textContent =
+    "⏳ जवाब तैयार हो रहा है...";
+
+
+  messages.appendChild(
+    loading
+  );
+
 
   messages.scrollTop =
     messages.scrollHeight;
@@ -1305,19 +1485,59 @@ async function sendAIMessage(){
   try{
 
     const answer =
-      await window.sendAIQuestion(text);
+      await window.sendAIQuestion(
+        question
+      );
 
-    thinking.innerHTML =
-      escapeAIText(answer);
+
+    loading.remove();
+
+
+    /* BOT MESSAGE */
+
+    const botMessage =
+      document.createElement("div");
+
+
+    botMessage.className =
+      "ai-msg bot";
+
+
+    botMessage.textContent =
+      answer;
+
+
+    messages.appendChild(
+      botMessage
+    );
+
 
   }catch(error){
 
-    thinking.innerHTML =
-      "❌ अभी AI से संपर्क नहीं हो पाया।";
+    loading.remove();
+
+
+    const errorMessage =
+      document.createElement("div");
+
+
+    errorMessage.className =
+      "ai-msg bot";
+
+
+    errorMessage.textContent =
+      "❌ अभी AI से जवाब नहीं मिल पाया।";
+
+
+    messages.appendChild(
+      errorMessage
+    );
+
 
     console.error(error);
 
   }
+
 
   messages.scrollTop =
     messages.scrollHeight;
@@ -1325,320 +1545,42 @@ async function sendAIMessage(){
 }
 
 
-function escapeAIText(text){
+/* =====================================================
+   CLOSE MODAL WHEN CLICK OUTSIDE
+===================================================== */
 
-  return String(text)
+window.addEventListener(
+  "click",
+  function(event){
 
-    .replace(/&/g,"&amp;")
+    const profile =
+      document.getElementById(
+        "profileModal"
+      );
 
-    .replace(/</g,"&lt;")
-
-    .replace(/>/g,"&gt;")
-
-    .replace(/"/g,"&quot;")
-
-    .replace(/'/g,"&#039;");
-
-}
+    const complaint =
+      document.getElementById(
+        "complaintModal"
+      );
 
 
-/* OUTSIDE CLICK */
+    if(event.target === profile){
 
-window.onclick=function(event){
+      closeProfile();
 
-  const profile =
-    document.getElementById("profileModal");
+    }
 
-  const complaint =
-    document.getElementById("complaintModal");
 
-  if(event.target === profile){
+    if(event.target === complaint){
 
-    closeProfile();
+      closeComplaint();
 
-  }
-
-  if(event.target === complaint){
-
-    closeComplaint();
+    }
 
   }
-
-};
+);
 
 </script>
-<div id="testAIButton" onclick="openAIChat()">
-  🤖
-</div>
-  <!-- 🤖 DALLUSAR AI -->
-<div id="aiChatBox" style="
-display:none;
-position:fixed;
-right:12px;
-bottom:80px;
-width:calc(100% - 24px);
-max-width:380px;
-height:520px;
-background:#fff;
-border-radius:20px;
-box-shadow:0 8px 30px rgba(0,0,0,.3);
-z-index:999999;
-overflow:hidden;
-font-family:Arial,sans-serif;
-">
 
-  <!-- Header -->
-  <div style="
-  background:linear-gradient(135deg,#087f5b,#12a36b);
-  color:white;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  ">
-
-    <div>
-      <b>🤖 दल्लूसर AI</b>
-      <div style="font-size:11px;margin-top:3px">
-        गाँव का डिजिटल सहायक
-      </div>
-    </div>
-
-    <button onclick="closeAIChat()" style="
-    background:none;
-    border:0;
-    color:white;
-    font-size:25px;
-    ">×</button>
-
-  </div>
-
-
-  <!-- Messages -->
-  <div id="aiMessages" style="
-  height:400px;
-  overflow-y:auto;
-  padding:12px;
-  background:#f1f5f3;
-  ">
-
-    <div style="
-    background:white;
-    padding:12px;
-    border-radius:12px;
-    margin-bottom:10px;
-    ">
-      👋 नमस्ते! मैं <b>दल्लूसर AI</b> हूँ।<br><br>
-      आप मुझसे दल्लूसर गाँव, विकास कार्य, खेल मैदान और सामान्य जानकारी के बारे में पूछ सकते हैं।
-    </div>
-
-  </div>
-
-
-  <!-- Input -->
-  <div style="
-  display:flex;
-  padding:10px;
-  gap:7px;
-  background:white;
-  border-top:1px solid #ddd;
-  ">
-
-    <input id="aiInput"
-    placeholder="सवाल लिखें..."
-    onkeydown="if(event.key==='Enter') sendAIMessage()"
-    style="
-    flex:1;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:22px;
-    outline:none;
-    ">
-
-    <button onclick="sendAIMessage()" style="
-    width:45px;
-    border:0;
-    border-radius:50%;
-    background:#087f5b;
-    color:white;
-    font-size:18px;
-    ">
-    ➤
-    </button>
-
-  </div>
-
-</div>
-
-
-<script>
-
-function openAIChat(){
-
-  document.getElementById("aiChatBox").style.display="block";
-
-  setTimeout(()=>{
-    document.getElementById("aiInput").focus();
-  },100);
-
-}
-
-
-function closeAIChat(){
-
-  document.getElementById("aiChatBox").style.display="none";
-
-}
-
-
-function addAIMessage(text,user=false){
-
-  const box=document.getElementById("aiMessages");
-
-  const div=document.createElement("div");
-
-  div.style.padding="11px";
-  div.style.borderRadius="12px";
-  div.style.marginBottom="9px";
-  div.style.maxWidth="88%";
-  div.style.lineHeight="1.5";
-  div.style.whiteSpace="pre-line";
-
-  if(user){
-
-    div.style.background="#087f5b";
-    div.style.color="white";
-    div.style.marginLeft="auto";
-
-  }else{
-
-    div.style.background="white";
-    div.style.color="#222";
-
-  }
-
-  div.textContent=text;
-
-  box.appendChild(div);
-
-  box.scrollTop=box.scrollHeight;
-
-}
-
-
-/* 🤖 DEMO AI */
-
-function getDemoAnswer(question){
-
-  const q=question.toLowerCase();
-
-
-  if(
-    q.includes("खेल मैदान") ||
-    q.includes("मैदान")
-  ){
-
-    return `🏏 दल्लूसर खेल मैदान
-
-दल्लूसर में खेल मैदान को विकसित और व्यवस्थित करने की आवश्यकता है।
-
-गाँव के युवाओं के लिए सुरक्षित और अच्छा खेल मैदान होना महत्वपूर्ण है।
-
-मौजूदा ऐप में खेल मैदान से जुड़ी जानकारी भी उपलब्ध कराई जा सकती है।`;
-
-  }
-
-
-  if(
-    q.includes("दल्लूसर") ||
-    q.includes("गांव") ||
-    q.includes("गाँव")
-  ){
-
-    return `🏡 दल्लूसर गाँव
-
-यह ऐप दल्लूसर गाँव की जानकारी, समाचार, विकास कार्य और सामुदायिक गतिविधियों को लोगों तक पहुँचाने के उद्देश्य से बनाया गया है।
-
-आप मुझसे खेल मैदान, विकास कार्य या गाँव की उपलब्ध जानकारी के बारे में पूछ सकते हैं।`;
-
-  }
-
-
-  if(
-    q.includes("विकास") ||
-    q.includes("सड़क") ||
-    q.includes("रोड")
-  ){
-
-    return `🏗️ विकास कार्य
-
-गाँव में होने वाले विकास कार्यों की जानकारी इस ऐप के Development सेक्शन में दर्ज की जा सकती है।
-
-किसी कार्य की वास्तविक स्थिति जानने के लिए ऐप में उपलब्ध नवीनतम जानकारी देखना बेहतर रहेगा।`;
-
-  }
-
-
-  if(
-    q.includes("नमस्ते") ||
-    q.includes("hello") ||
-    q.includes("hi")
-  ){
-
-    return `🙏 नमस्ते King!
-
-मैं दल्लूसर AI सहायक हूँ।
-
-आप क्या जानना चाहते हैं?`;
-
-  }
-
-
-  if(
-    q.includes("तुम कौन") ||
-    q.includes("आप कौन")
-  ){
-
-    return `🤖 मैं दल्लूसर AI सहायक हूँ।
-
-मेरा उद्देश्य दल्लूसर गाँव की उपलब्ध जानकारी को लोगों तक सरल भाषा में पहुँचाने में मदद करना है।`;
-
-  }
-
-
-  return `🤖 आपका सवाल समझ गया।
-
-अभी मैं Demo Mode में हूँ, इसलिए मेरे पास केवल कुछ सीमित दल्लूसर जानकारी है।
-
-जब असली AI backend जोड़ा जाएगा, तब मैं बहुत अधिक सवालों के जवाब दे पाऊँगा।`;
-
-}
-
-
-function sendAIMessage(){
-
-  const input=document.getElementById("aiInput");
-
-  const question=input.value.trim();
-
-  if(!question) return;
-
-
-  addAIMessage(question,true);
-
-  input.value="";
-
-
-  setTimeout(()=>{
-
-    const answer=getDemoAnswer(question);
-
-    addAIMessage(answer,false);
-
-  },600);
-
-}
-
-</script>
 </body>
 </html>
