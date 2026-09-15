@@ -992,7 +992,123 @@
     </div>
   </div>
 
-  <script>
+  <script ><script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    addDoc,
+    query,
+    orderBy
+  } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAF4uC6jgeN7LXCm5w1l4G-P7-XWRT3P0A",
+    authDomain: "dallusar-village-diary-a2c35.firebaseapp.com",
+    projectId: "dallusar-village-diary-a2c35",
+    storageBucket: "dallusar-village-diary-a2c35.firebasestorage.app",
+    messagingSenderId: "771762232267",
+    appId: "1:771762232267:web:5d4386d7bc46f579cab44e",
+    measurementId: "G-2VJWX5XFBQ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Firestore से खबरें लाना
+  async function loadNews() {
+    const newsContainer = document.querySelector(".panel .news-item")?.parentElement;
+
+    if (!newsContainer) return;
+
+    try {
+      const newsQuery = query(
+        collection(db, "news"),
+        orderBy("createdAt", "desc")
+      );
+
+      const snapshot = await getDocs(newsQuery);
+
+      newsContainer.innerHTML = "";
+
+      if (snapshot.empty) {
+        newsContainer.innerHTML = "<p>अभी कोई नई खबर उपलब्ध नहीं है।</p>";
+        return;
+      }
+
+      snapshot.forEach((doc) => {
+        const news = doc.data();
+
+        const item = document.createElement("div");
+        item.className = "news-item";
+
+        item.innerHTML = `
+          <img
+            class="small-image"
+            src="${news.image || "news-road.jpg"}"
+            alt="गाँव की खबर"
+          >
+
+          <div>
+            <h4>${news.title || "बिना शीर्षक खबर"}</h4>
+            <p>${news.description || ""}</p>
+          </div>
+
+          <span class="status">नई</span>
+        `;
+
+        newsContainer.appendChild(item);
+      });
+
+    } catch (error) {
+      console.error("खबरें लोड नहीं हुईं:", error);
+      newsContainer.innerHTML =
+        "<p>खबरें लोड करने में समस्या हुई।</p>";
+    }
+  }
+
+  // सुझाव/शिकायत Firestore में सेव करना
+  const complaintForm = document.getElementById("complaintForm");
+
+  if (complaintForm) {
+    complaintForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const type = document.getElementById("type").value;
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !message) {
+        alert("कृपया नाम और संदेश भरें।");
+        return;
+      }
+
+      try {
+        await addDoc(collection(db, "complaints"), {
+          name: name,
+          mobile: mobile,
+          type: type,
+          message: message,
+          createdAt: new Date().toISOString()
+        });
+
+        alert("धन्यवाद " + name + " जी! आपका संदेश सफलतापूर्वक भेज दिया गया है।");
+
+        complaintForm.reset();
+        closeModal("complaintModal");
+
+      } catch (error) {
+        console.error("संदेश सेव नहीं हुआ:", error);
+        alert("संदेश भेजने में समस्या हुई। कृपया बाद में प्रयास करें।");
+      }
+    });
+  }
+
+  loadNews();
+</script>
     function openModal(id) {
       document.getElementById(id).style.display = "flex";
     }
