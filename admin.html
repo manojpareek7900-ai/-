@@ -299,9 +299,18 @@ loginForm.addEventListener("submit", async (e) => {
     loginMessage.textContent = "";
     loginForm.reset();
   } catch (error) {
+  
+  } catch (error) {
+    console.error("Firebase Login Error:", error);
+
     loginMessage.textContent =
-      "Login असफल: " + getErrorMessage(error);
-  }
+      "Error Code: " + (error.code || "unknown") +
+      "\n" + (error.message || "अज्ञात समस्या");
+
+    loginMessage.style.color = "red";
+    loginMessage.style.whiteSpace = "pre-wrap";
+}
+                           }
 });
 
 // AUTH STATE
