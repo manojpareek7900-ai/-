@@ -1,155 +1,160 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>दल्लूसर Admin Panel</title>
+<title>दल्लूसर Admin Panel</title>
 
-  <style>
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-      font-family:Arial,sans-serif;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+}
 
-    body{
-      background:#f4f6f8;
-      color:#222;
-    }
+body{
+  background:#f4f6f8;
+  color:#222;
+}
 
-    header{
-      background:#166534;
-      color:white;
-      padding:18px;
-      text-align:center;
-    }
+header{
+  background:#166534;
+  color:white;
+  padding:18px;
+  text-align:center;
+}
 
-    header h1{
-      font-size:23px;
-    }
+header h1{font-size:23px}
+header p{margin-top:5px;font-size:14px}
 
-    header p{
-      margin-top:5px;
-      font-size:14px;
-    }
+.container{
+  max-width:700px;
+  margin:20px auto;
+  padding:15px;
+}
 
-    .container{
-      max-width:700px;
-      margin:20px auto;
-      padding:15px;
-    }
+.card{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:20px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
 
-    .card{
-      background:white;
-      padding:20px;
-      border-radius:14px;
-      margin-bottom:20px;
-      box-shadow:0 3px 12px rgba(0,0,0,.08);
-    }
+.card h2{
+  margin-bottom:15px;
+  font-size:20px;
+}
 
-    .card h2{
-      margin-bottom:15px;
-      font-size:20px;
-    }
+label{
+  display:block;
+  margin:12px 0 6px;
+  font-weight:bold;
+}
 
-    label{
-      display:block;
-      margin:12px 0 6px;
-      font-weight:bold;
-    }
+input,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:9px;
+  font-size:15px;
+  outline:none;
+}
 
-    input,textarea{
-      width:100%;
-      padding:12px;
-      border:1px solid #ddd;
-      border-radius:9px;
-      font-size:15px;
-      outline:none;
-    }
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
 
-    textarea{
-      min-height:120px;
-      resize:vertical;
-    }
+button{
+  border:0;
+  padding:12px 18px;
+  border-radius:9px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  margin-top:8px;
+}
 
-    .check{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      margin:15px 0;
-    }
+.publish{
+  background:#166534;
+  color:white;
+  width:100%;
+}
 
-    .check input{
-      width:auto;
-    }
+.delete{
+  background:#dc2626;
+  color:white;
+  margin-right:8px;
+}
 
-    button{
-      border:0;
-      padding:12px 18px;
-      border-radius:9px;
-      cursor:pointer;
-      font-size:15px;
-      font-weight:bold;
-      margin-top:8px;
-    }
+.edit{
+  background:#2563eb;
+  color:white;
+}
 
-    .publish{
-      background:#166534;
-      color:white;
-      width:100%;
-    }
+.logout{
+  background:#eee;
+  width:100%;
+}
 
-    .delete{
-      background:#dc2626;
-      color:white;
-      margin-right:8px;
-    }
+.notice{
+  border:1px solid #e5e7eb;
+  padding:15px;
+  border-radius:12px;
+  margin-top:12px;
+}
 
-    .edit{
-      background:#2563eb;
-      color:white;
-    }
+.notice h3{
+  margin-bottom:7px;
+}
 
-    .notice{
-      border:1px solid #e5e7eb;
-      padding:15px;
-      border-radius:12px;
-      margin-top:12px;
-    }
+.notice p{
+  color:#555;
+  line-height:1.5;
+}
 
-    .notice h3{
-      margin-bottom:7px;
-    }
+.date{
+  font-size:12px;
+  color:#777;
+  margin-top:8px;
+}
 
-    .notice p{
-      color:#555;
-      line-height:1.5;
-    }
+.important{
+  display:inline-block;
+  background:#fee2e2;
+  color:#b91c1c;
+  padding:4px 8px;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:8px;
+}
 
-    .date{
-      font-size:12px;
-      color:#777;
-      margin-top:8px;
-    }
+#message{
+  margin-top:12px;
+  text-align:center;
+  font-weight:bold;
+}
 
-    .important{
-      display:inline-block;
-      background:#fee2e2;
-      color:#b91c1c;
-      padding:4px 8px;
-      border-radius:20px;
-      font-size:12px;
-      margin-bottom:8px;
-    }
+#adminArea{
+  display:none;
+}
 
-    #message{
-      margin-top:12px;
-      text-align:center;
-      font-weight:bold;
-    }
-  </style>
+#error{
+  color:#b00020;
+  margin-top:10px;
+  text-align:center;
+  font-weight:bold;
+}
+
+#loginArea{
+  max-width:500px;
+  margin:30px auto;
+  padding:15px;
+}
+</style>
 </head>
 
 <body>
@@ -159,14 +164,63 @@
   <p>गाँव की सूचना प्रबंधन प्रणाली</p>
 </header>
 
-<div class="container">
+<!-- LOGIN -->
+<div id="loginArea">
 
-  <!-- सूचना जोड़ने का फॉर्म -->
+  <div class="card">
+
+    <h2>🔐 Admin Login</h2>
+
+    <label>Email</label>
+    <input
+      type="email"
+      id="email"
+      placeholder="Admin Email"
+      autocomplete="username"
+    >
+
+    <label>Password</label>
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
+
+    <button class="publish" id="loginBtn">
+      🔐 Login
+    </button>
+
+    <div id="error"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ADMIN AREA -->
+<div class="container" id="adminArea">
+
+  <div class="card">
+
+    <h2>👑 Admin Dashboard</h2>
+
+    <p id="adminEmailText"></p>
+
+    <button class="logout" id="logoutBtn">
+      🚪 Logout
+    </button>
+
+  </div>
+
+
+  <!-- ADD NOTICE -->
   <div class="card">
 
     <h2>📢 नई सूचना जोड़ें</h2>
 
     <label>सूचना का शीर्षक</label>
+
     <input
       type="text"
       id="title"
@@ -174,21 +228,24 @@
     >
 
     <label>सूचना का विवरण</label>
+
     <textarea
       id="description"
       placeholder="यहाँ पूरी सूचना लिखें..."
     ></textarea>
 
     <label>तारीख</label>
-    <input
-      type="date"
-      id="date"
-    >
 
-    <div class="check">
-      <input type="checkbox" id="important">
-      <label for="important">🔴 महत्वपूर्ण सूचना</label>
-    </div>
+    <input type="date" id="date">
+
+    <label>
+      <input
+        type="checkbox"
+        id="important"
+        style="width:auto;margin-right:6px"
+      >
+      🔴 महत्वपूर्ण सूचना
+    </label>
 
     <button class="publish" id="publishBtn">
       📢 सूचना Publish करें
@@ -199,7 +256,7 @@
   </div>
 
 
-  <!-- पुरानी सूचनाएँ -->
+  <!-- OLD NOTICES -->
   <div class="card">
 
     <h2>📋 सभी सूचनाएँ</h2>
@@ -215,116 +272,335 @@
 
 <script type="module">
 
-  import {
-    initializeApp
-  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
-  import {
-    getFirestore,
-    collection,
-    addDoc,
-    getDocs,
-    deleteDoc,
-    doc,
-    updateDoc,
-    orderBy,
-    query
-  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+  orderBy,
+  query
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-
-  // Firebase Configuration
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAF4uC6jgeN7LXCm5w1l4G-P7-XWRT3P0A",
-    authDomain: "dallusar-village-diary-a2c35.firebaseapp.com",
-    projectId: "dallusar-village-diary-a2c35",
-    storageBucket: "dallusar-village-diary-a2c35.firebasestorage.app",
-    messagingSenderId: "771762232267",
-    appId: "1:771762232267:web:aca8cb27ee6efb1fcab44e",
-    measurementId: "G-0TKLN9WQ22"
-  };
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 
-  // Firebase Start
+/* 🔥 तुम्हारा Firebase Config */
 
-  const app = initializeApp(firebaseConfig);
-
-  const db = getFirestore(app);
-
-
-  // Elements
-
-  const titleInput = document.getElementById("title");
-  const descriptionInput = document.getElementById("description");
-  const dateInput = document.getElementById("date");
-  const importantInput = document.getElementById("important");
-  const publishBtn = document.getElementById("publishBtn");
-  const message = document.getElementById("message");
-  const noticesDiv = document.getElementById("notices");
+const firebaseConfig = {
+  apiKey: "अपना मौजूदा Firebase API KEY यहाँ रखें",
+  authDomain: "dallusar-village-diary-a2c35.firebaseapp.com",
+  projectId: "dallusar-village-diary-a2c35",
+  storageBucket: "dallusar-village-diary-a2c35.firebasestorage.app",
+  messagingSenderId: "771762232267",
+  appId: "1:771762232267:web:aca8cb27ee6efb1fcab44e",
+  measurementId: "G-0TKLN9WQ22"
+};
 
 
-  // आज की तारीख
+const app = initializeApp(firebaseConfig);
 
-  const today = new Date();
+const db = getFirestore(app);
 
-  const yyyy = today.getFullYear();
-
-  const mm = String(today.getMonth() + 1).padStart(2,"0");
-
-  const dd = String(today.getDate()).padStart(2,"0");
-
-  dateInput.value = `${yyyy}-${mm}-${dd}`;
+const auth = getAuth(app);
 
 
-  // सूचना Publish
+/* ELEMENTS */
 
-  publishBtn.addEventListener("click", async () => {
+const loginArea =
+  document.getElementById("loginArea");
 
-    const title = titleInput.value.trim();
+const adminArea =
+  document.getElementById("adminArea");
 
-    const description = descriptionInput.value.trim();
+const loginBtn =
+  document.getElementById("loginBtn");
 
-    const date = dateInput.value;
+const logoutBtn =
+  document.getElementById("logoutBtn");
 
-    const important = importantInput.checked;
+const errorBox =
+  document.getElementById("error");
+
+const adminEmailText =
+  document.getElementById("adminEmailText");
+
+const titleInput =
+  document.getElementById("title");
+
+const descriptionInput =
+  document.getElementById("description");
+
+const dateInput =
+  document.getElementById("date");
+
+const importantInput =
+  document.getElementById("important");
+
+const publishBtn =
+  document.getElementById("publishBtn");
+
+const message =
+  document.getElementById("message");
+
+const noticesDiv =
+  document.getElementById("notices");
 
 
-    if(!title || !description || !date){
+/* TODAY DATE */
 
-      message.textContent = "⚠️ सभी जानकारी भरें।";
+const today = new Date();
+
+const yyyy = today.getFullYear();
+
+const mm =
+  String(today.getMonth()+1).padStart(2,"0");
+
+const dd =
+  String(today.getDate()).padStart(2,"0");
+
+dateInput.value =
+  `${yyyy}-${mm}-${dd}`;
+
+
+/* ADMIN CHECK */
+
+async function checkAdmin(user){
+
+  if(!user) return false;
+
+  try{
+
+    const adminDoc =
+      await getDocs(
+        query(
+          collection(db,"admins")
+        )
+      );
+
+    let allowed = false;
+
+    adminDoc.forEach(item=>{
+
+      const data = item.data();
+
+      if(
+        data.email &&
+        data.email.toLowerCase() ===
+        user.email.toLowerCase()
+      ){
+
+        allowed = true;
+
+      }
+
+    });
+
+    return allowed;
+
+  }catch(error){
+
+    console.error(error);
+
+    return false;
+
+  }
+
+}
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(auth, async(user)=>{
+
+  if(!user){
+
+    loginArea.style.display="block";
+
+    adminArea.style.display="none";
+
+    return;
+
+  }
+
+
+  const allowed =
+    await checkAdmin(user);
+
+
+  if(!allowed){
+
+    await signOut(auth);
+
+    loginArea.style.display="block";
+
+    adminArea.style.display="none";
+
+    errorBox.textContent =
+      "❌ यह Email Admin नहीं है।";
+
+    return;
+
+  }
+
+
+  loginArea.style.display="none";
+
+  adminArea.style.display="block";
+
+  adminEmailText.textContent =
+    "Admin: " + user.email;
+
+  loadNotices();
+
+});
+
+
+/* LOGIN */
+
+loginBtn.addEventListener(
+  "click",
+  async()=>{
+
+    const email =
+      document.getElementById("email")
+      .value.trim();
+
+    const password =
+      document.getElementById("password")
+      .value;
+
+
+    errorBox.textContent="";
+
+
+    if(!email || !password){
+
+      errorBox.textContent =
+        "⚠️ Email और Password भरें।";
 
       return;
+
     }
 
 
     try{
 
-      publishBtn.disabled = true;
+      loginBtn.disabled=true;
 
-      publishBtn.textContent = "Publish हो रहा है...";
+      loginBtn.textContent =
+        "Login हो रहा है...";
+
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+
+    }catch(error){
+
+      console.error(error);
+
+      errorBox.textContent =
+        "❌ Email या Password गलत है।";
+
+    }
+
+
+    loginBtn.disabled=false;
+
+    loginBtn.textContent="🔐 Login";
+
+  }
+);
+
+
+/* LOGOUT */
+
+logoutBtn.addEventListener(
+  "click",
+  async()=>{
+
+    await signOut(auth);
+
+  }
+);
+
+
+/* PUBLISH */
+
+publishBtn.addEventListener(
+  "click",
+  async()=>{
+
+    const title =
+      titleInput.value.trim();
+
+    const description =
+      descriptionInput.value.trim();
+
+    const date =
+      dateInput.value;
+
+    const important =
+      importantInput.checked;
+
+
+    if(!title || !description || !date){
+
+      message.textContent =
+        "⚠️ सभी जानकारी भरें।";
+
+      return;
+
+    }
+
+
+    try{
+
+      publishBtn.disabled=true;
+
+      publishBtn.textContent =
+        "Publish हो रहा है...";
 
 
       await addDoc(
         collection(db,"notices"),
         {
-          title: title,
-          description: description,
-          date: date,
-          important: important,
-          createdAt: Date.now()
+          title:title,
+          description:description,
+          date:date,
+          important:important,
+          createdAt:Date.now()
         }
       );
 
 
-      message.textContent = "✅ सूचना सफलतापूर्वक Publish हो गई!";
+      message.textContent =
+        "✅ सूचना सफलतापूर्वक Publish हो गई!";
 
-      titleInput.value = "";
 
-      descriptionInput.value = "";
+      titleInput.value="";
 
-      importantInput.checked = false;
+      descriptionInput.value="";
 
-      await loadNotices();
+      importantInput.checked=false;
+
+
+      loadNotices();
 
 
     }catch(error){
@@ -332,233 +608,266 @@
       console.error(error);
 
       message.textContent =
-        "❌ सूचना Publish नहीं हुई। Firebase Rules जाँचें।";
+        "❌ सूचना Publish नहीं हुई।";
 
     }
 
 
-    publishBtn.disabled = false;
+    publishBtn.disabled=false;
 
-    publishBtn.textContent = "📢 सूचना Publish करें";
+    publishBtn.textContent =
+      "📢 सूचना Publish करें";
 
-  });
-
-
-  // सभी सूचनाएँ Load
-
-  async function loadNotices(){
-
-    noticesDiv.innerHTML = "लोड हो रहा है...";
+  }
+);
 
 
-    try{
+/* LOAD NOTICES */
 
-      const q = query(
+async function loadNotices(){
+
+  noticesDiv.innerHTML =
+    "लोड हो रहा है...";
+
+
+  try{
+
+    const q =
+      query(
         collection(db,"notices"),
         orderBy("createdAt","desc")
       );
 
-      const snapshot = await getDocs(q);
+
+    const snapshot =
+      await getDocs(q);
 
 
-      if(snapshot.empty){
-
-        noticesDiv.innerHTML =
-          "अभी कोई सूचना नहीं है।";
-
-        return;
-
-      }
-
-
-      noticesDiv.innerHTML = "";
-
-
-      snapshot.forEach((item) => {
-
-        const data = item.data();
-
-        const div = document.createElement("div");
-
-        div.className = "notice";
-
-
-        div.innerHTML = `
-
-          ${
-            data.important
-            ? '<span class="important">🔴 महत्वपूर्ण</span>'
-            : ''
-          }
-
-          <h3>${escapeHTML(data.title)}</h3>
-
-          <p>${escapeHTML(data.description)}</p>
-
-          <div class="date">
-            📅 ${escapeHTML(data.date)}
-          </div>
-
-          <button
-            class="delete"
-            onclick="deleteNotice('${item.id}')">
-            🗑️ Delete
-          </button>
-
-          <button
-            class="edit"
-            onclick="editNotice('${item.id}',
-              '${escapeJS(data.title)}',
-              '${escapeJS(data.description)}',
-              '${escapeJS(data.date)}',
-              ${data.important})">
-            ✏️ Edit
-          </button>
-
-        `;
-
-
-        noticesDiv.appendChild(div);
-
-      });
-
-
-    }catch(error){
-
-      console.error(error);
+    if(snapshot.empty){
 
       noticesDiv.innerHTML =
-        "❌ सूचनाएँ लोड नहीं हो पाईं।";
+        "अभी कोई सूचना नहीं है।";
+
+      return;
 
     }
 
-  }
+
+    noticesDiv.innerHTML="";
 
 
-  // Delete
+    snapshot.forEach(item=>{
 
-  window.deleteNotice = async function(id){
-
-    const confirmDelete =
-      confirm("क्या आप यह सूचना Delete करना चाहते हैं?");
-
-    if(!confirmDelete) return;
+      const data =
+        item.data();
 
 
-    try{
+      const div =
+        document.createElement("div");
 
-      await deleteDoc(
-        doc(db,"notices",id)
-      );
-
-      message.textContent =
-        "🗑️ सूचना Delete हो गई।";
-
-      loadNotices();
-
-    }catch(error){
-
-      console.error(error);
-
-      message.textContent =
-        "❌ Delete नहीं हुआ।";
-
-    }
-
-  };
+      div.className="notice";
 
 
-  // Edit
-
-  window.editNotice = async function(
-    id,
-    oldTitle,
-    oldDescription,
-    oldDate,
-    oldImportant
-  ){
-
-    const newTitle =
-      prompt("सूचना का शीर्षक:",oldTitle);
-
-    if(newTitle === null) return;
+      const importantHTML =
+        data.important
+        ? `<span class="important">
+             🔴 महत्वपूर्ण
+           </span>`
+        : "";
 
 
-    const newDescription =
-      prompt("सूचना का विवरण:",oldDescription);
+      div.innerHTML = `
 
-    if(newDescription === null) return;
+        ${importantHTML}
+
+        <h3>
+          ${escapeHTML(data.title)}
+        </h3>
+
+        <p>
+          ${escapeHTML(data.description)}
+        </p>
+
+        <div class="date">
+          📅 ${escapeHTML(data.date)}
+        </div>
+
+        <button class="delete">
+          🗑️ Delete
+        </button>
+
+        <button class="edit">
+          ✏️ Edit
+        </button>
+
+      `;
 
 
-    const newDate =
-      prompt("तारीख:",oldDate);
+      const deleteBtn =
+        div.querySelector(".delete");
 
-    if(newDate === null) return;
-
-
-    const newImportant =
-      confirm("क्या यह महत्वपूर्ण सूचना है?");
-
-
-    try{
-
-      await updateDoc(
-        doc(db,"notices",id),
-        {
-          title:newTitle,
-          description:newDescription,
-          date:newDate,
-          important:newImportant
-        }
+      deleteBtn.addEventListener(
+        "click",
+        ()=>deleteNotice(item.id)
       );
 
 
-      message.textContent =
-        "✏️ सूचना Update हो गई।";
+      const editBtn =
+        div.querySelector(".edit");
 
-      loadNotices();
-
-
-    }catch(error){
-
-      console.error(error);
-
-      message.textContent =
-        "❌ Update नहीं हुआ।";
-
-    }
-
-  };
+      editBtn.addEventListener(
+        "click",
+        ()=>editNotice(
+          item.id,
+          data.title || "",
+          data.description || "",
+          data.date || "",
+          data.important || false
+        )
+      );
 
 
-  // सुरक्षा के लिए HTML Escape
+      noticesDiv.appendChild(div);
 
-  function escapeHTML(text){
+    });
 
-    return String(text)
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&#039;");
+
+  }catch(error){
+
+    console.error(error);
+
+    noticesDiv.innerHTML =
+      "❌ सूचनाएँ लोड नहीं हो पाईं।";
 
   }
 
+}
 
-  function escapeJS(text){
 
-    return String(text)
-      .replace(/\\/g,"\\\\")
-      .replace(/'/g,"\\'")
-      .replace(/\n/g,"\\n")
-      .replace(/\r/g,"");
+/* DELETE */
+
+async function deleteNotice(id){
+
+  if(
+    !confirm(
+      "क्या आप यह सूचना Delete करना चाहते हैं?"
+    )
+  ) return;
+
+
+  try{
+
+    await deleteDoc(
+      doc(db,"notices",id)
+    );
+
+
+    message.textContent =
+      "🗑️ सूचना Delete हो गई।";
+
+
+    loadNotices();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    message.textContent =
+      "❌ Delete नहीं हुआ।";
 
   }
 
+}
 
-  // Start
 
-  loadNotices();
+/* EDIT */
+
+async function editNotice(
+  id,
+  oldTitle,
+  oldDescription,
+  oldDate,
+  oldImportant
+){
+
+  const newTitle =
+    prompt(
+      "सूचना का शीर्षक:",
+      oldTitle
+    );
+
+  if(newTitle===null) return;
+
+
+  const newDescription =
+    prompt(
+      "सूचना का विवरण:",
+      oldDescription
+    );
+
+  if(newDescription===null) return;
+
+
+  const newDate =
+    prompt(
+      "तारीख:",
+      oldDate
+    );
+
+  if(newDate===null) return;
+
+
+  const newImportant =
+    confirm(
+      "क्या यह महत्वपूर्ण सूचना है?"
+    );
+
+
+  try{
+
+    await updateDoc(
+      doc(db,"notices",id),
+      {
+        title:newTitle,
+        description:newDescription,
+        date:newDate,
+        important:newImportant
+      }
+    );
+
+
+    message.textContent =
+      "✏️ सूचना Update हो गई।";
+
+
+    loadNotices();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    message.textContent =
+      "❌ Update नहीं हुआ।";
+
+  }
+
+}
+
+
+/* HTML SECURITY */
+
+function escapeHTML(text){
+
+  return String(text ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
 
 </script>
 
