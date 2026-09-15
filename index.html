@@ -1031,4 +1031,187 @@ async function loadNews(){
 
     newsList.forEach(function(news){
 
-    
+      const item=document.createElement("div");
+
+      item.className="news-item";
+
+      const image=escapeHTML(news.image || "news-road.jpg");
+      const title=escapeHTML(news.title || "बिना शीर्षक खबर");
+      const description=escapeHTML(news.description || "");
+      const date=escapeHTML(news.date || "");
+
+      item.innerHTML=`
+
+        <img
+          class="small-image"
+          src="${image}"
+          alt="गाँव की खबर"
+          onerror="this.src='news-road.jpg'"
+        >
+
+        <div>
+          <h4>${title}</h4>
+          <p>${description}</p>
+          <p>${date}</p>
+        </div>
+
+        <span class="status">नई</span>
+
+      `;
+
+      newsContainer.appendChild(item);
+
+    });
+
+  }catch(error){
+
+    console.error("खबरें लोड नहीं हुईं:",error);
+
+    newsContainer.innerHTML=
+      "<p>खबरें लोड करने में समस्या हुई। कृपया बाद में प्रयास करें।</p>";
+
+  }
+
+}
+
+// सुझाव / शिकायत सेव करना
+const complaintForm=document.getElementById("complaintForm");
+
+if(complaintForm){
+
+  complaintForm.addEventListener("submit",async function(event){
+
+    event.preventDefault();
+
+    const name=document.getElementById("name").value.trim();
+    const mobile=document.getElementById("mobile").value.trim();
+    const type=document.getElementById("type").value;
+    const message=document.getElementById("message").value.trim();
+
+    if(!name || !message){
+
+      alert("कृपया नाम और संदेश भरें।");
+      return;
+
+    }
+
+    try{
+
+      await addDoc(collection(db,"complaints"),{
+
+        name:name,
+        mobile:mobile,
+        type:type,
+        message:message,
+        createdAt:new Date().toISOString()
+
+      });
+
+      alert(
+        "धन्यवाद "+name+
+        " जी! आपका संदेश सफलतापूर्वक भेज दिया गया है।"
+      );
+
+      complaintForm.reset();
+      closeModal("complaintModal");
+
+    }catch(error){
+
+      console.error("संदेश सेव नहीं हुआ:",error);
+
+      alert(
+        "संदेश भेजने में समस्या हुई। कृपया बाद में प्रयास करें।"
+      );
+
+    }
+
+  });
+
+}
+
+// खबरें लोड करें
+loadNews();
+
+</script>
+
+<!-- सामान्य वेबसाइट JavaScript -->
+<script>
+
+function openModal(id){
+  const modal=document.getElementById(id);
+
+  if(modal){
+    modal.style.display="flex";
+  }
+}
+
+function closeModal(id){
+  const modal=document.getElementById(id);
+
+  if(modal){
+    modal.style.display="none";
+  }
+}
+
+function closeOutside(event,id){
+
+  if(event.target.id===id){
+    closeModal(id);
+  }
+
+}
+
+function scrollToSection(id){
+
+  const section=document.getElementById(id);
+
+  if(section){
+
+    section.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  }
+
+}
+
+function showInfo(message){
+  alert(message);
+}
+
+function searchServices(){
+
+  const input=document.getElementById("searchInput");
+
+  if(!input) return;
+
+  const value=input.value.toLowerCase().trim();
+
+  const cards=document.querySelectorAll(".searchable");
+
+  cards.forEach(function(card){
+
+    const text=card.innerText.toLowerCase();
+
+    card.style.display=text.includes(value) ? "" : "none";
+
+  });
+
+}
+
+document.addEventListener("keydown",function(event){
+
+  if(event.key==="Escape"){
+
+    closeModal("profileModal");
+    closeModal("complaintModal");
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
