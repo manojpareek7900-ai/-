@@ -286,29 +286,34 @@ document.getElementById("newsDate").value =
   new Date().toISOString().split("T")[0];
 
 // LOGIN
-loginForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+loginForm.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  loginMessage.textContent = "Login हो रहा है...";
+  loginMessage.style.color = "#006b58";
 
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
 
-  loginMessage.textContent = "Login हो रहा है...";
-
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    loginMessage.textContent = "";
-    loginForm.reset();
-  } catch (error) {
-  
+
+    loginMessage.textContent = "Login सफल हुआ!";
+    loginMessage.style.color = "green";
+
   } catch (error) {
     console.error("Firebase Login Error:", error);
 
     loginMessage.textContent =
-      "Error Code: " + (error.code || "unknown") +
-      "\n" + (error.message || "अज्ञात समस्या");
+      "Login Error:\n" +
+      (error.code || "Unknown Error") +
+      "\n" +
+      (error.message || "कोई जानकारी नहीं मिली");
 
     loginMessage.style.color = "red";
     loginMessage.style.whiteSpace = "pre-wrap";
+  }
+}); = "pre-wrap";
 }
                            }
 });
