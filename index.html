@@ -1,13 +1,9 @@
-
-<!DOCTYPE html>
-<html lang="hi">
+<!DOCTYPE html><html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#006b58">
-<title>दल्लूसर गाँव की डायरी</title>
-
-<style>
+<title>दल्लूसर गाँव की डायरी</title><style>
 *{
   box-sizing:border-box;
   margin:0;
@@ -79,17 +75,22 @@ button{
   margin-top:5px;
 }
 
+/* 🌦️ LIVE WEATHER */
 .weather{
   background:rgba(0,50,40,.35);
   border:1px solid rgba(255,255,255,.3);
-  border-radius:25px;
+  border-radius:20px;
   padding:10px 18px;
   text-align:center;
-  white-space:nowrap;
+  min-width:170px;
 }
 
 .weather strong{
   font-size:22px;
+}
+
+.weather small{
+  line-height:1.5;
 }
 
 .search-wrap{
@@ -519,7 +520,59 @@ footer p{
   outline:none;
 }
 
+/* 🎮 SNAKE GAME */
+.snake-box{
+  max-width:420px;
+  margin:20px auto;
+  padding:20px;
+  text-align:center;
+}
+
+.snake-info{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  color:#006b58;
+}
+
+#snakeCanvas{
+  width:100%;
+  max-width:300px;
+  height:auto;
+  background:#10251f;
+  border:4px solid #006b58;
+  border-radius:10px;
+  display:block;
+  margin:auto;
+}
+
+#snakeMessage{
+  margin:15px 0;
+  line-height:1.6;
+}
+
+.snake-controls{
+  margin-top:18px;
+  text-align:center;
+}
+
+.snake-controls button{
+  width:55px;
+  height:45px;
+  margin:4px;
+  border:none;
+  border-radius:10px;
+  background:#006b58;
+  color:white;
+  font-size:22px;
+}
+
+.snake-controls button:active{
+  transform:scale(.95);
+}
+
 @media(max-width:750px){
+
   .header-content{
     align-items:flex-start;
   }
@@ -549,6 +602,7 @@ footer p{
 }
 
 @media(max-width:480px){
+
   .brand-logo{
     width:58px;
     height:58px;
@@ -580,912 +634,1859 @@ footer p{
     width:100%;
   }
 }
-</style>
-</head>
+</style></head><body><header class="top-header" id="home">  <div class="header-content"><div class="brand">
 
-<body>
-
-<header class="top-header" id="home">
-  <div class="header-content">
-    <div class="brand">
-      <div class="brand-logo">🌾</div>
-      <div>
-        <h1>दल्लूसर गाँव की डायरी</h1>
-        <p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
-      </div>
-    </div>
-
-    <div class="weather">
-      ☀️ <strong>28°C</strong><br>
-      <small>दल्लूसर, राजस्थान</small>
-    </div>
-  </div>
-
-  <div class="search-wrap">
-    <input
-      type="search"
-      id="searchInput"
-      placeholder="गाँव में खोजें..."
-      oninput="searchServices()"
-    >
-    <button onclick="searchServices()">खोजें 🔍</button>
-  </div>
-</header>
-
-<main class="container">
-
-<section class="founder">
-  <img src="manoj.jpg" alt="Manoj Pareek">
+  <div class="brand-logo">🌾</div>
 
   <div>
-    <div class="role">👑 संस्थापक</div>
-    <h2>मनोज पारीक</h2>
-    <p>“अपने गाँव को डिजिटल रूप से जोड़ने का एक प्रयास”</p>
-
-    <button class="btn" onclick="openModal('profileModal')">
-      👤 मेरा प्रोफाइल →
-    </button>
-  </div>
-</section>
-
-<section class="panel" style="margin:25px 0;text-align:center;">
-  <h3>🔐 वेबसाइट प्रशासन</h3>
-  <p>खबरें, विकास कार्य और गाँव की सूचनाएँ जोड़ने के लिए Admin Panel खोलें।</p>
-  <a href="./admin.html" class="admin-btn">🔐 Admin Panel खोलें</a>
-</section>
-
-<section class="notice">
-  <div class="notice-content">
-    <div class="notice-icon">📢</div>
-    <div>
-      <h3>महत्वपूर्ण सूचना</h3>
-      <p>दल्लूसर गाँव से जुड़ी ताजा खबरें, विकास कार्य और सूचनाएँ यहाँ दिखाई जाएँगी।</p>
-    </div>
+    <h1>दल्लूसर गाँव की डायरी</h1>
+    <p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
   </div>
 
-  <button class="btn" onclick="scrollToSection('news')">
-    सभी सूचनाएँ देखें →
-  </button>
-</section>
+</div>
 
-<section id="services">
-  <div class="section-heading">
-    <h2>▦ गाँव की सेवाएँ</h2>
-    <span>सभी सेवाएँ देखें →</span>
-  </div>
+<!-- 🌦️ LIVE WEATHER -->
+<div class="weather" id="liveWeather">
 
-  <div class="service-grid">
+  <strong id="weatherTemp">🌤️ लोड...</strong>
 
-    <div class="service-card searchable">
-      <div class="service-icon red">📰</div>
-      <h3>गाँव की खबरें</h3>
-      <p>ताजा खबरें और अपडेट</p>
-      <button onclick="scrollToSection('news')">→</button>
-    </div>
+  <br>
 
-    <div class="service-card searchable">
-      <div class="service-icon orange">🏗️</div>
-      <h3>विकास कार्य</h3>
-      <p>चल रहे और पूर्ण कार्य</p>
-      <button onclick="scrollToSection('development')">→</button>
-    </div>
+  <small id="weatherPlace">
+    दल्लूसर, राजस्थान
+  </small>
 
-    <div class="service-card searchable">
-      <div class="service-icon blue">🏛️</div>
-      <h3>ग्राम पंचायत</h3>
-      <p>पंचायत संबंधी जानकारी</p>
-      <button onclick="showInfo('ग्राम पंचायत की जानकारी जल्द जोड़ी जाएगी।')">→</button>
-    </div>
+</div>
 
-    <div class="service-card searchable">
-      <div class="service-icon purple">🎓</div>
-      <h3>विद्यालय</h3>
-      <p>स्कूल और शिक्षा</p>
-      <button onclick="showInfo('विद्यालय संबंधी जानकारी जल्द जोड़ी जाएगी।')">→</button>
-    </div>
+  </div>  <div class="search-wrap"><input
+  type="search"
+  id="searchInput"
+  placeholder="गाँव में खोजें..."
+  oninput="searchServices()"
+>
 
-    <div class="service-card searchable">
-      <div class="service-icon green">📸</div>
-      <h3>फोटो गैलरी</h3>
-      <p>गाँव की यादें</p>
-      <button onclick="scrollToSection('gallery')">→</button>
-    </div>
+<button onclick="searchServices()">
+  खोजें 🔍
+</button>
 
-    <div class="service-card searchable">
-      <div class="service-icon pink">📜</div>
-      <h3>सरकारी योजनाएँ</h3>
-      <p>जनकल्याण योजनाएँ</p>
-      <button onclick="showInfo('सरकारी योजनाओं की जानकारी जल्द जोड़ी जाएगी।')">→</button>
-    </div>
+  </div></header><main class="container"><section class="founder">  <img src="manoj.jpg" alt="Manoj Pareek">  <div><div class="role">👑 संस्थापक</div>
 
-    <div class="service-card searchable">
-      <div class="service-icon teal">💬</div>
-      <h3>शिकायत / सुझाव</h3>
-      <p>अपनी बात रखें</p>
-      <button onclick="openModal('complaintModal')">→</button>
-    </div>
+<h2>मनोज पारीक</h2>
 
-    <div class="service-card searchable">
-      <div class="service-icon purple">📞</div>
-      <h3>महत्वपूर्ण संपर्क</h3>
-      <p>जरूरी नंबर</p>
-      <button onclick="scrollToSection('contact')">→</button>
-    </div>
+<p>
+  “अपने गाँव को डिजिटल रूप से जोड़ने का एक प्रयास”
+</p>
 
-    <div class="service-card searchable">
-      <div class="service-icon orange">📍</div>
-      <h3>गाँव का नक्शा</h3>
-      <p>स्थान और रास्ते</p>
-      <button onclick="showInfo('गाँव का नक्शा जल्द जोड़ा जाएगा।')">→</button>
-    </div>
+<button
+  class="btn"
+  onclick="openModal('profileModal')"
+>
+  👤 मेरा प्रोफाइल →
+</button>
 
-    <div class="service-card searchable">
-      <div class="service-icon red">🚨</div>
-      <h3>आपातकालीन सहायता</h3>
-      <p>जरूरी सहायता</p>
-      <button onclick="showInfo('आपातकालीन नंबर: 112')">→</button>
-    </div>
+  </div></section><section class="panel" style="margin:25px 0;text-align:center;">  <h3>🔐 वेबसाइट प्रशासन</h3>  <p>
+    खबरें, विकास कार्य और गाँव की सूचनाएँ जोड़ने के लिए Admin Panel खोलें।
+  </p>  <a href="./admin.html" class="admin-btn">
+    🔐 Admin Panel खोलें
+  </a></section><section class="notice">  <div class="notice-content"><div class="notice-icon">📢</div>
 
-    <div class="service-card searchable">
-      <div class="service-icon blue">💧</div>
-      <h3>पानी एवं सड़क</h3>
-      <p>स्थानीय समस्याएँ</p>
-      <button onclick="showInfo('पानी और सड़क संबंधी जानकारी जल्द जोड़ी जाएगी।')">→</button>
-    </div>
+<div>
 
-    <div class="service-card searchable">
-      <div class="service-icon green">🌱</div>
-      <h3>पर्यावरण अभियान</h3>
-      <p>हरियाली और स्वच्छता</p>
-      <button onclick="showInfo('पर्यावरण अभियान की जानकारी जल्द जोड़ी जाएगी।')">→</button>
-    </div>
+  <h3>महत्वपूर्ण सूचना</h3>
 
-  </div>
-</section>
+  <p>
+    दल्लूसर गाँव से जुड़ी ताजा खबरें,
+    विकास कार्य और सूचनाएँ यहाँ दिखाई जाएँगी।
+  </p>
 
-<section id="news">
-  <div class="section-heading">
-    <h2>📰 नवीनतम खबरें</h2>
-    <span>Firebase से अपडेट</span>
-  </div>
+</div>
 
-  <div class="content-grid">
+  </div><button
+class="btn"
+onclick="scrollToSection('news')"
 
-    <div class="panel">
-      <h3>ताजा समाचार</h3>
+«»
 
-      <!-- Firebase की खबरें यहाँ आएँगी -->
-      <div id="newsContainer">
-        <p>खबरें लोड हो रही हैं...</p>
-      </div>
-    </div>
+सभी सूचनाएँ देखें →
 
-    <div class="panel" id="development">
-      <h3>🏗️ विकास कार्य</h3>
+  </button></section><section id="services">  <div class="section-heading"><h2>▦ गाँव की सेवाएँ</h2>
 
-      <div class="development-item">
-        <img class="small-image" src="road.jpg" alt="मुख्य सड़क">
-        <div>
-          <h4>मुख्य सड़क निर्माण</h4>
-          <p>दल्लूसर से आसपास के मार्ग</p>
-        </div>
-        <span class="status">चल रहा है</span>
-      </div>
+<span>
+  सभी सेवाएँ देखें →
+</span>
 
-      <div class="development-item">
-        <img class="small-image" src="water.jpg" alt="पेयजल टंकी">
-        <div>
-          <h4>पेयजल टंकी निर्माण</h4>
-          <p>गाँव के लिए नई सुविधा</p>
-        </div>
-        <span class="status">चल रहा है</span>
-      </div>
+  </div>  <div class="service-grid"><div class="service-card searchable">
 
-      <div class="development-item">
-        <img class="small-image" src="school.jpg" alt="विद्यालय">
-        <div>
-          <h4>विद्यालय भवन मरम्मत</h4>
-          <p>शिक्षा से जुड़ा कार्य</p>
-        </div>
-        <span class="status">पूर्ण</span>
-      </div>
-    </div>
+  <div class="service-icon red">📰</div>
 
-  </div>
-</section>
+  <h3>गाँव की खबरें</h3>
 
-<section id="gallery">
-  <div class="section-heading">
-    <h2>📸 फोटो गैलरी</h2>
-    <span>गाँव की यादें</span>
-  </div>
-
-  <div class="panel">
-    <div class="gallery-grid">
-      <img src="gallery1.jpg" alt="दल्लूसर गाँव">
-      <img src="gallery2.jpg" alt="गाँव का दृश्य">
-      <img src="gallery3.jpg" alt="गाँव के खेत">
-      <img src="gallery4.jpg" alt="गाँव की सड़क">
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-heading">
-    <h2>📞 महत्वपूर्ण संपर्क</h2>
-    <span>जरूरी जानकारी</span>
-  </div>
-
-  <div class="contact-grid">
-    <div class="contact-card">
-      <div class="icon">🏛️</div>
-      <h3>ग्राम पंचायत</h3>
-      <p>संपर्क नंबर जल्द जोड़ा जाएगा</p>
-    </div>
-
-    <div class="contact-card">
-      <div class="icon">🏫</div>
-      <h3>विद्यालय</h3>
-      <p>संपर्क नंबर जल्द जोड़ा जाएगा</p>
-    </div>
-
-    <div class="contact-card">
-      <div class="icon">🚨</div>
-      <h3>आपातकाल</h3>
-      <p>112</p>
-    </div>
-  </div>
-</section>
-
-<section class="suggestion-banner">
-  <div>
-    <h2>आपका सुझाव हमारे लिए महत्वपूर्ण है</h2>
-    <p>गाँव को बेहतर बनाने के लिए अपना सुझाव या शिकायत भेजें।</p>
-  </div>
-
-  <button class="btn" onclick="openModal('complaintModal')">
-    सुझाव / शिकायत भेजें →
-  </button>
-</section>
-
-</main>
-
-<footer>
-  <p>© 2026 दल्लूसर गाँव की डायरी</p>
-  <p>हमारा गाँव • हमारी पहचान • हमारा विकास</p>
-  <p>Designed and managed by Manoj Pareek</p>
-</footer>
-
-<nav class="bottom-nav">
-  <button onclick="scrollToSection('home')">
-    <span>🏠</span>होम
-  </button>
+  <p>ताजा खबरें और अपडेट</p>
 
   <button onclick="scrollToSection('news')">
-    <span>📰</span>खबरें
+    →
   </button>
+
+</div>
+
+
+<div class="service-card searchable">
+
+  <div class="service-icon orange">🏗️</div>
+
+  <h3>विकास कार्य</h3>
+
+  <p>चल रहे और पूर्ण कार्य</p>
 
   <button onclick="scrollToSection('development')">
-    <span>🏗️</span>विकास
+    →
   </button>
+
+</div>
+
+
+<div class="service-card searchable">
+
+  <div class="service-icon blue">🏛️</div>
+
+  <h3>ग्राम पंचायत</h3>
+
+  <p>पंचायत संबंधी जानकारी</p>
+
+  <button onclick="showInfo('ग्राम पंचायत की जानकारी जल्द जोड़ी जाएगी।')">
+    →
+  </button>
+
+</div>
+
+
+<div class="service-card searchable">
+
+  <div class="service-icon purple">🎓</div>
+
+  <h3>विद्यालय</h3>
+
+  <p>स्कूल और शिक्षा</p>
+
+  <button onclick="showInfo('विद्यालय संबंधी जानकारी जल्द जोड़ी जाएगी।')">
+    →
+  </button>
+
+</div>
+
+
+<div class="service-card searchable">
+
+  <div class="service-icon green">📸</div>
+
+  <h3>फोटो गैलरी</h3>
+
+  <p>गाँव की यादें</p>
 
   <button onclick="scrollToSection('gallery')">
-    <span>📸</span>गैलरी
+    →
   </button>
+
+</div>
+
+
+<div class="service-card searchable">
+
+  <div class="service-icon pink">📜</div>
+
+  <h3>सरकारी योजनाएँ</h3>
+
+  <p>जनकल्याण योजनाएँ</p>
+
+  <button onclick="showInfo('सरकारी योजनाओं की जानकारी जल्द जोड़ी जाएगी।')">
+    →
+  </button>
+
+</div>
+
+
+<div class="service-card searchable">
+
+  <div class="service-icon teal">💬</div>
+
+  <h3>शिकायत / सुझाव</h3>
+
+  <p>अपनी बात रखें</p>
 
   <button onclick="openModal('complaintModal')">
-    <span>💬</span>सुझाव
+    →
   </button>
-</nav>
 
-<!-- Profile Modal -->
-<div class="modal" id="profileModal" onclick="closeOutside(event,'profileModal')">
-  <div class="modal-box">
-    <button class="close" onclick="closeModal('profileModal')">×</button>
-
-    <h2>👤 मनोज पारीक की प्रोफाइल</h2>
-
-    <p>
-      मनोज पारीक दल्लूसर गाँव की खबरों, विकास कार्यों और स्थानीय
-      जानकारी को डिजिटल रूप से लोगों तक पहुँचाने के उद्देश्य से
-      इस वेबसाइट का संचालन करते हैं।
-    </p>
-
-    <br>
-
-    <p>
-      यह प्लेटफॉर्म गाँव की जानकारी को एक जगह उपलब्ध कराने का प्रयास है।
-    </p>
-  </div>
 </div>
 
-<!-- Complaint Modal -->
-<div class="modal" id="complaintModal" onclick="closeOutside(event,'complaintModal')">
-  <div class="modal-box">
-    <button class="close" onclick="closeModal('complaintModal')">×</button>
 
-    <h2>💬 सुझाव एवं शिकायत</h2>
+<div class="service-card searchable">
 
-    <form id="complaintForm">
+  <div class="service-icon purple">📞</div>
 
-      <div class="form-group">
-        <label for="name">आपका नाम</label>
-        <input type="text" id="name" placeholder="अपना नाम लिखें" required>
-      </div>
+  <h3>महत्वपूर्ण संपर्क</h3>
 
-      <div class="form-group">
-        <label for="mobile">मोबाइल नंबर</label>
-        <input type="tel" id="mobile" placeholder="मोबाइल नंबर">
-      </div>
+  <p>जरूरी नंबर</p>
 
-      <div class="form-group">
-        <label for="type">प्रकार</label>
-        <select id="type">
-          <option value="सुझाव">सुझाव</option>
-          <option value="शिकायत">शिकायत</option>
-          <option value="जानकारी">जानकारी</option>
-        </select>
-      </div>
+  <button onclick="scrollToSection('contact')">
+    →
+  </button>
 
-      <div class="form-group">
-        <label for="message">अपना संदेश</label>
-        <textarea id="message" rows="5" placeholder="अपना संदेश लिखें..." required></textarea>
-      </div>
-
-      <button class="btn" type="submit">भेजें 📤</button>
-    </form>
-  </div>
 </div>
 
-<!-- Firebase Script -->
-<script type="module">
 
-import { initializeApp } from
+<div class="service-card searchable">
+
+  <div class="service-icon orange">📍</div>
+
+  <h3>गाँव का नक्शा</h3>
+
+  <p>स्थान और रास्ते</p>
+
+  <button onclick="showInfo('गाँव का नक्शा जल्द जोड़ा जाएगा।')">
+    →
+  </button>
+
+</div>
+
+
+<div class="service-card searchable">
+
+  <div class="service-icon red">🚨</div>
+
+  <h3>आपातकालीन सहायता</h3>
+
+  <p>जरूरी सहायता</p>
+
+  <button onclick="showInfo('आपातकालीन नंबर: 112')">
+    →
+  </button>
+
+</div>
+
+
+<div class="service-card searchable">
+
+  <div class="service-icon blue">💧</div>
+
+  <h3>पानी एवं सड़क</h3>
+
+  <p>स्थानीय समस्याएँ</p>
+
+  <button onclick="showInfo('पानी और सड़क संबंधी जानकारी जल्द जोड़ी जाएगी।')">
+    →
+  </button>
+
+</div>
+
+
+<div class="service-card searchable">
+
+  <div class="service-icon green">🌱</div>
+
+  <h3>पर्यावरण अभियान</h3>
+
+  <p>हरियाली और स्वच्छता</p>
+
+  <button onclick="showInfo('पर्यावरण अभियान की जानकारी जल्द जोड़ी जाएगी।')">
+    →
+  </button>
+
+</div>
+
+
+<!-- 🎮 GAME BUTTON -->
+
+<div class="service-card searchable">
+
+  <div class="service-icon teal">
+    🎮
+  </div>
+
+  <h3>
+    खेल और मनोरंजन
+  </h3>
+
+  <p>
+    गेम खेलें और मनोरंजन करें
+  </p>
+
+  <button onclick="scrollToSection('snake-game')">
+    →
+  </button>
+
+</div>
+
+  </div></section><!-- 📰 NEWS --><section id="news">  <div class="section-heading"><h2>📰 नवीनतम खबरें</h2>
+
+<span>
+  Firebase से अपडेट
+</span>
+
+  </div>  <div class="content-grid"><div class="panel">
+
+  <h3>ताजा समाचार</h3>
+
+  <div id="newsContainer">
+    <p>खबरें लोड हो रही हैं...</p>
+  </div>
+
+</div>
+
+
+<div class="panel" id="development">
+
+  <h3>🏗️ विकास कार्य</h3>
+
+
+  <div class="development-item">
+
+    <img
+      class="small-image"
+      src="road.jpg"
+      alt="मुख्य सड़क"
+    >
+
+    <div>
+
+      <h4>
+        मुख्य सड़क निर्माण
+      </h4>
+
+      <p>
+        दल्लूसर से आसपास के मार्ग
+      </p>
+
+    </div>
+
+    <span class="status">
+      चल रहा है
+    </span>
+
+  </div>
+
+
+  <div class="development-item">
+
+    <img
+      class="small-image"
+      src="water.jpg"
+      alt="पेयजल टंकी"
+    >
+
+    <div>
+
+      <h4>
+        पेयजल टंकी निर्माण
+      </h4>
+
+      <p>
+        गाँव के लिए नई सुविधा
+      </p>
+
+    </div>
+
+    <span class="status">
+      चल रहा है
+    </span>
+
+  </div>
+
+
+  <div class="development-item">
+
+    <img
+      class="small-image"
+      src="school.jpg"
+      alt="विद्यालय"
+    >
+
+    <div>
+
+      <h4>
+        विद्यालय भवन मरम्मत
+      </h4>
+
+      <p>
+        शिक्षा से जुड़ा कार्य
+      </p>
+
+    </div>
+
+    <span class="status">
+      पूर्ण
+    </span>
+
+  </div>
+
+
+</div>
+
+  </div></section><!-- 🎮 GAME & ENTERTAINMENT --><section id="snake-game">  <div class="section-heading"><h2>🎮 खेल और मनोरंजन</h2>
+
+<span>
+  मनोरंजन के लिए गेम
+</span>
+
+  </div>  <div class="panel snake-box"><h3>
+  🐍 Snake Game
+</h3>
+
+<p>
+  साँप को चलाएँ और ज्यादा से ज्यादा अंक बनाएँ।
+</p>
+
+
+<div class="snake-info">
+
+  <strong>
+    स्कोर:
+    <span id="snakeScore">0</span>
+  </strong>
+
+  <strong>
+    रिकॉर्ड:
+    <span id="snakeHighScore">0</span>
+  </strong>
+
+</div>
+
+
+<canvas
+  id="snakeCanvas"
+  width="300"
+  height="300"
+></canvas>
+
+
+<p id="snakeMessage">
+  गेम शुरू करने के लिए Start दबाएँ।
+</p>
+
+
+<button
+  id="startSnakeBtn"
+  class="btn"
+>
+  ▶️ Start Game
+</button>
+
+
+<div class="snake-controls">
+
+  <button data-direction="up">
+    ⬆️
+  </button>
+
+  <div>
+
+    <button data-direction="left">
+      ⬅️
+    </button>
+
+    <button data-direction="down">
+      ⬇️
+    </button>
+
+    <button data-direction="right">
+      ➡️
+    </button>
+
+  </div>
+
+  <p style="margin-top:10px;font-size:12px;color:#79918c;">
+    मोबाइल में नीचे दिए बटन या कंप्यूटर में Arrow Keys इस्तेमाल करें।
+  </p>
+
+</div>
+
+  </div></section><!-- 📸 GALLERY --><section id="gallery">  <div class="section-heading"><h2>📸 फोटो गैलरी</h2>
+
+<span>
+  गाँव की यादें
+</span>
+
+  </div>  <div class="panel"><div class="gallery-grid">
+
+  <img src="gallery1.jpg" alt="दल्लूसर गाँव">
+
+  <img src="gallery2.jpg" alt="गाँव का दृश्य">
+
+  <img src="gallery3.jpg" alt="गाँव के खेत">
+
+  <img src="gallery4.jpg" alt="गाँव की सड़क">
+
+</div>
+
+  </div></section><!-- 📞 CONTACT --><section id="contact">  <div class="section-heading"><h2>📞 महत्वपूर्ण संपर्क</h2>
+
+<span>
+  जरूरी जानकारी
+</span>
+
+  </div>  <div class="contact-grid"><div class="contact-card">
+
+  <div class="icon">
+    🏛️
+  </div>
+
+  <h3>
+    ग्राम पंचायत
+  </h3>
+
+  <p>
+    संपर्क नंबर जल्द जोड़ा जाएगा
+  </p>
+
+</div>
+
+
+<div class="contact-card">
+
+  <div class="icon">
+    🏫
+  </div>
+
+  <h3>
+    विद्यालय
+  </h3>
+
+  <p>
+    संपर्क नंबर जल्द जोड़ा जाएगा
+  </p>
+
+</div>
+
+
+<div class="contact-card">
+
+  <div class="icon">
+    🚨
+  </div>
+
+  <h3>
+    आपातकाल
+  </h3>
+
+  <p>
+    112
+  </p>
+
+</div>
+
+  </div></section><section class="suggestion-banner">  <div><h2>
+  आपका सुझाव हमारे लिए महत्वपूर्ण है
+</h2>
+
+<p>
+  गाँव को बेहतर बनाने के लिए अपना सुझाव या शिकायत भेजें।
+</p>
+
+  </div><button
+class="btn"
+onclick="openModal('complaintModal')"
+
+«»
+
+सुझाव / शिकायत भेजें →
+
+  </button></section></main><!-- FOOTER --><footer>  <p>
+    © 2026 दल्लूसर गाँव की डायरी
+  </p>  <p>
+    हमारा गाँव • हमारी पहचान • हमारा विकास
+  </p>  <p>
+    Designed and managed by Manoj Pareek
+  </p></footer><!-- BOTTOM NAV --><nav class="bottom-nav">  <button onclick="scrollToSection('home')"><span>🏠</span>
+होम
+
+  </button>  <button onclick="scrollToSection('news')"><span>📰</span>
+खबरें
+
+  </button>  <button onclick="scrollToSection('development')"><span>🏗️</span>
+विकास
+
+  </button>  <button onclick="scrollToSection('snake-game')"><span>🎮</span>
+गेम
+
+  </button>  <button onclick="openModal('complaintModal')"><span>💬</span>
+सुझाव
+
+  </button></nav><!-- PROFILE MODAL --><div
+  class="modal"
+  id="profileModal"
+  onclick="closeOutside(event,'profileModal')"
+>  <div class="modal-box"><button
+  class="close"
+  onclick="closeModal('profileModal')"
+>
+  ×
+</button>
+
+<h2>
+  👤 मनोज पारीक की प्रोफाइल
+</h2>
+
+<p>
+  मनोज पारीक दल्लूसर गाँव की खबरों,
+  विकास कार्यों और स्थानीय जानकारी को
+  डिजिटल रूप से लोगों तक पहुँचाने के
+  उद्देश्य से इस वेबसाइट का संचालन करते हैं।
+</p>
+
+<br>
+
+<p>
+  यह प्लेटफॉर्म गाँव की जानकारी को
+  एक जगह उपलब्ध कराने का प्रयास है।
+</p>
+
+  </div></div><!-- COMPLAINT MODAL --><div
+  class="modal"
+  id="complaintModal"
+  onclick="closeOutside(event,'complaintModal')"
+>  <div class="modal-box"><button
+  class="close"
+  onclick="closeModal('complaintModal')"
+>
+  ×
+</button>
+
+<h2>
+  💬 सुझाव एवं शिकायत
+</h2>
+
+
+<form id="complaintForm">
+
+
+  <div class="form-group">
+
+    <label for="name">
+      आपका नाम
+    </label>
+
+    <input
+      type="text"
+      id="name"
+      placeholder="अपना नाम लिखें"
+      required
+    >
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label for="mobile">
+      मोबाइल नंबर
+    </label>
+
+    <input
+      type="tel"
+      id="mobile"
+      placeholder="मोबाइल नंबर"
+    >
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label for="type">
+      प्रकार
+    </label>
+
+    <select id="type">
+
+      <option value="सुझाव">
+        सुझाव
+      </option>
+
+      <option value="शिकायत">
+        शिकायत
+      </option>
+
+      <option value="जानकारी">
+        जानकारी
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label for="message">
+      अपना संदेश
+    </label>
+
+    <textarea
+      id="message"
+      rows="5"
+      placeholder="अपना संदेश लिखें..."
+      required
+    ></textarea>
+
+  </div>
+
+
+  <button
+    class="btn"
+    type="submit"
+  >
+    भेजें 📤
+  </button>
+
+
+</form>
+
+  </div></div><!-- 🌦️ FREE LIVE WEATHER --><script>
+
+async function loadLiveWeather(){
+
+  const temp =
+    document.getElementById("weatherTemp");
+
+  const place =
+    document.getElementById("weatherPlace");
+
+
+  try{
+
+    /*
+      दल्लूसर, सरदारशहर, चूरू
+      के coordinates
+    */
+
+    const latitude = 28.38;
+    const longitude = 74.95;
+
+
+    const url =
+      "https://api.open-meteo.com/v1/forecast" +
+      "?latitude=" + latitude +
+      "&longitude=" + longitude +
+      "&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code" +
+      "&timezone=Asia%2FKolkata";
+
+
+    const response =
+      await fetch(url);
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "Weather API error"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    const current =
+      data.current;
+
+
+    const temperature =
+      Math.round(
+        current.temperature_2m
+      );
+
+
+    const humidity =
+      current.relative_humidity_2m;
+
+
+    const wind =
+      Math.round(
+        current.wind_speed_10m
+      );
+
+
+    const code =
+      current.weather_code;
+
+
+    let icon = "🌤️";
+
+    let condition = "मौसम";
+
+
+    if(code === 0){
+
+      icon = "☀️";
+      condition = "साफ आसमान";
+
+    }
+
+    else if(code >= 1 && code <= 3){
+
+      icon = "🌤️";
+      condition = "आंशिक बादल";
+
+    }
+
+    else if(code >= 45 && code <= 48){
+
+      icon = "🌫️";
+      condition = "कोहरा";
+
+    }
+
+    else if(code >= 51 && code <= 67){
+
+      icon = "🌧️";
+      condition = "बारिश";
+
+    }
+
+    else if(code >= 71 && code <= 77){
+
+      icon = "❄️";
+      condition = "बर्फबारी";
+
+    }
+
+    else if(code >= 80 && code <= 82){
+
+      icon = "🌦️";
+      condition = "बारिश की बौछार";
+
+    }
+
+    else if(code >= 95){
+
+      icon = "⛈️";
+      condition = "गरज के साथ बारिश";
+
+    }
+
+
+    temp.textContent =
+      `${icon} ${temperature}°C`;
+
+
+    place.innerHTML =
+      `दल्लूसर • ${condition}<br>` +
+      `💧 ${humidity}% • 💨 ${wind} km/h`;
+
+
+  }
+
+  catch(error){
+
+    console.error(
+      "मौसम लोड नहीं हुआ:",
+      error
+    );
+
+
+    temp.textContent =
+      "🌤️ मौसम";
+
+
+    place.textContent =
+      "मौसम की जानकारी उपलब्ध नहीं";
+
+  }
+
+}
+
+
+// पहली बार मौसम लोड
+loadLiveWeather();
+
+
+// हर 10 मिनट में अपडेट
+setInterval(
+  loadLiveWeather,
+  10 * 60 * 1000
+);
+
+</script><!-- FIREBASE --><script type="module">
+
+import { initializeApp }
+from
 "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
 
 import {
   getFirestore,
   collection,
   getDocs,
   addDoc
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAF4oC6jgeN7LXCm5w1l4G-P7-XWRT3P0A",
-  authDomain: "dallusar-village-diary-a2c35.firebaseapp.com",
-  projectId: "dallusar-village-diary-a2c35",
-  storageBucket: "dallusar-village-diary-a2c35.firebasestorage.app",
-  messagingSenderId: "771762232267",
-  appId: "1:771762232267:web:5d4386d7bc46f579cab44e",
-  measurementId: "G-2VJWX5XFBQ"
+
+  apiKey:
+    "AIzaSyAF4oC6jgeN7LXCm5w1l4G-P7-XWRT3P0A",
+
+  authDomain:
+    "dallusar-village-diary-a2c35.firebaseapp.com",
+
+  projectId:
+    "dallusar-village-diary-a2c35",
+
+  storageBucket:
+    "dallusar-village-diary-a2c35.firebasestorage.app",
+
+  messagingSenderId:
+    "771762232267",
+
+  appId:
+    "1:771762232267:web:5d4386d7bc46f579cab44e",
+
+  measurementId:
+    "G-2VJWX5XFBQ"
+
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+
+const app =
+  initializeApp(firebaseConfig);
+
+
+const db =
+  getFirestore(app);
+
 
 // HTML टेक्स्ट सुरक्षित दिखाना
+
 function escapeHTML(value){
-  return String(value ?? "").replace(/[&<>"']/g,function(char){
-    return {
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#039;"
-    }[char];
-  });
+
+  return String(value ?? "")
+    .replace(
+      /[&<>"']/g,
+      function(char){
+
+        return {
+
+          "&":"&amp;",
+          "<":"&lt;",
+          ">":"&gt;",
+          '"':"&quot;",
+          "'":"&#039;"
+
+        }[char];
+
+      }
+    );
+
 }
 
+
 // Firebase से खबरें लाना
+
 async function loadNews(){
 
-  const newsContainer = document.getElementById("newsContainer");
+  const newsContainer =
+    document.getElementById(
+      "newsContainer"
+    );
+
 
   if(!newsContainer){
-    console.error("newsContainer नहीं मिला।");
+
+    console.error(
+      "newsContainer नहीं मिला।"
+    );
+
     return;
+
   }
 
-  newsContainer.innerHTML="<p>खबरें लोड हो रही हैं...</p>";
+
+  newsContainer.innerHTML =
+    "<p>खबरें लोड हो रही हैं...</p>";
+
 
   try{
 
-    const snapshot = await getDocs(collection(db,"news"));
+    const snapshot =
+      await getDocs(
+        collection(db,"news")
+      );
+
 
     const newsList=[];
 
-    snapshot.forEach(function(doc){
 
-      newsList.push({
-        id:doc.id,
-        ...doc.data()
-      });
+    snapshot.forEach(
+      function(doc){
 
-    });
+        newsList.push({
 
-    // नई खबर पहले
-    newsList.sort(function(a,b){
+          id:doc.id,
+          ...doc.data()
 
-      const dateA = a.createdAt?.seconds
-        ? a.createdAt.seconds
-        : new Date(a.date || 0).getTime();
+        });
 
-      const dateB = b.createdAt?.seconds
-        ? b.createdAt.seconds
-        : new Date(b.date || 0).getTime();
+      }
+    );
 
-      return dateB-dateA;
 
-    });
+    newsList.sort(
+      function(a,b){
+
+        const dateA =
+          a.createdAt?.seconds
+          ? a.createdAt.seconds
+          : new Date(
+              a.date || 0
+            ).getTime();
+
+
+        const dateB =
+          b.createdAt?.seconds
+          ? b.createdAt.seconds
+          : new Date(
+              b.date || 0
+            ).getTime();
+
+
+        return dateB-dateA;
+
+      }
+    );
+
 
     newsContainer.innerHTML="";
 
+
     if(newsList.length===0){
 
-      newsContainer.innerHTML=
+      newsContainer.innerHTML =
         "<p>अभी कोई नई खबर उपलब्ध नहीं है।</p>";
 
       return;
+
     }
 
-    newsList.forEach(function(news){
 
-      const item=document.createElement("div");
+    newsList.forEach(
+      function(news){
 
-      item.className="news-item";
+        const item =
+          document.createElement(
+            "div"
+          );
 
-      const image=escapeHTML(news.image || "news-road.jpg");
-      const title=escapeHTML(news.title || "बिना शीर्षक खबर");
-      const description=escapeHTML(news.description || "");
-      const date=escapeHTML(news.date || "");
 
-      item.innerHTML=`
+        item.className =
+          "news-item";
 
-        <img
-          class="small-image"
-          src="${image}"
-          alt="गाँव की खबर"
-          onerror="this.src='news-road.jpg'"
-        >
 
-        <div>
-          <h4>${title}</h4>
-          <p>${description}</p>
-          <p>${date}</p>
-        </div>
+        const image =
+          escapeHTML(
+            news.image ||
+            "news-road.jpg"
+          );
 
-        <span class="status">नई</span>
 
-      `;
+        const title =
+          escapeHTML(
+            news.title ||
+            "बिना शीर्षक खबर"
+          );
 
-      newsContainer.appendChild(item);
 
-    });
+        const description =
+          escapeHTML(
+            news.description ||
+            ""
+          );
 
-  }catch(error){
 
-    console.error("खबरें लोड नहीं हुईं:",error);
+        const date =
+          escapeHTML(
+            news.date ||
+            ""
+          );
 
-    newsContainer.innerHTML=
+
+        item.innerHTML = `
+
+          <img
+            class="small-image"
+            src="${image}"
+            alt="गाँव की खबर"
+            onerror="this.src='news-road.jpg'"
+          >
+
+          <div>
+
+            <h4>${title}</h4>
+
+            <p>${description}</p>
+
+            <p>${date}</p>
+
+          </div>
+
+          <span class="status">
+            नई
+          </span>
+
+        `;
+
+
+        newsContainer.appendChild(
+          item
+        );
+
+      }
+    );
+
+
+  }
+
+  catch(error){
+
+    console.error(
+      "खबरें लोड नहीं हुईं:",
+      error
+    );
+
+
+    newsContainer.innerHTML =
       "<p>खबरें लोड करने में समस्या हुई। कृपया बाद में प्रयास करें।</p>";
 
   }
 
 }
 
+
 // सुझाव / शिकायत सेव करना
-const complaintForm=document.getElementById("complaintForm");
+
+const complaintForm =
+  document.getElementById(
+    "complaintForm"
+  );
+
 
 if(complaintForm){
 
-  complaintForm.addEventListener("submit",async function(event){
+  complaintForm.addEventListener(
+    "submit",
+    async function(event){
 
-    event.preventDefault();
+      event.preventDefault();
 
-    const name=document.getElementById("name").value.trim();
-    const mobile=document.getElementById("mobile").value.trim();
-    const type=document.getElementById("type").value;
-    const message=document.getElementById("message").value.trim();
 
-    if(!name || !message){
+      const name =
+        document.getElementById(
+          "name"
+        ).value.trim();
 
-      alert("कृपया नाम और संदेश भरें।");
-      return;
+
+      const mobile =
+        document.getElementById(
+          "mobile"
+        ).value.trim();
+
+
+      const type =
+        document.getElementById(
+          "type"
+        ).value;
+
+
+      const message =
+        document.getElementById(
+          "message"
+        ).value.trim();
+
+
+      if(!name || !message){
+
+        alert(
+          "कृपया नाम और संदेश भरें।"
+        );
+
+        return;
+
+      }
+
+
+      try{
+
+        await addDoc(
+          collection(
+            db,
+            "complaints"
+          ),
+          {
+
+            name:name,
+            mobile:mobile,
+            type:type,
+            message:message,
+            createdAt:
+              new Date().toISOString()
+
+          }
+        );
+
+
+        alert(
+          "धन्यवाद " +
+          name +
+          " जी! आपका संदेश सफलतापूर्वक भेज दिया गया है।"
+        );
+
+
+        complaintForm.reset();
+
+
+        closeModal(
+          "complaintModal"
+        );
+
+
+      }
+
+      catch(error){
+
+        console.error(
+          "संदेश सेव नहीं हुआ:",
+          error
+        );
+
+
+        alert(
+          "संदेश भेजने में समस्या हुई। कृपया बाद में प्रयास करें।"
+        );
+
+      }
 
     }
-
-    try{
-
-      await addDoc(collection(db,"complaints"),{
-
-        name:name,
-        mobile:mobile,
-        type:type,
-        message:message,
-        createdAt:new Date().toISOString()
-
-      });
-
-      alert(
-        "धन्यवाद "+name+
-        " जी! आपका संदेश सफलतापूर्वक भेज दिया गया है।"
-      );
-
-      complaintForm.reset();
-      closeModal("complaintModal");
-
-    }catch(error){
-
-      console.error("संदेश सेव नहीं हुआ:",error);
-
-      alert(
-        "संदेश भेजने में समस्या हुई। कृपया बाद में प्रयास करें।"
-      );
-
-    }
-
-  });
+  );
 
 }
+
 
 // खबरें लोड करें
+
 loadNews();
 
-</script>
-
-<!-- सामान्य वेबसाइट JavaScript -->
-<script>
+</script><!-- सामान्य JavaScript --><script>
 
 function openModal(id){
-  const modal=document.getElementById(id);
+
+  const modal =
+    document.getElementById(id);
+
 
   if(modal){
-    modal.style.display="flex";
+
+    modal.style.display =
+      "flex";
+
   }
+
 }
+
 
 function closeModal(id){
-  const modal=document.getElementById(id);
+
+  const modal =
+    document.getElementById(id);
+
 
   if(modal){
-    modal.style.display="none";
+
+    modal.style.display =
+      "none";
+
   }
+
 }
 
-function closeOutside(event,id){
 
-  if(event.target.id===id){
+function closeOutside(
+  event,
+  id
+){
+
+  if(
+    event.target.id === id
+  ){
+
     closeModal(id);
+
   }
 
 }
+
 
 function scrollToSection(id){
 
-  const section=document.getElementById(id);
+  const section =
+    document.getElementById(id);
+
 
   if(section){
 
     section.scrollIntoView({
+
       behavior:"smooth",
+
       block:"start"
+
     });
 
   }
 
 }
 
+
 function showInfo(message){
+
   alert(message);
+
 }
+
 
 function searchServices(){
 
-  const input=document.getElementById("searchInput");
+  const input =
+    document.getElementById(
+      "searchInput"
+    );
+
 
   if(!input) return;
 
-  const value=input.value.toLowerCase().trim();
 
-  const cards=document.querySelectorAll(".searchable");
+  const value =
+    input.value
+      .toLowerCase()
+      .trim();
 
-  cards.forEach(function(card){
 
-    const text=card.innerText.toLowerCase();
+  const cards =
+    document.querySelectorAll(
+      ".searchable"
+    );
 
-    card.style.display=text.includes(value) ? "" : "none";
 
-  });
+  cards.forEach(
+    function(card){
+
+      const text =
+        card.innerText
+          .toLowerCase();
+
+
+      card.style.display =
+        text.includes(value)
+        ? ""
+        : "none";
+
+    }
+  );
 
 }
 
-document.addEventListener("keydown",function(event){
 
-  if(event.key==="Escape"){
+document.addEventListener(
+  "keydown",
+  function(event){
 
-    closeModal("profileModal");
-    closeModal("complaintModal");
+    if(event.key === "Escape"){
+
+      closeModal(
+        "profileModal"
+      );
+
+      closeModal(
+        "complaintModal"
+      );
+
+    }
+
+  }
+);
+
+</script><!-- 🐍 SNAKE GAME JAVASCRIPT --><script>
+
+const snakeCanvas =
+  document.getElementById(
+    "snakeCanvas"
+  );
+
+
+const snakeCtx =
+  snakeCanvas.getContext(
+    "2d"
+  );
+
+
+const snakeScoreText =
+  document.getElementById(
+    "snakeScore"
+  );
+
+
+const snakeHighScoreText =
+  document.getElementById(
+    "snakeHighScore"
+  );
+
+
+const snakeMessage =
+  document.getElementById(
+    "snakeMessage"
+  );
+
+
+const startSnakeBtn =
+  document.getElementById(
+    "startSnakeBtn"
+  );
+
+
+const gridSize = 15;
+
+
+const tileSize =
+  snakeCanvas.width /
+  gridSize;
+
+
+let snake;
+
+let food;
+
+let direction;
+
+let nextDirection;
+
+let snakeScore = 0;
+
+let snakeHighScore =
+  Number(
+    localStorage.getItem(
+      "snakeHighScore"
+    ) || 0
+  );
+
+let snakeTimer = null;
+
+let snakeRunning = false;
+
+
+snakeHighScoreText.textContent =
+  snakeHighScore;
+
+
+function startSnakeGame(){
+
+  clearInterval(
+    snakeTimer
+  );
+
+
+  snake = [
+
+    {x:7,y:7},
+
+    {x:6,y:7},
+
+    {x:5,y:7}
+
+  ];
+
+
+  direction = {
+    x:1,
+    y:0
+  };
+
+
+  nextDirection = {
+    x:1,
+    y:0
+  };
+
+
+  snakeScore = 0;
+
+
+  snakeRunning = true;
+
+
+  snakeScoreText.textContent =
+    snakeScore;
+
+
+  snakeMessage.textContent =
+    "खेल शुरू हो गया!";
+
+
+  startSnakeBtn.textContent =
+    "🔄 Restart Game";
+
+
+  createFood();
+
+
+  drawSnakeGame();
+
+
+  snakeTimer =
+    setInterval(
+      updateSnakeGame,
+      150
+    );
+
+}
+
+
+function createFood(){
+
+  do{
+
+    food = {
+
+      x:
+        Math.floor(
+          Math.random() *
+          gridSize
+        ),
+
+      y:
+        Math.floor(
+          Math.random() *
+          gridSize
+        )
+
+    };
 
   }
 
-});
-
-</script>
-<!-- Snake Game -->
-<section id="snake-game" class="section">
-  <div class="section-title">
-    <h2>🐍 Snake Game</h2>
-    <p>साँप को चलाएँ और ज्यादा से ज्यादा अंक बनाएँ</p>
-  </div>
-
-  <div class="panel snake-box">
-    <div class="snake-info">
-      <strong>स्कोर: <span id="snakeScore">0</span></strong>
-      <strong>रिकॉर्ड: <span id="snakeHighScore">0</span></strong>
-    </div>
-
-    <canvas id="snakeCanvas" width="300" height="300"></canvas>
-
-    <p id="snakeMessage">गेम शुरू करने के लिए Start दबाएँ।</p>
-
-    <button id="startSnakeBtn" class="btn">▶️ Start Game</button>
-
-    <div class="snake-controls">
-      <button data-direction="up">⬆️</button>
-      <div>
-        <button data-direction="left">⬅️</button>
-        <button data-direction="down">⬇️</button>
-        <button data-direction="right">➡️</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-.snake-box {
-  max-width: 420px;
-  margin: 20px auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.snake-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  color: #006b58;
-}
-
-#snakeCanvas {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  background: #10251f;
-  border: 4px solid #006b58;
-  border-radius: 10px;
-  display: block;
-  margin: auto;
-}
-
-#snakeMessage {
-  margin: 15px 0;
-  line-height: 1.6;
-}
-
-.snake-controls {
-  margin-top: 18px;
-  text-align: center;
-}
-
-.snake-controls button {
-  width: 55px;
-  height: 45px;
-  margin: 4px;
-  border: none;
-  border-radius: 10px;
-  background: #006b58;
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.snake-controls button:active {
-  transform: scale(0.95);
-}
-</style>
-
-<script>
-const snakeCanvas = document.getElementById("snakeCanvas");
-const snakeCtx = snakeCanvas.getContext("2d");
-
-const snakeScoreText = document.getElementById("snakeScore");
-const snakeHighScoreText = document.getElementById("snakeHighScore");
-const snakeMessage = document.getElementById("snakeMessage");
-const startSnakeBtn = document.getElementById("startSnakeBtn");
-
-const gridSize = 15;
-const tileSize = snakeCanvas.width / gridSize;
-
-let snake;
-let food;
-let direction;
-let nextDirection;
-let snakeScore = 0;
-let snakeHighScore = Number(localStorage.getItem("snakeHighScore") || 0);
-let snakeTimer = null;
-let snakeRunning = false;
-
-snakeHighScoreText.textContent = snakeHighScore;
-
-function startSnakeGame() {
-  clearInterval(snakeTimer);
-
-  snake = [
-    { x: 7, y: 7 },
-    { x: 6, y: 7 },
-    { x: 5, y: 7 }
-  ];
-
-  direction = { x: 1, y: 0 };
-  nextDirection = { x: 1, y: 0 };
-  snakeScore = 0;
-  snakeRunning = true;
-
-  snakeScoreText.textContent = snakeScore;
-  snakeMessage.textContent = "खेल शुरू हो गया!";
-  startSnakeBtn.textContent = "🔄 Restart Game";
-
-  createFood();
-  drawSnakeGame();
-
-  snakeTimer = setInterval(updateSnakeGame, 150);
-}
-
-function createFood() {
-  do {
-    food = {
-      x: Math.floor(Math.random() * gridSize),
-      y: Math.floor(Math.random() * gridSize)
-    };
-  } while (
-    snake.some(part => part.x === food.x && part.y === food.y)
+  while(
+    snake.some(
+      part =>
+        part.x === food.x &&
+        part.y === food.y
+    )
   );
+
 }
 
-function updateSnakeGame() {
-  if (!snakeRunning) return;
 
-  direction = nextDirection;
+function updateSnakeGame(){
+
+  if(!snakeRunning)
+    return;
+
+
+  direction =
+    nextDirection;
+
 
   const head = {
-    x: snake[0].x + direction.x,
-    y: snake[0].y + direction.y
+
+    x:
+      snake[0].x +
+      direction.x,
+
+    y:
+      snake[0].y +
+      direction.y
+
   };
 
+
   const hitWall =
+
     head.x < 0 ||
     head.x >= gridSize ||
     head.y < 0 ||
     head.y >= gridSize;
 
-  const hitBody = snake.some(
-    part => part.x === head.x && part.y === head.y
-  );
 
-  if (hitWall || hitBody) {
+  const hitBody =
+    snake.some(
+      part =>
+        part.x === head.x &&
+        part.y === head.y
+    );
+
+
+  if(
+    hitWall ||
+    hitBody
+  ){
+
     endSnakeGame();
+
     return;
+
   }
 
-  snake.unshift(head);
 
-  if (head.x === food.x && head.y === food.y) {
+  snake.unshift(
+    head
+  );
+
+
+  if(
+    head.x === food.x &&
+    head.y === food.y
+  ){
+
     snakeScore++;
-    snakeScoreText.textContent = snakeScore;
 
-    if (snakeScore > snakeHighScore) {
-      snakeHighScore = snakeScore;
-      snakeHighScoreText.textContent = snakeHighScore;
-      localStorage.setItem("snakeHighScore", snakeHighScore);
+
+    snakeScoreText.textContent =
+      snakeScore;
+
+
+    if(
+      snakeScore >
+      snakeHighScore
+    ){
+
+      snakeHighScore =
+        snakeScore;
+
+
+      snakeHighScoreText.textContent =
+        snakeHighScore;
+
+
+      localStorage.setItem(
+        "snakeHighScore",
+        snakeHighScore
+      );
+
     }
 
+
     createFood();
-  } else {
-    snake.pop();
+
   }
 
+  else{
+
+    snake.pop();
+
+  }
+
+
   drawSnakeGame();
+
 }
 
-function drawSnakeGame() {
-  snakeCtx.fillStyle = "#10251f";
-  snakeCtx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
 
-  snakeCtx.fillStyle = "#ff595e";
+function drawSnakeGame(){
+
+  snakeCtx.fillStyle =
+    "#10251f";
+
+
   snakeCtx.fillRect(
-    food.x * tileSize + 2,
-    food.y * tileSize + 2,
-    tileSize - 4,
-    tileSize - 4
+    0,
+    0,
+    snakeCanvas.width,
+    snakeCanvas.height
   );
 
-  snake.forEach((part, index) => {
-    snakeCtx.fillStyle = index === 0 ? "#9cff57" : "#35c759";
 
-    snakeCtx.fillRect(
-      part.x * tileSize + 1,
-      part.y * tileSize + 1,
-      tileSize - 2,
-      tileSize - 2
-    );
-  });
+  snakeCtx.fillStyle =
+    "#ff595e";
+
+
+  snakeCtx.fillRect(
+
+    food.x * tileSize + 2,
+
+    food.y * tileSize + 2,
+
+    tileSize - 4,
+
+    tileSize - 4
+
+  );
+
+
+  snake.forEach(
+    (part,index) => {
+
+      snakeCtx.fillStyle =
+        index === 0
+        ? "#9cff57"
+        : "#35c759";
+
+
+      snakeCtx.fillRect(
+
+        part.x * tileSize + 1,
+
+        part.y * tileSize + 1,
+
+        tileSize - 2,
+
+        tileSize - 2
+
+      );
+
+    }
+  );
+
 }
 
-function endSnakeGame() {
-  snakeRunning = false;
-  clearInterval(snakeTimer);
+
+function endSnakeGame(){
+
+  snakeRunning =
+    false;
+
+
+  clearInterval(
+    snakeTimer
+  );
+
 
   snakeMessage.textContent =
     `💥 गेम खत्म! आपका स्कोर: ${snakeScore}`;
 
-  startSnakeBtn.textContent = "▶️ फिर से खेलें";
+
+  startSnakeBtn.textContent =
+    "▶️ फिर से खेलें";
+
 }
 
-function changeSnakeDirection(newDirection) {
-  if (!snakeRunning) return;
+
+function changeSnakeDirection(
+  newDirection
+){
+
+  if(!snakeRunning)
+    return;
+
 
   const directions = {
-    up: { x: 0, y: -1 },
-    down: { x: 0, y: 1 },
-    left: { x: -1, y: 0 },
-    right: { x: 1, y: 0 }
+
+    up:{
+      x:0,
+      y:-1
+    },
+
+    down:{
+      x:0,
+      y:1
+    },
+
+    left:{
+      x:-1,
+      y:0
+    },
+
+    right:{
+      x:1,
+      y:0
+    }
+
   };
 
-  const selected = directions[newDirection];
 
-  if (
-    selected.x + direction.x === 0 &&
-    selected.y + direction.y === 0
-  ) {
+  const selected =
+    directions[
+      newDirection
+    ];
+
+
+  if(
+
+    selected.x +
+    direction.x === 0 &&
+
+    selected.y +
+    direction.y === 0
+
+  ){
+
     return;
+
   }
 
-  nextDirection = selected;
+
+  nextDirection =
+    selected;
+
 }
 
-startSnakeBtn.addEventListener("click", startSnakeGame);
 
-document.querySelectorAll("[data-direction]").forEach(button => {
-  button.addEventListener("click", () => {
-    changeSnakeDirection(button.dataset.direction);
-  });
-});
+startSnakeBtn.addEventListener(
+  "click",
+  startSnakeGame
+);
 
-document.addEventListener("keydown", event => {
-  const keys = {
-    ArrowUp: "up",
-    ArrowDown: "down",
-    ArrowLeft: "left",
-    ArrowRight: "right"
-  };
 
-  if (keys[event.key]) {
-    event.preventDefault();
-    changeSnakeDirection(keys[event.key]);
+document
+  .querySelectorAll(
+    "[data-direction]"
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          changeSnakeDirection(
+            button.dataset.direction
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    const keys = {
+
+      ArrowUp:"up",
+
+      ArrowDown:"down",
+
+      ArrowLeft:"left",
+
+      ArrowRight:"right"
+
+    };
+
+
+    if(keys[event.key]){
+
+      event.preventDefault();
+
+
+      changeSnakeDirection(
+        keys[event.key]
+      );
+
+    }
+
   }
-});
-</script>
-</body>
-  </script>
+);
 
-<!-- Snake Game -->
-<section id="snake-game" class="section">
-
-  <!-- आपका पूरा Snake Game HTML कोड यहाँ रहेगा -->
-
-</section>
-
-</body>
-</html>
+</script></body>
 </html>
