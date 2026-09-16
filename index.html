@@ -2026,7 +2026,9 @@ footer p{
       🎮 खेल और मनोरंजन
     </h2>
 
-
+<button onclick="openMiniCarGame()" class="game-btn">
+  🚗 Mini Car Game
+</button>
     <div class="snake-box">
 
       <h3>
@@ -3569,7 +3571,581 @@ document.addEventListener(
 
 </script>
 
+<!-- 🚗 MINI CAR GAME -->
+<div id="miniCarGame" style="display:none;">
 
+  <div style="
+    max-width:420px;
+    margin:20px auto;
+    text-align:center;
+    font-family:Arial,sans-serif;
+  ">
+
+    <h2>🚗 Mini Car Game</h2>
+
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      margin:10px 5px;
+      font-size:18px;
+      font-weight:bold;
+    ">
+      <span>🏆 Score: <span id="carScore">0</span></span>
+      <span>🚦 Speed: <span id="carSpeed">1</span></span>
+    </div>
+
+    <canvas id="carCanvas"
+      width="360"
+      height="560"
+      style="
+        width:100%;
+        max-width:360px;
+        background:#555;
+        border:4px solid #222;
+        border-radius:12px;
+        display:block;
+        margin:auto;
+        touch-action:none;
+      ">
+    </canvas>
+
+    <div style="
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      margin-top:15px;
+    ">
+      <button onclick="moveCarLeft()" style="
+        width:110px;
+        height:55px;
+        font-size:28px;
+        border:0;
+        border-radius:12px;
+        background:#006b58;
+        color:white;
+      ">⬅️</button>
+
+      <button onclick="moveCarRight()" style="
+        width:110px;
+        height:55px;
+        font-size:28px;
+        border:0;
+        border-radius:12px;
+        background:#006b58;
+        color:white;
+      ">➡️</button>
+    </div>
+
+    <button onclick="startMiniCarGame()" style="
+      margin-top:15px;
+      padding:12px 25px;
+      font-size:17px;
+      border:0;
+      border-radius:10px;
+      background:#e67e22;
+      color:white;
+    ">
+      🔄 Start / Restart
+    </button>
+
+    <button onclick="closeMiniCarGame()" style="
+      margin-top:10px;
+      padding:10px 20px;
+      font-size:16px;
+      border:0;
+      border-radius:10px;
+      background:#555;
+      color:white;
+    ">
+      ❌ बंद करें
+    </button>
+
+  </div>
+</div>
+
+
+<script>
+/* ================================
+   🚗 MINI CAR GAME
+================================ */
+
+const carCanvas = document.getElementById("carCanvas");
+const carCtx = carCanvas.getContext("2d");
+
+let playerCar;
+let enemyCars = [];
+let carScore = 0;
+let carGameRunning = false;
+let carFrame;
+let roadLines = [];
+let enemySpeed = 4;
+
+
+/* गेम खोलना */
+function openMiniCarGame(){
+
+  const game = document.getElementById("miniCarGame");
+
+  if(game){
+    game.style.display = "block";
+    game.scrollIntoView({
+      behavior:"smooth"
+    });
+
+    startMiniCarGame();
+  }
+}
+
+
+/* गेम बंद करना */
+function closeMiniCarGame(){
+
+  carGameRunning = false;
+
+  if(carFrame){
+    cancelAnimationFrame(carFrame);
+  }
+
+  const game = document.getElementById("miniCarGame");
+
+  if(game){
+    game.style.display = "none";
+  }
+}
+
+
+/* कार बनाना */
+function drawPlayerCar(){
+
+  carCtx.fillStyle = "#e74c3c";
+
+  carCtx.fillRect(
+    playerCar.x,
+    playerCar.y,
+    playerCar.width,
+    playerCar.height
+  );
+
+  /* कार की छत */
+  carCtx.fillStyle = "#3498db";
+
+  carCtx.fillRect(
+    playerCar.x + 7,
+    playerCar.y + 10,
+    playerCar.width - 14,
+    25
+  );
+
+  /* शीशा */
+  carCtx.fillStyle = "#dff9fb";
+
+  carCtx.fillRect(
+    playerCar.x + 9,
+    playerCar.y + 13,
+    playerCar.width - 18,
+    18
+  );
+
+  /* Wheels */
+
+  carCtx.fillStyle = "#111";
+
+  carCtx.fillRect(
+    playerCar.x - 4,
+    playerCar.y + 10,
+    5,
+    18
+  );
+
+  carCtx.fillRect(
+    playerCar.x + playerCar.width - 1,
+    playerCar.y + 10,
+    5,
+    18
+  );
+
+  carCtx.fillRect(
+    playerCar.x - 4,
+    playerCar.y + playerCar.height - 28,
+    5,
+    18
+  );
+
+  carCtx.fillRect(
+    playerCar.x + playerCar.width - 1,
+    playerCar.y + playerCar.height - 28,
+    5,
+    18
+  );
+}
+
+
+/* दुश्मन कार */
+function drawEnemyCar(enemy){
+
+  carCtx.fillStyle = "#f1c40f";
+
+  carCtx.fillRect(
+    enemy.x,
+    enemy.y,
+    enemy.width,
+    enemy.height
+  );
+
+  carCtx.fillStyle = "#2c3e50";
+
+  carCtx.fillRect(
+    enemy.x + 7,
+    enemy.y + 10,
+    enemy.width - 14,
+    25
+  );
+
+  carCtx.fillStyle = "#dff9fb";
+
+  carCtx.fillRect(
+    enemy.x + 9,
+    enemy.y + 13,
+    enemy.width - 18,
+    18
+  );
+
+  carCtx.fillStyle = "#111";
+
+  carCtx.fillRect(
+    enemy.x - 4,
+    enemy.y + 10,
+    5,
+    18
+  );
+
+  carCtx.fillRect(
+    enemy.x + enemy.width - 1,
+    enemy.y + 10,
+    5,
+    18
+  );
+
+  carCtx.fillRect(
+    enemy.x - 4,
+    enemy.y + enemy.height - 28,
+    5,
+    18
+  );
+
+  carCtx.fillRect(
+    enemy.x + enemy.width - 1,
+    enemy.y + enemy.height - 28,
+    5,
+    18
+  );
+}
+
+
+/* सड़क */
+function drawRoad(){
+
+  carCtx.fillStyle = "#555";
+
+  carCtx.fillRect(
+    0,
+    0,
+    carCanvas.width,
+    carCanvas.height
+  );
+
+  /* सड़क के किनारे */
+
+  carCtx.fillStyle = "#27ae60";
+
+  carCtx.fillRect(
+    0,
+    0,
+    35,
+    carCanvas.height
+  );
+
+  carCtx.fillRect(
+    carCanvas.width - 35,
+    0,
+    35,
+    carCanvas.height
+  );
+
+
+  /* Lane lines */
+
+  carCtx.fillStyle = "#fff";
+
+  roadLines.forEach(line => {
+
+    carCtx.fillRect(
+      118,
+      line.y,
+      7,
+      45
+    );
+
+    carCtx.fillRect(
+      235,
+      line.y,
+      7,
+      45
+    );
+
+  });
+}
+
+
+/* गेम शुरू */
+function startMiniCarGame(){
+
+  carScore = 0;
+
+  enemyCars = [];
+
+  enemySpeed = 4;
+
+  document.getElementById("carScore").textContent = carScore;
+  document.getElementById("carSpeed").textContent = "1";
+
+
+  playerCar = {
+    x: 165,
+    y: 470,
+    width: 32,
+    height: 65
+  };
+
+
+  roadLines = [];
+
+  for(let i=0;i<8;i++){
+
+    roadLines.push({
+      y:i*90-100
+    });
+
+  }
+
+
+  carGameRunning = true;
+
+  gameLoop();
+}
+
+
+/* दुश्मन जोड़ना */
+function createEnemy(){
+
+  const lanes = [70, 145, 220, 295];
+
+  const lane =
+    lanes[Math.floor(Math.random()*lanes.length)];
+
+
+  enemyCars.push({
+
+    x:lane,
+    y:-80,
+    width:32,
+    height:65
+
+  });
+}
+
+
+/* Collision */
+function checkCollision(a,b){
+
+  return (
+
+    a.x < b.x + b.width &&
+    a.x + a.width > b.x &&
+    a.y < b.y + b.height &&
+    a.y + a.height > b.y
+
+  );
+}
+
+
+/* गेम Loop */
+let enemyCounter = 0;
+
+function gameLoop(){
+
+  if(!carGameRunning) return;
+
+
+  drawRoad();
+
+
+  /* सड़क चलाना */
+
+  roadLines.forEach(line => {
+
+    line.y += enemySpeed;
+
+    if(line.y > carCanvas.height){
+
+      line.y = -50;
+
+    }
+
+  });
+
+
+  /* दुश्मन कार */
+
+  enemyCounter++;
+
+  if(enemyCounter > 55){
+
+    createEnemy();
+
+    enemyCounter = 0;
+
+  }
+
+
+  enemyCars.forEach(enemy => {
+
+    enemy.y += enemySpeed;
+
+    drawEnemyCar(enemy);
+
+
+    if(checkCollision(playerCar,enemy)){
+
+      gameOverMiniCar();
+
+    }
+
+  });
+
+
+  /* बाहर गई कार हटाना */
+
+  enemyCars =
+    enemyCars.filter(enemy =>
+      enemy.y < carCanvas.height + 100
+    );
+
+
+  drawPlayerCar();
+
+
+  carFrame =
+    requestAnimationFrame(gameLoop);
+
+}
+
+
+/* Left */
+function moveCarLeft(){
+
+  if(!playerCar || !carGameRunning) return;
+
+  playerCar.x -= 35;
+
+  if(playerCar.x < 40){
+
+    playerCar.x = 40;
+
+  }
+
+}
+
+
+/* Right */
+function moveCarRight(){
+
+  if(!playerCar || !carGameRunning) return;
+
+  playerCar.x += 35;
+
+  if(playerCar.x >
+     carCanvas.width - playerCar.width - 40){
+
+    playerCar.x =
+      carCanvas.width - playerCar.width - 40;
+
+  }
+
+}
+
+
+/* Keyboard Controls */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key === "ArrowLeft"){
+
+    moveCarLeft();
+
+  }
+
+  if(e.key === "ArrowRight"){
+
+    moveCarRight();
+
+  }
+
+});
+
+
+/* Score बढ़ाना */
+
+setInterval(function(){
+
+  if(carGameRunning){
+
+    carScore++;
+
+    document.getElementById("carScore")
+      .textContent = carScore;
+
+
+    if(carScore % 20 === 0){
+
+      enemySpeed += 0.5;
+
+      document.getElementById("carSpeed")
+        .textContent =
+        Math.floor(enemySpeed - 3);
+
+    }
+
+  }
+
+},1000);
+
+
+/* Game Over */
+
+function gameOverMiniCar(){
+
+  carGameRunning = false;
+
+  if(carFrame){
+
+    cancelAnimationFrame(carFrame);
+
+  }
+
+
+  setTimeout(function(){
+
+    alert(
+      "🚗 GAME OVER!\n\n" +
+      "🏆 आपका Score: " +
+      carScore
+    );
+
+  },100);
+
+}
+</script>
 </body>
 
 </html>
