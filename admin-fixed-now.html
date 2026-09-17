@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#006b58">
+<title>Admin Panel | दल्लूसर गाँव की डायरी</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f3faf7;color:#163d36}.wrap{max-width:900px;margin:auto;padding:20px}.hero{background:linear-gradient(135deg,#005b4c,#00977d);color:white;padding:25px;border-radius:22px;margin-bottom:18px;box-shadow:0 12px 30px #005b4c25}.hero h1{margin:0 0 6px}.card{background:white;border:1px solid #d8ebe5;border-radius:18px;padding:18px;margin:15px 0;box-shadow:0 6px 20px #0b5e4c10}.hidden{display:none!important}input,textarea,select{width:100%;padding:12px;margin:7px 0;border:1px solid #cbded8;border-radius:10px;font:inherit}textarea{resize:vertical}.btn{width:100%;padding:12px;border:0;border-radius:11px;background:#007b61;color:white;font-weight:800;cursor:pointer;margin-top:7px}.btn:disabled{opacity:.6}.logout{background:#b42318}.msg{min-height:22px;margin-top:8px;font-weight:700}.muted{color:#657b75;font-size:13px}.progress{height:8px;background:#e5eeeb;border-radius:99px;overflow:hidden;margin-top:10px}.bar{height:100%;width:0;background:#00a37e;transition:.2s}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:600px){.wrap{padding:12px}.row{grid-template-columns:1fr}.hero{padding:20px}.card{padding:15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero"><h1>🔐 दल्लूसर Admin Panel</h1><div>खबरें • विकास कार्य • फोटो • वीडियो</div></div>
+<div id="loginBox" class="card">
+<h2>Admin Login</h2>
+<p class="muted">अपने Firebase Authentication वाले Email और Password से Login करें।</p>
+<input id="email" type="email" autocomplete="username" placeholder="Admin Email">
+<input id="password" type="password" autocomplete="current-password" placeholder="Password">
+<button id="loginBtn" class="btn">🔑 Login</button>
+<div id="loginMsg" class="msg"></div>
+</div>
+<div id="panel" class="hidden">
+<div class="card"><b>✅ Login सफल</b><p id="userEmail" class="muted"></p><button id="logoutBtn" class="btn logout">🚪 Logout</button></div>
+<div id="content">
+<div class="card"><h2>📰 खबर जोड़ें</h2><input id="newsTitle" placeholder="खबर का शीर्षक"><textarea id="newsDesc" rows="4" placeholder="खबर की जानकारी"></textarea><input id="newsDate" type="date"><label>📸 फोटो/वीडियो (वैकल्पिक)</label><input id="newsFile" type="file" accept="image/*,video/*"><button id="newsBtn" class="btn">📰 खबर सेव करें</button><div id="newsMsg" class="msg"></div></div>
+<div class="card"><h2>🏗️ विकास कार्य जोड़ें</h2><input id="devTitle" placeholder="कार्य का नाम"><textarea id="devDesc" rows="3" placeholder="कार्य की जानकारी"></textarea><div class="row"><select id="devStatus"><option value="proposed">📋 प्रस्तावित</option><option value="progress">⏳ चल रहा</option><option value="completed">✅ पूर्ण</option></select><input id="devLocation" placeholder="📍 स्थान"></div><input id="devDate" type="date"><label>📸 फोटो (वैकल्पिक)</label><input id="devFile" type="file" accept="image/*"><button id="devBtn" class="btn">🏗️ विकास कार्य सेव करें</button><div id="devMsg" class="msg"></div></div>
+<div class="card"><h2>📸 फोटो / 🎥 वीडियो गैलरी</h2><input id="mediaTitle" placeholder="फोटो/वीडियो का नाम"><input id="mediaDate" type="date"><input id="mediaFile" type="file" accept="image/*,video/*"><button id="mediaBtn" class="btn">☁️ Upload करें</button><div class="progress"><div class="bar" id="bar"></div></div><div id="mediaMsg" class="msg"></div></div>
+</div></div></div>
+<script type="module">
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js';
+import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js';
+import {getFirestore,collection,addDoc,serverTimestamp} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
+import {getStorage,ref,uploadBytesResumable,getDownloadURL} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js';
+const firebaseConfig={apiKey:'AIzaSyB4_tHY0Mcth-vgkblr7J31N6L3CwVswPs',authDomain:'dallusar-village-portel.firebaseapp.com',projectId:'dallusar-village-portel',storageBucket:'dallusar-village-portel.firebasestorage.app',messagingSenderId:'179153907993',appId:'1:179153907993:web:0f5670765b6ac861165588',measurementId:'G-3S3VBXSRMX'};
+let app,auth,db,storage;
+try{app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);storage=getStorage(app)}catch(e){console.error(e);document.getElementById('loginMsg').textContent='❌ Firebase load error: '+(e.code||e.message);throw e}
+const $=id=>document.getElementById(id);const msg=(id,t)=>$(id).textContent=t;
+async function uploadFile(file,path){if(!file)return '';if(file.size>50*1024*1024)throw new Error('फाइल 50 MB से छोटी रखें');return new Promise((resolve,reject)=>{const task=uploadBytesResumable(ref(storage,path),file);task.on('state_changed',s=>{$('bar').style.width=(s.bytesTransferred/s.totalBytes*100)+'%'},reject,async()=>resolve(await getDownloadURL(task.snapshot.ref)))});}
+onAuthStateChanged(auth,user=>{if(user){$('loginBox').classList.add('hidden');$('panel').classList.remove('hidden');$('userEmail').textContent='👤 '+user.email}else{$('loginBox').classList.remove('hidden');$('panel').classList.add('hidden')}});
+$('loginBtn').onclick=async()=>{const email=$('email').value.trim(),password=$('password').value;if(!email||!password){msg('loginMsg','⚠️ Email और Password भरें');return}$('loginBtn').disabled=true;msg('loginMsg','⏳ Login हो रहा है...');try{const loginPromise=signInWithEmailAndPassword(auth,email,password);const timeout=new Promise((_,rej)=>setTimeout(()=>rej(Object.assign(new Error('timeout'),{code:'auth-timeout'})),15000));await Promise.race([loginPromise,timeout]);msg('loginMsg','✅ Login सफल');}catch(e){console.error(e);const m={'auth/invalid-credential':'❌ Email या Password गलत है। Firebase Authentication → Users में यही email मौजूद है या नहीं देखें।','auth/invalid-email':'❌ Email का format गलत है।','auth/user-disabled':'❌ यह user disabled है। Firebase Authentication → Users में इसे enable करें।','auth/too-many-requests':'❌ बहुत ज्यादा login attempts हुए हैं। थोड़ी देर बाद फिर प्रयास करें।','auth/operation-not-allowed':'❌ Email/Password provider OFF है। Firebase Console → Authentication → Sign-in method → Email/Password को ON करें।','auth/network-request-failed':'❌ Internet/network समस्या है।','auth/api-key-not-valid.-please-pass-a-valid-api-key.':'❌ Firebase API key/config समस्या है।'}[e.code]||('❌ Login नहीं हुआ: '+e.code);msg('loginMsg',m+'\nCode: '+e.code)}finally{$('loginBtn').disabled=false}};
+$('logoutBtn').onclick=()=>signOut(auth);
+$('newsBtn').onclick=async()=>{try{$('newsBtn').disabled=true;const f=$('newsFile').files[0];const url=await uploadFile(f,'news/'+Date.now()+'_'+(f?.name||'file'));await addDoc(collection(db,'news'),{title:$('newsTitle').value.trim(),description:$('newsDesc').value.trim(),date:$('newsDate').value,image:url,mediaUrl:url,mediaType:f?.type||'',createdAt:serverTimestamp()});msg('newsMsg','✅ खबर सेव हो गई');$('newsTitle').value='';$('newsDesc').value='';$('newsFile').value=''}catch(e){msg('newsMsg','❌ '+e.message)}finally{$('newsBtn').disabled=false}};
+$('devBtn').onclick=async()=>{try{$('devBtn').disabled=true;const f=$('devFile').files[0];const url=await uploadFile(f,'development/'+Date.now()+'_'+(f?.name||'file'));await addDoc(collection(db,'development'),{title:$('devTitle').value.trim(),description:$('devDesc').value.trim(),status:$('devStatus').value,location:$('devLocation').value.trim(),date:$('devDate').value,image:url,createdAt:serverTimestamp()});msg('devMsg','✅ विकास कार्य सेव हो गया');$('devTitle').value='';$('devDesc').value='';$('devFile').value=''}catch(e){msg('devMsg','❌ '+e.message)}finally{$('devBtn').disabled=false}};
+$('mediaBtn').onclick=async()=>{try{$('mediaBtn').disabled=true;$('bar').style.width='0';const f=$('mediaFile').files[0];if(!f)throw new Error('पहले फोटो या वीडियो चुनें');const url=await uploadFile(f,'gallery/'+Date.now()+'_'+f.name);await addDoc(collection(db,'media'),{title:$('mediaTitle').value.trim()||f.name,date:$('mediaDate').value,url,type:f.type,createdAt:serverTimestamp()});msg('mediaMsg','✅ Upload सफल');$('mediaFile').value='';$('mediaTitle').value=''}catch(e){msg('mediaMsg','❌ '+e.message)}finally{$('mediaBtn').disabled=false}};
+</script></body></html>
