@@ -2,45 +2,157 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#006b58">
-<title>Admin Panel | दल्लूसर गाँव की डायरी</title>
+<title>दल्लूसर विकास मंच — Admin Panel</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f3faf7;color:#163d36}.wrap{max-width:900px;margin:auto;padding:20px}.hero{background:linear-gradient(135deg,#005b4c,#00977d);color:white;padding:25px;border-radius:22px;margin-bottom:18px;box-shadow:0 12px 30px #005b4c25}.hero h1{margin:0 0 6px}.card{background:white;border:1px solid #d8ebe5;border-radius:18px;padding:18px;margin:15px 0;box-shadow:0 6px 20px #0b5e4c10}.hidden{display:none!important}input,textarea,select{width:100%;padding:12px;margin:7px 0;border:1px solid #cbded8;border-radius:10px;font:inherit}textarea{resize:vertical}.btn{width:100%;padding:12px;border:0;border-radius:11px;background:#007b61;color:white;font-weight:800;cursor:pointer;margin-top:7px}.btn:disabled{opacity:.6}.logout{background:#b42318}.msg{min-height:22px;margin-top:8px;font-weight:700}.muted{color:#657b75;font-size:13px}.progress{height:8px;background:#e5eeeb;border-radius:99px;overflow:hidden;margin-top:10px}.bar{height:100%;width:0;background:#00a37e;transition:.2s}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:600px){.wrap{padding:12px}.row{grid-template-columns:1fr}.hero{padding:20px}.card{padding:15px}}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Noto Sans Devanagari,sans-serif;background:#f3f7f6;color:#16332d}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}
+.top{background:linear-gradient(135deg,#006b58,#009879);color:#fff;padding:16px 18px;position:sticky;top:0;z-index:10;box-shadow:0 3px 12px #0002}.toprow{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-size:20px;font-weight:800}.sub{font-size:12px;opacity:.9;margin-top:3px}.logout{background:#fff;color:#006b58;border-radius:10px;padding:9px 13px;font-weight:700}
+.wrap{max-width:1100px;margin:auto;padding:18px}.login{max-width:430px;margin:55px auto;background:#fff;padding:25px;border-radius:18px;box-shadow:0 8px 30px #1232}.login h1{margin-top:0;color:#006b58}.hint{font-size:13px;color:#5b6e69;line-height:1.5}.field{margin:13px 0}.field label{display:block;font-weight:700;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid #c9d9d5;border-radius:11px;background:#fff;color:#18332e;outline:none}.field textarea{min-height:110px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:#008f72;box-shadow:0 0 0 3px #008f7218}.primary{width:100%;background:#006b58;color:#fff;padding:12px;border-radius:11px;font-weight:800}.msg{min-height:24px;margin-top:12px;font-size:14px;font-weight:700}.ok{color:#087443}.err{color:#c62828}
+.nav{display:flex;gap:8px;overflow:auto;padding:4px 0 14px}.nav button{white-space:nowrap;background:#fff;border:1px solid #d7e3e0;color:#175046;padding:9px 12px;border-radius:10px;font-weight:700}.nav button.active{background:#006b58;color:#fff;border-color:#006b58}
+.dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:18px}.stat{background:#fff;border-radius:15px;padding:16px;box-shadow:0 4px 15px #1231}.stat b{font-size:25px;color:#006b58}.stat span{display:block;color:#60736e;font-size:13px;margin-top:4px}
+.panel{background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 18px #1231;margin-bottom:15px}.panel h2{margin:0 0 6px;color:#006b58}.panel p{color:#60736e;margin-top:5px}.categoryGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:11px;margin-top:15px}.cat{padding:15px;border-radius:14px;background:#eef8f5;border:1px solid #cde7df;text-align:left;color:#123d35;min-height:105px}.cat strong{display:block;font-size:16px}.cat small{display:block;margin-top:7px;color:#5c716c;line-height:1.35}.cat:hover{border-color:#008f72;transform:translateY(-1px)}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}.save{background:#008f72;color:#fff;padding:11px 16px;border-radius:10px;font-weight:800}.secondary{background:#e8f1ef;color:#075849;padding:11px 16px;border-radius:10px;font-weight:800;margin-left:7px}.list{display:grid;gap:9px;margin-top:14px}.item{border:1px solid #d9e5e2;border-radius:12px;padding:12px;background:#fbfdfc}.item b{color:#064e41}.tag{display:inline-block;background:#e5f5f0;color:#006b58;padding:4px 8px;border-radius:20px;font-size:12px;margin:4px 4px 0 0}.danger{background:#b3261e;color:#fff;padding:7px 10px;border-radius:8px;margin-top:8px}.notice{background:#fff8df;border:1px solid #f0d67c;border-radius:12px;padding:12px;color:#5c4800;line-height:1.5}.back{background:#eef5f3;color:#075849;padding:9px 12px;border-radius:10px;font-weight:700;margin-bottom:12px}
+@media(max-width:650px){.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.toprow{align-items:flex-start}.brand{font-size:17px}.wrap{padding:12px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="hero"><h1>🔐 दल्लूसर Admin Panel</h1><div>खबरें • विकास कार्य • फोटो • वीडियो</div></div>
-<div id="loginBox" class="card">
-<h2>Admin Login</h2>
-<p class="muted">अपने Firebase Authentication वाले Email और Password से Login करें।</p>
-<input id="email" type="email" autocomplete="username" placeholder="Admin Email">
-<input id="password" type="password" autocomplete="current-password" placeholder="Password">
-<button id="loginBtn" class="btn">🔑 Login</button>
+<header class="top"><div class="toprow"><div><div class="brand">🛠️ दल्लूसर विकास मंच — Admin</div><div class="sub">खबर • सूचना • फोटो • वीडियो • विकास • सभी Categories</div></div><button id="logoutBtn" class="logout hidden" onclick="logout()">Logout</button></div></header>
+
+<main class="wrap">
+<section id="loginBox" class="login">
+<h1>🔐 Admin Login</h1>
+<p class="hint">Admin Email पहले से सेट है। Login के लिए केवल अपना Firebase password डालें।</p>
+<div class="field"><label>🔑 Admin Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Password"></div>
+<button id="loginBtn" class="primary" onclick="login()">Login</button>
+<button type="button" onclick="resetPassword()" style="width:100%;margin-top:9px;background:#eef5f3;color:#075849;padding:11px;border-radius:11px;font-weight:800">🔑 Password Reset Email भेजें</button>
 <div id="loginMsg" class="msg"></div>
+<div class="notice" style="margin-top:14px"><b>अगर Login नहीं हो रहा:</b><br>Firebase में Email/Password ON होना चाहिए और Authentication → Users में manojpareek7900@gmail.com user बना होना चाहिए।</div>
+</section>
+
+<section id="app" class="hidden">
+<div class="dashboard">
+<div class="stat"><b id="countNews">0</b><span>खबरें</span></div><div class="stat"><b id="countNotices">0</b><span>सूचनाएँ</span></div><div class="stat"><b id="countMedia">0</b><span>फोटो/वीडियो</span></div><div class="stat"><b id="countDev">0</b><span>विकास कार्य</span></div><div class="stat"><b id="countBiz">0</b><span>व्यवसाय</span></div><div class="stat"><b id="countComp">0</b><span>शिकायत/सुझाव</span></div>
 </div>
-<div id="panel" class="hidden">
-<div class="card"><b>✅ Login सफल</b><p id="userEmail" class="muted"></p><button id="logoutBtn" class="btn logout">🚪 Logout</button></div>
-<div id="content">
-<div class="card"><h2>📰 खबर जोड़ें</h2><input id="newsTitle" placeholder="खबर का शीर्षक"><textarea id="newsDesc" rows="4" placeholder="खबर की जानकारी"></textarea><input id="newsDate" type="date"><label>📸 फोटो/वीडियो (वैकल्पिक)</label><input id="newsFile" type="file" accept="image/*,video/*"><button id="newsBtn" class="btn">📰 खबर सेव करें</button><div id="newsMsg" class="msg"></div></div>
-<div class="card"><h2>🏗️ विकास कार्य जोड़ें</h2><input id="devTitle" placeholder="कार्य का नाम"><textarea id="devDesc" rows="3" placeholder="कार्य की जानकारी"></textarea><div class="row"><select id="devStatus"><option value="proposed">📋 प्रस्तावित</option><option value="progress">⏳ चल रहा</option><option value="completed">✅ पूर्ण</option></select><input id="devLocation" placeholder="📍 स्थान"></div><input id="devDate" type="date"><label>📸 फोटो (वैकल्पिक)</label><input id="devFile" type="file" accept="image/*"><button id="devBtn" class="btn">🏗️ विकास कार्य सेव करें</button><div id="devMsg" class="msg"></div></div>
-<div class="card"><h2>📸 फोटो / 🎥 वीडियो गैलरी</h2><input id="mediaTitle" placeholder="फोटो/वीडियो का नाम"><input id="mediaDate" type="date"><input id="mediaFile" type="file" accept="image/*,video/*"><button id="mediaBtn" class="btn">☁️ Upload करें</button><div class="progress"><div class="bar" id="bar"></div></div><div id="mediaMsg" class="msg"></div></div>
-</div></div></div>
+<div class="nav" id="nav"><button data-tab="categories" class="active">🏡 Categories</button><button data-tab="news">📰 खबर/सूचना</button><button data-tab="development">🏗️ विकास</button><button data-tab="media">🖼️ फोटो/वीडियो</button><button data-tab="business">💼 Business</button><button data-tab="complaints">📄 शिकायत</button></div>
+<div id="content"></div>
+</section>
+</main>
+
 <script type="module">
-import {initializeApp} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js';
-import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js';
-import {getFirestore,collection,addDoc,serverTimestamp} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
-import {getStorage,ref,uploadBytesResumable,getDownloadURL} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js';
-const firebaseConfig={apiKey:'AIzaSyB4_tHY0Mcth-vgkblr7J31N6L3CwVswPs',authDomain:'dallusar-village-portel.firebaseapp.com',projectId:'dallusar-village-portel',storageBucket:'dallusar-village-portel.firebasestorage.app',messagingSenderId:'179153907993',appId:'1:179153907993:web:0f5670765b6ac861165588',measurementId:'G-3S3VBXSRMX'};
-let app,auth,db,storage;
-try{app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);storage=getStorage(app)}catch(e){console.error(e);document.getElementById('loginMsg').textContent='❌ Firebase load error: '+(e.code||e.message);throw e}
-const $=id=>document.getElementById(id);const msg=(id,t)=>$(id).textContent=t;
-async function uploadFile(file,path){if(!file)return '';if(file.size>50*1024*1024)throw new Error('फाइल 50 MB से छोटी रखें');return new Promise((resolve,reject)=>{const task=uploadBytesResumable(ref(storage,path),file);task.on('state_changed',s=>{$('bar').style.width=(s.bytesTransferred/s.totalBytes*100)+'%'},reject,async()=>resolve(await getDownloadURL(task.snapshot.ref)))});}
-onAuthStateChanged(auth,user=>{if(user){$('loginBox').classList.add('hidden');$('panel').classList.remove('hidden');$('userEmail').textContent='👤 '+user.email}else{$('loginBox').classList.remove('hidden');$('panel').classList.add('hidden')}});
-$('loginBtn').onclick=async()=>{const email=$('email').value.trim(),password=$('password').value;if(!email||!password){msg('loginMsg','⚠️ Email और Password भरें');return}$('loginBtn').disabled=true;msg('loginMsg','⏳ Login हो रहा है...');try{const loginPromise=signInWithEmailAndPassword(auth,email,password);const timeout=new Promise((_,rej)=>setTimeout(()=>rej(Object.assign(new Error('timeout'),{code:'auth-timeout'})),15000));await Promise.race([loginPromise,timeout]);msg('loginMsg','✅ Login सफल');}catch(e){console.error(e);const m={'auth/invalid-credential':'❌ Email या Password गलत है। Firebase Authentication → Users में यही email मौजूद है या नहीं देखें।','auth/invalid-email':'❌ Email का format गलत है।','auth/user-disabled':'❌ यह user disabled है। Firebase Authentication → Users में इसे enable करें।','auth/too-many-requests':'❌ बहुत ज्यादा login attempts हुए हैं। थोड़ी देर बाद फिर प्रयास करें।','auth/operation-not-allowed':'❌ Email/Password provider OFF है। Firebase Console → Authentication → Sign-in method → Email/Password को ON करें।','auth/network-request-failed':'❌ Internet/network समस्या है।','auth/api-key-not-valid.-please-pass-a-valid-api-key.':'❌ Firebase API key/config समस्या है।'}[e.code]||('❌ Login नहीं हुआ: '+e.code);msg('loginMsg',m+'\nCode: '+e.code)}finally{$('loginBtn').disabled=false}};
-$('logoutBtn').onclick=()=>signOut(auth);
-$('newsBtn').onclick=async()=>{try{$('newsBtn').disabled=true;const f=$('newsFile').files[0];const url=await uploadFile(f,'news/'+Date.now()+'_'+(f?.name||'file'));await addDoc(collection(db,'news'),{title:$('newsTitle').value.trim(),description:$('newsDesc').value.trim(),date:$('newsDate').value,image:url,mediaUrl:url,mediaType:f?.type||'',createdAt:serverTimestamp()});msg('newsMsg','✅ खबर सेव हो गई');$('newsTitle').value='';$('newsDesc').value='';$('newsFile').value=''}catch(e){msg('newsMsg','❌ '+e.message)}finally{$('newsBtn').disabled=false}};
-$('devBtn').onclick=async()=>{try{$('devBtn').disabled=true;const f=$('devFile').files[0];const url=await uploadFile(f,'development/'+Date.now()+'_'+(f?.name||'file'));await addDoc(collection(db,'development'),{title:$('devTitle').value.trim(),description:$('devDesc').value.trim(),status:$('devStatus').value,location:$('devLocation').value.trim(),date:$('devDate').value,image:url,createdAt:serverTimestamp()});msg('devMsg','✅ विकास कार्य सेव हो गया');$('devTitle').value='';$('devDesc').value='';$('devFile').value=''}catch(e){msg('devMsg','❌ '+e.message)}finally{$('devBtn').disabled=false}};
-$('mediaBtn').onclick=async()=>{try{$('mediaBtn').disabled=true;$('bar').style.width='0';const f=$('mediaFile').files[0];if(!f)throw new Error('पहले फोटो या वीडियो चुनें');const url=await uploadFile(f,'gallery/'+Date.now()+'_'+f.name);await addDoc(collection(db,'media'),{title:$('mediaTitle').value.trim()||f.name,date:$('mediaDate').value,url,type:f.type,createdAt:serverTimestamp()});msg('mediaMsg','✅ Upload सफल');$('mediaFile').value='';$('mediaTitle').value=''}catch(e){msg('mediaMsg','❌ '+e.message)}finally{$('mediaBtn').disabled=false}};
-</script></body></html>
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import {getFirestore,collection,getDocs,addDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+const firebaseConfig={
+ apiKey:"AIzaSyB4_tHY0Mcth-vgkblr7J31N6L3CwVswPs",
+ authDomain:"dallusar-village-portel.firebaseapp.com",
+ projectId:"dallusar-village-portel",
+ storageBucket:"dallusar-village-portel.firebasestorage.app",
+ messagingSenderId:"179153907993",
+ appId:"1:179153907993:web:0f5670765b6ac861165588",
+ measurementId:"G-3S3VBXSRMX"
+};
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+
+const categories=[
+ ["गाँव की जानकारी","🏡","गाँव की सामान्य जानकारी, इतिहास और महत्वपूर्ण विवरण"],
+ ["पंचायत","🏛️","पंचायत, सरपंच और पंचायत से जुड़ी सूचनाएँ"],
+ ["शिक्षा","🎓","स्कूल, पढ़ाई, परीक्षा और शिक्षा संबंधी जानकारी"],
+ ["कृषि","🌾","खेती, फसल, मौसम और किसान जानकारी"],
+ ["सरकारी योजनाएँ","📋","सरकारी योजनाएँ, पात्रता और उपयोगी जानकारी"],
+ ["स्वास्थ्य","❤️","स्वास्थ्य सेवाएँ और जागरूकता जानकारी"],
+ ["कृषि मंडी","🛒","मंडी भाव और कृषि बाजार की जानकारी"],
+ ["पर्यटन","🏔️","गाँव/आसपास के दर्शनीय और पर्यटन स्थान"],
+ ["संपर्क","📞","जरूरी संपर्क और हेल्पलाइन जानकारी"],
+ ["विकास कार्य","🏗️","सड़क, नाली, पानी, भवन आदि विकास कार्य"],
+ ["खबरें","📰","गाँव की नई खबरें और अपडेट"],
+ ["घोषणाएँ / सूचना","📢","महत्वपूर्ण सार्वजनिक सूचना और घोषणाएँ"],
+ ["फोटो गैलरी","🖼️","गाँव की फोटो और वीडियो"],
+ ["मैप","📍","गाँव और महत्वपूर्ण स्थानों की map जानकारी"],
+ ["खेल और मनोरंजन","🎮","क्रिकेट गेम और मनोरंजन सामग्री"],
+ ["AI Search","🤖","AI से जुड़े सवाल और उपयोगी जानकारी"],
+ ["स्थानीय व्यवसाय","💼","दल्लूसर के स्थानीय दुकानदार/व्यवसाय"],
+ ["शिकायत / सुझाव","📄","गाँव की शिकायत और सुझाव"]
+];
+let currentTab='categories',allData={news:[],notices:[],media:[],development:[],business:[],complaints:[]};
+
+const $=id=>document.getElementById(id);
+function msg(t,ok=false){$('loginMsg').textContent=t;$('loginMsg').className='msg '+(ok?'ok':'err')}
+function authText(code){const m={
+ 'auth/operation-not-allowed':'Email/Password Login Firebase में ON नहीं है।',
+ 'auth/invalid-credential':'Email या Password गलत है, या यह account Firebase में मौजूद नहीं है।',
+ 'auth/invalid-email':'Email सही format में नहीं है।',
+ 'auth/user-disabled':'यह Firebase user disabled है।',
+ 'auth/unauthorized-domain':'इस website का domain Firebase Authentication में Authorized Domains में जोड़ें।',
+ 'auth/invalid-api-key':'Firebase API key/config में समस्या है।',
+ 'auth/network-request-failed':'Internet/network connection की समस्या है।',
+ 'auth/too-many-requests':'बहुत ज्यादा login attempts हुए हैं। थोड़ी देर बाद फिर कोशिश करें।'
+};return m[code]||('Firebase error: '+code)}
+
+window.login=async()=>{
+ const email='manojpareek7900@gmail.com',pass=$('password').value;
+ if(!email||!pass){msg('Email और password भरें।');return}
+ const btn=$('loginBtn'); btn.disabled=true; btn.textContent='Login हो रहा है...';
+ msg('Firebase से login किया जा रहा है...',true);
+ try{
+   await signInWithEmailAndPassword(auth,email,pass);
+   msg('✅ Login सफल हुआ।',true);
+ }catch(e){
+   console.error('Firebase Login Error:',e);
+   msg('❌ '+authText(e.code)+(e.code==='auth/invalid-credential'?'\nअगर Email/Password सही है, तो Firebase Authentication → Users में इसी Email का user चुनकर Password Reset करें।':''));
+ }finally{btn.disabled=false;btn.textContent='Login'}
+};
+window.resetPassword=async()=>{
+ const email='manojpareek7900@gmail.com';
+ try{await sendPasswordResetEmail(auth,email);msg('✅ Password reset email भेज दिया गया। Inbox/Spam चेक करें।',true)}
+ catch(e){console.error(e);msg('❌ Reset नहीं हुआ: '+authText(e.code))}
+};
+window.logout=async()=>{await signOut(auth)};
+
+onAuthStateChanged(auth,user=>{if(user){$('loginBox').classList.add('hidden');$('app').classList.remove('hidden');$('logoutBtn').classList.remove('hidden');loadAll()}else{$('loginBox').classList.remove('hidden');$('app').classList.add('hidden');$('logoutBtn').classList.add('hidden')}});
+
+async function loadAll(){
+ for(const key of Object.keys(allData)) allData[key]=[];
+ for(const key of Object.keys(allData)){try{const snap=await getDocs(collection(db,key));snap.forEach(d=>allData[key].push({id:d.id,...d.data()}))}catch(e){console.warn(key,e)}}
+ $('countNews').textContent=allData.news.length;$('countNotices').textContent=allData.notices.length;$('countMedia').textContent=allData.media.length;$('countDev').textContent=allData.development.length;$('countBiz').textContent=allData.business.length;$('countComp').textContent=allData.complaints.length;
+ render();
+}
+
+function render(){const c=$('content');if(currentTab==='categories')renderCategories(c);if(currentTab==='news')renderNews(c);if(currentTab==='development')renderDevelopment(c);if(currentTab==='media')renderMedia(c);if(currentTab==='business')renderBusiness(c);if(currentTab==='complaints')renderComplaints(c)}
+
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>{currentTab=b.dataset.tab;document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render()});
+
+function renderCategories(c){c.innerHTML=`<div class="panel"><h2>🏡 सभी App Categories</h2><p>किसी भी category पर टैप करें। उसी category के लिए सीधे सामग्री जोड़ने का form खुलेगा।</p><div class="categoryGrid">${categories.map((x,i)=>`<button class="cat" onclick="openCategory(${i})"><strong>${x[1]} ${x[0]}</strong><small>${x[2]}</small></button>`).join('')}</div></div>`}
+
+window.openCategory=i=>{const [name,icon,desc]=categories[i];let type='category';if(name==='खबरें')type='news';if(name==='घोषणाएँ / सूचना')type='notice';if(name==='विकास कार्य')type='development';if(name==='फोटो गैलरी')type='media';if(name==='स्थानीय व्यवसाय')type='business';if(name==='शिकायत / सुझाव')type='complaint';renderCategoryForm(name,icon,desc,type)};
+
+function renderCategoryForm(name,icon,desc,type){$('content').innerHTML=`<div class="panel"><button class="back" onclick="backCategories()">← सभी Categories</button><h2>${icon} ${name}</h2><p>${desc}</p>${type==='news'?newsForm('खबरें'):type==='notice'?newsForm('घोषणाएँ / सूचना'):type==='development'?developmentForm('विकास कार्य'):type==='media'?mediaForm('फोटो गैलरी'):type==='business'?businessForm('स्थानीय व्यवसाय'):type==='complaint'?complaintForm('शिकायत / सुझाव'):genericCategoryForm(name)}</div>`}
+window.backCategories=()=>{currentTab='categories';document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab==='categories'));render()};
+
+function catSelect(selected){return `<select id="category"><option value="">Category चुनें</option>${categories.map(x=>`<option ${x[0]===selected?'selected':''}>${x[0]}</option>`).join('')}</select>`}
+function newsForm(selected){return `<div class="formgrid"><div class="field"><label>शीर्षक</label><input id="title" placeholder="खबर/सूचना का शीर्षक"></div><div class="field"><label>Category</label>${catSelect(selected)}</div><div class="field full"><label>विवरण</label><textarea id="text" placeholder="पूरी जानकारी लिखें..."></textarea></div></div><button class="save" onclick="saveNews('${selected==='खबरें'?'news':'notices'}')">💾 सेव करें</button><div id="formMsg" class="msg"></div>`}
+function developmentForm(selected){return `<div class="formgrid"><div class="field"><label>कार्य का नाम</label><input id="title" placeholder="जैसे सड़क निर्माण"></div><div class="field"><label>स्थिति</label><select id="status"><option>प्रस्तावित</option><option>चल रहा है</option><option>पूरा हुआ</option></select></div><div class="field full"><label>विवरण</label><textarea id="text" placeholder="विकास कार्य की जानकारी..."></textarea></div></div><button class="save" onclick="saveDevelopment()">💾 विकास कार्य सेव करें</button><div id="formMsg" class="msg"></div>`}
+function mediaForm(selected){return `<div class="formgrid"><div class="field"><label>शीर्षक</label><input id="title" placeholder="फोटो/वीडियो का नाम"></div><div class="field"><label>Media Type</label><select id="mediaType"><option>फोटो</option><option>वीडियो</option></select></div><div class="field"><label>Category</label>${catSelect(selected)}</div><div class="field"><label>Image/Video URL</label><input id="url" placeholder="https://..."></div><div class="field full"><label>विवरण</label><textarea id="text" placeholder="मीडिया के बारे में..."></textarea></div></div><button class="save" onclick="saveMedia()">💾 Media सेव करें</button><div id="formMsg" class="msg"></div><p class="hint">नोट: यह form URL सेव करता है। अगर तुम Firebase Storage से मोबाइल से सीधे फोटो/वीडियो upload चाहते हो, तो अगला step Storage upload भी जोड़ा जा सकता है।</p>`}
+function businessForm(selected){return `<div class="formgrid"><div class="field"><label>Business/दुकान नाम</label><input id="title" placeholder="दुकान का नाम"></div><div class="field"><label>Category</label>${catSelect(selected)}</div><div class="field"><label>मोबाइल/संपर्क</label><input id="phone" placeholder="संपर्क नंबर"></div><div class="field"><label>स्थान</label><input id="address" placeholder="दल्लूसर में स्थान"></div><div class="field full"><label>विवरण</label><textarea id="text" placeholder="व्यवसाय की जानकारी..."></textarea></div></div><button class="save" onclick="saveBusiness()">💾 Business सेव करें</button><div id="formMsg" class="msg"></div>`}
+function complaintForm(selected){return `<div class="formgrid"><div class="field"><label>नाम</label><input id="title" placeholder="शिकायतकर्ता का नाम"></div><div class="field"><label>Category</label>${catSelect(selected)}</div><div class="field full"><label>शिकायत / सुझाव</label><textarea id="text" placeholder="विवरण..."></textarea></div></div><button class="save" onclick="saveComplaint()">💾 सेव करें</button><div id="formMsg" class="msg"></div>`}
+function genericCategoryForm(name){return `<div class="field"><label>शीर्षक</label><input id="title" placeholder="${name} की जानकारी"></div><div class="field"><label>विवरण</label><textarea id="text" placeholder="${name} से जुड़ी जानकारी..."></textarea></div><button class="save" onclick="saveCategory('${name.replace(/'/g,"\\'")}')">💾 Category में सेव करें</button><div id="formMsg" class="msg"></div>`}
+
+async function add(collectionName,data){await addDoc(collection(db,collectionName),{...data,createdAt:serverTimestamp()})}
+function fm(t){$('formMsg').textContent=t;$('formMsg').className='msg '+(t.startsWith('✅')?'ok':'err')}
+window.saveNews=async col=>{try{await add(col,{title:$('title').value.trim(),text:$('text').value.trim(),category:$('category').value.trim()});fm('✅ सेव हो गया');await loadAll()}catch(e){fm('❌ सेव नहीं हुआ: '+e.code)}};
+window.saveDevelopment=async()=>{try{await add('development',{title:$('title').value.trim(),text:$('text').value.trim(),status:$('status').value,category:'विकास कार्य'});fm('✅ सेव हो गया');await loadAll()}catch(e){fm('❌ सेव नहीं हुआ: '+e.code)}};
+window.saveMedia=async()=>{try{await add('media',{title:$('title').value.trim(),text:$('text').value.trim(),mediaType:$('mediaType').value,url:$('url').value.trim(),category:$('category').value.trim()});fm('✅ सेव हो गया');await loadAll()}catch(e){fm('❌ सेव नहीं हुआ: '+e.code)}};
+window.saveBusiness=async()=>{try{await add('business',{title:$('title').value.trim(),text:$('text').value.trim(),phone:$('phone').value.trim(),address:$('address').value.trim(),category:$('category').value.trim()});fm('✅ सेव हो गया');await loadAll()}catch(e){fm('❌ सेव नहीं हुआ: '+e.code)}};
+window.saveComplaint=async()=>{try{await add('complaints',{name:$('title').value.trim(),text:$('text').value.trim(),category:$('category').value.trim(),status:'नई'});fm('✅ सेव हो गया');await loadAll()}catch(e){fm('❌ सेव नहीं हुआ: '+e.code)}};
+window.saveCategory=async name=>{try{await add('category_content',{title:$('title').value.trim(),text:$('text').value.trim(),category:name});fm('✅ सेव हो गया');await loadAll()}catch(e){fm('❌ सेव नहीं हुआ: '+e.code)}};
+
+function renderNews(c){c.innerHTML=`<div class="panel"><h2>📰 खबर / सूचना</h2><p>यहाँ से category चुनकर खबर या सूचना सेव करें।</p>${newsForm('खबरें')}</div><div class="panel"><h2>हाल की खबरें/सूचनाएँ</h2><div class="list">${[...allData.news,...allData.notices].slice(-15).reverse().map(x=>`<div class="item"><b>${x.title||'बिना शीर्षक'}</b><br><span class="tag">${x.category||'—'}</span><p>${x.text||''}</p></div>`).join('')||'अभी कोई रिकॉर्ड नहीं।'}</div></div>`}
+function renderDevelopment(c){c.innerHTML=`<div class="panel"><h2>🏗️ विकास कार्य</h2>${developmentForm('विकास कार्य')}</div><div class="panel"><h2>विकास रिकॉर्ड</h2><div class="list">${allData.development.slice().reverse().map(x=>`<div class="item"><b>${x.title||'बिना नाम'}</b> <span class="tag">${x.status||'—'}</span><p>${x.text||''}</p></div>`).join('')||'अभी कोई रिकॉर्ड नहीं।'}</div></div>`}
+function renderMedia(c){c.innerHTML=`<div class="panel"><h2>🖼️ फोटो / वीडियो</h2>${mediaForm('फोटो गैलरी')}</div><div class="panel"><h2>Media रिकॉर्ड</h2><div class="list">${allData.media.slice().reverse().map(x=>`<div class="item"><b>${x.title||'बिना शीर्षक'}</b> <span class="tag">${x.mediaType||''}</span><span class="tag">${x.category||''}</span><p>${x.url||''}</p></div>`).join('')||'अभी कोई रिकॉर्ड नहीं।'}</div></div>`}
+function renderBusiness(c){c.innerHTML=`<div class="panel"><h2>💼 स्थानीय व्यवसाय</h2>${businessForm('स्थानीय व्यवसाय')}</div><div class="panel"><h2>Business रिकॉर्ड</h2><div class="list">${allData.business.slice().reverse().map(x=>`<div class="item"><b>${x.title||'बिना नाम'}</b><span class="tag">${x.category||''}</span><p>${x.address||''} ${x.phone?'• '+x.phone:''}</p></div>`).join('')||'अभी कोई रिकॉर्ड नहीं।'}</div></div>`}
+function renderComplaints(c){c.innerHTML=`<div class="panel"><h2>📄 शिकायत / सुझाव</h2><p>नई शिकायत/सुझाव भी यहाँ दर्ज किया जा सकता है।</p>${complaintForm('शिकायत / सुझाव')}</div><div class="panel"><h2>प्राप्त शिकायतें</h2><div class="list">${allData.complaints.slice().reverse().map(x=>`<div class="item"><b>${x.name||'नाम नहीं'}</b><span class="tag">${x.status||'नई'}</span><span class="tag">${x.category||''}</span><p>${x.text||''}</p></div>`).join('')||'अभी कोई शिकायत/सुझाव नहीं।'}</div></div>`}
+</script>
+</body>
+</html>
