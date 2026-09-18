@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<!-- DALLUSAR DARK DYNAMIC HERO v2 -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#006b58">
+<title>दल्लूसर विकास मंच</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;background:#f4fbf8;color:#123b35;line-height:1.5}
+a{text-decoration:none;color:inherit}button{font:inherit;border:0;cursor:pointer}
+.top{background:linear-gradient(115deg,#005d4d,#008f79);color:#fff;padding:18px 4%;position:relative;overflow:hidden}
+.top:after{content:"";position:absolute;inset:auto -10% -55px;height:110px;background:rgba(255,255,255,.06);border-radius:50%}
+.header{max-width:1400px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:22px;position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:15px}.logo{width:78px;height:78px;border-radius:24px;background:linear-gradient(#74d7ff,#fff0a8);display:grid;place-items:center;font-size:44px;box-shadow:0 8px 25px #003f3530}
+.brand h1{font-size:32px;line-height:1.05}.brand p{font-size:17px;font-weight:700;margin-top:7px}.tag{color:#ffe35b;font-size:18px;font-weight:800;margin-top:3px}
+.head-tools{display:flex;align-items:center;gap:28px}.weather-mini,.date-mini{display:flex;align-items:center;gap:12px}.weather-mini b{font-size:27px}.weather-mini span,.date-mini span{display:block;font-size:13px}.tool-icon{font-size:36px}.search{border:1px solid #ffffffaa;color:#fff;background:#ffffff12;padding:10px 19px;border-radius:30px;font-weight:800}
+.nav{background:#fff;border-bottom:1px solid #dcebe7;box-shadow:0 4px 15px #075f4b12;position:sticky;top:0;z-index:20}.nav-inner{max-width:1400px;margin:auto;display:flex;overflow:auto}.nav a{min-width:135px;padding:15px 12px;text-align:center;font-weight:800;color:#173f52;white-space:nowrap}.nav a:hover,.nav a.active{color:#00866e;border-bottom:4px solid #00a37e}
+.hero-profile-mini{display:flex;align-items:center;gap:13px;margin-bottom:18px;padding:10px 12px;border-radius:18px;background:#ffffff16;border:1px solid #ffffff2b;backdrop-filter:blur(6px)}
+.hero-profile-photo{width:58px;height:58px;flex:0 0 58px;border-radius:16px;overflow:hidden;background:#11121a;border:2px solid rgba(255,255,255,.65)}
+.hero-profile-photo img{width:100%;height:100%;object-fit:cover}
+.hero-profile-photo span{display:none;width:100%;height:100%;place-items:center;font-size:29px}
+.hero-profile-info{display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+.hero-profile-info small{font-size:10px;letter-spacing:.7px;color:#d9fff5;font-weight:800}
+.hero-profile-info strong{font-size:19px}
+.hero-profile-info button{margin-top:3px;border:0;border-radius:999px;padding:6px 12px;background:#ffdf48;color:#173b32;font-weight:900;font-size:12px;cursor:pointer}
+.hero-profile-info button:hover{transform:translateY(-1px)}
+@media(max-width:600px){.hero{min-height:330px}.hero-panel{margin:22px 4%;padding:20px 18px}.hero-panel h2{font-size:36px}.hero-panel .yellow{font-size:24px}.hero-panel p{font-size:16px}.hero-profile-mini{margin-bottom:15px}.hero-profile-photo{width:52px;height:52px;flex-basis:52px}.hero-profile-info strong{font-size:17px}}
+.hero{max-width:1400px;margin:0 auto;min-height:280px;position:relative;overflow:hidden;background:linear-gradient(110deg,#00664f 0%,#006b50 34%,#74c5e8 35%,#bde7f5 100%);display:flex;align-items:center}.hero-panel{position:relative;z-index:2;margin:30px 4%;max-width:540px;background:linear-gradient(90deg,#003f35e8,#00684fc4);color:#fff;padding:28px 34px;border-radius:22px;box-shadow:0 15px 35px #003b3040}.hero-panel h2{font-size:46px;line-height:1.1}.hero-panel .yellow{color:#ffdf48;font-size:29px;font-weight:900}.hero-panel p{font-size:19px;font-weight:700;margin-top:8px}
+.features{max-width:1400px;margin:20px auto;padding:0 3%;display:grid;grid-template-columns:repeat(8,1fr);gap:14px}.card{min-height:175px;border-radius:19px;padding:18px 12px;text-align:center;position:relative;overflow:hidden;box-shadow:0 7px 20px #0d5b4c1c;transition:.2s;display:flex;flex-direction:column;align-items:center;justify-content:center}.card:hover{transform:translateY(-5px);box-shadow:0 13px 25px #0d5b4c2a}.card .ico{font-size:43px;margin-bottom:7px}.card h3{font-size:21px}.card p{font-size:13px;margin-top:4px}.arrow{position:absolute;right:10px;bottom:10px;background:#fff;color:#006b58;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;font-weight:900}.c1{background:#dff8e8;color:#08694d}.c2{background:#e0f0ff;color:#1255a4}.c3{background:#fff0d9;color:#d96c00}.c4{background:#f0e5ff;color:#6834c8}.c5{background:#ffe0e5;color:#bd263d}.c6{background:#d9f6f4;color:#087b77}.c7{background:#e5e1ff;color:#4032ae}.c8{background:#dff7dd;color:#075e47;border:3px solid #00704f}.ai-photo{width:58px;height:58px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 3px 12px #0002}
+.main{max-width:1400px;margin:auto;padding:0 3% 22px;display:grid;grid-template-columns:1.1fr 1fr .95fr;gap:18px}.panel{background:#fff;border:1px solid #d9ebe6;border-radius:18px;box-shadow:0 5px 18px #0b5e4c10;overflow:hidden}.panel-head{background:linear-gradient(90deg,#00745d,#00977d);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}.panel-head h2{font-size:20px}.panel-head button{background:transparent;color:#fff;font-weight:800}.news-list{padding:8px 14px}.news-item{display:grid;grid-template-columns:78px 1fr 25px;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid #e8f1ef}.news-item:last-child{border-bottom:0}.news-item img{width:78px;height:58px;object-fit:cover;border-radius:10px;background:#dcece7}.news-item h4{font-size:15px;color:#124c42}.news-item p{font-size:12px;color:#66817a}.go{font-size:20px;color:#00866e}.service-grid{padding:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.service{background:#f1faf7;border:1px solid #dceee8;border-radius:14px;padding:12px 5px;text-align:center;font-weight:800}.service span{display:block;font-size:27px;margin-bottom:3px}.weather-panel{padding:18px;background:linear-gradient(135deg,#65c8ee,#eafcff);min-height:220px}.temp{display:flex;align-items:center;justify-content:space-between}.temp strong{font-size:48px}.big-sun{font-size:62px}.weather-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}.weather-stat{background:#ffffff9c;padding:8px;border-radius:10px;font-size:13px}.profile{padding:17px;display:flex;gap:15px;align-items:center;background:#effaf3}.profile img{width:100px;height:100px;object-fit:cover;border-radius:17px}.profile h3{font-size:22px;color:#006b58}.profile p{font-size:13px}.ai-open{margin-top:9px;background:#007c62;color:#fff;border-radius:22px;padding:8px 18px;font-weight:900}.admin{display:block;margin:18px auto;max-width:260px;text-align:center;background:#fff;border:1px solid #cfe4de;border-radius:12px;padding:11px;font-weight:900;color:#006b58}
+.footer{background:#005b4c;color:#fff;padding:20px 4%;margin-top:8px}.footer-inner{max-width:1400px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}.footer-links{display:flex;gap:18px;flex-wrap:wrap}.float-ai{position:fixed;right:22px;bottom:22px;z-index:40;width:68px;height:68px;border-radius:50%;background:#007d63;color:#fff;border:4px solid #fff;box-shadow:0 8px 25px #003d3250;font-size:28px}.modal{display:none;position:fixed;inset:0;background:#001c18aa;z-index:100;align-items:center;justify-content:center;padding:18px}.modal-box{background:#fff;width:min(1000px,100%);height:min(720px,92vh);border-radius:20px;overflow:hidden;box-shadow:0 20px 70px #0005;display:flex;flex-direction:column}.modal-head{background:#006b58;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}.close{background:#ffffff20;color:#fff;border-radius:50%;width:36px;height:36px;font-size:23px}.modal-body{flex:1;overflow:auto}.ai-frame{width:100%;height:100%;border:0}.info-content{padding:22px}.info-content h3{color:#00745d;margin-bottom:8px}.info-content p{margin-bottom:12px}.complaint-form{display:grid;gap:10px}.complaint-form input,.complaint-form textarea{padding:12px;border:1px solid #cfe2dc;border-radius:10px;outline:0}.complaint-form textarea{min-height:120px;resize:vertical}.submit{background:#007b61;color:#fff;padding:11px;border-radius:10px;font-weight:900}
+@media(max-width:1100px){.features{grid-template-columns:repeat(4,1fr)}.main{grid-template-columns:1fr 1fr}.weather-card{grid-column:1/-1}.head-tools{gap:12px}.date-mini{display:none}}
+@media(max-width:700px){.top{padding:12px 4%}.header{align-items:flex-start}.logo{width:55px;height:55px;border-radius:17px;font-size:31px}.brand h1{font-size:22px}.brand p,.tag{font-size:12px}.weather-mini{display:none}.search{padding:7px 12px;font-size:13px}.nav a{min-width:100px;padding:11px 7px;font-size:13px}.hero{min-height:245px}.hero-panel{margin:20px 4%;padding:20px}.hero-panel h2{font-size:34px}.hero-panel .yellow{font-size:23px}.hero-panel p{font-size:15px}.hero:before{font-size:38px;bottom:25px}.features{grid-template-columns:repeat(2,1fr);padding:0 4%;gap:10px}.card{min-height:145px}.card h3{font-size:18px}.card .ico{font-size:34px}.main{grid-template-columns:1fr;padding:0 4%}.service-grid{grid-template-columns:repeat(4,1fr);padding:10px}.service{font-size:11px}.service span{font-size:22px}.profile img{width:82px;height:82px}.footer-inner{flex-direction:column;text-align:center}.float-ai{width:60px;height:60px;right:15px;bottom:15px}}
+.village-info{max-width:1400px;margin:0 auto 20px;padding:0 3%}.village-info-title{display:flex;align-items:center;justify-content:space-between;margin:0 0 12px;padding:0 4px}.village-info-title h2{color:#08694d;font-size:24px}.village-info-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:12px}.info-card{background:#fff;border:1px solid #dcebe5;border-radius:18px;min-height:112px;padding:12px 7px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:#174b42;box-shadow:0 5px 16px #0d5b4c12;transition:.2s}.info-card:hover{transform:translateY(-4px);box-shadow:0 10px 22px #0d5b4c20}.info-card .info-ico{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:26px;margin-bottom:6px;background:#e7f7ef}.info-card b{font-size:15px}.info-card small{font-size:11px;margin-top:2px;color:#55736b}@media(max-width:1100px){.village-info-grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:700px){.village-info{padding:0 4%;}.village-info-title h2{font-size:20px}.village-info-grid{grid-template-columns:repeat(4,1fr);gap:8px}.info-card{min-height:92px;border-radius:14px;padding:8px 4px}.info-card .info-ico{width:40px;height:40px;font-size:22px}.info-card b{font-size:12px}.info-card small{font-size:9px}}
+
+/* Premium Founder Profile */
+.founder-wrap{max-width:1340px;margin:0 auto 22px;padding:0 3%}.founder-card{position:relative;overflow:hidden;border-radius:26px;background:linear-gradient(135deg,#063f35,#00745d 55%,#0aa889);color:#fff;padding:28px;box-shadow:0 14px 35px #063f3525}.founder-card:before,.founder-card:after{content:"";position:absolute;border-radius:50%;border:1px solid #ffffff20;pointer-events:none}.founder-card:before{width:260px;height:260px;right:-90px;top:-110px}.founder-card:after{width:170px;height:170px;left:-75px;bottom:-100px}.founder-top{position:relative;z-index:1;display:grid;grid-template-columns:120px 1fr auto;gap:22px;align-items:center}.founder-photo{width:120px;height:120px;border-radius:28px;object-fit:cover;border:3px solid rgba(255,255,255,.72);background:#10111a;box-shadow:0 0 35px rgba(155,92,255,.25)}.founder-photo-fallback{display:grid;place-items:center;font-size:52px}.founder-kicker{font-size:13px;letter-spacing:.7px;font-weight:900;color:#c9fff0;text-transform:uppercase}.founder-name{font-size:34px;line-height:1.1;margin:4px 0 5px}.founder-role{font-size:15px;font-weight:800;color:#e5fff8}.founder-contact{display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:#ffffff18;border:1px solid #ffffff30;padding:9px 14px;border-radius:999px;font-weight:900}.founder-badge{background:#ffffff12;border:1px solid #ffffff2e;border-radius:18px;padding:14px 16px;min-width:190px}.founder-badge b{display:block;font-size:13px;color:#c9fff0}.founder-badge span{display:block;font-size:15px;font-weight:900;margin-top:4px}.founder-body{position:relative;z-index:1;margin-top:22px;display:grid;grid-template-columns:1.25fr 1fr;gap:16px}.founder-story,.founder-goal{background:#ffffff0f;border:1px solid #ffffff24;border-radius:18px;padding:17px}.founder-story p{font-size:15px;color:#effffb}.founder-goal h4{font-size:15px;color:#bfffee;margin-bottom:6px}.founder-goal p{font-size:14px}.founder-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.founder-chip{padding:7px 11px;border-radius:999px;background:#ffffff16;border:1px solid #ffffff25;font-size:12px;font-weight:800}.founder-quote{position:relative;z-index:1;margin-top:16px;padding-top:14px;border-top:1px solid #ffffff24;text-align:center;font-size:16px;font-weight:900;color:#fff5ad}.founder-profile-link{color:#fff;text-decoration:none}.founder-contact:hover{background:#ffffff2b}@media(max-width:700px){.founder-wrap{padding:0 4%}.founder-card{padding:20px;border-radius:22px}.founder-top{grid-template-columns:82px 1fr;gap:14px}.founder-photo{width:82px;height:82px;border-radius:20px}.founder-name{font-size:25px}.founder-role{font-size:12px}.founder-badge{grid-column:1/-1;min-width:0}.founder-body{grid-template-columns:1fr;gap:10px}.founder-story p{font-size:13px}.founder-quote{font-size:14px}}
+
+.map-section{max-width:1340px;margin:0 auto 20px;padding:0 3%}
+.map-card{background:#fff;border:1px solid #dcebe7;border-radius:22px;box-shadow:0 8px 24px #075f4b12;overflow:hidden}
+.map-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid #e1eee9;flex-wrap:wrap}
+.map-head h2{color:#064d40;font-size:22px}
+.map-sub{color:#6b7f79;font-size:13px;margin-top:3px}
+.map-wrap{height:390px;background:#eaf4f1}
+.map-wrap iframe{width:100%;height:100%;border:0;display:block}
+.map-actions{display:flex;gap:9px;flex-wrap:wrap;padding:14px 16px;background:#f7fbfa}
+.map-btn{border:0;border-radius:999px;padding:11px 16px;background:#006b58;color:#fff;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;min-height:44px}
+.map-btn.secondary{background:#e9f4f0;color:#006b58;border:1px solid #bfe0d6}
+.map-note{padding:0 16px 15px;background:#f7fbfa;color:#6b7f79;font-size:12px}
+@media(max-width:600px){.map-wrap{height:330px}.map-head{padding:15px}.map-head h2{font-size:19px}.map-actions{padding:12px}.map-btn{flex:1;justify-content:center;font-size:13px;padding:10px 11px}}
+
+/* ===== DALLUSAR PREMIUM DARK + DYNAMIC THEME ===== */
+:root{--dd-bg:#08080e;--dd-card:rgba(22,22,32,.84);--dd-line:rgba(255,255,255,.10);--dd-text:#f7f3ff;--dd-muted:#aaa6b8;--dd-purple:#9b5cff;--dd-pink:#ff78c8;--dd-mint:#66f0c4}
+body{background:radial-gradient(circle at 10% 0%,rgba(155,92,255,.18),transparent 28%),radial-gradient(circle at 90% 20%,rgba(255,120,200,.12),transparent 26%),radial-gradient(circle at 50% 100%,rgba(102,240,196,.08),transparent 32%),var(--dd-bg)!important;color:var(--dd-text)!important;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;background:radial-gradient(circle at 20% 30%,rgba(155,92,255,.13),transparent 18%),radial-gradient(circle at 75% 65%,rgba(255,120,200,.10),transparent 18%),radial-gradient(circle at 55% 10%,rgba(102,240,196,.08),transparent 15%);filter:blur(12px);animation:ddAurora 14s ease-in-out infinite alternate}
+@keyframes ddAurora{to{transform:translate(3%,2%) scale(1.08)}}
+.top{background:linear-gradient(110deg,#09090f,#171128 48%,#261337)!important;border-bottom:1px solid var(--dd-line)}
+.logo{box-shadow:0 0 0 7px rgba(155,92,255,.08),0 0 35px rgba(155,92,255,.25)!important}
+.nav{background:rgba(9,9,14,.90)!important;backdrop-filter:blur(18px);border-bottom:1px solid var(--dd-line)}
+.nav a{color:#ddd9e8!important}.nav a:hover,.nav a.active{color:#c79fff!important;border-bottom-color:#9b5cff!important}
+ .hero{
+  background:
+    radial-gradient(circle at 15% 35%,rgba(155,92,255,.20),transparent 24%),
+    radial-gradient(circle at 82% 20%,rgba(255,120,200,.14),transparent 22%),
+    radial-gradient(circle at 60% 90%,rgba(102,240,196,.10),transparent 25%),
+    linear-gradient(145deg,#08080d,#10101a 52%,#0b0b12)!important;
+  border-bottom:1px solid var(--dd-line);
+}
+.hero:before{
+  content:"";position:absolute;inset:-20%;pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 45%,rgba(155,92,255,.14),transparent 17%),
+    radial-gradient(circle at 70% 55%,rgba(255,120,200,.10),transparent 16%),
+    radial-gradient(circle at 52% 15%,rgba(102,240,196,.08),transparent 13%);
+  filter:blur(18px);
+  animation:heroAurora 12s ease-in-out infinite alternate;
+}
+@keyframes heroAurora{to{transform:translate(4%, -3%) scale(1.08)}}
+.hero-panel{background:rgba(13,13,21,.70)!important;border:1px solid rgba(255,255,255,.11)!important;box-shadow:0 25px 80px rgba(0,0,0,.36)!important;backdrop-filter:blur(20px)}
+.features .card,.info-card,.panel,.map-card,.founder-card{background:linear-gradient(145deg,rgba(25,24,38,.94),rgba(14,14,22,.88))!important;color:var(--dd-text)!important;border:1px solid var(--dd-line)!important;box-shadow:0 12px 40px rgba(0,0,0,.25)!important;backdrop-filter:blur(16px)}
+.features .card{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;animation:ddCardIn .6s ease both}.features .card:hover,.info-card:hover,.panel:hover,.map-card:hover{transform:translateY(-7px);border-color:rgba(155,92,255,.40)!important;box-shadow:0 18px 55px rgba(96,48,170,.22)!important}
+@keyframes ddCardIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+.features .card:nth-child(2){animation-delay:.05s}.features .card:nth-child(3){animation-delay:.10s}.features .card:nth-child(4){animation-delay:.15s}.features .card:nth-child(5){animation-delay:.20s}.features .card:nth-child(6){animation-delay:.25s}.features .card:nth-child(7){animation-delay:.30s}.features .card:nth-child(8){animation-delay:.35s}
+.features .card h3,.info-card h3,.panel h2,.panel h3,.founder-card h2{color:#fff!important}.features .card p,.info-card small,.panel p,.map-sub,.map-note{color:var(--dd-muted)!important}
+.service,.info-content{background:rgba(255,255,255,.045)!important;color:#eeeaf7!important}.service:hover{background:rgba(155,92,255,.12)!important}
+.weather-panel{background:linear-gradient(135deg,rgba(155,92,255,.16),rgba(102,240,196,.08))!important;border:1px solid var(--dd-line)!important}
+.founder-card{background:linear-gradient(145deg,rgba(24,23,36,.96),rgba(10,10,17,.94))!important}
+.footer{background:linear-gradient(110deg,#08080e,#151022)!important;border-top:1px solid var(--dd-line)}
+.float-ai{border:3px solid rgba(255,255,255,.85)!important;box-shadow:0 0 0 7px rgba(155,92,255,.10),0 10px 40px rgba(155,92,255,.32)!important;animation:ddPulse 2.5s ease-in-out infinite}
+@keyframes ddPulse{50%{transform:translateY(-4px);box-shadow:0 0 0 12px rgba(155,92,255,.04),0 12px 50px rgba(255,120,200,.30)!important}}
+.dynamic-strip{background:linear-gradient(90deg,rgba(155,92,255,.13),rgba(255,120,200,.08),rgba(102,240,196,.08))!important;border:1px solid var(--dd-line)!important;color:#f5f1ff!important}
+#dynamicText{color:#f5f1ff!important}.modal{background:rgba(0,0,0,.78)!important}.modal-box{background:#101019!important;color:#eee!important;border:1px solid var(--dd-line)}.modal-head{background:linear-gradient(110deg,#24143b,#42183a)!important}.close{background:#ffffff18!important}.complaint-form input,.complaint-form textarea{background:#171720!important;color:#fff!important;border-color:#343344!important}.submit{background:linear-gradient(90deg,#7e42df,#c04fa4)!important}
+#splashScreen{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 42%,rgba(155,92,255,.25),transparent 23%),radial-gradient(circle at 25% 75%,rgba(102,240,196,.10),transparent 24%),#07070c;transition:opacity .7s ease,visibility .7s ease}#splashScreen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.splash-orb{position:absolute;border-radius:50%;filter:blur(5px);opacity:.48;animation:splashFloat 5s ease-in-out infinite alternate}.splash-orb.a{width:180px;height:180px;background:#8b4dff;left:-40px;top:15%}.splash-orb.b{width:160px;height:160px;background:#ff5bbd;right:-35px;bottom:18%;animation-delay:-2s}.splash-orb.c{width:120px;height:120px;background:#47e9bd;left:50%;top:-45px;animation-delay:-1s}@keyframes splashFloat{to{transform:translate(18px,-22px) scale(1.12)}}
+.splash-inner{text-align:center;position:relative;z-index:2;padding:24px}.splash-logo{width:92px;height:92px;border-radius:28px;object-fit:cover;border:1px solid rgba(255,255,255,.25);box-shadow:0 0 0 10px rgba(155,92,255,.07),0 0 55px rgba(155,92,255,.45);animation:splashLogo 1.8s ease-in-out infinite alternate}@keyframes splashLogo{to{transform:translateY(-7px) rotate(2deg);box-shadow:0 0 0 14px rgba(255,120,200,.06),0 0 75px rgba(255,120,200,.45)}}
+.splash-title{margin:24px 0 7px;font-size:clamp(30px,8vw,48px);font-weight:950;letter-spacing:-1px;background:linear-gradient(90deg,#fff,#d7c2ff,#ff9bd7,#9fffe0);-webkit-background-clip:text;background-clip:text;color:transparent;animation:splashText 1.2s ease both}.splash-sub{color:#aaa6ba;font-size:14px;letter-spacing:1.5px}.splash-loader{width:150px;height:3px;border-radius:99px;background:#252332;margin:25px auto 0;overflow:hidden}.splash-loader span{display:block;width:35%;height:100%;border-radius:99px;background:linear-gradient(90deg,#9b5cff,#ff78c8,#66f0c4);animation:loader 1.7s ease-in-out infinite}@keyframes loader{0%{transform:translateX(-120%)}100%{transform:translateX(420%)}}@keyframes splashText{from{opacity:0;transform:translateY(12px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+.dark-label{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:#cfc9dc;font-size:11px;font-weight:800;letter-spacing:.7px}
+@media(max-width:700px){.splash-logo{width:78px;height:78px;border-radius:24px}.splash-title{font-size:32px}}
+
+</style>
+
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#006b58">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<style>
+#installAppBtn{position:fixed;right:14px;bottom:78px;z-index:9999;border:0;border-radius:999px;background:#006b58;color:#fff;padding:12px 16px;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.22);display:none;cursor:pointer}
+#installAppBtn.show{display:block;animation:installPulse 1.8s infinite}
+@keyframes installPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.install-toast{position:fixed;left:14px;right:14px;bottom:18px;z-index:10000;background:#fff;color:#16352e;border:1px solid #d6e8e2;border-radius:18px;padding:14px 16px;box-shadow:0 12px 35px rgba(0,0,0,.2);display:none}
+.install-toast.show{display:block}
+.install-toast b{display:block;margin-bottom:4px}
+.install-toast button{margin-top:9px;border:0;border-radius:10px;padding:9px 13px;font-weight:700}
+.install-toast .install-yes{background:#006b58;color:#fff}.install-toast .install-no{background:#edf4f2;color:#24564b;margin-left:7px}
+</style>
+
+<style>.float-ai .ai-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}.float-ai{padding:3px;overflow:hidden}</style></head>
+<body>
+
+<div id="splashScreen">
+  <div class="splash-orb a"></div><div class="splash-orb b"></div><div class="splash-orb c"></div>
+  <div class="splash-inner">
+    <img class="splash-logo" src="./manoj.jpg" alt="दल्लूसर विकास मंच">
+    <div class="splash-title">दल्लूसर विकास मंच</div>
+    <div class="splash-sub">हमारा गाँव • हमारी पहचान • हमारा विकास</div>
+    <div style="margin-top:16px"><span class="dark-label">✦ DIGITAL VILLAGE PLATFORM</span></div>
+    <div class="splash-loader"><span></span></div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="header">
+    <div class="brand"><div class="logo">🏡</div><div><h1>दल्लूसर गाँव की डायरी</h1><p>दल्लूसर, तहसील सरदारशहर, जिला चूरू, राजस्थान</p><div class="tag">हमारा गाँव • हमारी पहचान • हमारा विकास</div></div></div>
+    <div class="head-tools"><div class="weather-mini"><div class="tool-icon" id="miniIcon">☀️</div><div><b id="miniTemp">--°C</b><span>मौसम: <span id="miniCondition">लोड हो रहा है</span></span></div></div><div class="date-mini"><div class="tool-icon">📅</div><div><b id="todayDate">--</b><span id="todayDay">--</span></div></div><button class="search" onclick="searchBox()">🔍 खोजें</button></div>
+  </div>
+</header>
+<nav class="nav"><div class="nav-inner">
+  <a class="active" href="#home">🏠 होम</a><a href="#news">📰 खबरें</a><a href="#services">🏛️ गाँव की सेवाएँ</a><a href="#development">📈 विकास कार्य</a><a href="#gallery">🖼️ गैलरी</a><a href="#contact">📞 संपर्क</a><a href="#complaint">📄 शिकायत</a>
+</div></nav>
+<main id="home">
+<section class="hero">
+  <div class="hero-panel">
+    <div class="hero-profile-mini">
+      <div class="hero-profile-photo"><img src="manoj.jpg" alt="मनोज पारीक" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>👤</span></div>
+      <div class="hero-profile-info">
+        <small>FOUNDER • दल्लूसर डिजिटल पहल</small>
+        <strong>मनोज पारीक</strong>
+        <button type="button" onclick="openProfile()">👤 प्रोफाइल देखें</button>
+      </div>
+    </div>
+    <h2>दल्लूसर गाँव</h2>
+    <div class="yellow">तरक्की की ओर...</div>
+    <p>हमारा गाँव, हमारी पहचान, हमारा विकास</p>
+  </div>
+</section>
+<section class="features">
+  <a class="card c1" href="#news"><div class="ico">📰</div><h3>ताज़ा खबरें</h3><p>गाँव और क्षेत्र की सभी खबरें</p><span class="arrow">›</span></a>
+  <a class="card c2" href="#services"><div class="ico">🏛️</div><h3>गाँव की सेवाएँ</h3><p>प्रमाण पत्र, योजनाएँ और जानकारी</p><span class="arrow">›</span></a>
+  <a class="card c3" href="#development"><div class="ico">📈</div><h3>विकास कार्य</h3><p>चल रहे कार्य और भविष्य की योजनाएँ</p><span class="arrow">›</span></a>
+  <a class="card c4" href="#gallery"><div class="ico">🖼️</div><h3>फोटो गैलरी</h3><p>दल्लूसर की तस्वीरें और वीडियो</p><span class="arrow">›</span></a>
+  <a class="card c5" href="#complaint"><div class="ico">📄</div><h3>शिकायत</h3><p>अपनी समस्या यहाँ दर्ज करें</p><span class="arrow">›</span></a>
+  <button class="card c6" onclick="openWeather()"><div class="ico">🌤️</div><h3>लाइव मौसम</h3><p>आज का मौसम और पूर्वानुमान</p><span class="arrow">›</span></button>
+  <a class="card c7" href="./cricket3d.html"><div class="ico">🎮</div><h3>खेल और मनोरंजन</h3><p>गेम, मस्ती और मनोरंजन</p><span class="arrow">›</span></a>
+  <button class="card c8" onclick="openAI()"><img class="ai-photo" src="manoj.jpg" alt="Manoj" onerror="this.style.display='none'"><div class="ico" style="font-size:25px;margin:4px">🤖</div><h3>AI with Manoj</h3><p>पूछें | जानें | समझें</p><span class="arrow">›</span></button>
+</section>
+<section class="village-info" id="services">
+  <div class="village-info-title"><h2>🏡 गाँव की जानकारी</h2><span style="font-size:13px;color:#6b7f79">जरूरी जानकारी एक जगह</span></div>
+  <div class="village-info-grid">
+    <a class="info-card" href="#contact"><div class="info-ico">🏛️</div><b>पंचायत</b><small>ग्राम पंचायत</small></a>
+    <a class="info-card" href="#contact"><div class="info-ico">🎓</div><b>विद्यालय</b><small>शिक्षा</small></a>
+    <a class="info-card" href="#services"><div class="info-ico">📋</div><b>योजनाएँ</b><small>सरकारी योजनाएँ</small></a>
+    <a class="info-card" href="#contact"><div class="info-ico">❤️</div><b>स्वास्थ्य</b><small>स्वास्थ्य सेवाएँ</small></a>
+    <a class="info-card" href="#development"><div class="info-ico">🌾</div><b>कृषि</b><small>किसान जानकारी</small></a>
+    <a class="info-card" href="#development"><div class="info-ico">🛒</div><b>कृषि मंडी</b><small>मंडी जानकारी</small></a>
+    <a class="info-card" href="#gallery"><div class="info-ico">🏔️</div><b>पर्यटन</b><small>गाँव के स्थल</small></a>
+    <a class="info-card" href="#contact"><div class="info-ico">📞</div><b>संपर्क</b><small>जरूरी नंबर</small></a>
+    <a class="info-card" href="#map"><div class="info-ico">📍</div><b>गाँव का नक्शा</b><small>2D • 3D • लाइव लोकेशन</small></a>
+  </div>
+</section>
+
+<section class="map-section" id="map">
+  <div class="map-card">
+    <div class="map-head">
+      <div><h2>📍 दल्लूसर लाइव लोकेशन &amp; Google Map</h2><div class="map-sub">दल्लूसर गाँव • 2D नक्शा • Satellite/3D Google Maps</div></div>
+    </div>
+    <div class="map-wrap">
+      <iframe title="दल्लूसर गाँव Google Map" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" src="https://www.google.com/maps?q=Dallusar%2C%20Churu%2C%20Rajasthan&amp;output=embed"></iframe>
+    </div>
+    <div class="map-actions">
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Dallusar%2C%20Churu%2C%20Rajasthan" target="_blank" rel="noopener">🗺️ 2D Google Map</a>
+      <a class="map-btn secondary" href="https://www.google.com/maps/@28.75417,74.25417,17z/data=!3m1!1e3" target="_blank" rel="noopener">🛰️ Satellite / 3D</a>
+      <button class="map-btn secondary" type="button" onclick="openMyLocation()">📱 मेरी लाइव लोकेशन</button>
+    </div>
+    <div class="map-note">ℹ️ 3D भवन/झुकाव Google Maps में उपलब्धता के अनुसार दिखेंगे। “मेरी लाइव लोकेशन” दबाने पर फोन की location permission माँगी जा सकती है।</div>
+  </div>
+</section>
+
+<section class="main">
+  <section class="panel" id="news"><div class="panel-head"><h2>📰 ताज़ा खबरें</h2><button onclick="openInfo('news')">सभी देखें →</button></div><div id="newsList" class="news-list"><div class="news-item"><div>⏳</div><div><h4>खबरें लोड हो रही हैं...</h4><p>कृपया प्रतीक्षा करें</p></div></div></div></section>
+  <section class="panel weather-card" id="weather"><div class="panel-head"><h2>🌤️ आज का मौसम</h2><button onclick="openWeather()">विस्तार →</button></div><div class="weather-panel"><div class="temp"><div><strong id="bigTemp">--°C</strong><div id="condition">मौसम लोड हो रहा है...</div></div><div class="big-sun" id="bigIcon">☀️</div></div><div class="weather-grid"><div class="weather-stat">💧 आर्द्रता <b id="humidity">--</b></div><div class="weather-stat">💨 हवा <b id="wind">--</b></div><div class="weather-stat">🌧️ वर्षा <b id="rain">--</b></div><div class="weather-stat">🌡️ महसूस <b id="feels">--</b></div></div></div></section>
+  <section class="panel" id="development-tracker" style="margin-top:18px">
+<div class="panel-head"><h2>🏗️ दल्लूसर विकास कार्य – Live Tracker</h2><button onclick="openInfo('development-tracker')">जानकारी →</button></div>
+<div class="info-content">
+<p style="font-weight:700;color:#006b58">गाँव के विकास कार्यों की स्थिति एक जगह देखें।</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:14px 0">
+<div style="background:#fff7e8;padding:14px;border-radius:14px;text-align:center"><b style="font-size:25px">🏗️</b><br><b>चल रहे</b><br><span>--</span></div>
+<div style="background:#eaf8ef;padding:14px;border-radius:14px;text-align:center"><b style="font-size:25px">✅</b><br><b>पूर्ण</b><br><span>--</span></div>
+<div style="background:#eef5ff;padding:14px;border-radius:14px;text-align:center"><b style="font-size:25px">⏳</b><br><b>प्रस्तावित</b><br><span>--</span></div>
+</div>
+<div style="background:#f6faf8;border:1px solid #dcece5;border-radius:16px;padding:16px;margin-top:10px">
+<h3>📋 विकास कार्य सूची</h3>
+<div style="margin-top:12px;padding:13px;background:white;border-radius:12px;border-left:5px solid #f0a000"><b>उदाहरण: सड़क/नाली कार्य</b><br><small>स्थिति: जानकारी अपडेट की जानी है • 📍 दल्लूसर</small></div>
+<div style="margin-top:10px;padding:13px;background:white;border-radius:12px;border-left:5px solid #888"><b>नया विकास कार्य</b><br><small>Admin Panel से कार्य, फोटो और अपडेट जोड़े जा सकते हैं।</small></div>
+</div>
+</div></section>
+
+<section class="panel" id="notices"><div class="panel-head"><h2>📢 गाँव की घोषणाएँ</h2><button onclick="openInfo('notices')">जानकारी →</button></div><div class="info-content"><div id="noticeList"><p>घोषणाएँ लोड हो रही हैं...</p></div></div></section>
+
+<section class="panel" id="development"><div class="panel-head"><h2>🏗️ विकास कार्य</h2><button onclick="openInfo('development')">जानकारी →</button></div><div class="info-content"><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"><span style="background:#fff3d9;color:#a85d00;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900">⏳ चल रहे</span><span style="background:#e2f8ea;color:#087247;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900">✅ पूर्ण</span><span style="background:#e9f0ff;color:#315fa8;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900">📋 प्रस्तावित</span></div><div id="developmentList"><div style="padding:14px;border:1px dashed #cfe2dc;border-radius:12px;text-align:center;color:#6b7f79">🏗️ विकास कार्य लोड हो रहे हैं...</div></div><div style="margin-top:14px;padding:12px;border-radius:12px;background:#f4faf8;font-size:12px;color:#66817a">ℹ️ Admin Panel में विकास कार्य Firebase में सेव होने पर वे यहाँ अपने-आप दिखाई देंगे।</div></div></section>
+  <section class="panel" id="gallery"><div class="panel-head"><h2>🖼️ फोटो गैलरी</h2><button onclick="openInfo('gallery')">सभी देखें →</button></div><div class="info-content"><h3>दल्लूसर की यादें</h3><p>गाँव के कार्यक्रम, खेत, स्कूल, सड़क, खेल मैदान और विकास कार्यों की तस्वीरें यहाँ जोड़ी जा सकती हैं।</p><div style="font-size:55px;text-align:center;margin-top:15px">🏡 🌾 🌳 🛕 🏏</div><div id="galleryList" style="margin-top:12px"><div style="padding:14px;text-align:center;color:#6b7f79">📸 फोटो/वीडियो लोड हो रहे हैं...</div></div></div></section>
+  <section class="panel" id="contact"><div class="panel-head"><h2>📞 संपर्क</h2></div><div class="info-content"><h3>दल्लूसर गाँव की डायरी</h3><p>गाँव से जुड़ी उपयोगी जानकारी, सुझाव और स्थानीय अपडेट के लिए संपर्क करें।</p><p>📍 दल्लूसर, तहसील सरदारशहर, जिला चूरू, राजस्थान</p></div></section>
+</section>
+<section class="panel" id="complaint" style="max-width:1340px;margin:0 auto 20px"><div class="panel-head"><h2>📄 शिकायत / सुझाव</h2></div><div class="info-content"><form class="complaint-form" onsubmit="submitComplaint(event)"><input id="cName" required placeholder="आपका नाम"><input id="cMobile" placeholder="मोबाइल नंबर"><textarea id="cText" required placeholder="अपनी समस्या या सुझाव लिखें..."></textarea><button class="submit">📤 शिकायत / सुझाव भेजें</button></form></div></section>
+<section class="founder-wrap" id="founder">
+  <div class="founder-card" style="text-align:center">
+    <div style="font-size:46px">👤</div>
+    <div class="founder-kicker">FOUNDER PROFILE</div>
+    <h2 class="founder-name">मनोज पारीक</h2>
+    <div class="founder-role">दल्लूसर गाँव • डिजिटल विकास पहल</div>
+    <button class="founder-profile-link" onclick="openProfile()" style="margin-top:16px;background:#fff;color:#006b58;border-radius:999px;padding:12px 22px;font-weight:900;font-size:15px;box-shadow:0 8px 20px #003b3030">👤 मेरी प्रोफाइल देखें →</button>
+  </div>
+</section>
+
+<div class="modal" id="profileModal">
+  <div class="modal-box" style="height:auto;max-height:92vh">
+    <div class="modal-head"><b>👤 मनोज पारीक — मेरी प्रोफाइल</b><button class="close" onclick="closeProfile()">×</button></div>
+    <div class="modal-body">
+      <div class="info-content" style="padding:25px">
+        <div style="text-align:center">
+          <div style="width:110px;height:110px;margin:0 auto 12px;border-radius:28px;overflow:hidden;background:#e5f6ef;display:grid;place-items:center;font-size:55px">
+            <img src="manoj.jpg" alt="मनोज पारीक" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'">👤
+          </div>
+          <h2 style="color:#006b58">मनोज पारीक</h2>
+          <p style="color:#5c756e;font-weight:800">Digital Village Initiative • Community Development</p>
+        </div>
+        <div style="margin-top:20px;background:#effaf5;border-radius:16px;padding:16px"><h3>🎯 मेरा वर्क</h3><p>दल्लूसर गाँव के विकास के लिए डिजिटल प्रक्रिया से गाँव में कार्य करना एवं ज्यादा से ज्यादा प्रतिभाशाली युवाओं को जोड़ना।</p></div>
+        <div style="margin-top:12px;background:#f5f8ff;border-radius:16px;padding:16px"><h3>🔎 मेरा फोकस</h3><p>शिक्षा, स्वास्थ्य और गाँव के सभी सार्वजनिक कामों पर work करना तथा गाँव की आवश्यकताओं और आवाज़ को डिजिटल मंच पर सामने लाना।</p></div>
+        <div style="margin-top:12px;background:#fff8e8;border-radius:16px;padding:16px"><h3>🎓 शिक्षा</h3><p>स्नातक शिक्षा <b>प्रिंस कॉलेज, सीकर</b> से पूरी की है। अभी <b>Civil Services Examination</b> की तैयारी में लगे हैं।</p></div>
+        <div style="margin-top:12px;background:#fff0f3;border-radius:16px;padding:16px"><h3>❤️ मेरी रुचियाँ</h3><p>🏏 क्रिकेट &nbsp; • &nbsp; 📢 गाँव की आवाज़ उठाना &nbsp; • &nbsp; 🌱 गाँव के विकास में योगदान</p></div>
+        <div style="margin-top:12px;background:#eef9ff;border-radius:16px;padding:16px"><h3>🌱 मेरा उद्देश्य</h3><p><b>“गाँव की प्रतिभा, गाँव की आवाज़ और गाँव के विकास को डिजिटल माध्यम से एक मंच पर लाना।”</b></p></div>
+        <a href="https://www.instagram.com/manoj_pareek_1/" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:18px;background:#007c62;color:#fff;padding:13px;border-radius:12px;font-weight:900">📱 संपर्क: @manoj_pareek_1</a>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="admin" href="./admin.html">🔐 Admin Panel खोलें</a>
+</main>
+<footer class="footer"><div class="footer-inner"><b>💚 दल्लूसर गाँव की डायरी</b><div class="footer-links"><a href="#home">गाँव की आवाज़</a><a href="#services">डिजिटल गाँव</a><a href="#development">विकसित दल्लूसर</a><a href="#contact">हमसे जुड़ें</a></div><b>🌿 जय दल्लूसर</b></div></footer>
+<button class="float-ai" onclick="openAI()" aria-label="AI with Manoj"><img class="ai-photo" src="manoj.jpg" alt="मनोज पारीक"></button>
+<div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><b id="modalTitle">जानकारी</b><button class="close" onclick="closeModal()">×</button></div><div class="modal-body" id="modalBody"></div></div></div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+const firebaseConfig={apiKey:"AIzaSyB4_tHY0Mcth-vgkblr7J31N6L3CwVswPs",authDomain:"dallusar-village-portel.firebaseapp.com",projectId:"dallusar-village-portel",storageBucket:"dallusar-village-portel.firebasestorage.app",messagingSenderId:"179153907993",appId:"1:179153907993:web:0f5670765b6ac861165588",measurementId:"G-3S3VBXSRMX"};
+const db=getFirestore(initializeApp(firebaseConfig));
+const esc=v=>String(v??"").replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#039;'}[c]));
+async function loadNews(){const box=document.getElementById('newsList');try{const snap=await getDocs(collection(db,'news'));let arr=[];snap.forEach(d=>arr.push({id:d.id,...d.data()}));arr.sort((a,b)=>(b.createdAt?.seconds||new Date(b.date||0).getTime())-(a.createdAt?.seconds||new Date(a.date||0).getTime()));if(!arr.length){box.innerHTML='<div class="info-content">अभी कोई नई खबर उपलब्ध नहीं है।</div>';return}box.innerHTML=arr.slice(0,5).map(n=>`<div class="news-item"><img src="${esc(n.image||'news-road.jpg')}" alt="खबर" onerror="this.style.display='none'"><div><h4>${esc(n.title||'बिना शीर्षक खबर')}</h4><p>${esc(n.description||'गाँव की ताज़ा जानकारी')}</p><p>📅 ${esc(n.date||'')}</p></div><span class="go">›</span></div>`).join('')}catch(e){console.error(e);box.innerHTML='<div class="info-content">खबरें लोड करने में समस्या हुई। बाद में फिर प्रयास करें।</div>'}}
+async function loadDevelopment(){const box=document.getElementById('developmentList');if(!box)return;try{const snap=await getDocs(collection(db,'development'));let arr=[];snap.forEach(d=>arr.push({id:d.id,...d.data()}));arr.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));if(!arr.length){box.innerHTML='<div style="padding:14px;border:1px dashed #cfe2dc;border-radius:12px;text-align:center;color:#6b7f79">अभी कोई विकास कार्य दर्ज नहीं है। Admin Panel से पहला कार्य जोड़ें।</div>';return}box.innerHTML=arr.map(x=>{const st=String(x.status||'proposed').toLowerCase();const label=st.includes('complete')||st.includes('पूर्ण')?'✅ पूर्ण':st.includes('progress')||st.includes('चल')?'⏳ चल रहा':'📋 प्रस्तावित';const bg=label.includes('पूर्ण')?'#e2f8ea':label.includes('चल')?'#fff3d9':'#e9f0ff';const cl=label.includes('पूर्ण')?'#087247':label.includes('चल')?'#a85d00':'#315fa8';return `<div style="border:1px solid #dcebe7;border-radius:14px;padding:13px;margin-bottom:10px;background:#fff"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3 style="color:#075f4d;font-size:16px">🏗️ ${esc(x.title||x.name||'विकास कार्य')}</h3><span style="white-space:nowrap;background:${bg};color:${cl};padding:5px 8px;border-radius:999px;font-size:11px;font-weight:900">${label}</span></div><p style="font-size:13px;color:#58736c;margin-top:6px">${esc(x.description||x.details||'')}</p>${x.location?`<p style="font-size:12px;margin-top:6px">📍 ${esc(x.location)}</p>`:''}${x.date?`<p style="font-size:12px;margin-top:4px">📅 ${esc(x.date)}</p>`:''}${x.image?`<img src="${esc(x.image)}" alt="विकास कार्य" style="width:100%;max-height:210px;object-fit:cover;border-radius:10px;margin-top:9px" onerror="this.style.display='none'">`:''}</div>`}).join('')}catch(e){console.error(e);box.innerHTML='<div style="padding:14px;color:#a33;text-align:center">विकास कार्य लोड नहीं हो सके। Firebase Rules/collection जाँचें।</div>'}}
+async function loadGallery(){const box=document.getElementById('galleryList');if(!box)return;try{const snap=await getDocs(collection(db,'media'));let arr=[];snap.forEach(d=>arr.push({id:d.id,...d.data()}));arr.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));if(!arr.length){box.innerHTML='<div style="padding:14px;text-align:center;color:#6b7f79">अभी कोई फोटो/वीडियो उपलब्ध नहीं है।</div>';return}box.innerHTML=arr.slice(0,20).map(m=>{const u=esc(m.url||'');const t=String(m.type||'image').startsWith('video')?'video':'image';return `<div style="border:1px solid #dcebe7;border-radius:14px;overflow:hidden;background:#fff;margin-bottom:10px">${t==='video'?`<video src="${u}" controls playsinline style="width:100%;max-height:260px;background:#111"></video>`:`<img src="${u}" alt="दल्लूसर फोटो" style="width:100%;max-height:260px;object-fit:cover" onerror="this.style.display='none'">`}<div style="padding:10px 12px"><b style="color:#075f4d">${esc(m.title||'दल्लूसर')}</b>${m.date?`<div style="font-size:12px;color:#66817a;margin-top:4px">📅 ${esc(m.date)}</div>`:''}</div></div>`}).join('')}catch(e){console.error(e);box.innerHTML='<div style="padding:14px;color:#a33;text-align:center">फोटो/वीडियो लोड नहीं हो सके। Firebase Rules जाँचें।</div>'}}
+async function weather(){try{const u='https://api.open-meteo.com/v1/forecast?latitude=28.38&longitude=74.95&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,precipitation,weather_code&timezone=Asia%2FKolkata';const r=await fetch(u);const d=await r.json();const c=d.current, t=Math.round(c.temperature_2m),f=Math.round(c.apparent_temperature),code=c.weather_code;let icon='🌤️',text='आंशिक बादल';if(code===0){icon='☀️';text='साफ आसमान'}else if(code>=45&&code<=48){icon='🌫️';text='कोहरा'}else if(code>=51&&code<=67){icon='🌧️';text='बारिश'}else if(code>=80&&code<=99){icon='⛈️';text='बारिश/तूफान'}document.getElementById('bigTemp').textContent=t+'°C';document.getElementById('miniTemp').textContent=t+'°C';document.getElementById('bigIcon').textContent=icon;document.getElementById('miniIcon').textContent=icon;document.getElementById('condition').textContent=text;document.getElementById('miniCondition').textContent=text;document.getElementById('humidity').textContent=c.relative_humidity_2m+'%';document.getElementById('wind').textContent=Math.round(c.wind_speed_10m)+' km/h';document.getElementById('rain').textContent=c.precipitation+' mm';document.getElementById('feels').textContent=f+'°C'}catch(e){document.getElementById('condition').textContent='मौसम अभी उपलब्ध नहीं है'}}
+async function complaint(e){e.preventDefault();const name=document.getElementById('cName').value,mobile=document.getElementById('cMobile').value,text=document.getElementById('cText').value;try{await addDoc(collection(db,'complaints'),{name,mobile,text,createdAt:serverTimestamp(),status:'new'});e.target.reset();alert('शिकायत/सुझाव सफलतापूर्वक भेज दिया गया।')}catch(err){alert('शिकायत सेव नहीं हुई। Firebase Rules जाँचें।')}}
+window.submitComplaint=complaint;loadNews();loadDevelopment();loadNotices();weather();
+</script>
+<script>
+function showManojProfile(){document.getElementById('modalTitle').textContent='👤 जानिए मनोज पारीक के बारे में';document.getElementById('modalBody').innerHTML=`<div class="info-content" style="max-width:850px;margin:auto"><div style="text-align:center;margin-bottom:18px"><img src="manoj.jpg" alt="मनोज पारीक" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid #006b58"><h2 style="margin-top:10px;color:#006b58">मनोज पारीक</h2><p style="font-weight:800">दल्लूसर • विद्यार्थी • डिजिटल क्रिएटर</p></div><div style="display:grid;gap:12px"><div style="background:#effaf5;padding:16px;border-radius:15px"><h3>🌿 परिचय</h3><p>मनोज पारीक दल्लूसर गाँव से जुड़े एक विद्यार्थी और डिजिटल क्रिएटर हैं। वे अपने गाँव की जानकारी, खबरों, विकास कार्यों और उपयोगी सेवाओं को डिजिटल माध्यम से लोगों तक पहुँचाने के उद्देश्य से “दल्लूसर गाँव की डायरी” वेबसाइट और ऐप पर काम कर रहे हैं।</p></div><div style="background:#f5f8ff;padding:16px;border-radius:15px"><h3>🎓 शिक्षा</h3><p>स्नातक शिक्षा <b>प्रिंस कॉलेज, सीकर</b> से पूरी की है। वर्तमान में <b>Civil Services Examination (UPSC)</b> की तैयारी कर रहे हैं।</p></div><div style="background:#fff8e8;padding:16px;border-radius:15px"><h3>💡 रुचियाँ</h3><p>📚 शिक्षा और अध्ययन • 🌍 भूगोल • 🏏 क्रिकेट • 🏡 गाँव के कार्य और विकास • 💻 डिजिटल टेक्नोलॉजी • 🌐 वेबसाइट और ऐप निर्माण</p></div><div style="background:#fff0f3;padding:16px;border-radius:15px"><h3>🎯 मेरा फोकस</h3><p>शिक्षा, स्वास्थ्य और गाँव के सार्वजनिक कार्यों पर काम करना तथा गाँव की आवश्यकताओं और आवाज़ को डिजिटल मंच पर सामने लाना। साथ ही ज्यादा से ज्यादा प्रतिभाशाली युवाओं को गाँव की सकारात्मक गतिविधियों से जोड़ना।</p></div><div style="background:#eef9ff;padding:16px;border-radius:15px"><h3>🌱 मेरा उद्देश्य</h3><p><b>“गाँव की प्रतिभा, गाँव की आवाज़ और गाँव के विकास को डिजिटल माध्यम से एक मंच पर लाना।”</b></p></div><div style="text-align:center;background:#006b58;color:#fff;padding:15px;border-radius:15px;font-weight:900">हमारा गाँव • हमारी पहचान • हमारा विकास 🌿</div></div></div>`;document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden'}
+function openAI(){document.getElementById('modalTitle').textContent='🤖 Dallusar AI';document.getElementById('modalBody').innerHTML='<div style="padding:14px;background:#f7fbfa;border-bottom:1px solid #dcebe7"><b>💡 सुझाए गए प्रश्न (टैप करके पूछें):</b><button onclick="showManojProfile()" style="display:block;width:100%;margin-top:10px;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid #cfe4de;color:#006b58;font-weight:900;text-align:left">👤 जानिए मनोज पारीक के बारे में</button></div><iframe class="ai-frame" src="https://ai-343174508455.asia-southeast1.run.app" title="Dallusar AI"></iframe>';document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden'}
+function openWeather(){document.getElementById('modalTitle').textContent='🌤️ दल्लूसर लाइव मौसम';document.getElementById('modalBody').innerHTML='<div class="info-content"><h3>आज का मौसम</h3><p>ऊपर दिखाया गया मौसम दल्लूसर के लिए लाइव Open-Meteo डेटा से अपडेट होता है।</p><div style="font-size:70px;text-align:center" id="weatherModalIcon">🌤️</div><h2 style="text-align:center" id="weatherModalTemp">--°C</h2><p style="text-align:center">तापमान, आर्द्रता, हवा और वर्षा की जानकारी ऊपर कार्ड में देखें।</p></div>';document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';setTimeout(()=>{document.getElementById('weatherModalTemp').textContent=document.getElementById('bigTemp').textContent;document.getElementById('weatherModalIcon').textContent=document.getElementById('bigIcon').textContent},50)}
+async function loadNotices(){const box=document.getElementById('noticeList');if(!box)return;try{const snap=await getDocs(collection(db,'notices'));let arr=[];snap.forEach(d=>arr.push({id:d.id,...d.data()}));arr.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));if(!arr.length){box.innerHTML='<div class="info-content">अभी कोई नई घोषणा उपलब्ध नहीं है।</div>';return}box.innerHTML=arr.slice(0,10).map(n=>`<div class="news-item"><div><h4>📢 ${esc(n.title||'घोषणा')}</h4><p>${esc(n.description||'')}</p><p>📅 ${esc(n.date||'')}</p></div></div>`).join('')}catch(e){console.error(e);box.innerHTML='<div class="info-content">घोषणाएँ लोड करने में समस्या हुई।</div>'}}
+
+function openInfo(type){const data={news:['📰 ताज़ा खबरें','गाँव की नई खबरें Admin Panel से Firebase में जोड़ने पर यहाँ अपने-आप दिखाई देंगी।'],services:['🏡 गाँव की सेवाएँ','पंचायत, विद्यालय, सरकारी योजनाएँ, स्वास्थ्य, कृषि, कृषि मंडी, पर्यटन और संपर्क जैसी उपयोगी जानकारी यहाँ रखी जा सकती है।'],development:['📈 विकास कार्य','सड़क, खेल मैदान, जल व्यवस्था, शिक्षा और अन्य विकास कार्यों की जानकारी यहाँ रखी जा सकती है।'],gallery:['🖼️ फोटो गैलरी','गाँव के कार्यक्रम, खेत, स्कूल, सड़क, खेल और विकास कार्यों की फोटो/वीडियो यहाँ जोड़ी जा सकती हैं।'],notices:['📢 गाँव की घोषणाएँ','जरूरी सूचना और नोटिस Admin Panel से यहाँ प्रकाशित किए जा सकते हैं।']}[type]||['जानकारी','दल्लूसर गाँव से जुड़ी जानकारी।'];document.getElementById('modalTitle').textContent=data[0];document.getElementById('modalBody').innerHTML='<div class="info-content"><p>'+data[1]+'</p></div>';document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden'}
+
+function openMyLocation(){
+  if(!navigator.geolocation){alert('इस फोन/ब्राउज़र में location सुविधा उपलब्ध नहीं है।');return;}
+  navigator.geolocation.getCurrentPosition(function(pos){
+    const lat=pos.coords.latitude.toFixed(6),lng=pos.coords.longitude.toFixed(6);
+    const url='https://www.google.com/maps/@?api=1&map_action=map&center='+lat+'%2C'+lng+'&zoom=18&basemap=satellite';
+    window.open(url,'_blank','noopener');
+  },function(){alert('Live location नहीं मिल सकी। कृपया Location/GPS चालू करके फिर प्रयास करें।');},{enableHighAccuracy:true,timeout:10000,maximumAge:30000});
+}
+
+function openProfile(){document.getElementById('profileModal').style.display='flex';document.body.style.overflow='hidden'}
+function closeProfile(){document.getElementById('profileModal').style.display='none';document.body.style.overflow=''}
+document.getElementById('profileModal').addEventListener('click',e=>{if(e.target.id==='profileModal')closeProfile()});
+function closeModal(){document.getElementById('modal').style.display='none';document.getElementById('modalBody').innerHTML='';document.body.style.overflow=''}
+function searchBox(){const q=prompt('क्या खोजें?');if(!q)return;const text=document.body.innerText.toLowerCase();if(text.includes(q.toLowerCase()))alert('इस पेज पर "'+q+'" से जुड़ी जानकारी मौजूद है।');else alert('अभी "'+q+'" की जानकारी नहीं मिली।')}
+document.getElementById('todayDate').textContent=new Date().toLocaleDateString('hi-IN',{day:'numeric',month:'long',year:'numeric'});document.getElementById('todayDay').textContent=new Date().toLocaleDateString('hi-IN',{weekday:'long'});document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+
+<button id="installAppBtn" aria-label="ऐप इंस्टॉल करें">📲 ऐप इंस्टॉल करें</button>
+<div id="installToast" class="install-toast">
+  <b>📱 दल्लूसर गाँव की डायरी</b>
+  <span>इसे फोन में ऐप की तरह इंस्टॉल करें।</span><br>
+  <button class="install-yes" id="installYes">इंस्टॉल करें</button>
+  <button class="install-no" id="installNo">अभी नहीं</button>
+</div>
+<script>
+(function(){
+  let deferredPrompt=null;
+  const btn=document.getElementById('installAppBtn'), toast=document.getElementById('installToast');
+  const yes=document.getElementById('installYes'), no=document.getElementById('installNo');
+  const standalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
+  if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+  function hide(){btn.classList.remove('show');toast.classList.remove('show');}
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;btn.classList.add('show');toast.classList.add('show');});
+  btn.addEventListener('click',async()=>{if(!deferredPrompt){toast.classList.add('show');return;}deferredPrompt.prompt();try{await deferredPrompt.userChoice;}catch(e){}deferredPrompt=null;hide();});
+  yes.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();try{await deferredPrompt.userChoice;}catch(e){}deferredPrompt=null;hide();}else{toast.innerHTML='<b>📲 इंस्टॉल करने के लिए</b><span>Chrome में ऊपर ⋮ मेन्यू खोलें → “Add to Home screen” / “Install app” चुनें।</span><br><button class="install-no" onclick="this.parentElement.classList.remove('show')">ठीक है</button>';}});
+  no.addEventListener('click',hide);
+  window.addEventListener('appinstalled',hide);
+  if(standalone) hide();
+})();
+</script>
+
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){var s=document.getElementById('splashScreen');if(s)s.classList.add('hide')},2400)});
+</script>
+</body>
+</html>
